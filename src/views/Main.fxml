@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="600.0" prefWidth="625.0" styleClass="main-bg" stylesheets="@../source/Main.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainController">
+   <children>
+      <GridPane fx:id="grid" hgap="20.0" layoutX="18.0" layoutY="40.0" prefHeight="560.0" prefWidth="590.0">
+        <columnConstraints>
+          <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints fillWidth="false" halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints fillHeight="false" maxHeight="296.00002136230466" minHeight="10.0" prefHeight="56.39999694824219" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="398.79999389648435" minHeight="10.0" prefHeight="246.0000030517578" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="257.1999877929687" minHeight="10.0" prefHeight="257.1999877929687" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Pane prefHeight="57.0" prefWidth="258.0" style="-fx-background-radius: 30; -fx-background-color: #ffdc57;">
+               <children>
+                  <ImageView fitHeight="51.0" fitWidth="39.0" layoutX="23.0" layoutY="-11.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../source/house.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="71.0" layoutY="4.0" prefHeight="51.0" prefWidth="149.0" text="Số hộ khẩu" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="26.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lbSoHoKhau" layoutX="211.0" layoutY="11.0" prefHeight="36.0" prefWidth="19.0" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="26.0" />
+                     </font>
+                  </Label>
+               </children>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Pane>
+            <Pane prefHeight="57.0" prefWidth="259.0" style="-fx-background-color: #41c4b5; -fx-background-radius: 30;" GridPane.columnIndex="1">
+               <children>
+                  <ImageView fitHeight="51.0" fitWidth="39.0" layoutX="14.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../source/payment.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="61.0" layoutY="4.0" prefHeight="51.0" prefWidth="169.0" text="Số khoản thu" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="26.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lbSoKhoanThu" layoutX="230.0" layoutY="11.0" prefHeight="38.0" prefWidth="39.0" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="26.0" />
+                     </font>
+                  </Label>
+               </children>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Pane>
+         </children>
+      </GridPane>
+      <Label layoutX="435.0" layoutY="559.0" text="\@Copyright Nhóm15" />
+   </children>
+</AnchorPane>

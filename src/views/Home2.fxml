@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="604.0" prefWidth="802.0" style="-fx-background-color: linear-gradient(to bottom, #ffffff, #ccfcfc);;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HomeController">
+   <children>
+      <HBox layoutX="1.0" prefHeight="600.0" prefWidth="800.0">
+         <children>
+            <VBox fx:id="vBox" prefHeight="600.0" prefWidth="274.0" spacing="60.0" style="-fx-background-color: #808080;">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#setTrangChu" prefHeight="104.0" prefWidth="226.0" style="-fx-background-color: #3ea9fe;" text="Trang chủ" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Bold" size="25.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="46.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../source/home.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="btnHoKhau" mnemonicParsing="false" onAction="#setHoKhau" onMouseEntered="#clickedHoKhau" onMouseExited="#nonclickHoKhau" onMouseMoved="#clickedHoKhau" onMouseReleased="#nonclickHoKhau" prefHeight="50.0" prefWidth="193.0" style="-fx-background-color: #666666;" text="Hộ khẩu" textFill="WHITE">
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" top="10.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font name="Arial Bold" size="20.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btnKhoanPhi" mnemonicParsing="false" onAction="#setKhoanPhi" prefHeight="46.0" prefWidth="194.0" style="-fx-background-color: #666666;" text="Khoản phí" textFill="WHITE" wrapText="true">
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" top="10.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font name="Arial Bold" size="20.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btnDongPhi" layoutX="20.0" layoutY="191.0" mnemonicParsing="false" onAction="#setDongPhi" onMouseEntered="#clickedHoKhau" onMouseExited="#nonclickHoKhau" onMouseMoved="#clickedHoKhau" onMouseReleased="#nonclickHoKhau" prefHeight="50.0" prefWidth="193.0" style="-fx-background-color: #666666;" text="Đóng phí" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Bold" size="20.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" top="10.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Button fx:id="btnThongKe" layoutX="20.0" layoutY="321.0" mnemonicParsing="false" onAction="#setThongKe" prefHeight="46.0" prefWidth="194.0" style="-fx-background-color: #666666;" text="Thống kê" textFill="WHITE">
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" top="10.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Button>
+               </children>
+            </VBox>
+            <BorderPane fx:id="borderPane" prefHeight="600.0" prefWidth="625.0" />
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

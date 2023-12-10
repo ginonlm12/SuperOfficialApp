@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="600.0" prefWidth="860.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HomeController">
+   <children>
+      <HBox fx:id="hBox" layoutX="50.0" layoutY="-2.0" prefHeight="600.0" prefWidth="811.0">
+         <children>
+            <BorderPane fx:id="borderPane" prefHeight="600.0" prefWidth="837.0" />
+         </children>
+      </HBox>
+      <VBox fx:id="vBox" layoutX="-215.0" layoutY="-2.0" prefHeight="600.0" prefWidth="214.0" stylesheets="@../source/Home.css">
+         <children>
+            <Button mnemonicParsing="false" onAction="#setTrangChu" opacity="0.72" prefHeight="172.0" prefWidth="214.0" style="-fx-background-color: #0867e3;" styleClass="button3" text="Trang chủ" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="25.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="42.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../source/home.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="btnNhanKhau" mnemonicParsing="false" onAction="#setNhanKhau" prefHeight="86.0" prefWidth="218.0" styleClass="button3" stylesheets="@../source/Home.css" text="Nhân khẩu" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="20.0" />
+               </font>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <graphic>
+                  <ImageView fitHeight="42.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../source/person.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="btnHoKhau" mnemonicParsing="false" onAction="#setHoKhau" prefHeight="86.0" prefWidth="222.0" styleClass="button3" stylesheets="@../source/Home.css" text="Hộ khẩu   " textFill="WHITE">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <font>
+                  <Font name="Arial Bold" size="20.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="42.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true" translateX="-4.0">
+                     <image>
+                        <Image url="@../source/people.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="btnKhoanPhi" mnemonicParsing="false" onAction="#setKhoanPhi" prefHeight="86.0" prefWidth="217.0" styleClass="button3" stylesheets="@../source/Home.css" text="Khoản phí" textFill="WHITE" wrapText="true">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <font>
+                  <Font name="Arial Bold" size="20.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="42.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../source/fees.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="btnDongPhi" layoutX="20.0" layoutY="191.0" mnemonicParsing="false" onAction="#setDongPhi" prefHeight="86.0" prefWidth="216.0" styleClass="button3" stylesheets="@../source/Home.css" text="Đóng phí " textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="20.0" />
+               </font>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <graphic>
+                  <ImageView fitHeight="42.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true" translateX="-5.0">
+                     <image>
+                        <Image url="@../source/pay.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="btnThongKe" layoutX="20.0" layoutY="321.0" mnemonicParsing="false" onAction="#setThongKe" prefHeight="86.0" prefWidth="214.0" styleClass="button3" stylesheets="@../source/Home.css" text="Thống kê" textFill="WHITE">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true" translateX="-6.0">
+                     <image>
+                        <Image url="@../source/statistics-48.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children>
+      </VBox>
+      <VBox prefHeight="600.0" prefWidth="49.0" style="-fx-background-color: #fff;">
+         <children>
+            <ImageView fx:id="showBtn" fitHeight="48.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: HAND;" translateX="4.0" translateY="10.0">
+               <image>
+                  <Image url="@../source/show.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="33.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true" translateX="10.0" translateY="24.0">
+               <image>
+                  <Image url="@../source/sign-out.png" />
+               </image>
+            </ImageView>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
