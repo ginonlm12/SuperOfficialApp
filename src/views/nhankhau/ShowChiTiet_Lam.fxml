@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.lang.String?>
+<?import java.net.URL?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" stylesheets="@../../source/change.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.nhankhau.ShowChiTiet_Lam">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" styleClass="text-field-rounded" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.nhankhau.ShowChiTiet_Lam">
    <children>
       <Label layoutX="552.0" layoutY="73.0" text="ID">
          <font>
@@ -124,4 +125,8 @@
          </font>
       </Label>
    </children>
+   <stylesheets>
+      <URL value="@../../source/change.css" />
+      <URL value="@../../source/Main.css" />
+   </stylesheets>
 </AnchorPane>
