@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" stylesheets="@../../source/change.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.nhankhau.ShowChiTiet_Lam">
+   <children>
+      <Label layoutX="552.0" layoutY="73.0" text="ID">
+         <font>
+            <Font size="20.0" />
+         </font></Label>
+      <Label layoutX="100.0" layoutY="73.0" text="Tên nhân khẩu">
+         <font>
+            <Font size="20.0" />
+         </font></Label>
+      <Label layoutX="102.0" layoutY="189.0" text="Ngày sinh">
+         <font>
+            <Font size="20.0" />
+         </font></Label>
+      <Label layoutX="103.0" layoutY="130.0" text="Số CCCD">
+         <font>
+            <Font size="20.0" />
+         </font></Label>
+      <Label layoutX="102.0" layoutY="345.0" prefHeight="100.0" prefWidth="101.0" text="Quan hệ với chủ hộ" textAlignment="CENTER" wrapText="true">
+         <font>
+            <Font size="20.0" />
+         </font></Label>
+      <Label layoutX="307.0" layoutY="14.0" text="XEM CHI TIẾT NHÂN KHẨU">
+         <font>
+            <Font name="System Bold Italic" size="20.0" />
+         </font></Label>
+      <Label layoutX="552.0" layoutY="130.0" text="Giới tính">
+         <font>
+            <Font size="20.0" />
+         </font></Label>
+      <Label layoutX="100.0" layoutY="305.0" text="Nghề nghiệp">
+         <font>
+            <Font size="20.0" />
+         </font></Label>
+      <Label layoutX="100.0" layoutY="246.0" text="ID Hộ Khẩu">
+         <font>
+            <Font size="20.0" />
+         </font></Label>
+      <Label layoutX="552.0" layoutY="178.0" prefHeight="53.0" prefWidth="69.0" text="Dân tộc" textAlignment="CENTER" wrapText="true">
+         <font>
+            <Font size="20.0" />
+         </font></Label>
+      <Label layoutX="104.0" layoutY="443.0" text="Quê quán">
+         <font>
+            <Font size="20.0" />
+         </font></Label>
+      <TextField fx:id="tfCCCD1" editable="false" layoutX="238.0" layoutY="125.0" prefHeight="39.0" prefWidth="306.0" stylesheets="@../../source/Main.css">
+         <styleClass>
+            <String fx:value="text-field-transparent" />
+            <String fx:value="text-field-rounded" />
+         </styleClass>
+      </TextField>
+      <TextField fx:id="tfNgaySinh1" editable="false" layoutX="238.0" layoutY="184.0" prefHeight="39.0" prefWidth="306.0" stylesheets="@../../source/Main.css">
+         <styleClass>
+            <String fx:value="text-field-transparent" />
+            <String fx:value="text-field-rounded" />
+         </styleClass>
+      </TextField>
+      <TextField fx:id="tfNgheNghiep1" editable="false" layoutX="236.0" layoutY="300.0" prefHeight="39.0" prefWidth="306.0" stylesheets="@../../source/Main.css">
+         <styleClass>
+            <String fx:value="text-field-transparent" />
+            <String fx:value="text-field-rounded" />
+         </styleClass>
+      </TextField>
+      <TextField fx:id="tfIDHoKhau1" editable="false" layoutX="235.0" layoutY="241.0" prefHeight="39.0" prefWidth="306.0" stylesheets="@../../source/Main.css">
+         <styleClass>
+            <String fx:value="text-field-transparent" />
+            <String fx:value="text-field-rounded" />
+         </styleClass>
+      </TextField>
+      <TextField fx:id="tfQHvsChuHo1" editable="false" layoutX="238.0" layoutY="375.0" prefHeight="39.0" prefWidth="306.0" stylesheets="@../../source/Main.css">
+         <styleClass>
+            <String fx:value="text-field-transparent" />
+            <String fx:value="text-field-rounded" />
+         </styleClass>
+      </TextField>
+      <TextField fx:id="tfQueQuan1" editable="false" layoutX="238.0" layoutY="438.0" prefHeight="39.0" prefWidth="306.0" stylesheets="@../../source/Main.css">
+         <styleClass>
+            <String fx:value="text-field-transparent" />
+            <String fx:value="text-field-rounded" />
+         </styleClass>
+      </TextField>
+      <TextField fx:id="tfIDNhanKhau1" editable="false" layoutX="641.0" layoutY="68.0" prefHeight="39.0" prefWidth="101.0" stylesheets="@../../source/Main.css">
+         <styleClass>
+            <String fx:value="text-field-transparent" />
+            <String fx:value="text-field-rounded" />
+         </styleClass>
+      </TextField>
+      <TextField fx:id="tfGioiTinh1" editable="false" layoutX="641.0" layoutY="125.0" prefHeight="39.0" prefWidth="101.0" stylesheets="@../../source/Main.css">
+         <styleClass>
+            <String fx:value="text-field-transparent" />
+            <String fx:value="text-field-rounded" />
+         </styleClass>
+      </TextField>
+      <TextField fx:id="tfHoTen1" editable="false" layoutX="238.0" layoutY="68.0" prefHeight="39.0" prefWidth="306.0" stylesheets="@../../source/Main.css">
+         <styleClass>
+            <String fx:value="text-field-transparent" />
+            <String fx:value="text-field-rounded" />
+         </styleClass>
+      </TextField>
+      <TextField fx:id="tfDanToc1" editable="false" layoutX="641.0" layoutY="184.0" prefHeight="39.0" prefWidth="101.0" stylesheets="@../../source/Main.css">
+         <styleClass>
+            <String fx:value="text-field-transparent" />
+            <String fx:value="text-field-rounded" />
+         </styleClass>
+      </TextField>
+      <TextField fx:id="tfSoPhong" editable="false" layoutX="641.0" layoutY="241.0" prefHeight="39.0" prefWidth="101.0" stylesheets="@../../source/Main.css">
+         <styleClass>
+            <String fx:value="text-field-transparent" />
+            <String fx:value="text-field-rounded" />
+         </styleClass>
+      </TextField>
+      <Label layoutX="552.0" layoutY="234.0" prefHeight="53.0" prefWidth="69.0" text="Phòng" textAlignment="CENTER" wrapText="true">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

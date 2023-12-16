@@ -3,298 +3,205 @@ package controller;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Optional;
 import java.util.ResourceBundle;
-import java.util.regex.Pattern;
 
-import controller.hokhau.UpdateHoKhau;
-import controller.khoanthu.UpdateKhoanThu;
+import controller.hokhau.UpdateHoKhau_Lam;
+import javafx.beans.property.ReadOnlyIntegerWrapper;
 import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.SingleSelectionModel;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
-import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.TableColumn.CellDataFeatures;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-import models.ChuHoModel;
-import models.HoKhauModel;
-import models.KhoanThuModel;
-import models.NhanKhauModel;
-import models.QuanHeModel;
-import services.ChuHoService;
-import services.HoKhauService;
-import services.NhanKhauService;
-import services.QuanHeService;
+import models.HoKhauBean_Tuan;
+import services.HoKhauService_Tuan;
+import services.NhanKhauService_Lam;
+
+
 
 public class HoKhauController implements Initializable {
 	@FXML
-	TableColumn<HoKhauModel, String> colMaHoKhau;
+	TableColumn<HoKhauBean_Tuan, Integer> colMaHoKhau;
 	@FXML
-	TableColumn<HoKhauModel, String> colMaChuHo;
+	TableColumn<HoKhauBean_Tuan, String> colTenCH;
 	@FXML
-	TableColumn<HoKhauModel, String> colSoThanhVien;
+	TableColumn<HoKhauBean_Tuan, Integer> colSoThanhVien;
 	@FXML
-	TableColumn<HoKhauModel, String> colDiaChi;
+	TableColumn<HoKhauBean_Tuan, String> colSDT;
 	@FXML
-	TableView<HoKhauModel> tvHoKhau;
+	TableView<HoKhauBean_Tuan> tvHoKhau;
 	@FXML
 	TextField tfSearch;
-
 	@FXML
 	ComboBox<String> cbChooseSearch;
+	ObservableList<HoKhauBean_Tuan> listValueTableView;
+	private List<HoKhauBean_Tuan> listHoKhau = new HoKhauService_Tuan().getListHoKhau();
 
-	ObservableList<HoKhauModel> listValueTableView;
-	private List<HoKhauModel> listHoKhau;
+    public HoKhauController() throws SQLException, ClassNotFoundException {
+    }
 
-	// Hien thi thong tin ho khau
-	public void showHoKhau() throws ClassNotFoundException, SQLException {
-		listHoKhau = new HoKhauService().getListHoKhau();
+    // Hien thi thong tin ho khau
+	public void showHoKhau(List<HoKhauBean_Tuan> listHoKhau) throws ClassNotFoundException, SQLException {
+//		listHoKhau = new HoKhauService_Tuan().getListHoKhau();
 		listValueTableView = FXCollections.observableArrayList(listHoKhau);
-		List<NhanKhauModel> listNhanKhau = new NhanKhauService().getListNhanKhau();
-		List<ChuHoModel> listChuHo = new ChuHoService().getListChuHo();
 
-		Map<Integer, Integer> mapMahoToId = new HashMap<>();
-		listChuHo.forEach(chuho -> {
-			mapMahoToId.put(chuho.getMaHo(), chuho.getIdChuHo());
-		});
+		// colMaHoKhau get value from HoKhauBean_Tuan.HoKhauModel_Tuan.maHo, write it for me
 
-		Map<Integer, String> mapIdToTen = new HashMap<>();
-		listNhanKhau.forEach(nhankhau -> {
-			mapIdToTen.put(nhankhau.getId(), nhankhau.getTen());
-		});
+		colMaHoKhau.setCellValueFactory(
+				(TableColumn.CellDataFeatures<HoKhauBean_Tuan, Integer> p) ->
+						new ReadOnlyIntegerWrapper(p.getValue().getHoKhauModel_tuan().getIDHoKhau()).asObject()
+		);
 
-		// Thiet lap Table views
-		colMaHoKhau.setCellValueFactory(new PropertyValueFactory<HoKhauModel, String>("maHo"));
-		colMaChuHo.setCellValueFactory((CellDataFeatures<HoKhauModel, String> p) -> new ReadOnlyStringWrapper(
-				mapIdToTen.get(mapMahoToId.get(p.getValue().getMaHo())).toString()));
-		colSoThanhVien.setCellValueFactory(new PropertyValueFactory<HoKhauModel, String>("soThanhvien"));
-		colDiaChi.setCellValueFactory(new PropertyValueFactory<HoKhauModel, String>("diaChi"));
+		colTenCH.setCellValueFactory(
+				(TableColumn.CellDataFeatures<HoKhauBean_Tuan, String> p) ->
+                {
+                    try {
+                        return new ReadOnlyStringWrapper(NhanKhauService_Lam.loadDatafromID(HoKhauService_Tuan.getIDChuHo(p.getValue().getHoKhauModel_tuan().getIDHoKhau())).getHoTen());
+                    } catch (ClassNotFoundException e) {
+                        throw new RuntimeException(e);
+                    } catch (SQLException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+		);
+		colSoThanhVien.setCellValueFactory(new PropertyValueFactory<HoKhauBean_Tuan,Integer>("SoTV"));
+		colSDT.setCellValueFactory(
+				(TableColumn.CellDataFeatures<HoKhauBean_Tuan, String> p) ->
+						new ReadOnlyStringWrapper(p.getValue().getHoKhauModel_tuan().getSDT())
+		);
+
 		tvHoKhau.setItems(listValueTableView);
-
-		// Thiet lap Combo box
-		ObservableList<String> listComboBox = FXCollections.observableArrayList("Mã hộ", "Tên chủ hộ", "Địa chỉ");
-		cbChooseSearch.setValue("Mã hộ");
-		cbChooseSearch.setItems(listComboBox);
 	}
 
 	public void addHoKhau() throws ClassNotFoundException, SQLException, IOException {
-		Parent home = FXMLLoader.load(getClass().getResource("/views/hokhau/AddHoKhau.fxml"));
+		Parent home = FXMLLoader.load(getClass().getResource("/views/hokhau/AddHoKhau_Tuan.fxml"));
 		Stage stage = new Stage();
 		stage.setScene(new Scene(home, 800, 600));
 		stage.setResizable(false);
 		stage.showAndWait();
-		showHoKhau();
+		listHoKhau = new HoKhauService_Tuan().getListHoKhau();
+		showHoKhau(listHoKhau);
 	}
 
 	public void delHoKhau() throws ClassNotFoundException, SQLException {
-		HoKhauModel hoKhauModel = tvHoKhau.getSelectionModel().getSelectedItem();
-
-		if (hoKhauModel == null) {
-			Alert alert = new Alert(AlertType.WARNING, "Hãy chọn hộ khẩu bạn muốn xóa!", ButtonType.OK);
-			alert.setHeaderText(null);
-			alert.showAndWait();
-		} else {
-			Alert alert = new Alert(AlertType.WARNING, "Khi xóa hộ khẩu, tất cả thành viên trong hộ đều sẽ bị xóa!",
-					ButtonType.YES, ButtonType.NO);
-			alert.setHeaderText("Bạn có chắc chắn muốn xóa hộ khẩu này");
-			Optional<ButtonType> result = alert.showAndWait();
-
-			if (result.get() == ButtonType.NO) {
-				return;
-			} else {
-				/// tao map anh xa gia tri Id sang maHo
-				Map<Integer, Integer> mapIdToMaho = new HashMap<>();
-				List<QuanHeModel> listQuanHe = new QuanHeService().getListQuanHe();
-				listQuanHe.forEach(quanhe -> {
-					mapIdToMaho.put(quanhe.getIdThanhVien(), quanhe.getMaHo());
-				});
-
-				// xoa toan bo nhan khau trong ho khau
-				int idHoKhauDel = hoKhauModel.getMaHo(); // lay ra ma ho de so sanh
-				List<NhanKhauModel> listNhanKhauModels = new NhanKhauService().getListNhanKhau();
-				listNhanKhauModels.stream().filter(nhankhau -> mapIdToMaho.get(nhankhau.getId()) == idHoKhauDel)
-						.forEach(nk -> {
-							try {
-								new NhanKhauService().del(nk.getId());
-							} catch (ClassNotFoundException | SQLException e) {
-								// TODO Auto-generated catch block
-								e.printStackTrace();
-							}
-						});
-
-				// xoa ho khau
-				new HoKhauService().del(idHoKhauDel);
-			}
-		}
-
-		showHoKhau();
+//		HoKhauModel hoKhauModel = tvHoKhau.getSelectionModel().getSelectedItem();
+//
+//		if (hoKhauModel == null) {
+//			Alert alert = new Alert(AlertType.WARNING, "Hãy chọn hộ khẩu bạn muốn xóa!", ButtonType.OK);
+//			alert.setHeaderText(null);
+//			alert.showAndWait();
+//		} else {
+//			Alert alert = new Alert(AlertType.WARNING, "Khi xóa hộ khẩu, tất cả thành viên trong hộ đều sẽ bị xóa!",
+//					ButtonType.YES, ButtonType.NO);
+//			alert.setHeaderText("Bạn có chắc chắn muốn xóa hộ khẩu này");
+//			Optional<ButtonType> result = alert.showAndWait();
+//
+//			if (result.get() == ButtonType.NO) {
+//				return;
+//			} else {
+//				/// tao map anh xa gia tri Id sang maHo
+//				Map<Integer, Integer> mapIdToMaho = new HashMap<>();
+//				List<QuanHeModel> listQuanHe = new QuanHeService().getListQuanHe();
+//				listQuanHe.forEach(quanhe -> {
+//					mapIdToMaho.put(quanhe.getIdThanhVien(), quanhe.getMaHo());
+//				});
+//
+//				// xoa toan bo nhan khau trong ho khau
+//				int idHoKhauDel = hoKhauModel.getMaHo(); // lay ra ma ho de so sanh
+//				List<NhanKhauModel> listNhanKhauModels = new NhanKhauService().getListNhanKhau();
+//				listNhanKhauModels.stream().filter(nhankhau -> mapIdToMaho.get(nhankhau.getId()) == idHoKhauDel)
+//						.forEach(nk -> {
+//							try {
+//								new NhanKhauService().del(nk.getId());
+//							} catch (ClassNotFoundException | SQLException e) {
+//								// TODO Auto-generated catch block
+//								e.printStackTrace();
+//							}
+//						});
+//
+//				// xoa ho khau
+//				new HoKhauService().del(idHoKhauDel);
+//			}
+//		}
+//
+//		showHoKhau();
 	}
 
 	public void searchHoKhau() throws ClassNotFoundException, SQLException {
-		ObservableList<HoKhauModel> listValueTableView_tmp = null;
+		ObservableList<HoKhauBean_Tuan> listValueTableView_tmp = null;
 		String keySearch = tfSearch.getText();
 
 		// lay lua chon tim kiem cua khach hang
 		SingleSelectionModel<String> typeSearch = cbChooseSearch.getSelectionModel();
 		String typeSearchString = typeSearch.getSelectedItem();
+//		System.out.println(typeSearchString + "..." + keySearch);
 
-		// tim kiem thong tin theo lua chon da lay ra
-		switch (typeSearchString) {
-		case "Tên chủ hộ": {
-			// neu khong nhap gi -> thong bao loi
-			if (keySearch.length() == 0) {
-				tvHoKhau.setItems(listValueTableView);
-				Alert alert = new Alert(AlertType.WARNING, "Hãy nhập vào thông tin cần tìm kiếm!", ButtonType.OK);
-				alert.setHeaderText(null);
-				alert.showAndWait();
-				break;
-			}
+//		 tim kiem thong tin theo lua chon da lay ra
+		listValueTableView_tmp = FXCollections.observableArrayList(HoKhauService_Tuan.getListHoKhau(keySearch, typeSearchString));
 
-			Map<Integer, Integer> mapMahoToId = new HashMap<>();
-			List<ChuHoModel> listChuHo = new ChuHoService().getListChuHo();
-			listChuHo.stream().forEach(chuho -> {
-				mapMahoToId.put(chuho.getMaHo(), chuho.getIdChuHo());
-			});
-			Map<Integer, String> mapIdToTen = new HashMap<>();
-			List<NhanKhauModel> listNhanKhau = new NhanKhauService().getListNhanKhau();
-			listNhanKhau.stream().forEach(nhankhau -> {
-				mapIdToTen.put(nhankhau.getId(), nhankhau.getTen());
-			});
-
-			int index = 0;
-			List<HoKhauModel> listHoKhauModelsSearch = new ArrayList<>();
-			for (HoKhauModel hoKhauModel : listHoKhau) {
-				if (mapIdToTen.get(mapMahoToId.get(hoKhauModel.getMaHo())).contains(keySearch)) {
-					listHoKhauModelsSearch.add(hoKhauModel);
-					index++;
-				}
-			}
-			listValueTableView_tmp = FXCollections.observableArrayList(listHoKhauModelsSearch);
-			tvHoKhau.setItems(listValueTableView_tmp);
-
-			// neu khong tim thay thong tin can tim kiem -> thong bao toi nguoi dung khong
-			// tim thay
-			if (index == 0) {
-				tvHoKhau.setItems(listValueTableView); // hien thi toan bo thong tin
-				Alert alert = new Alert(AlertType.INFORMATION, "Không tìm thấy thông tin!", ButtonType.OK);
-				alert.setHeaderText(null);
-				alert.showAndWait();
-			}
-			break;
-		}
-		case "Địa chỉ": {
-			// neu khong nhap gi -> thong bao loi
-			if (keySearch.length() == 0) {
-				tvHoKhau.setItems(listValueTableView);
-				Alert alert = new Alert(AlertType.WARNING, "Hãy nhập vào thông tin cần tìm kiếm!", ButtonType.OK);
-				alert.setHeaderText(null);
-				alert.showAndWait();
-				break;
-			}
-
-			int index = 0;
-			List<HoKhauModel> listHoKhau_tmp = new ArrayList<>();
-			for (HoKhauModel hoKhauModel : listHoKhau) {
-				if (hoKhauModel.getDiaChi().contains(keySearch)) {
-					listHoKhau_tmp.add(hoKhauModel);
-					index++;
-				}
-			}
-			listValueTableView_tmp = FXCollections.observableArrayList(listHoKhau_tmp);
-			tvHoKhau.setItems(listValueTableView_tmp);
-
-			// neu khong tim thay thong tin tim kiem -> thong bao toi nguoi dung
-			if (index == 0) {
-				tvHoKhau.setItems(listValueTableView); // hien thi toan bo thong tin
-				Alert alert = new Alert(AlertType.INFORMATION, "Không tìm thấy thông tin!", ButtonType.OK);
-				alert.setHeaderText(null);
-				alert.showAndWait();
-			}
-			break;
-		}
-		default: { // truong hop con lai : tim theo id
-			// neu khong nhap gi -> thong bao loi
-			if (keySearch.length() == 0) {
-				tvHoKhau.setItems(listValueTableView);
-				Alert alert = new Alert(AlertType.INFORMATION, "Bạn cần nhập vào thông tin tìm kiếm!", ButtonType.OK);
-				alert.setHeaderText(null);
-				alert.showAndWait();
-				break;
-			}
-
-			// kiem tra thong tin tim kiem co hop le hay khong
-			Pattern pattern = Pattern.compile("\\d{1,}");
-			if (!pattern.matcher(keySearch).matches()) {
-				Alert alert = new Alert(AlertType.WARNING, "Bạn phải nhập vào 1 số!", ButtonType.OK);
-				alert.setHeaderText(null);
-				alert.showAndWait();
-				return;
-			}
-
-			for (HoKhauModel hoKhauModel : listHoKhau) {
-				if (hoKhauModel.getMaHo() == Integer.parseInt(keySearch)) {
-					listValueTableView_tmp = FXCollections.observableArrayList(hoKhauModel);
-					tvHoKhau.setItems(listValueTableView_tmp);
-					return;
-				}
-			}
-
-			// khong tim thay thong tin -> thong bao toi nguoi dung
+		if(keySearch.length() == 0 ||listValueTableView_tmp.size() ==  0){
 			tvHoKhau.setItems(listValueTableView);
-			Alert alert = new Alert(AlertType.WARNING, "Không tìm thấy thông tin!", ButtonType.OK);
+			Alert alert = new Alert(Alert.AlertType.WARNING, "Thông tin bạn nhập chưa đúng!", ButtonType.OK);
 			alert.setHeaderText(null);
 			alert.showAndWait();
+			return;
 		}
+		switch (typeSearchString) {
+			case "Tên chủ hộ":
+				showHoKhau(listValueTableView_tmp);
+				break;
+			case "SĐT liên hệ":
+				showHoKhau(listValueTableView_tmp);
+				break;
+			default:
+				showHoKhau(listValueTableView_tmp);
 		}
 	}
 
-	public void updateHoKhau() throws ClassNotFoundException, SQLException, IOException {
+	@FXML
+	public void updateHoKhau(ActionEvent event) throws ClassNotFoundException, SQLException, IOException {
 		// lay ra nhan khau can update
-		HoKhauModel hoKhauModel = tvHoKhau.getSelectionModel().getSelectedItem();
+		HoKhauBean_Tuan hoKhauBean = tvHoKhau.getSelectionModel().getSelectedItem();
 
 		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(getClass().getResource("/views/hokhau/UpdateHoKhau.fxml"));
+		loader.setLocation(getClass().getResource("/views/hokhau/UpdateHoKhau_Lam.fxml"));
 		Parent home = loader.load();
 		Stage stage = new Stage();
-		stage.setScene(new Scene(home, 800, 600));
-		UpdateHoKhau updateHoKhau = loader.getController();
+		stage.setScene(new Scene(home, 600, 600));
+		UpdateHoKhau_Lam updateHoKhau = loader.getController();
 
 		// bat loi truong hop khong hop le
 		if (updateHoKhau == null)
 			return;
-		if (hoKhauModel == null) {
-			Alert alert = new Alert(AlertType.WARNING, "Chọn hộ khẩu cần sửa !", ButtonType.OK);
+		if (hoKhauBean == null) {
+			Alert alert = new Alert(Alert.AlertType.WARNING, "Chọn hộ khẩu cần sửa !", ButtonType.OK);
 			alert.setHeaderText(null);
 			alert.showAndWait();
 			return;
 		}
-		updateHoKhau.setHoKhauModel(hoKhauModel);
+		updateHoKhau.setHoKhauModel(hoKhauBean);
 
 		stage.setResizable(false);
 		stage.showAndWait();
-		showHoKhau();
+		listHoKhau = new HoKhauService_Tuan().getListHoKhau();
+		showHoKhau(listHoKhau);
 	}
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		try {
-			showHoKhau();
+			showHoKhau(listHoKhau);
+			// thiet lap gia tri cho combobox
+			ObservableList<String> listComboBox = FXCollections.observableArrayList("ID Hộ khẩu", "Tên chủ hộ", "SĐT liên hệ");
+			cbChooseSearch.setValue("ID Hộ khẩu");
+			cbChooseSearch.setItems(listComboBox);
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

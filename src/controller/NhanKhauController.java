@@ -37,6 +37,7 @@ import models.NhanKhauModel;
 import models.QuanHeModel;
 import services.ChuHoService;
 import services.NhanKhauService;
+import services.NhanKhauService_Lam;
 import services.QuanHeService;
 
 public class NhanKhauController implements Initializable {
