@@ -12,10 +12,6 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.ProgressBar;
-import javafx.scene.control.ProgressIndicator;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
@@ -38,7 +34,7 @@ public class HomeController implements Initializable {
 	private int check=0;
 	
 	public void setNhanKhau(ActionEvent event) throws IOException {
-		FXMLLoader loader = new FXMLLoader(LoginController.class.getResource("/views/NhanKhau.fxml"));
+		FXMLLoader loader = new FXMLLoader(LoginController.class.getResource("/views/NhanKhau_Lam.fxml"));
 		Pane nhankhauPane = (Pane) loader.load();
 		borderPane.setCenter(nhankhauPane);
 	}
@@ -81,23 +77,43 @@ public class HomeController implements Initializable {
 		KeyValue keyValue1 = new KeyValue(hBox.translateXProperty(), y);
 		KeyFrame keyFrame = new KeyFrame(Duration.seconds(0.5), keyValue);
 		KeyFrame keyFrame1 = new KeyFrame(Duration.seconds(0.35), keyValue1);
-        Timeline timeline = new Timeline(keyFrame, keyFrame1);
+
+		Timeline timeline = new Timeline(keyFrame, keyFrame1);
+
 		timeline.play();
 	}
 
-	EventHandler<MouseEvent> eventHandler = new EventHandler<MouseEvent>() { 
-		@Override 
-		public void handle(MouseEvent e) { 
-		   if(check==0) {
-				check=1;
+	EventHandler<MouseEvent> eventHandler = new EventHandler<MouseEvent>() {
+		@Override
+		public void handle(MouseEvent e) {
+			if (check == 0) {
+				check = 1;
 				borderPane.getCenter().prefWidth(632);
+				// Đặt chiều sâu của borderPane cao hơn
+				borderPane.setTranslateZ(1);
 				anim(262, 213);
+
+//				PauseTransition pause = new PauseTransition(Duration.seconds(3));
+//				pause.setOnFinished(event -> {
+//					try {
+//						check = 0;
+//						anim(-262, 0);
+//					} catch (Exception e1) {
+//						throw new RuntimeException(e1);
+//					} finally {
+//						// Đặt chiều sâu của borderPane về giá trị mặc định
+//						borderPane.setTranslateZ(0);
+//					}
+//				});
+//				pause.play();
 			} else {
-			check=0;
-			anim(-262, 0);
-		   }		    
-		} 
-	 }; 
+				check = 0;
+				anim(-262, 0);
+				borderPane.setTranslateZ(0);
+			}
+		}
+	};
+
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {

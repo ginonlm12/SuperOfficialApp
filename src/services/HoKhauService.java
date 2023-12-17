@@ -73,7 +73,7 @@ public class HoKhauService {
 		List<HoKhauModel> list = new ArrayList<>();
 
 		Connection connection = MysqlConnection.getMysqlConnection();
-		String query = "SELECT * FROM ho_khau";
+		String query = "SELECT * FROM hokhau";
 		PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement(query);
 		ResultSet rs = preparedStatement.executeQuery();
 		while (rs.next()) {
