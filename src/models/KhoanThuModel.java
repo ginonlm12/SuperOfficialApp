@@ -1,56 +1,37 @@
 package models;
 
 public class KhoanThuModel {
-	private int maKhoanThu;
-	private String tenKhoanThu;
-	private double soTien;
-	private int loaiKhoanThu;// tự nguyện là 1 bắt buộc là 0
+	private int IDKhoanThu;
+	private String tenKT;
+	private String ngayBatDau;
+	private String ngayKetThuc;
+	private double trongSoDienTich;
+	private double trongSoSTV;
+	private double HangSo;
 	
-	public KhoanThuModel() {}
-	
-	public KhoanThuModel(String tenKhoanThu, double soTien, int loaiKhoanThu ) {
-		this.tenKhoanThu=tenKhoanThu;
-		this.soTien = soTien;
-		this.loaiKhoanThu = loaiKhoanThu;
-	}
-	
-	public KhoanThuModel(int maKhoanThu ,String tenKhoanThu, double soTien, int loaiKhoanThu ) {
-		this.maKhoanThu = maKhoanThu;
-		this.tenKhoanThu=tenKhoanThu;
-		this.soTien = soTien;
-		this.loaiKhoanThu = loaiKhoanThu;
+	public KhoanThuModel(int IDKhoanThu, String tenKT, String ngayBatDau, String ngayKetThuc, double trongSoDienTich, double trongSoSTV, double HangSo) {
+		this.IDKhoanThu = IDKhoanThu;
+		this.tenKT=tenKT;
+		this.ngayBatDau=ngayBatDau;
+		this.ngayKetThuc=ngayKetThuc;
+		this.trongSoDienTich=trongSoDienTich;
+		this.trongSoSTV=trongSoSTV;
+		this.HangSo=HangSo;
 	}
 
-	public int getMaKhoanThu() {
-		return maKhoanThu;
+	public int getIDKhoanThu() {
+		return IDKhoanThu;
 	}
 
-	public void setMaKhoanThu(int maKhoanThu) {
-		this.maKhoanThu = maKhoanThu;
+	public void setIDKhoanThu(int IDKhoanThu) {
+		this.IDKhoanThu = IDKhoanThu;
 	}
 
-	public String getTenKhoanThu() {
-		return tenKhoanThu;
+	public String gettenKT() {
+		return tenKT;
 	}
 
-	public void setTenKhoanThu(String tenKhoanThu) {
-		this.tenKhoanThu = tenKhoanThu;
+	public void settenKT(String tenKT) {
+		this.tenKT = tenKT;
 	}
-
-	public double getSoTien() {
-		return soTien;
-	}
-
-	public void setSoTien(double soTien) {
-		this.soTien = soTien;
-	}
-
-	public int getLoaiKhoanThu() {
-		return loaiKhoanThu;
-	}
-
-	public void setLoaiKhoanThu(int loaiKhoanThu) {
-		this.loaiKhoanThu = loaiKhoanThu;
-	}
-	
 }

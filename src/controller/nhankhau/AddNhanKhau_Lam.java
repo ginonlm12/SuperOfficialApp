@@ -15,7 +15,7 @@ import models.NhanKhauModel_Lam;
 import models.QuanHeModel;
 import services.HoKhauService;
 import services.NhanKhauService;
-import services.NhanKhauService_Lam;
+// import services.NhanKhauService_Lam;
 
 import java.io.File;
 import java.net.URL;
