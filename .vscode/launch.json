@@ -6,6 +6,14 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Main",
+            "request": "launch",
+            "mainClass": "application.Main",
+            "projectName": "SuperOfficialApp_4eb3fe4a",
+            "vmArgs": "--module-path \"E:\\OneDrive - Hanoi University of Science and Technology\\Code project\\Intro2SE\\javafx-sdk-21.0.1\\lib\" --add-modules=javafx.controls,javafx.fxml"
+        },
+        {
+            "type": "java",
             "name": "Launch Current File",
             "request": "launch",
             "mainClass": "${file}"
@@ -15,8 +23,8 @@
             "name": "Launch Main",
             "request": "launch",
             "mainClass": "application.Main",
-            "projectName": "QuanLyThuTien",
-            "vmArgs": "--module-path \"E:\\OneDrive - Hanoi University of Science and Technology\\Code project\\Intro2SE\\javafx-sdk-21.0.1\" --add-modules=javafx.controls,javafx.fxml"
+            "projectName": "SuperAppOffical",
+            "vmArgs": "--module-path \"E:\\OneDrive - Hanoi University of Science and Technology\\Code project\\Intro2SE\\javafx-sdk-21.0.1\\lib\" --add-modules=javafx.controls,javafx.fxml"
         }
     ]
 }

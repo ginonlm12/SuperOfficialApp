@@ -39,6 +39,7 @@ public class AddHoKhau {
 
 	@FXML
 	public void addHoKhau(ActionEvent event) throws ClassNotFoundException, SQLException {
+		
 		// khai bao mot mau de so sanh
 		Pattern pattern;
 
@@ -153,3 +154,4 @@ public class AddHoKhau {
 	}
 
 }
+

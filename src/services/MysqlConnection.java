@@ -8,7 +8,7 @@ import java.sql.*;
 public class MysqlConnection {
     public static Connection getMysqlConnection() throws SQLException, ClassNotFoundException {
         String hostName = "localhost";
-        String dbName = "quan_ly_khoan_thu";
+        String dbName = "demo01";
         String userName = "root";
         String password = "";
         return getMysqlConnection(hostName, dbName, userName, password);
@@ -19,6 +19,8 @@ public class MysqlConnection {
         //Class.forName("com.mysql.jdbc.Driver");
         String connectionUrl = "jdbc:mysql://" + hostName + ":3306/" + dbName; // + "?useUnicode=true&characterEncoding=utf-8";
         Connection conn = DriverManager.getConnection(connectionUrl, userName, password);
+        if (conn != null) System.out.println("thanh cong"); 
+        else System.out.println("that bai");
         return conn;
     }
 }

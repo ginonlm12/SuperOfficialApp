@@ -9,7 +9,7 @@ public class NhanKhauModel {
 	
 	public NhanKhauModel() {}
 	
-	public NhanKhauModel(String cmnd, String ten, int tuoi , String sdt) {
+	public NhanKhauModel(String cmnd , String ten, int tuoi , String sdt) {
 		this.cmnd = cmnd;
 		this.ten=ten;
 		this.tuoi=tuoi;
