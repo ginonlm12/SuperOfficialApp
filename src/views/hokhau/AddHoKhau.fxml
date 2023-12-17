@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" styleClass="pane" stylesheets="@../../source/change.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.hokhau.AddHoKhau">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" styleClass="pane" stylesheets="@../../source/change.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.hokhau.AddHoKhau_Tuan">
    <children>
       <Pane layoutX="100.0" layoutY="46.0" prefHeight="137.0" prefWidth="482.0" style="-fx-background-color: #ffffff; -fx-background-radius: 10px;" styleClass="subpane" stylesheets="@../../source/change.css" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0">
          <children>
