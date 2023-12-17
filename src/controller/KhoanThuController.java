@@ -4,17 +4,12 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 import java.util.ResourceBundle;
-import java.util.TreeMap;
 import java.util.regex.Pattern;
 
 import controller.khoanthu.UpdateKhoanThu;
-import controller.nhankhau.UpdateNhanKhau;
-import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -30,25 +25,28 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import models.KhoanThuModel;
-import models.NhanKhauModel;
 import services.KhoanThuService;
-import services.NhanKhauService;
 
 public class KhoanThuController implements Initializable {
 	@FXML
-	private TableView<KhoanThuModel> tvKhoanPhi;
+	private TableView<KhoanThuModel> tvKhoanThu;
 	@FXML
-	private TableColumn<KhoanThuModel, String> colMaKhoanPhi;
+	private TableColumn<KhoanThuModel, String> colIDKhoanThu;
 	@FXML
 	private TableColumn<KhoanThuModel, String> colTenKhoanThu;
 	@FXML
-	private TableColumn<KhoanThuModel, String> colSoTien;
+	private TableColumn<KhoanThuModel, String> colTSDienTich;
 	@FXML
-	private TableColumn<KhoanThuModel, String> colLoaiKhoanThu;
+	private TableColumn<KhoanThuModel, String> colTSSoThanhVien;
+	@FXML
+	private TableColumn<KhoanThuModel, String> colCongThem;
+	@FXML
+	private TableColumn<KhoanThuModel, String> colNgayBatDau;
+	@FXML
+	private TableColumn<KhoanThuModel, String> colNgayKetThuc;
 	@FXML
 	private TextField tfSearch;
 	@FXML
@@ -56,27 +54,48 @@ public class KhoanThuController implements Initializable {
 	private List<KhoanThuModel> listKhoanThu;
 	private ObservableList<KhoanThuModel> listValueTableView;
 
-	public void showKhoanThu() throws ClassNotFoundException, SQLException {
+	// public void showKhoanThu() throws ClassNotFoundException, SQLException {
+	// 	listKhoanThu = new KhoanThuService().getListKhoanThu();
+	// 	listValueTableView = FXCollections.observableArrayList(listKhoanThu);
+
+	// 	// thiet lap cac cot cho table views
+	// 	colMaKhoanPhi.setCellValueFactory(new PropertyValueFactory<KhoanThuModel, String>("maKhoanThu"));
+	// 	colTenKhoanThu.setCellValueFactory(new PropertyValueFactory<KhoanThuModel, String>("tenKhoanThu"));
+	// 	colSoTien.setCellValueFactory(new PropertyValueFactory<KhoanThuModel, String>("soTien"));
+
+	// 	Map<Integer, String> mapLoaiKhoanThu = new TreeMap();
+	// 	mapLoaiKhoanThu.put(1, "Bắt buộc");
+	// 	mapLoaiKhoanThu.put(0, "Tự nguyện");
+
+	// 	try {
+	// 		colLoaiKhoanThu
+	// 				.setCellValueFactory((CellDataFeatures<KhoanThuModel, String> p) -> new ReadOnlyStringWrapper(
+	// 						mapLoaiKhoanThu.get(p.getValue().getLoaiKhoanThu())));
+	// 	} catch (Exception e) {
+	// 		// TODO: handle exception
+	// 	}
+	// 	tvKhoanPhi.setItems(listValueTableView);
+
+	// 	// thiet lap gia tri cho combobox
+	// 	ObservableList<String> listComboBox = FXCollections.observableArrayList("Tên khoản thu", "Mã khoản thu");
+	// 	cbChooseSearch.setValue("Tên khoản thu");
+	// 	cbChooseSearch.setItems(listComboBox);
+	// }
+	// viet phuong thuc hien cac khoan thu trong co so du lieu
+	public void hienKhoanThu() throws ClassNotFoundException, SQLException {
 		listKhoanThu = new KhoanThuService().getListKhoanThu();
 		listValueTableView = FXCollections.observableArrayList(listKhoanThu);
 
 		// thiet lap cac cot cho table views
-		colMaKhoanPhi.setCellValueFactory(new PropertyValueFactory<KhoanThuModel, String>("maKhoanThu"));
-		colTenKhoanThu.setCellValueFactory(new PropertyValueFactory<KhoanThuModel, String>("tenKhoanThu"));
-		colSoTien.setCellValueFactory(new PropertyValueFactory<KhoanThuModel, String>("soTien"));
+		colIDKhoanThu.setCellValueFactory(new PropertyValueFactory<KhoanThuModel, String>("IDKhoanThu"));
+		colTenKhoanThu.setCellValueFactory(new PropertyValueFactory<KhoanThuModel, String>("tenKT"));
+		colTSDienTich.setCellValueFactory(new PropertyValueFactory<KhoanThuModel, String>("trongSoDienTich"));
+		colTSSoThanhVien.setCellValueFactory(new PropertyValueFactory<KhoanThuModel, String>("trongSoSTV"));
+		colCongThem.setCellValueFactory(new PropertyValueFactory<KhoanThuModel, String>("CongThem"));
+		colNgayBatDau.setCellValueFactory(new PropertyValueFactory<KhoanThuModel, String>("ngayBatDau"));
+		colNgayKetThuc.setCellValueFactory(new PropertyValueFactory<KhoanThuModel, String>("ngayKetThuc"));
 
-		Map<Integer, String> mapLoaiKhoanThu = new TreeMap();
-		mapLoaiKhoanThu.put(1, "Bắt buộc");
-		mapLoaiKhoanThu.put(0, "Tự nguyện");
-
-		try {
-			colLoaiKhoanThu
-					.setCellValueFactory((CellDataFeatures<KhoanThuModel, String> p) -> new ReadOnlyStringWrapper(
-							mapLoaiKhoanThu.get(p.getValue().getLoaiKhoanThu())));
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
-		tvKhoanPhi.setItems(listValueTableView);
+		tvKhoanThu.setItems(listValueTableView);
 
 		// thiet lap gia tri cho combobox
 		ObservableList<String> listComboBox = FXCollections.observableArrayList("Tên khoản thu", "Mã khoản thu");
@@ -98,7 +117,7 @@ public class KhoanThuController implements Initializable {
 		case "Tên khoản thu": {
 			// neu khong nhap gi -> thong bao loi
 			if (keySearch.length() == 0) {
-				tvKhoanPhi.setItems(listValueTableView);
+				tvKhoanThu.setItems(listValueTableView);
 				Alert alert = new Alert(AlertType.WARNING, "Hãy nhập vào thông tin cần tìm kiếm!", ButtonType.OK);
 				alert.setHeaderText(null);
 				alert.showAndWait();
@@ -108,18 +127,18 @@ public class KhoanThuController implements Initializable {
 			int index = 0;
 			List<KhoanThuModel> listKhoanThuModelsSearch = new ArrayList<>();
 			for (KhoanThuModel khoanThuModel : listKhoanThu) {
-				if (khoanThuModel.getTenKhoanThu().contains(keySearch)) {
+				if (khoanThuModel.gettenKT().contains(keySearch)) {
 					listKhoanThuModelsSearch.add(khoanThuModel);
 					index++;
 				}
 			}
 			listValueTableView_tmp = FXCollections.observableArrayList(listKhoanThuModelsSearch);
-			tvKhoanPhi.setItems(listValueTableView_tmp);
+			tvKhoanThu.setItems(listValueTableView_tmp);
 
 			// neu khong tim thay thong tin can tim kiem -> thong bao toi nguoi dung khong
 			// tim thay
 			if (index == 0) {
-				tvKhoanPhi.setItems(listValueTableView); // hien thi toan bo thong tin
+				tvKhoanThu.setItems(listValueTableView); // hien thi toan bo thong tin
 				Alert alert = new Alert(AlertType.INFORMATION, "Không tìm thấy thông tin!", ButtonType.OK);
 				alert.setHeaderText(null);
 				alert.showAndWait();
@@ -129,7 +148,7 @@ public class KhoanThuController implements Initializable {
 		default: { // truong hop con lai : tim theo ma khoan thu
 			// neu khong nhap gi -> thong bao loi
 			if (keySearch.length() == 0) {
-				tvKhoanPhi.setItems(listValueTableView);
+				tvKhoanThu.setItems(listValueTableView);
 				Alert alert = new Alert(AlertType.INFORMATION, "Bạn cần nhập vào thông tin tìm kiếm!", ButtonType.OK);
 				alert.setHeaderText(null);
 				alert.showAndWait();
@@ -146,15 +165,15 @@ public class KhoanThuController implements Initializable {
 			}
 
 			for (KhoanThuModel khoanThuModel : listKhoanThu) {
-				if (khoanThuModel.getMaKhoanThu() == Integer.parseInt(keySearch)) {
+				if (khoanThuModel.getIDKhoanThu() == Integer.parseInt(keySearch)) {
 					listValueTableView_tmp = FXCollections.observableArrayList(khoanThuModel);
-					tvKhoanPhi.setItems(listValueTableView_tmp);
+					tvKhoanThu.setItems(listValueTableView_tmp);
 					return;
 				}
 			}
 
 			// khong tim thay thong tin -> thong bao toi nguoi dung
-			tvKhoanPhi.setItems(listValueTableView);
+			tvKhoanThu.setItems(listValueTableView);
 			Alert alert = new Alert(AlertType.WARNING, "Không tìm thấy thông tin!", ButtonType.OK);
 			alert.setHeaderText(null);
 			alert.showAndWait();
@@ -168,11 +187,11 @@ public class KhoanThuController implements Initializable {
 		stage.setScene(new Scene(home, 800, 600));
 		stage.setResizable(false);
 		stage.showAndWait();
-		showKhoanThu();
+		hienKhoanThu();
 	}
 
 	public void delKhoanThu() throws ClassNotFoundException, SQLException {
-		KhoanThuModel khoanThuModel = tvKhoanPhi.getSelectionModel().getSelectedItem();
+		KhoanThuModel khoanThuModel = tvKhoanThu.getSelectionModel().getSelectedItem();
 
 		if (khoanThuModel == null) {
 			Alert alert = new Alert(AlertType.WARNING, "Chọn khoản thu bạn muốn xóa!", ButtonType.OK);
@@ -187,16 +206,15 @@ public class KhoanThuController implements Initializable {
 			if (result.get() == ButtonType.NO) {
 				return;
 			} else {
-				new KhoanThuService().del(khoanThuModel.getMaKhoanThu());
+				new KhoanThuService().del(khoanThuModel.getIDKhoanThu());
 			}
 		}
-
-		showKhoanThu();
+		hienKhoanThu();
 	}
 
 	public void updateKhoanThu() throws ClassNotFoundException, SQLException, IOException {
 		// lay ra nhan khau can update
-		KhoanThuModel khoanThuModel = tvKhoanPhi.getSelectionModel().getSelectedItem();
+		KhoanThuModel khoanThuModel = tvKhoanThu.getSelectionModel().getSelectedItem();
 
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(getClass().getResource("/views/khoanthu/UpdateKhoanThu.fxml"));
@@ -217,13 +235,13 @@ public class KhoanThuController implements Initializable {
 
 		stage.setResizable(false);
 		stage.showAndWait();
-		showKhoanThu();
+		hienKhoanThu();
 	}
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		try {
-			showKhoanThu();
+			hienKhoanThu();
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -1,18 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import java.lang.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="625.0" styleClass="pane" stylesheets="@../source/Main.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.KhoanThuController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="625.0" styleClass="pane" stylesheets="@../source/Main.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.KhoanThuController">
    <children>
       <TableView fx:id="tvKhoanPhi" layoutX="9.0" layoutY="91.0" prefHeight="493.0" prefWidth="500.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="100.0">
         <columns>
-          <TableColumn fx:id="colMaKhoanPhi" prefWidth="93.0" text="Mã khoản thu" />
-          <TableColumn fx:id="colTenKhoanThu" prefWidth="194.0" text="Tên khoản thu" />
-            <TableColumn fx:id="colSoTien" prefWidth="186.0" text="Số tiền" />
-            <TableColumn fx:id="colLoaiKhoanThu" prefWidth="131.0" text="Loại khoản thu" />
+          <TableColumn fx:id="colIDkhoanthu" prefWidth="62.39999520778656" text="ID" />
+          <TableColumn fx:id="colTenKhoanThu" prefWidth="134.40003204345703" text="Tên khoản thu" />
+            <TableColumn fx:id="colTSDienTich" prefWidth="83.99998474121094" text="TS diện tích" />
+            <TableColumn fx:id="colTSSoThanhVien" prefWidth="100.0" text="TS số thành viên" />
+            <TableColumn fx:id="colCongThem" prefWidth="75.20001220703125" text="Cộng thêm" />
+            <TableColumn fx:id="colNgayBatDau" prefWidth="74.39993286132812" text="Bắt Đầu" />
+            <TableColumn fx:id="colngayKetThuc" prefWidth="72.00006103515625" text="Kết Thúc" />
         </columns>
       </TableView>
       <TextField fx:id="tfSearch" layoutX="9.0" layoutY="44.0" prefHeight="40.0" prefWidth="310.0" AnchorPane.bottomAnchor="510.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="305.0" AnchorPane.topAnchor="50.0" />
