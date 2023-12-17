@@ -29,11 +29,7 @@ public class NhanKhauModel_Lam {
 		this.QHvsChuHo = qh;
 		HoTen = hoten;
 		this.CCCD = cccdChuHo;
-		NgheNghiep = "Chủ hộ";
 		GioiTinh = gioiTinh;
-		DanToc = "Kinh";
-		QueQuan = "Việt Nam";
-		this.NgaySinh = "0001/01/01";
 	}
 
 	public NhanKhauModel_Lam(int IDNhanKhau, int IDHoKhau, String QHvsChuHo, String hoTen, String ngaySinh, String CCCD, String ngheNghiep, String gioiTinh, String dantoc, String queQuan) {
