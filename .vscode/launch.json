@@ -16,7 +16,7 @@
             "request": "launch",
             "mainClass": "application.Main",
             "projectName": "QuanLyThuTien",
-            "vmArgs": "--module-path \"D:\\btl\\openjfx-19_windows-x64_bin-sdk\\javafx-sdk-19\\lib\" --add-modules=javafx.controls,javafx.fxml"
+            "vmArgs": "--module-path \"E:\\OneDrive - Hanoi University of Science and Technology\\Code project\\Intro2SE\\javafx-sdk-21.0.1\" --add-modules=javafx.controls,javafx.fxml"
         }
     ]
 }
