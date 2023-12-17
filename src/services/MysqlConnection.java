@@ -14,6 +14,14 @@ public class MysqlConnection {
         return getMysqlConnection(hostName, dbName, userName, password);
     }
     
+    public static Connection getMysqlConnection(String dbname_) throws SQLException, ClassNotFoundException {
+        String hostName = "localhost";
+        String dbName = dbname_;
+        String userName = "root";
+        String password = "";
+        return getMysqlConnection(hostName, dbName, userName, password);
+    }
+
     public static Connection getMysqlConnection(String hostName, String dbName, String userName, String password)
         throws SQLException, ClassNotFoundException{
         String connectionUrl = "jdbc:mysql://" + hostName + ":3306/" + dbName;

@@ -9,6 +9,9 @@ public class KhoanThuModel {
 	private double trongSoSTV;
 	private double HangSo;
 
+	public KhoanThuModel() {
+	}
+
 	public KhoanThuModel(int IDKhoanThu, String tenKT, String ngayBatDau, String ngayKetThuc, double trongSoDienTich,
 			double trongSoSTV, double HangSo) {
 		this.IDKhoanThu = IDKhoanThu;
