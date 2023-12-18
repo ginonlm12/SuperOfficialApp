@@ -26,7 +26,7 @@ public class LoginController {
 		String pass = tfPassword.getText();
 		
 		// check username and password
-		if(!name.equals("admin") || !pass.equals("admin")) {
+		if(!name.equals("") || !pass.equals("")) {
 			Alert alert = new Alert(AlertType.WARNING, "Bạn nhập sai mật khẩu rồi hihi!", ButtonType.OK);
 			alert.setHeaderText(null);
 			alert.showAndWait();
@@ -35,7 +35,9 @@ public class LoginController {
 		
 		Parent home = FXMLLoader.load(getClass().getResource("/views/Home3.fxml"));
         Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
-        stage.setScene(new Scene(home));
+		Scene scene = new Scene(home);
+
+        stage.setScene(scene);
         stage.setResizable(false);
         stage.show();
 	}
