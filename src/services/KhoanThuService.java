@@ -13,7 +13,7 @@ import models.KhoanThuModel;
 public class KhoanThuService {
 	public boolean add(KhoanThuModel khoanThuModel) throws ClassNotFoundException, SQLException {
 		Connection connection = MysqlConnection.getMysqlConnection();
-		String query = "INSERT INTO khoanthu(IDKhoanThu, tenKT, NgayBatDau, NgayKetThuc, TrongSoDienTich, TrongSoSTV, hangSo)"
+		String query = "INSERT INTO khoanthu(IDKhoanThu, TenKT, NgayBatDau, NgayKetThuc, TrongSoDienTich, TrongSoSTV, hangSo)"
 				+ " values (?, ?, ?, ?, ?, ?, ?)";
 		PreparedStatement preparedStatement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 		preparedStatement.setInt(1, khoanThuModel.getIDKhoanThu());
@@ -50,19 +50,19 @@ public class KhoanThuService {
 	}
 
 	// modify the update method to match the khoanthu table
-	public boolean update(int IDKhoanThu, String tenKT, String NgayBatDau, String NgayKetThuc, double TrongSoDienTich,
-			double TrongSoSTV, double hangSo) throws ClassNotFoundException, SQLException {
+	public boolean update(int IDKhoanThu, String TenKT, String NgayBatDau, String NgayKetThuc, double TrongSoDienTich,
+			double TrongSoSTV, double HangSo) throws ClassNotFoundException, SQLException {
 		Connection connection = MysqlConnection.getMysqlConnection();
 		PreparedStatement preparedStatement;
 
-		String query = "UPDATE khoanthu SET tenKT = ?, NgayBatDau = ?, NgayKetThuc = ?, TrongSoDienTich = ?, TrongSoSTV = ?, hangSo = ? WHERE IDKhoanThu = ?";
+		String query = "UPDATE khoanthu SET TenKT = ?, NgayBatDau = ?, NgayKetThuc = ?, TrongSoDienTich = ?, TrongSoSTV = ?, HangSo = ? WHERE IDKhoanThu = ?";
 		preparedStatement = connection.prepareStatement(query);
-		preparedStatement.setString(1, tenKT);
+		preparedStatement.setString(1, TenKT);
 		preparedStatement.setString(2, NgayBatDau);
 		preparedStatement.setString(3, NgayKetThuc);
 		preparedStatement.setDouble(4, TrongSoDienTich);
 		preparedStatement.setDouble(5, TrongSoSTV);
-		preparedStatement.setDouble(6, hangSo);
+		preparedStatement.setDouble(6, HangSo);
 		preparedStatement.setInt(7, IDKhoanThu);
 		preparedStatement.executeUpdate();
 		preparedStatement.close();

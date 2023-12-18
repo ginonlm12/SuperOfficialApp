@@ -217,7 +217,6 @@ public class KhoanThuController implements Initializable {
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			System.out.println("Loi hien thi khoan thu");
 		}
 	}
 

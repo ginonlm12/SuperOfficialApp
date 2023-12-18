@@ -89,15 +89,15 @@ public class AddKhoanThu {
 			return;
 		}
 		// kiem tra trong so so thanh vien
-		// trong so so thanh vien la so nguyen lon hon hoac bang 0
-		pattern = Pattern.compile("\\d{1,11}");
+		// trong so so thanh vien la so thuc lon hon hoac bang 0
+		pattern = Pattern.compile("\\d{1,11}(\\.\\d{1,11})?");
 		if (!pattern.matcher(tfTrongSoSTV.getText()).matches()) {
 			Alert alert = new Alert(AlertType.WARNING, "Hãy nhập vào trọng số số thành viên hợp lệ!", ButtonType.OK);
 			alert.setHeaderText(null);
 			alert.showAndWait();
 			return;
 		}
-		if (Integer.parseInt(tfTrongSoSTV.getText()) < 0) {
+		if (Double.parseDouble(tfTrongSoSTV.getText()) < 0) {
 			Alert alert = new Alert(AlertType.WARNING, "Trọng số số thành viên phải lớn hơn 0!", ButtonType.OK);
 			alert.setHeaderText(null);
 			alert.showAndWait();
@@ -121,11 +121,11 @@ public class AddKhoanThu {
 		// gan gia tri cac truong cua khoan thu
 		KhoanThuModel khoanThuModel = new KhoanThuModel();
 		khoanThuModel.setIDKhoanThu(Integer.parseInt(tfIDKhoanThu.getText()));
-		khoanThuModel.settenKT(tfTenKhoanThu.getText());
-		khoanThuModel.setngayBatDau(dpNgayBatDau.getValue().toString());
-		khoanThuModel.setngayKetThuc(dpNgayBatDau.getValue().toString());
-		khoanThuModel.settrongSoDienTich(Double.parseDouble(tfTrongSoDienTich.getText()));
-		khoanThuModel.settrongSoSTV(Integer.parseInt(tfTrongSoSTV.getText()));
+		khoanThuModel.setTenKT(tfTenKhoanThu.getText());
+		khoanThuModel.setNgayBatDau(dpNgayBatDau.getValue().toString());
+		khoanThuModel.setNgayKetThuc(dpNgayBatDau.getValue().toString());
+		khoanThuModel.setTrongSoDienTich(Double.parseDouble(tfTrongSoDienTich.getText()));
+		khoanThuModel.setTrongSoSTV(Double.parseDouble(tfTrongSoSTV.getText()));
 		khoanThuModel.setHangSo(Double.parseDouble(tfHangSo.getText()));
 		// them khoan thu vao database
 		new KhoanThuService().add(khoanThuModel);
