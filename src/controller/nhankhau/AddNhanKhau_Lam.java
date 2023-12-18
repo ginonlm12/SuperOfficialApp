@@ -9,12 +9,7 @@ import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
-import models.HoKhauModel;
-import models.NhanKhauModel;
 import models.NhanKhauModel_Lam;
-import models.QuanHeModel;
-import services.HoKhauService;
-import services.NhanKhauService;
 import services.NhanKhauService_Lam;
 
 import java.io.File;
@@ -77,7 +72,7 @@ public class AddNhanKhau_Lam implements Initializable {
 	ObservableList<String> Xa_List = FXCollections.observableArrayList();
 	ObservableList<String> IDHoKhau_List = FXCollections.observableArrayList();
 
-	private String CCCD = "-1";
+	private final String CCCD = "-1";
 	public void initialize(URL url, ResourceBundle resourceBundle) {
 		try {
 			listNhanKhau = new NhanKhauService_Lam().getListNhanKhau();
@@ -273,7 +268,7 @@ public class AddNhanKhau_Lam implements Initializable {
 				break;
 			}
 		}
-		if(checkExistedHoKhau == false){
+		if (!checkExistedHoKhau) {
 			Alert alert = new Alert(AlertType.WARNING, "Hãy nhập vào ID hộ khẩu đã tồn tại!", ButtonType.OK);
 			alert.setHeaderText(null);
 			alert.showAndWait();
@@ -366,7 +361,6 @@ public class AddNhanKhau_Lam implements Initializable {
 			Alert alert = new Alert(AlertType.WARNING, "Hãy nhập vào ID hộ khẩu đã tồn tại!", ButtonType.OK);
 			alert.setHeaderText(null);
 			alert.showAndWait();
-			return;
 		}
 		else{
 			Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

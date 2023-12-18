@@ -1,9 +1,5 @@
 package controller;
 
-import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
-
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
@@ -15,11 +11,14 @@ import javafx.fxml.Initializable;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
+
+import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 public class HomeController implements Initializable {
 	@FXML
@@ -35,39 +34,42 @@ public class HomeController implements Initializable {
 	
 	public void setNhanKhau(ActionEvent event) throws IOException {
 		FXMLLoader loader = new FXMLLoader(LoginController.class.getResource("/views/NhanKhau_Lam.fxml"));
-		Pane nhankhauPane = (Pane) loader.load();
+		Pane nhankhauPane = loader.load();
 		borderPane.setCenter(nhankhauPane);
 	}
 
 	public void setHoKhau(ActionEvent event) throws IOException {
 		FXMLLoader loader = new FXMLLoader(LoginController.class.getResource("/views/HoKhau.fxml"));
-		Pane hokhauPane = (Pane) loader.load();
+//		Stage stage = new Stage();
+//		stage.setResizable(true);
+
+		Pane hokhauPane = loader.load();
 		borderPane.setCenter(hokhauPane);
 
 	}
 
 	public void setKhoanPhi(ActionEvent event) throws IOException {
 		FXMLLoader loader = new FXMLLoader(LoginController.class.getResource("/views/KhoanThu.fxml"));
-		Pane khoanphiPane = (Pane) loader.load();
+		Pane khoanphiPane = loader.load();
 		borderPane.setCenter(khoanphiPane);
 	}
 	
 	public void setDongPhi(ActionEvent event) throws IOException {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/NopTien.fxml"));
-		Pane dongphiPane = (Pane) loader.load();
+		Pane dongphiPane = loader.load();
 		borderPane.setCenter(dongphiPane);
 	}
 	
 	public void setThongKe(ActionEvent event) throws IOException {
 		FXMLLoader loader = new FXMLLoader(LoginController.class.getResource("/views/ThongKe.fxml"));
-		Pane thongkePane = (Pane) loader.load();
+		Pane thongkePane = loader.load();
 		borderPane.setCenter(thongkePane);
 
 	}
 	
 	public void setTrangChu(ActionEvent event) throws IOException {
 		FXMLLoader loader = new FXMLLoader(LoginController.class.getResource("/views/Main.fxml"));
-		Pane trangchuPane = (Pane) loader.load();
+		Pane trangchuPane = loader.load();
 		borderPane.setCenter(trangchuPane);
 
 	}
