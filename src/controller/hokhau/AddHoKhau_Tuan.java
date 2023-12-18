@@ -21,26 +21,34 @@ import java.util.ResourceBundle;
 import java.util.regex.Pattern;
 
 public class AddHoKhau_Tuan implements Initializable {
-	ObservableList<String> listGioiTinh = FXCollections.observableArrayList("Nam", "Nữ");
-	ObservableList<Integer> listSoPhong = FXCollections.observableArrayList();
 	@FXML
 	private ChoiceBox<String> GioiTinh;
+
 	@FXML
 	private DatePicker NgayDen;
+
 	@FXML
 	private TextField tfCCCD;
+
 	@FXML
 	private TextField tfChuHo;
+
 	@FXML
 	private TextField tfMaChuHo;
+
 	@FXML
 	private TextField tfMaHoKhau;
+
 	@FXML
 	private TextField tfSdt;
-	@FXML
+
+    ObservableList<String> listGioiTinh = FXCollections.observableArrayList("Nam", "Nữ");
+    ObservableList<Integer> listSoPhong = FXCollections.observableArrayList();
+    @FXML
 	private ChoiceBox<Integer> SoPhong;
-	@FXML
+    @FXML
 	private TextField tfTenChuHo;
+
 
 	public void initialize(URL url, ResourceBundle resourceBundle) {
 		// set cac gia tri cho gioi tinh va so phong
@@ -74,18 +82,26 @@ public class AddHoKhau_Tuan implements Initializable {
 	@FXML
 	public void addHoKhau(ActionEvent event) throws ClassNotFoundException, SQLException {
 		// khai bao mot mau de so sanh
+//		if(SoPhong.getValue() == null || tfTenChuHo.getText() == ""){
+//			Alert alert = new Alert(AlertType.WARNING, "Hãy nhập đầy đủ thông tin!", ButtonType.OK);
+//			alert.setHeaderText(null);
+//			alert.showAndWait();
+//		}
+
 		Pattern pattern;
 
-
-		// kiem tra ten nhap vao
-		// ten nhap vao la chuoi tu 1 toi 50 ki tu
-		if (tfTenChuHo.getText().length() >= 50 || tfTenChuHo.getText().length() <= 1) {
-			Alert alert = new Alert(AlertType.WARNING, "Hãy nhập vào 1 tên hợp lệ!", ButtonType.OK);
+        if (tfTenChuHo.getText() == "") {
+            Alert alert = new Alert(AlertType.WARNING, "Hãy nhập tên chủ hộ!", ButtonType.OK);
 			alert.setHeaderText(null);
 			alert.showAndWait();
 			return;
 		}
-
+        if (SoPhong.getValue() == null) {
+            Alert alert = new Alert(AlertType.WARNING, "Chọn phòng cho hộ khẩu!", ButtonType.OK);
+            alert.setHeaderText(null);
+            alert.showAndWait();
+            return;
+        }
 		// kiem tra cmnd nhap vao
 		// cmnd nhap vao phai la mot day so tu 1 toi 20 so
 		pattern = Pattern.compile("\\d{1,20}");
@@ -106,8 +122,8 @@ public class AddHoKhau_Tuan implements Initializable {
 			return;
 		}
 
-		if (tfTenChuHo == null || tfCCCD == null || tfSdt == null || NgayDen == null || GioiTinh == null || SoPhong == null) {
-			Alert alert = new Alert(AlertType.WARNING, "Hãy nhập đầy đủ thông tin!", ButtonType.OK);
+        if (NgayDen.getValue() == null) {
+            Alert alert = new Alert(AlertType.WARNING, "Vui lòng chọn ngày chuyển đến", ButtonType.OK);
 			alert.setHeaderText(null);
 			alert.showAndWait();
 			return;
@@ -129,9 +145,8 @@ public class AddHoKhau_Tuan implements Initializable {
 		new NhanKhauService_Lam().add(nhanKhauModel);
 
 
-		Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		stage.close();
 	}
-
 
 }

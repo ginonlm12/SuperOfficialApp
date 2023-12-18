@@ -15,12 +15,8 @@
         <TextField fx:id="tfIDNhanKhau" editable="false" layoutX="614.0" layoutY="62.0" prefHeight="39.0"
                    prefWidth="89.0" styleClass="text-field-rounded" stylesheets="@../../source/Main.css"/>
         <TextField fx:id="tfHoTen" layoutX="189.0" layoutY="63.0" prefHeight="39.0" prefWidth="333.0"
-                   promptText="Nhập vào Họ và tên" stylesheets="@../../source/Main.css">
-            <styleClass>
-                <String fx:value="text-field-transparent"/>
-                <String fx:value="text-field-rounded"/>
-            </styleClass>
-        </TextField>
+                   promptText="Nhập vào Họ và tên" styleClass="text-field-rounded"
+                   stylesheets="@../../source/Main.css"/>
         <TextField fx:id="tfCCCD" layoutX="189.0" layoutY="111.0" prefHeight="39.0" prefWidth="350.0"
                    promptText="Nhập vào CCCD" styleClass="text-field-rounded" stylesheets="@../../source/Main.css"/>
         <TextField fx:id="tfNgheNghiep" layoutX="189.0" layoutY="211.0" prefHeight="39.0" prefWidth="515.0"
