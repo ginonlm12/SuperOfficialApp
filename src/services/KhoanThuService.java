@@ -13,15 +13,15 @@ import models.KhoanThuModel;
 public class KhoanThuService {
 	public boolean add(KhoanThuModel khoanThuModel) throws ClassNotFoundException, SQLException {
 		Connection connection = MysqlConnection.getMysqlConnection();
-		String query = "INSERT INTO khoanthu(IDKhoanThu, tenKT, ngayBatDau, ngayKetThuc, trongSoDienTich, trongSoSTV, HangSo)"
+		String query = "INSERT INTO khoanthu(IDKhoanThu, tenKT, NgayBatDau, NgayKetThuc, TrongSoDienTich, TrongSoSTV, hangSo)"
 				+ " values (?, ?, ?, ?, ?, ?, ?)";
 		PreparedStatement preparedStatement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 		preparedStatement.setInt(1, khoanThuModel.getIDKhoanThu());
-		preparedStatement.setString(2, khoanThuModel.gettenKT());
-		preparedStatement.setString(3, khoanThuModel.getngayBatDau());
-		preparedStatement.setString(4, khoanThuModel.getngayKetThuc());
-		preparedStatement.setDouble(5, khoanThuModel.gettrongSoDienTich());
-		preparedStatement.setDouble(6, khoanThuModel.gettrongSoSTV());
+		preparedStatement.setString(2, khoanThuModel.getTenKT());
+		preparedStatement.setString(3, khoanThuModel.getNgayBatDau());
+		preparedStatement.setString(4, khoanThuModel.getNgayKetThuc());
+		preparedStatement.setDouble(5, khoanThuModel.getTrongSoDienTich());
+		preparedStatement.setDouble(6, khoanThuModel.getTrongSoSTV());
 		preparedStatement.setDouble(7, khoanThuModel.getHangSo());
 		preparedStatement.executeUpdate();
 		preparedStatement.close();
@@ -50,19 +50,19 @@ public class KhoanThuService {
 	}
 
 	// modify the update method to match the khoanthu table
-	public boolean update(int IDKhoanThu, String tenKT, String ngayBatDau, String ngayKetThuc, double trongSoDienTich,
-			double trongSoSTV, double HangSo) throws ClassNotFoundException, SQLException {
+	public boolean update(int IDKhoanThu, String tenKT, String NgayBatDau, String NgayKetThuc, double TrongSoDienTich,
+			double TrongSoSTV, double hangSo) throws ClassNotFoundException, SQLException {
 		Connection connection = MysqlConnection.getMysqlConnection();
 		PreparedStatement preparedStatement;
 
-		String query = "UPDATE khoanthu SET tenKT = ?, ngayBatDau = ?, ngayKetThuc = ?, trongSoDienTich = ?, trongSoSTV = ?, HangSo = ? WHERE IDKhoanThu = ?";
+		String query = "UPDATE khoanthu SET tenKT = ?, NgayBatDau = ?, NgayKetThuc = ?, TrongSoDienTich = ?, TrongSoSTV = ?, hangSo = ? WHERE IDKhoanThu = ?";
 		preparedStatement = connection.prepareStatement(query);
 		preparedStatement.setString(1, tenKT);
-		preparedStatement.setString(2, ngayBatDau);
-		preparedStatement.setString(3, ngayKetThuc);
-		preparedStatement.setDouble(4, trongSoDienTich);
-		preparedStatement.setDouble(5, trongSoSTV);
-		preparedStatement.setDouble(6, HangSo);
+		preparedStatement.setString(2, NgayBatDau);
+		preparedStatement.setString(3, NgayKetThuc);
+		preparedStatement.setDouble(4, TrongSoDienTich);
+		preparedStatement.setDouble(5, TrongSoSTV);
+		preparedStatement.setDouble(6, hangSo);
 		preparedStatement.setInt(7, IDKhoanThu);
 		preparedStatement.executeUpdate();
 		preparedStatement.close();
@@ -79,13 +79,14 @@ public class KhoanThuService {
 		PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement(query);
 		ResultSet rs = preparedStatement.executeQuery();
 		while (rs.next()) {
-			KhoanThuModel khoanThuModel = new KhoanThuModel(rs.getInt("IDKhoanThu"), rs.getString("tenKT"),
-					rs.getString("ngayBatDau"), rs.getString("ngayKetThuc"), rs.getDouble("trongSoDienTich"),
-					rs.getDouble("trongSoSTV"), rs.getDouble("HangSo"));
+			KhoanThuModel khoanThuModel = new KhoanThuModel(rs.getInt("IDKhoanThu"), rs.getString("TenKT"),
+					rs.getString("NgayBatDau"), rs.getString("NgayKetThuc"), rs.getDouble("TrongSoDienTich"),
+					rs.getDouble("TrongSoSTV"), rs.getDouble("hangSo"));
 			list.add(khoanThuModel);
 		}
 		preparedStatement.close();
 		connection.close();
+		// System.out.println("Get list khoan thu successfully"); // ok
 		return list;
 	}
 }

@@ -15,7 +15,7 @@ import models.NhanKhauModel_Lam;
 import models.QuanHeModel;
 import services.HoKhauService;
 import services.NhanKhauService;
-// import services.NhanKhauService_Lam;
+import services.NhanKhauService_Lam;
 
 import java.io.File;
 import java.net.URL;
@@ -334,7 +334,7 @@ public class AddNhanKhau_Lam implements Initializable {
 		int IDHoKhau = Integer.parseInt(tfIDHoKhau.getValue());
 		String QHvsChuHo = tfQHvsChuHo.getValue();
 		String HoTen = tfHoTen.getText();
-		String NgaySinh = String.valueOf(tfNgaySinh.getValue());
+		String NgaySinh = String.valueOf(Sinh.getValuetfNgay());
 		String CCCD;
 		if(tfCCCD.getText() == null || tfIDHoKhau.getValue().isEmpty())
 			CCCD = "Chưa cung cấp";

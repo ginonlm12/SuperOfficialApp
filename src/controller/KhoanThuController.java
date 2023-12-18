@@ -34,15 +34,15 @@ public class KhoanThuController implements Initializable {
 	@FXML
 	private TableView<KhoanThuModel> tvKhoanThu;
 	@FXML
-	private TableColumn<KhoanThuModel, String> colIDKhoanThu;
+	private TableColumn<KhoanThuModel, Integer> colIDKhoanThu;
 	@FXML
 	private TableColumn<KhoanThuModel, String> colTenKhoanThu;
 	@FXML
-	private TableColumn<KhoanThuModel, String> colTSDienTich;
+	private TableColumn<KhoanThuModel, Double> colTSDienTich;
 	@FXML
-	private TableColumn<KhoanThuModel, String> colTSSoThanhVien;
+	private TableColumn<KhoanThuModel, Double> colTSSoThanhVien;
 	@FXML
-	private TableColumn<KhoanThuModel, String> colCongThem;
+	private TableColumn<KhoanThuModel, Double> colCongThem;
 	@FXML
 	private TableColumn<KhoanThuModel, String> colNgayBatDau;
 	@FXML
@@ -54,51 +54,23 @@ public class KhoanThuController implements Initializable {
 	private List<KhoanThuModel> listKhoanThu;
 	private ObservableList<KhoanThuModel> listValueTableView;
 
-	// public void showKhoanThu() throws ClassNotFoundException, SQLException {
-	// 	listKhoanThu = new KhoanThuService().getListKhoanThu();
-	// 	listValueTableView = FXCollections.observableArrayList(listKhoanThu);
-
-	// 	// thiet lap cac cot cho table views
-	// 	colMaKhoanPhi.setCellValueFactory(new PropertyValueFactory<KhoanThuModel, String>("maKhoanThu"));
-	// 	colTenKhoanThu.setCellValueFactory(new PropertyValueFactory<KhoanThuModel, String>("tenKhoanThu"));
-	// 	colSoTien.setCellValueFactory(new PropertyValueFactory<KhoanThuModel, String>("soTien"));
-
-	// 	Map<Integer, String> mapLoaiKhoanThu = new TreeMap();
-	// 	mapLoaiKhoanThu.put(1, "Bắt buộc");
-	// 	mapLoaiKhoanThu.put(0, "Tự nguyện");
-
-	// 	try {
-	// 		colLoaiKhoanThu
-	// 				.setCellValueFactory((CellDataFeatures<KhoanThuModel, String> p) -> new ReadOnlyStringWrapper(
-	// 						mapLoaiKhoanThu.get(p.getValue().getLoaiKhoanThu())));
-	// 	} catch (Exception e) {
-	// 		// TODO: handle exception
-	// 	}
-	// 	tvKhoanPhi.setItems(listValueTableView);
-
-	// 	// thiet lap gia tri cho combobox
-	// 	ObservableList<String> listComboBox = FXCollections.observableArrayList("Tên khoản thu", "Mã khoản thu");
-	// 	cbChooseSearch.setValue("Tên khoản thu");
-	// 	cbChooseSearch.setItems(listComboBox);
-	// }
 	// viet phuong thuc hien cac khoan thu trong co so du lieu
 	public void hienKhoanThu() throws ClassNotFoundException, SQLException {
 		listKhoanThu = new KhoanThuService().getListKhoanThu();
 		listValueTableView = FXCollections.observableArrayList(listKhoanThu);
-
-		// thiet lap cac cot cho table views
-		colIDKhoanThu.setCellValueFactory(new PropertyValueFactory<KhoanThuModel, String>("IDKhoanThu"));
-		colTenKhoanThu.setCellValueFactory(new PropertyValueFactory<KhoanThuModel, String>("tenKT"));
-		colTSDienTich.setCellValueFactory(new PropertyValueFactory<KhoanThuModel, String>("trongSoDienTich"));
-		colTSSoThanhVien.setCellValueFactory(new PropertyValueFactory<KhoanThuModel, String>("trongSoSTV"));
-		colCongThem.setCellValueFactory(new PropertyValueFactory<KhoanThuModel, String>("CongThem"));
-		colNgayBatDau.setCellValueFactory(new PropertyValueFactory<KhoanThuModel, String>("ngayBatDau"));
-		colNgayKetThuc.setCellValueFactory(new PropertyValueFactory<KhoanThuModel, String>("ngayKetThuc"));
+		
+		colIDKhoanThu.setCellValueFactory(new PropertyValueFactory<KhoanThuModel, Integer>("IDKhoanThu"));
+		colTenKhoanThu.setCellValueFactory(new PropertyValueFactory<KhoanThuModel, String>("TenKT"));
+		colTSDienTich.setCellValueFactory(new PropertyValueFactory<KhoanThuModel, Double>("TrongSoDienTich"));
+		colTSSoThanhVien.setCellValueFactory(new PropertyValueFactory<KhoanThuModel, Double>("TrongSoSTV"));
+		colCongThem.setCellValueFactory(new PropertyValueFactory<KhoanThuModel, Double>("HangSo"));
+		colNgayBatDau.setCellValueFactory(new PropertyValueFactory<KhoanThuModel, String>("NgayBatDau"));
+		colNgayKetThuc.setCellValueFactory(new PropertyValueFactory<KhoanThuModel, String>("NgayKetThuc"));
 
 		tvKhoanThu.setItems(listValueTableView);
 
 		// thiet lap gia tri cho combobox
-		ObservableList<String> listComboBox = FXCollections.observableArrayList("Tên khoản thu", "Mã khoản thu");
+		ObservableList<String> listComboBox = FXCollections.observableArrayList("Tên khoản thu", "ID khoản thu");
 		cbChooseSearch.setValue("Tên khoản thu");
 		cbChooseSearch.setItems(listComboBox);
 	}
@@ -127,7 +99,7 @@ public class KhoanThuController implements Initializable {
 			int index = 0;
 			List<KhoanThuModel> listKhoanThuModelsSearch = new ArrayList<>();
 			for (KhoanThuModel khoanThuModel : listKhoanThu) {
-				if (khoanThuModel.gettenKT().contains(keySearch)) {
+				if (khoanThuModel.getTenKT().contains(keySearch)) {
 					listKhoanThuModelsSearch.add(khoanThuModel);
 					index++;
 				}
@@ -245,6 +217,7 @@ public class KhoanThuController implements Initializable {
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			System.out.println("Loi hien thi khoan thu");
 		}
 	}
 
