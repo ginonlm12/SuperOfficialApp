@@ -14,6 +14,7 @@ public class Main extends Application {
 	    	Parent login = FXMLLoader.load(getClass().getResource("/views/Login.fxml"));
 			Scene scene = new Scene(login,800,600);
 			scene.getStylesheets().add("login.css");
+
 			primaryStage.setScene(scene);
 			primaryStage.show();
 		} catch(Exception e) {

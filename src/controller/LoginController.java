@@ -13,7 +13,9 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import javafx.scene.layout.BorderPane;
 
 public class LoginController {
 	@FXML
@@ -24,7 +26,7 @@ public class LoginController {
 	public void Login(ActionEvent event) throws IOException {
 		String name = tfUsername.getText();
 		String pass = tfPassword.getText();
-		
+
 		// check username and password
 		if(!name.equals("") || !pass.equals("")) {
 			Alert alert = new Alert(AlertType.WARNING, "Bạn nhập sai mật khẩu rồi hihi!", ButtonType.OK);
