@@ -13,9 +13,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import javafx.scene.layout.BorderPane;
 
 public class LoginController {
 	@FXML
@@ -35,7 +33,7 @@ public class LoginController {
 			return;
 		}
 		
-		Parent home = FXMLLoader.load(getClass().getResource("/views/Home3.fxml"));
+		Parent home = FXMLLoader.load(getClass().getResource("/views/Home.fxml"));
         Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
 		Scene scene = new Scene(home);
 

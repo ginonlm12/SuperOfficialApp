@@ -1,10 +1,7 @@
 package services;
 
 import java.sql.*;
-/**
- *
- * @Thanh
- */
+
 public class MysqlConnection {
     public static Connection getMysqlConnection() throws SQLException, ClassNotFoundException {
         String hostName = "localhost";
