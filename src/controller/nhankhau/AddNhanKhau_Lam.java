@@ -182,29 +182,7 @@ public class AddNhanKhau_Lam implements Initializable {
 	void addNhanKhau(ActionEvent event) throws ClassNotFoundException, SQLException{
 		// khai bao mot mau de so sanh
 		Pattern pattern;
-		System.out.println("haha");
-		// kiem tra id nhap vao
-		// id la day so tu 1 toi 11 chu so
-//		pattern = Pattern.compile("\\d{1,11}");
-//		if (!pattern.matcher(tfId.getText()).matches()) {
-//			Alert alert = new Alert(AlertType.WARNING, "Hãy nhập vào mã nhân khẩu hợp lệ!", ButtonType.OK);
-//			alert.setHeaderText(null);
-//			alert.showAndWait();
-//			return;
-//		}
-		// kiem tra ID them moi co bi trung voi nhung ID da ton tai hay khong
-//		List<NhanKhauModel> listNhanKhauModels = new NhanKhauService().getListNhanKhau();
-//		for (NhanKhauModel nhankhau : listNhanKhauModels) {
-//			if (nhankhau.getId() == Integer.parseInt(tfId.getText())) {
-//				Alert alert = new Alert(AlertType.WARNING, "ID bị trùng với một người khác!", ButtonType.OK);
-//				alert.setHeaderText(null);
-//				alert.showAndWait();
-//				return;
-//			}
-//		}
 
-		// kiem tra ten nhap vao
-		// ten nhap vao la chuoi tu 1 toi 50 ki tu
 		if (tfHoTen.getText().length() >= 50 || tfHoTen.getText().length() <= 1) {
 			Alert alert = new Alert(AlertType.WARNING, "Hãy nhập vào 1 tên hợp lệ!", ButtonType.OK);
 			alert.setHeaderText(null);

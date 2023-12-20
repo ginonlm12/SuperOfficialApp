@@ -229,5 +229,17 @@ public class HoKhauService_Tuan {
             return rs.getInt("SoTV");
         } else return 0;
     }
+
+    public static String checkSuDung(int soPhong) throws ClassNotFoundException, SQLException {
+        Connection connection = MysqlConnection.getMysqlConnection();
+        String query = "SELECT * FROM hokhau WHERE SoPhong = ? AND NgayDi = '0001-01-01'";
+        PreparedStatement preparedStatement = connection.prepareStatement(query);
+        preparedStatement.setInt(1, soPhong);
+        ResultSet rs = preparedStatement.executeQuery();
+        if (rs.next()) {
+            return "Đang được sử dụng";
+        }
+        return "Chưa đuợc sử dụng";
+    }
 }
 
