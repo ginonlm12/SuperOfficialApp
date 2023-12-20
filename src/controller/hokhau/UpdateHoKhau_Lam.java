@@ -14,7 +14,7 @@ import models.HoKhauBean_Tuan;
 import models.HoKhauModel_Tuan;
 import models.NhanKhauModel_Lam;
 import services.HoKhauService_Tuan;
-import services.SoPhongService_Tuan;
+import services.PhongService;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -144,7 +144,7 @@ public class UpdateHoKhau_Lam {
 		tfHoTen.setText(chuHo.getHoTen());
 
 		tfIDNhanKhau.setItems(IDNhanKhauinHoKhau);
-		SoPhong = SoPhongService_Tuan.getListSoPhong();
+		SoPhong = PhongService.getListSoPhong("Duoc su dung");
 		SoPhong.add(hoKhauModel.getSoPhong());
 		tfSoPhong.setItems(SoPhong);
 

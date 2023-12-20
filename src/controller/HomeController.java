@@ -30,6 +30,8 @@ public class HomeController implements Initializable {
     private VBox vbox;
 	@FXML
     private Pane mainPane;
+    @FXML
+    private Button btnPhong;
 
     private void changeMainPane(String fxmlfile) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlfile));
@@ -105,4 +107,8 @@ public class HomeController implements Initializable {
 		}
 	}
 
+    @FXML
+    void setPhong(ActionEvent event) throws IOException {
+        changeMainPane("/views/Phong.fxml");
+    }
 }
