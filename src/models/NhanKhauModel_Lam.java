@@ -29,11 +29,7 @@ public class NhanKhauModel_Lam {
 		this.QHvsChuHo = qh;
 		HoTen = hoten;
 		this.CCCD = cccdChuHo;
-		NgheNghiep = "Chủ hộ";
 		GioiTinh = gioiTinh;
-		DanToc = "Kinh";
-		QueQuan = "Việt Nam";
-		this.NgaySinh = "0001/01/01";
 	}
 
 	public NhanKhauModel_Lam(int IDNhanKhau, int IDHoKhau, String QHvsChuHo, String hoTen, String ngaySinh, String CCCD, String ngheNghiep, String gioiTinh, String dantoc, String queQuan) {
@@ -127,5 +123,18 @@ public class NhanKhauModel_Lam {
 
 	public String getQueQuan() {
 		return QueQuan;
+	}
+
+	public static boolean compareNhanKhauModels(NhanKhauModel_Lam nhanKhau1, NhanKhauModel_Lam nhanKhau2) {
+		return nhanKhau1.getIDNhanKhau() == nhanKhau2.getIDNhanKhau() &&
+				nhanKhau1.getIDHoKhau() == nhanKhau2.getIDHoKhau() &&
+				nhanKhau1.getQHvsChuHo().equals(nhanKhau2.getQHvsChuHo()) &&
+				nhanKhau1.getHoTen().equals(nhanKhau2.getHoTen()) &&
+				nhanKhau1.getNgaySinh().equals(nhanKhau2.getNgaySinh()) &&
+				nhanKhau1.getCCCD().equals(nhanKhau2.getCCCD()) &&
+				nhanKhau1.getNgheNghiep().equals(nhanKhau2.getNgheNghiep()) &&
+				nhanKhau1.getGioiTinh().equals(nhanKhau2.getGioiTinh()) &&
+				nhanKhau1.getDanToc().equals(nhanKhau2.getDanToc()) &&
+				nhanKhau1.getQueQuan().equals(nhanKhau2.getQueQuan());
 	}
 }

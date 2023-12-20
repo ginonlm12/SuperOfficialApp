@@ -1,28 +1,11 @@
 package controller.nhankhau;
 
-import controller.NhanKhauController_Lam;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.control.*;
-import javafx.scene.control.Alert.AlertType;
-import javafx.stage.Stage;
+import javafx.scene.control.TextField;
 import models.NhanKhauModel_Lam;
-import services.NhanKhauService;
 import services.NhanKhauService_Lam;
 
-import java.io.File;
-import java.net.URL;
 import java.sql.SQLException;
-import java.util.List;
-import java.util.ResourceBundle;
-import java.util.Scanner;
-import java.util.regex.Pattern;
-
-import javafx.scene.text.Text;
 
 public class ShowChiTiet_Lam {
 	private int IDNhanKhau;
@@ -58,7 +41,7 @@ public class ShowChiTiet_Lam {
 		IDNhanKhau = idNhanKhau;
 	}
 	public void setNhanKhauModel(NhanKhauModel_Lam nhanKhauModel) throws ClassNotFoundException, SQLException {
-		this.nhanKhauModel = nhanKhauModel;
+		ShowChiTiet_Lam.nhanKhauModel = nhanKhauModel;
 		IDNhanKhau = nhanKhauModel.getIDNhanKhau();
 		System.out.println(IDNhanKhau);
 //		tfMaNhanKhau.setText(Integer.toString(maNhanKhau));
