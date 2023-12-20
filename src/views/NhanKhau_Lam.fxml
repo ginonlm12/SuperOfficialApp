@@ -8,7 +8,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="background" prefHeight="600.0" prefWidth="800.0" stylesheets="@../source/nhankhau_va_hokhau.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.NhanKhauController_Lam">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" styleClass="background" stylesheets="@../source/nhankhau_va_hokhau.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.NhanKhauController_Lam">
    <children>
        <TableView fx:id="tvNhanKhau" focusTraversable="false" layoutX="11.0" layoutY="105.0" prefHeight="500.0" prefWidth="625.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="105.0">
         <columns>
@@ -21,7 +21,7 @@
             <TableColumn fx:id="colQHvsChuHo" prefWidth="199.0" styleClass="btnchan" text="Quan hệ với chủ hộ" />
         </columns>
       </TableView>
-       <TextField fx:id="tfSearch" layoutX="7.0" layoutY="49.0" prefHeight="41.0" prefWidth="310.0" styleClass="search" stylesheets="@../source/nhankhau_va_hokhau.css" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="300.0" AnchorPane.topAnchor="50.0" />
+       <TextField fx:id="tfSearch" layoutX="7.0" layoutY="49.0" prefHeight="41.0" prefWidth="310.0" styleClass="search" stylesheets="@../source/nhankhau_va_hokhau.css" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="300.0" AnchorPane.topAnchor="50.0" />
        <ComboBox id="choose" fx:id="cbChooseSearch" layoutX="345.0" layoutY="40.0" prefHeight="41.0" prefWidth="200.0" styleClass="boxluachon" stylesheets="@../source/nhankhau_va_hokhau.css" AnchorPane.rightAnchor="255.0" AnchorPane.topAnchor="50.0" />
        <Button layoutX="507.0" layoutY="50.0" mnemonicParsing="false" onAction="#searchNhanKhau" prefHeight="40.0" prefWidth="280.0" styleClass="btntimkiem" text="Tìm kiếm" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="50.0">
            <stylesheets>
