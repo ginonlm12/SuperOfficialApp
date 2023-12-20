@@ -15,9 +15,9 @@ public class Main extends Application {
 //			Scene scene = new Scene(login,800,600);
 //			scene.getStylesheets().add("source/login.css");
 
-			Parent login = FXMLLoader.load(getClass().getResource("/views/login.fxml"));
-			Scene scene = new Scene(login,800,600);
-			scene.getStylesheets().add("source/login.css");
+			Parent login = FXMLLoader.load(getClass().getResource("/views/home.fxml"));
+			Scene scene = new Scene(login,800,650);
+			scene.getStylesheets().add("source/Home.css");
 
 			primaryStage.setScene(scene);
 			primaryStage.show();

@@ -1,84 +1,76 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="860.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HomeController">
+<AnchorPane prefHeight="650.0" prefWidth="800.0" stylesheets="@../source/Home.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HomeController">
    <children>
-      <BorderPane fx:id="borderPane" prefHeight="600.0" prefWidth="861.0" />
-      <Pane fx:id="middlePane" disable="true" onMouseClicked="#middlePaneClicked" prefHeight="600.0" prefWidth="861.0" />
-      <GridPane id="gridPane" fx:id="gridPane" layoutX="-165.0" prefHeight="600.0" prefWidth="224.0">
-        <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="165.0" minWidth="10.0" prefWidth="165.0" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="94.0" minWidth="10.0" prefWidth="35.0" />
-        </columnConstraints>
-        <rowConstraints>
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-        </rowConstraints>
+      <VBox prefHeight="650.0" prefWidth="800.0">
          <children>
-            <Button fx:id="btnThongKe" mnemonicParsing="false" onAction="#setThongKe" prefHeight="86.0" prefWidth="214.0" styleClass="button3" stylesheets="@../source/Home.css" text="Thống kê" textFill="WHITE" GridPane.rowIndex="5">
+            <AnchorPane prefHeight="50.0" prefWidth="800.0">
+               <children>
+                  <Button id="menubar" fx:id="showBtn" focusTraversable="false" mnemonicParsing="false" onMouseClicked="#onShowbtnClicked" prefHeight="50.0" prefWidth="50.0">
+                     <graphic>
+                        <ImageView fitHeight="39.0" fitWidth="39.0">
+                           <image>
+                              <Image url="@../source/menu-bar.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <MenuButton id="menubutton" focusTraversable="false" layoutX="93.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="126.0" text="Manager" AnchorPane.rightAnchor="0.0">
+                    <items>
+                      <MenuItem mnemonicParsing="false" text="Action 1" />
+                      <MenuItem mnemonicParsing="false" text="Action 2" />
+                    </items>
+                     <graphic>
+                        <ImageView fitHeight="38.0" fitWidth="38.0">
+                           <image>
+                              <Image url="@../source/manager.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </MenuButton>
+               </children>
+            </AnchorPane>
+            <Pane id="mainPane" fx:id="mainPane" prefHeight="600.0" prefWidth="800.0" />
+         </children>
+      </VBox>
+      <Pane fx:id="middlePane" disable="true" layoutX="165.0" onMouseClicked="#middlePaneClicked" prefHeight="650.0" prefWidth="635.0" />
+      <VBox fx:id="vbox" layoutX="-165.0" prefHeight="600.0" prefWidth="165.0">
+         <children>
+            <Button focusTraversable="false" mnemonicParsing="false" prefHeight="50.0" prefWidth="179.0" text="SPM" textFill="#000000a8">
+               <graphic>
+                  <ImageView fitHeight="50.0" fitWidth="50.0">
+                     <image>
+                        <Image url="@../source/logo.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
                <font>
-                  <Font name="System Bold" size="20.0" />
+                  <Font name="Arial Rounded MT Bold" size="28.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#setTrangChu" prefHeight="40.0" prefWidth="165.0" styleClass="button3" text="Trang chủ" textFill="WHITE">
+               <font>
+                  <Font name="Calibri Bold" size="20.0" />
                </font>
                <graphic>
-                  <ImageView fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true" translateX="-6.0">
+                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../source/statistics-48.png" />
+                        <Image url="@../source/home.png" />
                      </image>
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="btnDongPhi" mnemonicParsing="false" onAction="#setDongPhi" prefHeight="86.0" prefWidth="216.0" styleClass="button3" stylesheets="@../source/Home.css" text="Đóng phí " textFill="WHITE" GridPane.rowIndex="4">
-               <font>
-                  <Font name="Arial Bold" size="20.0" />
-               </font>
-               <graphic>
-                  <ImageView fitHeight="42.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true" translateX="-5.0">
-                     <image>
-                        <Image url="@../source/pay.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Button fx:id="btnKhoanPhi" mnemonicParsing="false" onAction="#setKhoanPhi" prefHeight="86.0" prefWidth="217.0" styleClass="button3" stylesheets="@../source/Home.css" text="Khoản phí" textFill="WHITE" wrapText="true" GridPane.rowIndex="3">
-               <font>
-                  <Font name="Arial Bold" size="20.0" />
-               </font>
-               <graphic>
-                  <ImageView fitHeight="42.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../source/fees.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Button fx:id="btnHoKhau" mnemonicParsing="false" onAction="#setHoKhau" prefHeight="86.0" prefWidth="222.0" styleClass="button3" stylesheets="@../source/Home.css" text="Hộ khẩu   " textFill="WHITE" GridPane.rowIndex="2">
-               <font>
-                  <Font name="Arial Bold" size="20.0" />
-               </font>
-               <graphic>
-                  <ImageView fitHeight="42.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true" translateX="-4.0">
-                     <image>
-                        <Image url="@../source/people.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Button fx:id="btnNhanKhau" mnemonicParsing="false" onAction="#setNhanKhau" prefHeight="86.0" prefWidth="218.0" styleClass="button3" stylesheets="@../source/Home.css" text="Nhân khẩu" textFill="WHITE" GridPane.rowIndex="1">
+            <Button fx:id="btnNhanKhau" mnemonicParsing="false" onAction="#setNhanKhau" prefHeight="86.0" prefWidth="218.0" styleClass="button3" stylesheets="@../source/Home.css" text="Nhân khẩu" textFill="WHITE">
                <font>
                   <Font name="Arial Bold" size="20.0" />
                </font>
@@ -90,28 +82,56 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button mnemonicParsing="false" onAction="#setTrangChu" opacity="0.72" prefHeight="172.0" prefWidth="214.0" style="-fx-background-color: #0867e3;" styleClass="button3" text="Trang chủ" textFill="WHITE">
+            <Button fx:id="btnHoKhau" mnemonicParsing="false" onAction="#setHoKhau" prefHeight="86.0" prefWidth="222.0" styleClass="button3" stylesheets="@../source/Home.css" text="Hộ khẩu   " textFill="WHITE">
                <font>
-                  <Font name="Arial Bold" size="25.0" />
+                  <Font name="Arial Bold" size="20.0" />
                </font>
                <graphic>
-                  <ImageView fitHeight="42.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="42.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true" translateX="-4.0">
                      <image>
-                        <Image url="@../source/home.png" />
+                        <Image url="@../source/people.png" />
                      </image>
                   </ImageView>
                </graphic>
             </Button>
-            <VBox prefHeight="100.0" prefWidth="52.0" GridPane.columnIndex="1">
-               <children>
-                  <ImageView fx:id="showBtn" fitHeight="57.0" fitWidth="57.0" onMouseClicked="#showbutonClicked">
+            <Button fx:id="btnKhoanPhi" mnemonicParsing="false" onAction="#setKhoanPhi" prefHeight="86.0" prefWidth="217.0" styleClass="button3" stylesheets="@../source/Home.css" text="Khoản phí" textFill="WHITE" wrapText="true">
+               <font>
+                  <Font name="Arial Bold" size="20.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="42.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../source/menu-bar.png" />
+                        <Image url="@../source/fees.png" />
                      </image>
                   </ImageView>
-               </children>
-            </VBox>
+               </graphic>
+            </Button>
+            <Button fx:id="btnDongPhi" mnemonicParsing="false" onAction="#setDongPhi" prefHeight="86.0" prefWidth="216.0" styleClass="button3" stylesheets="@../source/Home.css" text="Đóng phí " textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="20.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="42.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true" translateX="-5.0">
+                     <image>
+                        <Image url="@../source/pay.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="btnThongKe" mnemonicParsing="false" onAction="#setThongKe" prefHeight="86.0" prefWidth="214.0" styleClass="button3" stylesheets="@../source/Home.css" text="Thống kê" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true" translateX="-6.0">
+                     <image>
+                        <Image url="@../source/statistics-48.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Pane prefHeight="200.0" prefWidth="200.0" />
          </children>
-      </GridPane>
+      </VBox>
    </children>
 </AnchorPane>

@@ -9,9 +9,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #e4e4e4;" stylesheets="@../source/login.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
+<AnchorPane prefHeight="650.0" prefWidth="800.0" style="-fx-background-color: #e4e4e4;" stylesheets="@../source/login.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
    <children>
-      <AnchorPane blendMode="SRC_ATOP" prefHeight="715.0" prefWidth="800.0" styleClass="pane" stylesheets="@../source/login.css">
+      <AnchorPane blendMode="SRC_ATOP" prefHeight="650.0" prefWidth="800.0" styleClass="pane" stylesheets="@../source/login.css">
          <children>
             <ImageView fitHeight="85.0" fitWidth="84.0" layoutX="38.0" layoutY="199.0" opacity="0.38" pickOnBounds="true" preserveRatio="true">
                <image>
