@@ -44,7 +44,7 @@
          </children>
       </VBox>
       <Pane fx:id="middlePane" disable="true" layoutX="165.0" onMouseClicked="#middlePaneClicked" prefHeight="650.0" prefWidth="635.0" />
-      <VBox id="menubar" fx:id="vbox" layoutX="-165.0" prefHeight="650.0" prefWidth="165.0" AnchorPane.bottomAnchor="0.0">
+      <VBox id="menubar" fx:id="vbox" layoutX="-165.0" prefHeight="650.0" prefWidth="165.0">
          <children>
             <Button id="logobtn" focusTraversable="false" mnemonicParsing="false" prefHeight="80.0" prefWidth="165.0" stylesheets="@../source/Home.css" text="SPM" textFill="#000000a8">
                <font>
