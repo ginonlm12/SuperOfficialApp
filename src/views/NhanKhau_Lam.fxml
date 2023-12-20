@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="600.0" prefWidth="800.0" stylesheets="@../source/Main.css"
+            xmlns="http://javafx.com/javafx/21" fx:controller="controller.NhanKhauController_Lam">
+   <children>
+       <TableView fx:id="tvNhanKhau" layoutX="11.0" layoutY="105.0" prefHeight="500.0" prefWidth="625.0"
+                  AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="11.0" AnchorPane.rightAnchor="12.666666666666629"
+                  AnchorPane.topAnchor="105.0">
+        <columns>
+          <TableColumn fx:id="colMaNhanKhau" prefWidth="38.0000022649765" text="ID" />
+          <TableColumn fx:id="colTen" prefWidth="154.00000762939453" text="Họ và tên" />
+            <TableColumn fx:id="colTuoi" prefWidth="66.66665649414062" text="Phòng" />
+            <TableColumn fx:id="colCMND" prefWidth="82.6666259765625" text="CCCD" />
+            <TableColumn fx:id="colSDT" prefWidth="118.6666259765625" text="Nghề nghiệp" />
+            <TableColumn fx:id="colMaHo" prefWidth="112.00006103515625" text="Ngày sinh" />
+            <TableColumn fx:id="colQHvsChuHo" prefWidth="112.0" text="Quan hệ với chủ hộ" />
+        </columns>
+      </TableView>
+       <TextField fx:id="tfSearch" layoutX="7.0" layoutY="49.0" prefHeight="40.0" prefWidth="310.0"
+                  AnchorPane.bottomAnchor="510.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="300.0"
+                  AnchorPane.topAnchor="50.0"/>
+       <ComboBox fx:id="cbChooseSearch" layoutX="343.3333333333333" layoutY="49.0" prefHeight="40.0" prefWidth="181.0"
+                 AnchorPane.bottomAnchor="510.0" AnchorPane.leftAnchor="343.0" AnchorPane.rightAnchor="125.0"
+                 AnchorPane.topAnchor="50.0"/>
+       <Button layoutX="507.3333333333333" layoutY="50.0" mnemonicParsing="false" onAction="#searchNhanKhau"
+               prefHeight="40.0" prefWidth="129.0" text="Tìm kiếm" AnchorPane.bottomAnchor="510.0"
+               AnchorPane.leftAnchor="507.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="50.0"/>
+       <Button layoutX="100.0" layoutY="9.0" mnemonicParsing="false" onAction="#addNhanKhau" prefHeight="33.0"
+               prefWidth="150.0" styleClass="button1" stylesheets="@../source/Main.css" text="Thêm nhân khẩu"
+               textFill="#2e088d" wrapText="true"/>
+       <Button layoutX="250.0" layoutY="8.0" mnemonicParsing="false" onAction="#delNhanKhau" prefHeight="36.0"
+               prefWidth="150.0" styleClass="button1" stylesheets="@../source/Main.css" text="Xóa nhân khẩu"
+               textFill="#2e088d" wrapText="true"/>
+       <Button layoutX="400.0" layoutY="10.0" mnemonicParsing="false" onAction="#updateNhanKhau" prefHeight="33.0"
+               prefWidth="150.0" styleClass="button1" stylesheets="@../source/Main.css" text="Cập nhật nhân khẩu"
+               textFill="#2e088d" wrapText="true"/>
+       <Button layoutX="550.0" layoutY="10.0" mnemonicParsing="false" onAction="#showChiTiet" prefHeight="33.0"
+               prefWidth="150.0" styleClass="button1" stylesheets="@../source/Main.css" text="Xem chi tiết"
+               textFill="#2e088d" wrapText="true"/>
+   </children>
+</AnchorPane>

@@ -1,74 +1,34 @@
-/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
-
-.pane {
-	-fx-background-color : #5809d6;
+.buttoninmenu{
+    -fx-background-color : #ffffff;
+    -fx-text-fill: #000000;
+    -fx-font-size: 18px;
 }
 
-  
-.button1
-{
--fx-background-color : #393351;
--fx-background-radius :  30 0 0 30;
-}
-.button1:hover
-{
--fx-background-color : #524A7B ;
--fx-background-radius :  30 0 0 30;
-}
-.button1:pressed
-{
--fx-background-color : #2F2B43 ;
--fx-background-radius :  30 0 0 30;
+.buttoninmenu .image-view {
+    -fx-fitwidth: 1px; /* Set the desired width for images within buttons */
+    -fx-fitheight: 1px;
+    -fx-opacity: 0.5;
 }
 
-.button2
-{
--fx-background-color :  #4227b8;
--fx-background-radius :  20;
-}
-.button2:hover
-{
--fx-background-color : #524A7B ;
--fx-background-radius :  20;
-}
-.button2:pressed
-{
--fx-background-color : #2F2B43 ;
--fx-background-radius :  20;
+#logobtn {
+    -fx-background-color : #ffffff;
+    -fx-font-family: Lucida Console;
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
 }
 
-.button3
-{
-    -fx-background-color :  linear-gradient(to top right, #385487, #73b2ba);
-    -fx-background-radius :  0 0 0 0;
-}
-.button3:hover
-{
-    /* -fx-background-color : #524A7B ; */
-    -fx-opacity: 0.7;
-    -fx-cursor: HAND;
-    
-}
-.button3:pressed
-{
-    -fx-background-color : #2F2B43 ;
+#topbar {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #f0f4f7; /* Set the color of the border */
+    -fx-border-width: 1px;
 }
 
-.button4
-{
-    -fx-background-color :linear-gradient(to top left, #41951C, #D4CEE3);
-    -fx-background-radius :  30 30 30 30;
-}
-.button4:hover
-{
-    -fx-background-color :linear-gradient(to top left, #D4CEE3, #41951C);
-    -fx-background-radius :  30 30 30 30;
-}
-.button4:pressed
-{
-    -fx-background-color :linear-gradient(to top left, #41951C, #D4CEE3);
-    -fx-background-radius :  30 30 30 30;
+#menubar {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #f0f4f7; /* Set the color of the border */
+    -fx-border-width: 1px;
 }
 
-
-
+#menubutton {
+    -fx-background-color: #ffffff;
+}

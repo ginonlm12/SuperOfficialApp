@@ -5,7 +5,6 @@ import java.util.List;
 public class HoKhauBean_Tuan {
     HoKhauModel_Tuan hoKhauModel_tuan;
     List<NhanKhauModel_Lam> listNhanKhau;
-
     int soTV;
 
     public HoKhauBean_Tuan(HoKhauModel_Tuan hoKhauModel_tuan, List<NhanKhauModel_Lam> listNhanKhau, int soTV) {
@@ -27,8 +26,8 @@ public class HoKhauBean_Tuan {
         return hoKhauModel_tuan;
     }
 
-    public void setHoKhauModel_tuan(HoKhauModel_Tuan hoKhauModel_tuan) {
-        this.hoKhauModel_tuan = hoKhauModel_tuan;
+    public void setHoKhauModel_tuan(HoKhauModel_Tuan hoKhauModel) {
+        this.hoKhauModel_tuan = hoKhauModel;
     }
 
     public List<NhanKhauModel_Lam> getListNhanKhau() {

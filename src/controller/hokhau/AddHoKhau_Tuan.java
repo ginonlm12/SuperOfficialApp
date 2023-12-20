@@ -9,12 +9,14 @@ import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
-import models.*;
-import services.*;
+import models.HoKhauModel_Tuan;
+import models.NhanKhauModel_Lam;
+import services.HoKhauService_Tuan;
+import services.NhanKhauService_Lam;
+import services.SoPhongService_Tuan;
 
 import java.net.URL;
 import java.sql.SQLException;
-import java.util.List;
 import java.util.ResourceBundle;
 import java.util.regex.Pattern;
 
@@ -40,36 +42,34 @@ public class AddHoKhau_Tuan implements Initializable {
 	@FXML
 	private TextField tfSdt;
 
-	@FXML
+    ObservableList<String> listGioiTinh = FXCollections.observableArrayList("Nam", "Nữ");
+    ObservableList<Integer> listSoPhong = FXCollections.observableArrayList();
+    @FXML
 	private ChoiceBox<Integer> SoPhong;
-
-	@FXML
+    @FXML
 	private TextField tfTenChuHo;
-
-	ObservableList<String> listGioiTinh = FXCollections.observableArrayList("Nam", "Nữ");
-	ObservableList<Integer> listSoPhong = FXCollections.observableArrayList();
 
 
 	public void initialize(URL url, ResourceBundle resourceBundle) {
 		// set cac gia tri cho gioi tinh va so phong
 		GioiTinh.setItems(listGioiTinh);
-        try {
-            listSoPhong = SoPhongService_Tuan.getListSoPhong();
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+		try {
+			listSoPhong = SoPhongService_Tuan.getListSoPhong();
+		} catch (ClassNotFoundException e) {
+			throw new RuntimeException(e);
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
 		SoPhong.setItems(listSoPhong);
 
 		//set gia tri mac dinh cho ma ho khau va ma chu ho
-        try {
-            tfMaHoKhau.setText(String.valueOf(HoKhauService_Tuan.getNewIDHoKhau()));
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+		try {
+			tfMaHoKhau.setText(String.valueOf(HoKhauService_Tuan.getNewIDHoKhau()));
+		} catch (ClassNotFoundException e) {
+			throw new RuntimeException(e);
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
 		try {
 			tfMaChuHo.setText(String.valueOf(NhanKhauService_Lam.getNewIDNhanKhau()));
 		} catch (ClassNotFoundException e) {
@@ -77,22 +77,31 @@ public class AddHoKhau_Tuan implements Initializable {
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
-    }
+	}
+
 	@FXML
 	public void addHoKhau(ActionEvent event) throws ClassNotFoundException, SQLException {
 		// khai bao mot mau de so sanh
+//		if(SoPhong.getValue() == null || tfTenChuHo.getText() == ""){
+//			Alert alert = new Alert(AlertType.WARNING, "Hãy nhập đầy đủ thông tin!", ButtonType.OK);
+//			alert.setHeaderText(null);
+//			alert.showAndWait();
+//		}
+
 		Pattern pattern;
 
-
-		// kiem tra ten nhap vao
-		// ten nhap vao la chuoi tu 1 toi 50 ki tu
-		if (tfTenChuHo.getText().length() >= 50 || tfTenChuHo.getText().length() <= 1) {
-			Alert alert = new Alert(AlertType.WARNING, "Hãy nhập vào 1 tên hợp lệ!", ButtonType.OK);
+        if (tfTenChuHo.getText() == "") {
+            Alert alert = new Alert(AlertType.WARNING, "Hãy nhập tên chủ hộ!", ButtonType.OK);
 			alert.setHeaderText(null);
 			alert.showAndWait();
 			return;
 		}
-
+        if (SoPhong.getValue() == null) {
+            Alert alert = new Alert(AlertType.WARNING, "Chọn phòng cho hộ khẩu!", ButtonType.OK);
+            alert.setHeaderText(null);
+            alert.showAndWait();
+            return;
+        }
 		// kiem tra cmnd nhap vao
 		// cmnd nhap vao phai la mot day so tu 1 toi 20 so
 		pattern = Pattern.compile("\\d{1,20}");
@@ -113,8 +122,8 @@ public class AddHoKhau_Tuan implements Initializable {
 			return;
 		}
 
-		if(tfTenChuHo == null || tfCCCD == null || tfSdt == null || NgayDen == null || GioiTinh == null || SoPhong == null) {
-			Alert alert = new Alert(AlertType.WARNING, "Hãy nhập đầy đủ thông tin!", ButtonType.OK);
+        if (NgayDen.getValue() == null) {
+            Alert alert = new Alert(AlertType.WARNING, "Vui lòng chọn ngày chuyển đến", ButtonType.OK);
 			alert.setHeaderText(null);
 			alert.showAndWait();
 			return;
@@ -136,9 +145,8 @@ public class AddHoKhau_Tuan implements Initializable {
 		new NhanKhauService_Lam().add(nhanKhauModel);
 
 
-		Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
-        stage.close();
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+		stage.close();
 	}
-
 
 }

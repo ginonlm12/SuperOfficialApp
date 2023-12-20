@@ -1,111 +1,108 @@
 package controller;
 
-import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
-
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.ProgressBar;
-import javafx.scene.control.ProgressIndicator;
-import javafx.scene.image.ImageView;
+import javafx.scene.control.Button;
+import javafx.scene.effect.BoxBlur;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 
+import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
+
 public class HomeController implements Initializable {
-	@FXML
-	private BorderPane borderPane;
+    @FXML
+    Pane middlePane;
 	@FXML
 	private HBox hBox;
 	@FXML
-	private VBox vBox;
+    private Button showBtn;
 	@FXML
-	private ImageView showBtn;
+    private VBox vbox;
+	@FXML
+    private Pane mainPane;
 
-	private int check=0;
-	
+    private void changeMainPane(String fxmlfile) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlfile));
+        Pane newContentPane = loader.load();
+        // Replace the content of mainPane with the new content
+        mainPane.getChildren().setAll(newContentPane);
+    }
+
 	public void setNhanKhau(ActionEvent event) throws IOException {
-//		FXMLLoader loader = new FXMLLoader(LoginController.class.getResource("/views/NhanKhau.fxml"));
-//		Pane nhankhauPane = (Pane) loader.load();
-//		borderPane.setCenter(nhankhauPane);
+        changeMainPane("/views/NhanKhau_Lam.fxml");
 	}
 
 	public void setHoKhau(ActionEvent event) throws IOException {
-		FXMLLoader loader = new FXMLLoader(LoginController.class.getResource("/views/HoKhau.fxml"));
-		Pane hokhauPane = (Pane) loader.load();
-		borderPane.setCenter(hokhauPane);
-
+        changeMainPane("/views/HoKhau.fxml");
 	}
 
 	public void setKhoanPhi(ActionEvent event) throws IOException {
-//		FXMLLoader loader = new FXMLLoader(LoginController.class.getResource("/views/KhoanThu.fxml"));
-//		Pane khoanphiPane = (Pane) loader.load();
-//		borderPane.setCenter(khoanphiPane);
+        changeMainPane("/views/KhoanThu.fxml");
 	}
-	
-	public void setDongPhi(ActionEvent event) throws IOException {
-//		FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/NopTien.fxml"));
-//		Pane dongphiPane = (Pane) loader.load();
-//		borderPane.setCenter(dongphiPane);
-	}
-	
-	public void setThongKe(ActionEvent event) throws IOException {
-//		FXMLLoader loader = new FXMLLoader(LoginController.class.getResource("/views/ThongKe.fxml"));
-//		Pane thongkePane = (Pane) loader.load();
-//		borderPane.setCenter(thongkePane);
 
+	public void setDongPhi(ActionEvent event) throws IOException {
+        changeMainPane("/views/NopTien.fxml");
 	}
-	
+
+	public void setThongKe(ActionEvent event) throws IOException {
+        changeMainPane("/views/ThongKe.fxml");
+	}
+
 	public void setTrangChu(ActionEvent event) throws IOException {
-		FXMLLoader loader = new FXMLLoader(LoginController.class.getResource("/views/Main.fxml"));
-		Pane trangchuPane = (Pane) loader.load();
-		borderPane.setCenter(trangchuPane);
+        changeMainPane("/views/Main.fxml");
 	}
 
 	public void anim(int x, int y) {
-		KeyValue keyValue = new KeyValue(vBox.translateXProperty(), x);
-		KeyValue keyValue1 = new KeyValue(hBox.translateXProperty(), y);
-		KeyFrame keyFrame = new KeyFrame(Duration.seconds(0.5), keyValue);
+        KeyValue keyValue = new KeyValue(vbox.translateXProperty(), x);
+        KeyValue keyValue1 = new KeyValue(vbox.translateXProperty(), y);
+        KeyFrame keyFrame = new KeyFrame(Duration.seconds(0.35), keyValue);
 		KeyFrame keyFrame1 = new KeyFrame(Duration.seconds(0.35), keyValue1);
-        Timeline timeline = new Timeline(keyFrame, keyFrame1);
+		Timeline timeline = new Timeline(keyFrame, keyFrame1);
 		timeline.play();
 	}
 
-	EventHandler<MouseEvent> eventHandler = new EventHandler<MouseEvent>() { 
-		@Override 
-		public void handle(MouseEvent e) { 
-		   if(check==0) {
-				check=1;
-				borderPane.getCenter().prefWidth(632);
-				anim(262, 213);
-			} else {
-			check=0;
-			anim(-262, 0);
-		   }		    
-		} 
-	 }; 
-	
+    void menuShow() {
+        anim(165, 0);
+        mainPane.setEffect(new BoxBlur(5, 5, 3));
+        middlePane.setDisable(false);
+    }
+
+    void menuHide() {
+        anim(0, 0);
+        mainPane.setEffect(null);
+        middlePane.setDisable(true);
+    }
+
+    @FXML
+    void onShowbtnClicked(MouseEvent event) {
+        menuShow();
+    }
+
+    @FXML
+    void middlePaneClicked(MouseEvent event) {
+        menuHide();
+    }
+
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		try {
-			Pane login = FXMLLoader.load(getClass().getResource("/views/Main.fxml"));
-			borderPane.setCenter(login);
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/Main.fxml"));
+            Pane newContentPane = loader.load();
+            // Replace the content of mainPane with the new content
+            mainPane.getChildren().setAll(newContentPane);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		showBtn.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
 	}
+
 }
