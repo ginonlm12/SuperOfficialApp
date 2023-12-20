@@ -5,10 +5,12 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import models.HoKhauBean_Tuan;
 import models.HoKhauModel_Tuan;
@@ -29,6 +31,9 @@ public class UpdateHoKhau_Lam {
 
 	ObservableList<Integer> IDNhanKhauinHoKhau = FXCollections.observableArrayList();
 	ObservableList<Integer> SoPhong = FXCollections.observableArrayList();
+
+	@FXML
+	private Pane PaneField;
 	@FXML
 	private TextField tfHoTen;
 	@FXML
@@ -46,6 +51,19 @@ public class UpdateHoKhau_Lam {
 	private List<NhanKhauModel_Lam> nhanKhauList = new ArrayList<>();
 	private HoKhauModel_Tuan hoKhauModel;
 	private NhanKhauModel_Lam chuHo;
+
+	//set Mouse Moved
+	private void setMouseMoved() {
+		PaneField.setOnMouseMoved(event -> {
+			Node node = event.getPickResult().getIntersectedNode();
+			if (node instanceof Label || node instanceof TextField) {
+				PaneField.setCursor(Cursor.TEXT);
+			}
+			if(node instanceof Button || node instanceof ComboBox || node instanceof DatePicker) {
+				PaneField.setCursor(Cursor.HAND);
+			}
+		});
+	}
 
 	@FXML
 	void updateHoKhau(ActionEvent event) throws SQLException, ClassNotFoundException, IOException {
@@ -123,6 +141,7 @@ public class UpdateHoKhau_Lam {
 	}
 
 	public void setHoKhauModel(HoKhauBean_Tuan hoKhauBean) throws ClassNotFoundException, SQLException {
+
 		this.hoKhauBean = hoKhauBean;
 		this.nhanKhauList = hoKhauBean.getListNhanKhau();
 		this.hoKhauModel = hoKhauBean.getHoKhauModel_tuan();
