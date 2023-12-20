@@ -1,52 +1,125 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.effect.*?>
-<?import javafx.scene.text.*?>
-<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
-<?import java.lang.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.layout.AnchorPane?>
-
-<AnchorPane prefHeight="604.0" prefWidth="802.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HomeController">
+<?import javafx.scene.text.*?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="650.0" prefWidth="800.0" stylesheets="@../source/Home.css"
+            xmlns="http://javafx.com/javafx/21" fx:controller="controller.HomeController">
    <children>
-      <HBox layoutX="1.0" prefHeight="600.0" prefWidth="800.0">
+       <VBox prefHeight="650.0" prefWidth="800.0">
          <children>
-            <VBox prefHeight="600.0" prefWidth="183.0" spacing="60.0" style="-fx-background-color: #808080;">
+             <AnchorPane id="topbar" prefHeight="50.0" prefWidth="800.0">
                <children>
-                  <Button mnemonicParsing="false" onAction="#setTrangChu" prefHeight="111.0" prefWidth="183.0" style="-fx-background-color: #1030b1;" text="Trang chủ" textFill="WHITE">
-                     <font>
-                        <Font name="Arial Bold" size="25.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="btnHoKhau" mnemonicParsing="false" onAction="#setHoKhau" onMouseEntered="#clickedHoKhau" onMouseExited="#nonclickHoKhau" onMouseMoved="#clickedHoKhau" onMouseReleased="#nonclickHoKhau" prefHeight="50.0" prefWidth="193.0" style="-fx-background-color: #666666;" text="Hộ khẩu" textFill="WHITE">
-                     <VBox.margin>
-                        <Insets bottom="10.0" left="10.0" top="10.0" />
-                     </VBox.margin>
-                     <font>
-                        <Font name="Arial Bold" size="20.0" />
-                     </font>
-                  </Button>
-                  <Button mnemonicParsing="false" onAction="#setThuPhi" prefHeight="50.0" prefWidth="389.0" style="-fx-background-color: #666666;" text="Quản lý thu phí" textFill="WHITE" wrapText="true">
-                     <VBox.margin>
-                        <Insets bottom="10.0" left="10.0" top="10.0" />
-                     </VBox.margin>
-                     <font>
-                        <Font name="Arial Bold" size="18.0" />
-                     </font>
-                  </Button>
-                  <Button layoutX="20.0" layoutY="321.0" mnemonicParsing="false" onAction="#setThongKe" prefHeight="50.0" prefWidth="389.0" style="-fx-background-color: #666666;" text="Thống kê" textFill="WHITE">
-                     <VBox.margin>
-                        <Insets bottom="10.0" left="10.0" top="10.0" />
-                     </VBox.margin>
-                     <font>
-                        <Font name="System Bold" size="20.0" />
-                     </font>
-                  </Button>
+                   <Button id="menubar" fx:id="showBtn" focusTraversable="false" mnemonicParsing="false"
+                           onMouseClicked="#onShowbtnClicked" prefHeight="50.0" prefWidth="50.0">
+                       <graphic>
+                           <ImageView fitHeight="33.0" fitWidth="33.0">
+                               <image>
+                                   <Image url="@../source/menu-bar.png"/>
+                               </image>
+                           </ImageView>
+                       </graphic>
+                   </Button>
+                   <MenuButton id="menubutton" focusTraversable="false" layoutX="93.0" mnemonicParsing="false"
+                               prefHeight="50.0" prefWidth="126.0" text="Manager" AnchorPane.rightAnchor="0.0">
+                       <items>
+                           <MenuItem mnemonicParsing="false" text="Action 1"/>
+                           <MenuItem mnemonicParsing="false" text="Action 2"/>
+                       </items>
+                       <graphic>
+                           <ImageView fitHeight="38.0" fitWidth="38.0">
+                               <image>
+                                   <Image url="@../source/manager.png"/>
+                               </image>
+                           </ImageView>
+                       </graphic>
+                   </MenuButton>
                </children>
-            </VBox>
-            <BorderPane fx:id="borderPane" prefHeight="600.0" prefWidth="625.0" />
+             </AnchorPane>
+             <Pane id="mainPane" fx:id="mainPane" prefHeight="600.0" prefWidth="800.0"/>
          </children>
-      </HBox>
+       </VBox>
+       <Pane fx:id="middlePane" disable="true" layoutX="165.0" onMouseClicked="#middlePaneClicked" prefHeight="650.0"
+             prefWidth="635.0"/>
+       <VBox id="menubar" fx:id="vbox" layoutX="-165.0" prefHeight="650.0" prefWidth="165.0">
+           <children>
+               <Button id="logobtn" focusTraversable="false" mnemonicParsing="false" prefHeight="80.0" prefWidth="165.0"
+                       stylesheets="@../source/Home.css" text="SPM" textFill="#000000a8">
+                   <font>
+                       <Font name="Britannic Bold" size="20.0"/>
+                   </font>
+                   <graphic>
+                       <ImageView fitHeight="40.0" fitWidth="40.0">
+                           <image>
+                               <Image url="@../source/logo.png"/>
+                           </image>
+                       </ImageView>
+                   </graphic>
+               </Button>
+               <Button mnemonicParsing="false" onAction="#setTrangChu" prefHeight="60.0" prefWidth="165.0"
+                       styleClass="buttoninmenu" stylesheets="@../source/Home.css" text="Trang chủ" textFill="WHITE">
+                   <font>
+                       <Font name="Calibri Bold" size="18.0"/>
+                   </font>
+                   <graphic>
+                       <ImageView fitHeight="18.0" fitWidth="18.0">
+                           <image>
+                               <Image url="@../source/home.png"/>
+                           </image>
+                       </ImageView>
+                   </graphic>
+               </Button>
+               <Button fx:id="btnNhanKhau" mnemonicParsing="false" onAction="#setNhanKhau" prefHeight="60.0"
+                       prefWidth="218.0" styleClass="buttoninmenu" stylesheets="@../source/Home.css" text="Nhân khẩu"
+                       textFill="WHITE">
+                   <font>
+                       <Font name="Arial Bold" size="20.0"/>
+                   </font>
+                   <graphic>
+                       <ImageView fitHeight="18.0" fitWidth="18.0" styleClass="image-view">
+                           <image>
+                               <Image url="@../source/person.png"/>
+                           </image>
+                       </ImageView>
+                   </graphic>
+               </Button>
+               <Button fx:id="btnHoKhau" mnemonicParsing="false" onAction="#setHoKhau" prefHeight="60.0"
+                       prefWidth="222.0" styleClass="buttoninmenu" stylesheets="@../source/Home.css" text="Hộ khẩu   "
+                       textFill="WHITE">
+                   <font>
+                       <Font name="Arial Bold" size="20.0"/>
+                   </font>
+                   <graphic>
+                       <ImageView fitHeight="18.0" fitWidth="18.0">
+                           <image>
+                               <Image url="@../source/people.png"/>
+                           </image>
+                       </ImageView>
+                   </graphic>
+               </Button>
+               <Button fx:id="btnKhoanPhi" mnemonicParsing="false" onAction="#setKhoanPhi" prefHeight="60.0"
+                       prefWidth="217.0" styleClass="buttoninmenu" stylesheets="@../source/Home.css" text="Khoản phí"
+                       textFill="WHITE" wrapText="true">
+                   <font>
+                       <Font name="Arial Bold" size="20.0"/>
+                   </font>
+               </Button>
+               <Button fx:id="btnDongPhi" mnemonicParsing="false" onAction="#setDongPhi" prefHeight="60.0"
+                       prefWidth="216.0" styleClass="buttoninmenu" stylesheets="@../source/Home.css" text="Đóng phí "
+                       textFill="WHITE">
+                   <font>
+                       <Font name="Arial Bold" size="20.0"/>
+                   </font>
+               </Button>
+               <Button fx:id="btnThongKe" mnemonicParsing="false" onAction="#setThongKe" prefHeight="60.0"
+                       prefWidth="214.0" styleClass="buttoninmenu" stylesheets="@../source/Home.css" text="Thống kê"
+                       textFill="WHITE">
+                   <font>
+                       <Font name="System Bold" size="20.0"/>
+                   </font>
+               </Button>
+           </children>
+       </VBox>
    </children>
 </AnchorPane>

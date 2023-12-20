@@ -25,14 +25,12 @@
                            AnchorPane.leftAnchor="130.0" AnchorPane.rightAnchor="61.66666666666663"/>
                 <Label layoutX="18.0" layoutY="111.0" text="ID Chủ hộ" textFill="#4700ee"/>
                 <Label layoutX="20.0" layoutY="232.0" text="Số phòng" textFill="#4700ee"/>
-                <ChoiceBox fx:id="tfSoPhong" layoutX="130.0" layoutY="221.0" prefHeight="39.0" prefWidth="346.0"
-                           styleClass="text-field-rounded" stylesheets="@../../source/Main.css"/>
                 <Label layoutX="19.0" layoutY="277.0" prefHeight="54.0" prefWidth="99.0" text="Ngày chuyển đến"
                        textFill="#4700ee" wrapText="true"/>
-                <ChoiceBox fx:id="tfIDNhanKhau" layoutX="130.0" layoutY="100.0" prefHeight="39.0" prefWidth="346.0"
-                           styleClass="text-field-rounded" stylesheets="@../../source/Main.css"/>
                 <DatePicker fx:id="tfNgayDen" layoutX="130.0" layoutY="284.0" prefHeight="39.0" prefWidth="346.0"
                             styleClass="text-field-rounded" stylesheets="@../../source/Main.css"/>
+                <ComboBox fx:id="tfIDNhanKhau" layoutX="130.0" layoutY="100.0" prefHeight="39.0" prefWidth="346.0"/>
+                <ComboBox fx:id="tfSoPhong" layoutX="131.0" layoutY="221.0" prefHeight="39.0" prefWidth="346.0"/>
             </children>
         </Pane>
         <Button layoutX="259.0" layoutY="535.0" mnemonicParsing="false" onAction="#updateHoKhau" prefHeight="39.0"

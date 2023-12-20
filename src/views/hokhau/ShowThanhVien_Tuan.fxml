@@ -12,8 +12,7 @@
                 <Font name="System Bold Italic" size="20.0"/>
             </font>
         </Label>
-        <TableView fx:id="tvHoKhau" layoutX="4.0" layoutY="102.0" prefHeight="273.0" prefWidth="592.0"
-                   stylesheets="@../../source/dashboardDesign.css">
+        <TableView fx:id="tvHoKhau" layoutX="4.0" layoutY="102.0" prefHeight="273.0" prefWidth="592.0">
             <columns>
                 <TableColumn fx:id="colIDThanhVien" prefWidth="122.40002286434174" text="ID "/>
                 <TableColumn fx:id="colTenThanhVien" prefWidth="251.19995880126953" text="Tên thành viên"/>

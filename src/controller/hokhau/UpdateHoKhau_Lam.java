@@ -34,13 +34,13 @@ public class UpdateHoKhau_Lam {
 	@FXML
 	private TextField tfIDHoKhau;
 	@FXML
-	private ChoiceBox<Integer> tfIDNhanKhau;
+    private ComboBox<Integer> tfIDNhanKhau;
 	@FXML
 	private DatePicker tfNgayDen;
 	@FXML
 	private TextField tfSDT;
 	@FXML
-	private ChoiceBox<Integer> tfSoPhong;
+    private ComboBox<Integer> tfSoPhong;
 	private HoKhauBean_Tuan hoKhauBean;
 	private HoKhauBean_Tuan newhoKhauBean;
 	private List<NhanKhauModel_Lam> nhanKhauList = new ArrayList<>();

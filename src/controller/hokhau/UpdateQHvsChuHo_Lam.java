@@ -6,7 +6,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import models.HoKhauBean_Tuan;
@@ -28,9 +28,9 @@ public class UpdateQHvsChuHo_Lam {
     @FXML
     private TextField tfHoTen;
     @FXML
-    private ChoiceBox<Integer> tfIDNhanKhau;
+    private ComboBox<Integer> tfIDNhanKhau;
     @FXML
-    private ChoiceBox<String> tfQHvsChuHo;
+    private ComboBox<String> tfQHvsChuHo = new ComboBox<>();
     @FXML
     private TextField tfIDhoKhau;
     private HoKhauBean_Tuan hoKhauBean;
@@ -83,6 +83,37 @@ public class UpdateQHvsChuHo_Lam {
 //                }
 //            }
 //        });
+//        tfIDNhanKhau.getSelectionModel().selectedItemProperty().addListener((observableee, oldValueee, newValueee) -> {
+//            // Loại bỏ listener cũ (nếu có)
+//            if (qhvsChuHoChangeListener != null) {
+//                tfQHvsChuHo.getSelectionModel().selectedItemProperty().removeListener(qhvsChuHoChangeListener);
+//            }
+//
+//            int selectedIDNhankhau = tfIDNhanKhau.getValue();
+//            // System.out.print(selectedIDNhankhau + " ");
+//
+//            for (NhanKhauModel_Lam nhankhau : nhanKhauList) {
+//                if (nhankhau.getIDNhanKhau() == selectedIDNhankhau) {
+//                    tfHoTen.setText(nhankhau.getHoTen());
+//                    tfQHvsChuHo.setItems(QHvsChuHo_List);
+//
+//                    // Tạo listener mới
+//                    qhvsChuHoChangeListener = (observablee, oldValuee, newValuee) -> {
+//                        nhankhau.setQHvsChuHo(tfQHvsChuHo.getValue());
+//                        // System.out.println("A: " + nhankhau.getHoTen() + ": " + nhankhau.getQHvsChuHo());
+//                    };
+//
+//                    if (!nhankhau.getQHvsChuHo().equals("(Chưa điền)")) {
+//                        tfQHvsChuHo.setValue(nhankhau.getQHvsChuHo());
+//                    }
+//
+//                    // Thêm listener mới
+//                    tfQHvsChuHo.getSelectionModel().selectedItemProperty().addListener(qhvsChuHoChangeListener);
+//
+//                    break;
+//                }
+//            }
+//        });
         tfIDNhanKhau.getSelectionModel().selectedItemProperty().addListener((observableee, oldValueee, newValueee) -> {
             // Loại bỏ listener cũ (nếu có)
             if (qhvsChuHoChangeListener != null) {
@@ -114,6 +145,7 @@ public class UpdateQHvsChuHo_Lam {
                 }
             }
         });
+
     }
 
     @FXML

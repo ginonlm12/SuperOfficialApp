@@ -22,11 +22,9 @@
                         <Font size="21.0"/>
                     </font>
                 </Text>
-                <ChoiceBox fx:id="tfIDNhanKhau" layoutX="169.0" layoutY="142.0" prefHeight="43.0" prefWidth="231.0"/>
                 <TextField fx:id="tfIDhoKhau" editable="false" layoutX="168.0" layoutY="14.0" prefHeight="43.0"
                            prefWidth="231.0"/>
                 <TextField fx:id="tfHoTen" layoutX="169.0" layoutY="227.0" prefHeight="43.0" prefWidth="231.0"/>
-                <ChoiceBox fx:id="tfQHvsChuHo" layoutX="169.0" layoutY="307.0" prefHeight="43.0" prefWidth="231.0"/>
                 <Text layoutX="16.0" layoutY="258.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Họ tên"
                       wrappingWidth="120.13671875">
                     <font>
@@ -48,6 +46,8 @@
                 </Text>
                 <TextField fx:id="tfChuHo" editable="false" layoutX="169.0" layoutY="69.0" prefHeight="43.0"
                            prefWidth="231.0"/>
+                <ComboBox fx:id="tfIDNhanKhau" layoutX="168.0" layoutY="141.0" prefHeight="43.0" prefWidth="231.0"/>
+                <ComboBox fx:id="tfQHvsChuHo" layoutX="168.0" layoutY="307.0" prefHeight="43.0" prefWidth="231.0"/>
             </children>
         </Pane>
 

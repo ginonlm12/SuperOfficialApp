@@ -24,10 +24,9 @@ import java.util.regex.Pattern;
 public class AddNhanKhau_Lam implements Initializable {
 	@FXML
 	private TextField tfCCCD;
+	ObservableList<String> ethnicityList = FXCollections.observableArrayList("Không mang dân tộc Việt Nam");
 	@FXML
-	private ChoiceBox<String> tfDanToc;
-	@FXML
-	private ChoiceBox<String> tfGioiTinh;
+	private ComboBox<String> tfDanToc;
 	@FXML
 	private TextField tfHoTen;
 	//@FXML
@@ -39,19 +38,19 @@ public class AddNhanKhau_Lam implements Initializable {
 	@FXML
 	private TextField tfNgheNghiep;
 	@FXML
-	private ChoiceBox<String> tfQHvsChuHo;
+	private ComboBox<String> tfGioiTinh;
 	@FXML
 	private TextField tfQueQuan;
 	@FXML
-	private ChoiceBox<String> tfCountry;
+	private ComboBox<String> tfQHvsChuHo;
 	@FXML
-	private ChoiceBox<String> tfProvince;
+	private ComboBox<String> tfCountry;
 	@FXML
-	private ChoiceBox<String> tfDistrict;
+	private ComboBox<String> tfProvince;
 	@FXML
-	private ChoiceBox<String> tfWard;
+	private ComboBox<String> tfDistrict;
 	@FXML
-	private ChoiceBox<String> tfIDHoKhau;
+	private ComboBox<String> tfWard;
 	@FXML
 	private CheckBox tfXacNhan;
 	@FXML
@@ -65,7 +64,8 @@ public class AddNhanKhau_Lam implements Initializable {
 	private List<NhanKhauModel_Lam> listNhanKhau;
 	ObservableList<String> genderList = FXCollections.observableArrayList("Nam", "Nữ");
 	ObservableList<String> relationshipList = FXCollections.observableArrayList("Vợ/Chồng", "Con cái", "Bố mẹ", "Ông bà", "Cháu chắt", "Khác");
-	ObservableList<String> ethnicityList = FXCollections.observableArrayList();
+	@FXML
+	private ComboBox<String> tfIDHoKhau;
 	ObservableList<String> QueQuanList = FXCollections.observableArrayList("Việt Nam", "Khác");
 	ObservableList<String> Tinh_List = FXCollections.observableArrayList();
 	ObservableList<String> Huyen_List = FXCollections.observableArrayList();
