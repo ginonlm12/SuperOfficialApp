@@ -3,6 +3,7 @@ package controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -14,14 +15,17 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class LoginController {
+public class LoginController implements Initializable {
 	@FXML
 	private TextField tfUsername;
 	@FXML
 	private PasswordField tfPassword;
 	
 	public void Login(ActionEvent event) throws IOException {
+
 		String name = tfUsername.getText();
 		String pass = tfPassword.getText();
 
@@ -41,5 +45,16 @@ public class LoginController {
         stage.setResizable(false);
         stage.show();
 	}
+
+    public void initialize(URL arg0, ResourceBundle arg1){
+        tfUsername.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue.length() < 6) {
+                tfUsername.setStyle("-fx-border-color: red ; -fx-border-width: 2px ;");
+            }
+            else{
+                tfUsername.setStyle("-fx-border-color: green ; -fx-border-width: 2px ;");
+            }
+        });
+    }
 
 }
