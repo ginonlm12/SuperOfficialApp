@@ -13,7 +13,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 import models.NhanKhauModel_Lam;
 import services.NhanKhauService_Lam;
 
@@ -96,9 +98,10 @@ public class NhanKhauController_Lam implements Initializable {
 
 		// Thiết lập giá trị cho ComboBox
 		ObservableList<String> listComboBox = FXCollections.observableArrayList("Họ Tên", "Số Phòng", "ID Nhân khẩu");
-		cbChooseSearch.setValue("Họ Tên");
 		cbChooseSearch.setItems(listComboBox);
+		cbChooseSearch.setValue("Họ Tên");
 	}
+
 
 	// tim kiem nhan khau theo ten, tuoi, id
 	public void searchNhanKhau() {
@@ -329,6 +332,7 @@ public class NhanKhauController_Lam implements Initializable {
 		// TODO Auto-generated method stub
 		try {
 			showNhanKhau();
+
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {

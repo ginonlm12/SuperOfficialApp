@@ -1,0 +1,46 @@
+/* dieu chinh table view */
+#background {
+    -fx-background-color: #FFFFDD   ;
+}
+
+.column-header {
+    -fx-background-color: #A2C579;
+}
+
+/* dieu chinh button */
+.buttonChucnang {
+    -fx-background-radius: 2px;
+    -fx-text-fill: #fbffe8;
+    -fx-background-color: #61A3BA;
+    -fx-font-weight: bold;
+    -fx-min-height: 30px;
+    -fx-max-height: 30px;
+    -fx-min-width: 150px;
+    -fx-max-width: 150px;
+}
+
+.buttonChucnang: hover {
+    -fx-background-color: #637E76;
+}
+
+.btntimkiem {
+    -fx-font-weight: bold;
+    -fx-background-color: #557C55;
+    -fx-text-fill: #D2DE32;
+}
+
+.btntimkiem: hover {
+    -fx-background-color: #858c1d;
+}
+
+.boxluachon .list-cell:selected {
+    -fx-font-weight: bold;
+    -fx-background-color: #557C55;
+    -fx-text-fill: #D2DE32;
+}
+
+
+
+#chosse {
+    -fx-text-fill: #D2DE32;
+}

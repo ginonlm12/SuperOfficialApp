@@ -8,6 +8,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="650.0" prefWidth="800.0" stylesheets="@../source/Home.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HomeController">
@@ -46,7 +49,7 @@
       <Pane fx:id="middlePane" disable="true" layoutX="165.0" onMouseClicked="#middlePaneClicked" prefHeight="650.0" prefWidth="635.0" />
       <VBox id="menubar" fx:id="vbox" layoutX="-165.0" prefHeight="650.0" prefWidth="165.0">
          <children>
-            <Button id="logobtn" focusTraversable="false" mnemonicParsing="false" prefHeight="80.0" prefWidth="165.0" stylesheets="@../source/Home.css" text="SPM" textFill="#000000a8">
+            <Button id="logobtn" focusTraversable="false" mnemonicParsing="false" onMouseClicked="#logobtnClicked" prefHeight="80.0" prefWidth="165.0" stylesheets="@../source/Home.css" text="SPM">
                <font>
                   <Font name="Britannic Bold" size="20.0" />
                </font>
@@ -57,6 +60,52 @@
                      </image>
                   </ImageView>
                </graphic>
+               <textFill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="1.0" />
+                           </color>
+                        </Stop>
+                        <Stop offset="0.006711409395973154">
+                           <color>
+                              <Color red="1.0" />
+                           </color>
+                        </Stop>
+                        <Stop offset="0.20187428384350953">
+                           <color>
+                              <Color red="1.0" green="0.8833333253860474" />
+                           </color>
+                        </Stop>
+                        <Stop offset="0.38054509739728265">
+                           <color>
+                              <Color red="0.20000000298023224" green="1.0" />
+                           </color>
+                        </Stop>
+                        <Stop offset="0.6025331478146995">
+                           <color>
+                              <Color green="1.0" blue="0.75" />
+                           </color>
+                        </Stop>
+                        <Stop offset="0.7683745293828775">
+                           <color>
+                              <Color green="0.01904761977493763" blue="1.0" />
+                           </color>
+                        </Stop>
+                        <Stop offset="0.9786585365853658">
+                           <color>
+                              <Color red="1.0" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="1.0" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </textFill>
             </Button>
             <Button mnemonicParsing="false" onAction="#setTrangChu" prefHeight="60.0" prefWidth="165.0" styleClass="buttoninmenu" stylesheets="@../source/Home.css" text="Trang chủ" textFill="WHITE">
                <font>

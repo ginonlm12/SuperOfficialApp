@@ -6,6 +6,9 @@ import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 
+import java.awt.*;
+import java.net.URI;
+
 
 public class Main extends Application {
 	@Override
@@ -14,13 +17,15 @@ public class Main extends Application {
 //	    	Parent login = FXMLLoader.load(getClass().getResource("/views/Login.fxml"));
 //			Scene scene = new Scene(login,800,650);
 //			scene.getStylesheets().add("source/login.css");
-
-			Parent login = FXMLLoader.load(getClass().getResource("/views/home.fxml"));
-			Scene scene = new Scene(login,800,650);
-			scene.getStylesheets().add("source/Home.css");
+//
+			Parent login = FXMLLoader.load(getClass().getResource("/views/login.fxml"));
+			Scene scene = new Scene(login,800,600);
+//			scene.getStylesheets().add("source/nhankhau_va_hokhau.css");
 
 			primaryStage.setScene(scene);
 			primaryStage.show();
+
+
 		} catch(Exception e) {
 			e.printStackTrace();
 		}

@@ -16,6 +16,8 @@ import javafx.util.Duration;
 
 import java.awt.*;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -95,6 +97,21 @@ public class HomeController implements Initializable {
 		menuHide();
 	}
 
+	@FXML
+	void logobtnClicked(MouseEvent event) throws URISyntaxException {
+		Desktop desktop = java.awt.Desktop.getDesktop();
+
+		//specify the protocol along with the URL
+		URI oURL = null;
+
+		oURL = new URI("https://www.youtube.com/watch?v=dQw4w9WgXcQ&pp=ygUHcmlja3JsbA%3D%3D");
+		try {
+			desktop.browse(oURL);
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
+	}
+
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		try {
@@ -106,5 +123,6 @@ public class HomeController implements Initializable {
 			e.printStackTrace();
 		}
 	}
+
 
 }
