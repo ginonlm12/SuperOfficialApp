@@ -2,12 +2,14 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="600.0" prefWidth="800.0" stylesheets="@../source/Main.css"
             xmlns="http://javafx.com/javafx/21" fx:controller="controller.NhanKhauController_Lam">
    <children>
-       <TableView fx:id="tvNhanKhau" layoutX="11.0" layoutY="105.0" prefHeight="500.0" prefWidth="625.0"
-                  AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="11.0" AnchorPane.rightAnchor="12.666666666666629"
-                  AnchorPane.topAnchor="105.0">
+       <TableView fx:id="tvNhanKhau" layoutX="11.0" layoutY="129.33333333333334" prefHeight="463.0" prefWidth="775.0"
+                  AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="11.0" AnchorPane.rightAnchor="14.0"
+                  AnchorPane.topAnchor="129.0">
         <columns>
           <TableColumn fx:id="colMaNhanKhau" prefWidth="38.0000022649765" text="ID" />
           <TableColumn fx:id="colTen" prefWidth="154.00000762939453" text="Họ và tên" />
@@ -15,7 +17,7 @@
             <TableColumn fx:id="colCMND" prefWidth="82.6666259765625" text="CCCD" />
             <TableColumn fx:id="colSDT" prefWidth="118.6666259765625" text="Nghề nghiệp" />
             <TableColumn fx:id="colMaHo" prefWidth="112.00006103515625" text="Ngày sinh" />
-            <TableColumn fx:id="colQHvsChuHo" prefWidth="112.0" text="Quan hệ với chủ hộ" />
+            <TableColumn fx:id="colQHvsChuHo" prefWidth="187.3333740234375" text="Quan hệ với chủ hộ"/>
         </columns>
       </TableView>
        <TextField fx:id="tfSearch" layoutX="7.0" layoutY="49.0" prefHeight="40.0" prefWidth="310.0"
@@ -39,5 +41,11 @@
        <Button layoutX="550.0" layoutY="10.0" mnemonicParsing="false" onAction="#showChiTiet" prefHeight="33.0"
                prefWidth="150.0" styleClass="button1" stylesheets="@../source/Main.css" text="Xem chi tiết"
                textFill="#2e088d" wrapText="true"/>
+       <Text layoutX="86.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0"
+             text="DANH SÁCH NHÂN KHẨU ĐANG CƯ TRÚ TẠI CHUNG CƯ BLUEMOON">
+           <font>
+               <Font name="System Bold Italic" size="17.0"/>
+           </font>
+       </Text>
    </children>
 </AnchorPane>

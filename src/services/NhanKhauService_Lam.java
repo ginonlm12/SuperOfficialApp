@@ -214,7 +214,8 @@ public class NhanKhauService_Lam {
         List<NhanKhauModel_Lam> list = new ArrayList<>();
 
         Connection connection = MysqlConnection.getMysqlConnection();
-        String query = "SELECT * FROM nhankhau";
+
+        String query = "SELECT * FROM nhankhau WHERE IDHoKhau IN (SELECT IDHoKhau FROM hokhau WHERE NgayDi = '0001-01-01')";
         PreparedStatement preparedStatement = connection.prepareStatement(query);
         ResultSet rs = preparedStatement.executeQuery();
         while (rs.next()) {
