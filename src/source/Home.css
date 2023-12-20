@@ -1,6 +1,31 @@
-.button {
+.buttoninmenu{
     -fx-background-color : #ffffff;
     -fx-text-fill: #000000;
+    -fx-font-size: 18px;
+
+}
+
+.buttoninmenu .image-view {
+    -fx-fitwidth: 1px; /* Set the desired width for images within buttons */
+    -fx-fitheight: 1px;
+    -fx-opacity: 0.5;
+}
+
+#logobtn {
+    -fx-background-color : #ffffff;
+    -fx-font-size: 24px;
+}
+
+#topbar {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #f0f4f7; /* Set the color of the border */
+    -fx-border-width: 1px;
+}
+
+#menubar {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #f0f4f7; /* Set the color of the border */
+    -fx-border-width: 1px;
 }
 
 #menubutton {
