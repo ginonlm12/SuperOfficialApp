@@ -1,17 +1,38 @@
-/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
-
+/* Cài đặt cho các pane */
 .pane {
 	-fx-background-color : #fefefe;
 	-fx-background-radius : 0px;
 }
 
+/* Cài đặt cho các label */
 #welcomeLabel {
     -fx-alignment: center-left;
     -fx-font-size: 50;
     -fx-font-weight: bolder;
 }
 
+.label_can_clicked {
+    -fx-alignment: center;
+    -fx-font-size: 12px;
+    -fx-underline: true;
+}
+
+.label_can_clicked: hover {
+    -fx-text-fill: #0560b1;
+}
+
+/* Cài đặt cho các button */
 #buttonLogin {
     -fx-background-color: #0560b1;
+}
+
+#buttonLogin: hover {
+    -fx-background-color: #98D8FF;
+}
+
+/* Cài đặt cho textfield */
+.username_f {
+    -fx-font-family: Courier;
+    -fx-font-size: 20px;
 }
 

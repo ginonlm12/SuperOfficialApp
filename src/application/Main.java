@@ -23,6 +23,7 @@ public class Main extends Application {
 //			scene.getStylesheets().add("source/nhankhau_va_hokhau.css");
 
 			primaryStage.setScene(scene);
+			primaryStage.setResizable(false);
 			primaryStage.show();
 
 

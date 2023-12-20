@@ -18,12 +18,12 @@
                   <Image url="@../source/account.png" />
                </image>
             </ImageView>
-            <Button id="buttonLogin" fx:id="btnLogin" layoutX="173.0" layoutY="343.0" mnemonicParsing="false" onAction="#Login" prefHeight="39.0" prefWidth="115.0" stylesheets="@../source/login.css" text="Log In" textFill="WHITE">
+            <Button id="buttonLogin" fx:id="btnLogin" layoutX="105.0" layoutY="325.0" mnemonicParsing="false" onAction="#Login" prefHeight="40.0" prefWidth="250.0" stylesheets="@../source/login.css" text="Log In" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>
             </Button>
-            <PasswordField fx:id="tfPassword" layoutX="105.0" layoutY="271.0" prefHeight="40.0" prefWidth="250.0" promptText="Password">
+            <PasswordField fx:id="tfPassword" layoutX="105.0" layoutY="271.0" prefHeight="40.0" prefWidth="250.0" promptText="Password" styleClass="username_f">
                <font>
                   <Font size="20.0" />
                </font>
@@ -33,7 +33,7 @@
                   <Font name="Symbol" size="40.0" />
                </font>
             </Label>
-            <ImageView fitHeight="300.0" fitWidth="400.0" layoutX="400.0" layoutY="137.0">
+            <ImageView fitHeight="300.0" fitWidth="400.0" layoutX="399.0" layoutY="128.0">
                <image>
                   <Image url="@../source/cityy.png" />
                </image>
@@ -43,11 +43,13 @@
                   <Image url="@../source/padlock.png" />
                </image>
             </ImageView>
-            <TextField fx:id="tfUsername" layoutX="106.0" layoutY="219.0" promptText="Username">
+            <TextField fx:id="tfUsername" layoutX="105.0" layoutY="219.0" prefHeight="40.0" prefWidth="250.0" promptText="Username" styleClass="username_f">
                <font>
                   <Font size="20.0" />
                </font>
             </TextField>
+            <Label id="createaccount" layoutX="528.0" layoutY="420.0" onMouseClicked="#create_acc_clicked" prefHeight="17.0" prefWidth="142.0" styleClass="label_can_clicked" text="Create an account?" />
+            <Label fx:id="forgot_label" layoutX="106.0" layoutY="381.0" onMouseClicked="#forgot_clicked" prefHeight="17.0" prefWidth="249.0" styleClass="label_can_clicked" text="Forgotten password?" visible="false" />
          </children>
       </AnchorPane>
    </children>
