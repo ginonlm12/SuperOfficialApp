@@ -4,12 +4,13 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
-
-<AnchorPane prefHeight="650.0" prefWidth="800.0" style="-fx-background-color: #e4e4e4;" stylesheets="@../source/login.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="650.0" prefWidth="800.0"
+            style="-fx-background-color: #e4e4e4;" stylesheets="@../source/login.css" xmlns="http://javafx.com/javafx/21"
+            fx:controller="controller.LoginController">
     <children>
-        <AnchorPane blendMode="SRC_ATOP" prefHeight="650.0" prefWidth="800.0" styleClass="pane" stylesheets="@../source/login.css">
+        <AnchorPane blendMode="SRC_ATOP" prefHeight="650.0" prefWidth="800.0" styleClass="pane"
+                    stylesheets="@../source/login.css">
             <children>
-
                 <ImageView fitHeight="300.0" fitWidth="400.0" layoutX="399.0" layoutY="128.0">
                     <image>
                         <Image url="@../source/cityy.png"/>
@@ -18,48 +19,39 @@
                 <ImageView fitHeight="85.0" fitWidth="84.0" layoutX="38.0" layoutY="199.0" opacity="0.38"
                            pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@../source/account.png" />
+                        <Image url="@../source/account.png"/>
                     </image>
                 </ImageView>
                 <Button id="buttonLogin" fx:id="btnLogin" layoutX="105.0" layoutY="325.0" mnemonicParsing="false"
                         onAction="#Login" prefHeight="40.0" prefWidth="250.0" stylesheets="@../source/login.css"
                         text="Đăng nhập" textFill="WHITE">
                     <font>
-                        <Font size="18.0" />
+                        <Font size="18.0"/>
                     </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
                 </Button>
                 <PasswordField fx:id="tfPassword" layoutX="105.0" layoutY="271.0" prefHeight="40.0" prefWidth="250.0"
                                promptText="Mật khẩu" styleClass="username_f">
                     <font>
-                        <Font size="20.0" />
+                        <Font size="20.0"/>
                     </font>
-               <cursor>
-                  <Cursor fx:constant="TEXT" />
-               </cursor>
                 </PasswordField>
                 <Label id="loginlabel" alignment="CENTER" contentDisplay="CENTER" focusTraversable="false"
                        layoutX="113.0" layoutY="95.0" prefHeight="95.0" prefWidth="235.0" text="SPM' APP"
                        textAlignment="CENTER">
                     <font>
-                        <Font name="Symbol" size="40.0" />
+                        <Font name="Symbol" size="40.0"/>
                     </font>
                 </Label>
                 <ImageView fitHeight="39.0" fitWidth="38.0" layoutX="61.0" layoutY="274.0" opacity="0.35">
                     <image>
-                        <Image url="@../source/padlock.png" />
+                        <Image url="@../source/padlock.png"/>
                     </image>
                 </ImageView>
                 <TextField fx:id="tfUsername" layoutX="105.0" layoutY="219.0" prefHeight="40.0" prefWidth="250.0"
                            promptText="Tên đăng nhập" styleClass="username_f">
                     <font>
-                        <Font size="20.0" />
+                        <Font size="20.0"/>
                     </font>
-               <cursor>
-                  <Cursor fx:constant="TEXT" />
-               </cursor>
                 </TextField>
                 <Label id="createaccount" layoutX="528.0" layoutY="420.0" onMouseClicked="#create_acc_clicked"
                        prefHeight="17.0" prefWidth="142.0" styleClass="label_can_clicked" text="Tạo tài khoản?"/>
