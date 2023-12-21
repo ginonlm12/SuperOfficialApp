@@ -5,12 +5,15 @@ import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import models.UsersModel;
 
 import java.awt.*;
 import java.net.URI;
 
 
 public class Main extends Application {
+
+	public static UsersModel user = new UsersModel();
 	@Override
 	public void start(Stage primaryStage) {
 		try {
@@ -18,7 +21,7 @@ public class Main extends Application {
 //			Scene scene = new Scene(login,800,650);
 //			scene.getStylesheets().add("source/login.css");
 //
-			Parent login = FXMLLoader.load(getClass().getResource("/views/home.fxml"));
+			Parent login = FXMLLoader.load(getClass().getResource("/views/login.fxml"));
 			Scene scene = new Scene(login,800,650);
 //			scene.getStylesheets().add("source/nhankhau_va_hokhau.css");
 

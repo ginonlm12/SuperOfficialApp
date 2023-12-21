@@ -17,6 +17,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
+import static application.Main.user;
 import static services.MysqlConnection.getMysqlConnection;
 
 public class LoginController {
@@ -31,7 +32,7 @@ public class LoginController {
 		String password = tfPassword.getText();
 		if (conn == null) conn = getMysqlConnection();
 
-		// SQL query to check credentials
+		// SQL query để kiểm tra danh tính
 		String sql = "SELECT * FROM users WHERE username = ? AND password = ?";
 		PreparedStatement preparedStatement = conn.prepareStatement(sql);
 		preparedStatement.setString(1, username);
@@ -42,6 +43,8 @@ public class LoginController {
 		boolean have_first_row = resultSet.next();
 
 		if (have_first_row) {
+			user.setUsername(username);
+			user.setPasswd(password);
 			showMainMenu(event);
 			conn.close();
 		}
