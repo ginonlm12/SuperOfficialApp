@@ -18,6 +18,7 @@ import services.UserService;
 
 import java.io.IOException;
 import java.net.URL;
+
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
@@ -29,7 +30,6 @@ public class LoginController implements Initializable {
 	private TextField tfUsername;
 	@FXML
 	private PasswordField tfPassword;
-    Connection conn = null;
 
     public void Login(ActionEvent event) throws IOException, SQLException, ClassNotFoundException {
         String username = tfUsername.getText();

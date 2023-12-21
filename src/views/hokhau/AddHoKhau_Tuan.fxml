@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+
 <?import javafx.scene.control.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="600.0" prefWidth="800.0" styleClass="pane"
-            stylesheets="@../../source/change.css" xmlns="http://javafx.com/javafx/21"
-            fx:controller="controller.hokhau.AddHoKhau_Tuan">
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" styleClass="pane" stylesheets="@../../source/change.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.hokhau.AddHoKhau_Tuan">
    <children>
+
        <Pane layoutX="100.0" layoutY="46.0" prefHeight="224.0" prefWidth="600.0"
              style="-fx-background-color: #ffffff; -fx-background-radius: 10px;" styleClass="subpane"
              stylesheets="@../../source/change.css" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0">
@@ -87,7 +88,9 @@
       </Label>
       <Label layoutX="20.0" layoutY="285.0" text="Thông tin chủ hộ" textFill="WHITE">
          <font>
+
              <Font name="System Bold" size="20.0"/>
+
          </font>
       </Label>
    </children>

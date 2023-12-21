@@ -2,68 +2,65 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.*?>
+
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.text.*?>
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-            prefHeight="565.0" prefWidth="694.0" styleClass="pane"
-            stylesheets="@../../source/change.css" xmlns="http://javafx.com/javafx/21"
-            fx:controller="controller.hokhau.DetailHoKhau_Tuan">
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="565.0" prefWidth="694.0" styleClass="pane" stylesheets="@../../source/change.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.hokhau.DetailHoKhau_Tuan">
     <children>
         <Pane layoutX="54.0" layoutY="50.0" prefHeight="473.0" prefWidth="586.0" style="-fx-background-color: #ffffff;">
             <children>
-                <Label fx:id="LbTitle" layoutX="187.0" layoutY="14.0" prefHeight="42.0" prefWidth="236.0"
-                       text="Thông tin hộ khẩu ">
+                <Label fx:id="LbTitle" layoutX="187.0" layoutY="14.0" prefHeight="42.0" prefWidth="236.0" text="Thông tin hộ khẩu ">
                     <font>
-                        <Font name="System Bold Italic" size="22.0"/>
+                        <Font name="System Bold Italic" size="22.0" />
                     </font>
                 </Label>
                 <Label layoutX="360.0" layoutY="83.0" prefHeight="30.0" prefWidth="113.0" text="ID hộ khẩu ">
                     <font>
-                        <Font size="18.0"/>
+                        <Font size="18.0" />
                     </font>
                 </Label>
-                <TextField fx:id="tfSoPhong" editable="false" layoutX="183.0" layoutY="77.0" prefHeight="39.0"
-                           prefWidth="92.0" styleClass="text-field-rounded" stylesheets="@../../source/Main.css">
+                <TextField fx:id="tfSoPhong" editable="false" layoutX="183.0" layoutY="77.0" prefHeight="39.0" prefWidth="92.0" styleClass="text-field-rounded" stylesheets="@../../source/Main.css">
                     <font>
-                        <Font size="14.0"/>
+                        <Font size="14.0" />
                     </font>
+
                     <cursor>
                         <Cursor fx:constant="TEXT"/>
                     </cursor>
                 </TextField>
                 <Label layoutX="61.0" layoutY="83.0" prefHeight="30.0" prefWidth="105.0" text="Số phòng">
                     <font>
-                        <Font size="18.0"/>
+                        <Font size="18.0" />
                     </font>
                 </Label>
-                <TextField fx:id="tfIDHoKhau" editable="false" layoutX="486.0" layoutY="78.0" prefHeight="39.0"
-                           prefWidth="68.0" styleClass="text-field-rounded" stylesheets="@../../source/Main.css">
+                <TextField fx:id="tfIDHoKhau" editable="false" layoutX="486.0" layoutY="78.0" prefHeight="39.0" prefWidth="68.0" styleClass="text-field-rounded" stylesheets="@../../source/Main.css">
                     <font>
-                        <Font size="14.0"/>
+                        <Font size="14.0" />
                     </font>
                     <cursor>
                         <Cursor fx:constant="TEXT"/>
                     </cursor>
+
                 </TextField>
                 <Label layoutX="442.0" layoutY="140.0" prefHeight="30.0" prefWidth="37.0" text="ID ">
                     <font>
-                        <Font size="18.0"/>
+                        <Font size="18.0" />
                     </font>
                 </Label>
-                <TextField fx:id="tfTenChuHo" editable="false" layoutX="184.0" layoutY="138.0" prefHeight="39.0"
-                           prefWidth="245.0" styleClass="text-field-rounded" stylesheets="@../../source/Main.css">
+                <TextField fx:id="tfTenChuHo" editable="false" layoutX="184.0" layoutY="138.0" prefHeight="39.0" prefWidth="245.0" styleClass="text-field-rounded" stylesheets="@../../source/Main.css">
                     <font>
-                        <Font size="14.0"/>
+                        <Font size="14.0" />
                     </font>
+
                     <cursor>
                         <Cursor fx:constant="TEXT"/>
                     </cursor>
                 </TextField>
-                <TextField fx:id="tfIDChuHo" editable="false" layoutX="486.0" layoutY="135.0" prefHeight="39.0"
-                           prefWidth="68.0" styleClass="text-field-rounded" stylesheets="@../../source/Main.css">
+                <TextField fx:id="tfIDChuHo" editable="false" layoutX="486.0" layoutY="135.0" prefHeight="39.0" prefWidth="68.0" styleClass="text-field-rounded" stylesheets="@../../source/Main.css">
                     <font>
-                        <Font size="14.0"/>
+                        <Font size="14.0" />
                     </font>
                     <cursor>
                         <Cursor fx:constant="TEXT"/>
@@ -71,18 +68,17 @@
                 </TextField>
                 <Label layoutX="61.0" layoutY="143.0" prefHeight="30.0" prefWidth="105.0" text="Chủ hộ">
                     <font>
-                        <Font size="18.0"/>
+                        <Font size="18.0" />
                     </font>
                 </Label>
                 <Label layoutX="61.0" layoutY="196.0" prefHeight="30.0" prefWidth="105.0" text="Ngày đến">
                     <font>
-                        <Font size="18.0"/>
+                        <Font size="18.0" />
                     </font>
                 </Label>
-                <TextField fx:id="tfNgayDen" editable="false" layoutX="185.0" layoutY="191.0" prefHeight="39.0"
-                           prefWidth="175.0" styleClass="text-field-rounded" stylesheets="@../../source/Main.css">
+                <TextField fx:id="tfNgayDen" editable="false" layoutX="185.0" layoutY="191.0" prefHeight="39.0" prefWidth="175.0" styleClass="text-field-rounded" stylesheets="@../../source/Main.css">
                     <font>
-                        <Font size="14.0"/>
+                        <Font size="14.0" />
                     </font>
                     <cursor>
                         <Cursor fx:constant="TEXT"/>
@@ -90,13 +86,12 @@
                 </TextField>
                 <Label layoutX="61.0" layoutY="255.0" prefHeight="30.0" prefWidth="105.0" text="Ngày đi">
                     <font>
-                        <Font size="18.0"/>
+                        <Font size="18.0" />
                     </font>
                 </Label>
-                <TextField fx:id="tfNgayDi" editable="false" layoutX="185.0" layoutY="250.0" prefHeight="39.0"
-                           prefWidth="175.0" styleClass="text-field-rounded" stylesheets="@../../source/Main.css">
+                <TextField fx:id="tfNgayDi" editable="false" layoutX="185.0" layoutY="250.0" prefHeight="39.0" prefWidth="175.0" styleClass="text-field-rounded" stylesheets="@../../source/Main.css">
                     <font>
-                        <Font size="14.0"/>
+                        <Font size="14.0" />
                     </font>
                     <cursor>
                         <Cursor fx:constant="TEXT"/>
@@ -104,22 +99,21 @@
                 </TextField>
                 <Label layoutX="61.0" layoutY="311.0" prefHeight="30.0" prefWidth="105.0" text="SĐT liên hệ">
                     <font>
-                        <Font size="18.0"/>
+                        <Font size="18.0" />
                     </font>
                 </Label>
-                <TextField fx:id="tfSDTLienHe" editable="false" layoutX="185.0" layoutY="306.0" prefHeight="39.0"
-                           prefWidth="175.0" promptText="(Chưa điền)" styleClass="text-field-rounded"
-                           stylesheets="@../../source/Main.css">
+                <TextField fx:id="tfSDTLienHe" editable="false" layoutX="185.0" layoutY="306.0" prefHeight="39.0" prefWidth="175.0" promptText="(Chưa điền)" styleClass="text-field-rounded" stylesheets="@../../source/Main.css">
                     <font>
-                        <Font size="14.0"/>
+                        <Font size="14.0" />
                     </font>
+
                     <cursor>
                         <Cursor fx:constant="TEXT"/>
                     </cursor>
                 </TextField>
                 <Label layoutX="61.0" layoutY="371.0" prefHeight="30.0" prefWidth="113.0" text="Số thành viên ">
                     <font>
-                        <Font size="18.0"/>
+                        <Font size="18.0" />
                     </font>
                 </Label>
                 <TextField fx:id="tfSoTV" editable="false" layoutX="187.0" layoutY="368.0" prefHeight="39.0"
@@ -132,7 +126,7 @@
                        prefHeight="20.0" prefWidth="105.0" text="Xem chi tiết &gt;&gt;" textFill="#24b6df"
                        underline="true">
                     <font>
-                        <Font name="System Italic" size="14.0"/>
+                        <Font name="System Italic" size="14.0" />
                     </font>
                     <cursor>
                         <Cursor fx:constant="HAND"/>
@@ -142,6 +136,7 @@
             <cursor>
                 <Cursor fx:constant="DEFAULT"/>
             </cursor>
+
         </Pane>
     </children>
 </AnchorPane>
