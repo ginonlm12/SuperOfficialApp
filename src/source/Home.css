@@ -1,34 +1,48 @@
+/* Cac button trong view nay */
+#menubutton {
+    -fx-background-color: #ffffff;
+}
+
 .buttoninmenu{
     -fx-background-color : #ffffff;
     -fx-text-fill: #000000;
+    -fx-font-family: Monaco;
     -fx-font-size: 18px;
 }
 
 .buttoninmenu .image-view {
-    -fx-fitwidth: 1px; /* Set the desired width for images within buttons */
-    -fx-fitheight: 1px;
     -fx-opacity: 0.5;
+}
+
+/*Khi chuot di vao nut*/
+.buttoninmenu:hover {
+    -fx-background-color : #f5f5f5;
 }
 
 #logobtn {
     -fx-background-color : #ffffff;
+    -fx-text-fill: #616161;
     -fx-font-family: Lucida Console;
     -fx-font-size: 24px;
     -fx-font-weight: bold;
+    -fx-font-color: #ffffff;
 }
 
+#logobtn: hover {
+    -fx-text-fill: linear-gradient(to bottom right, #ff0000, #ff0000 0.67%, #ff0000 20.19%, #ccff00 38.05%, #00ff33 60.25%, #01ffbf 76.84%, #ff0000 97.87%, #ff0000 100%);
+}
+
+
+/* Cac bar */
 #topbar {
     -fx-background-color: #ffffff;
-    -fx-border-color: #f0f4f7; /* Set the color of the border */
+    -fx-border-color: #f0f4f7;
     -fx-border-width: 1px;
 }
 
 #menubar {
     -fx-background-color: #ffffff;
-    -fx-border-color: #f0f4f7; /* Set the color of the border */
+    -fx-border-color: #f0f4f7;
     -fx-border-width: 1px;
 }
 
-#menubutton {
-    -fx-background-color: #ffffff;
-}

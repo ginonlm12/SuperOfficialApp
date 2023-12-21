@@ -1,60 +1,93 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
+<?import javafx.scene.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="600.0" prefWidth="800.0" styleClass="pane"
             stylesheets="@../../source/change.css" xmlns="http://javafx.com/javafx/21"
             fx:controller="controller.hokhau.AddHoKhau_Tuan">
    <children>
-      <Pane layoutX="100.0" layoutY="46.0" prefHeight="224.0" prefWidth="600.0"
-            style="-fx-background-color: #ffffff; -fx-background-radius: 10px;" styleClass="subpane"
-            stylesheets="@../../source/change.css" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0">
+       <Pane layoutX="100.0" layoutY="46.0" prefHeight="224.0" prefWidth="600.0"
+             style="-fx-background-color: #ffffff; -fx-background-radius: 10px;" styleClass="subpane"
+             stylesheets="@../../source/change.css" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0">
          <children>
-            <TextField fx:id="tfMaHoKhau" editable="false" layoutX="140.0" layoutY="15.0" prefHeight="39.0"
-                       prefWidth="100.0" AnchorPane.leftAnchor="140.0" AnchorPane.rightAnchor="360.0"/>
-            <Label layoutX="25.0" layoutY="26.0" text="Mã hộ khẩu" AnchorPane.leftAnchor="25.0"/>
-            <Label layoutX="14.0" layoutY="82.0" AnchorPane.leftAnchor="14.0"/>
-            <TextField fx:id="tfSdt" layoutX="140.0" layoutY="174.0" prefHeight="39.0" prefWidth="210.0"
-                       AnchorPane.leftAnchor="140.0" AnchorPane.rightAnchor="250.0"/>
-            <Label layoutX="18.0" layoutY="135.0" text="Ngày chuyển đến"/>
-            <DatePicker fx:id="NgayDen" layoutX="140.0" layoutY="124.0" prefHeight="39.0" prefWidth="210.0"/>
-            <Label layoutX="18.0" layoutY="82.0" text="Số phòng "/>
-            <Label layoutX="18.0" layoutY="176.0" text="SĐT liên hệ"/>
-            <ChoiceBox fx:id="SoPhong" layoutX="140.0" layoutY="71.0" prefHeight="39.0" prefWidth="100.0"/>
+             <TextField fx:id="tfMaHoKhau" editable="false" layoutX="140.0" layoutY="15.0" prefHeight="39.0"
+                        prefWidth="100.0" AnchorPane.leftAnchor="140.0" AnchorPane.rightAnchor="360.0">
+                 <cursor>
+                     <Cursor fx:constant="DEFAULT"/>
+                 </cursor>
+             </TextField>
+             <Label layoutX="25.0" layoutY="26.0" text="Mã hộ khẩu" AnchorPane.leftAnchor="25.0"/>
+             <Label layoutX="14.0" layoutY="82.0" AnchorPane.leftAnchor="14.0"/>
+             <TextField fx:id="tfSdt" layoutX="140.0" layoutY="174.0" prefHeight="39.0" prefWidth="210.0"
+                        AnchorPane.leftAnchor="140.0" AnchorPane.rightAnchor="250.0">
+                 <cursor>
+                     <Cursor fx:constant="TEXT"/>
+                 </cursor>
+             </TextField>
+             <Label layoutX="18.0" layoutY="135.0" text="Ngày chuyển đến"/>
+             <DatePicker fx:id="NgayDen" layoutX="140.0" layoutY="124.0" prefHeight="39.0" prefWidth="210.0">
+                 <cursor>
+                     <Cursor fx:constant="HAND"/>
+                 </cursor>
+             </DatePicker>
+             <Label layoutX="18.0" layoutY="82.0" text="Số phòng "/>
+             <Label layoutX="18.0" layoutY="176.0" text="SĐT liên hệ"/>
+             <ChoiceBox fx:id="SoPhong" layoutX="140.0" layoutY="71.0" prefHeight="39.0" prefWidth="100.0">
+                 <cursor>
+                     <Cursor fx:constant="HAND"/>
+                 </cursor>
+             </ChoiceBox>
          </children>
       </Pane>
-      <Pane layoutX="101.0" layoutY="322.0" prefHeight="209.0" prefWidth="598.0"
-            style="-fx-background-color: #ffffff; -fx-background-radius: 10px;" AnchorPane.leftAnchor="101.0"
-            AnchorPane.rightAnchor="101.0">
+       <Pane layoutX="101.0" layoutY="322.0" prefHeight="209.0" prefWidth="598.0"
+             style="-fx-background-color: #ffffff; -fx-background-radius: 10px;" AnchorPane.leftAnchor="101.0"
+             AnchorPane.rightAnchor="101.0">
          <children>
-            <TextField fx:id="tfMaChuHo" editable="false" layoutX="93.0" layoutY="27.0" prefHeight="39.0"
-                       prefWidth="63.0" AnchorPane.leftAnchor="93.0" AnchorPane.rightAnchor="443.20000000000005"/>
-            <Label layoutX="15.0" layoutY="161.0" prefHeight="17.0" prefWidth="56.0" text="Số CCCD"
-                   AnchorPane.leftAnchor="15.0"/>
-            <Label layoutX="15.0" layoutY="38.0" text="Mã chủ hộ" AnchorPane.leftAnchor="15.0"/>
-            <Label layoutX="208.0" layoutY="38.0" text="Họ tên chủ hộ" AnchorPane.leftAnchor="208.0"/>
-            <TextField fx:id="tfCCCD" layoutX="113.0" layoutY="150.0" prefHeight="39.0" prefWidth="373.0"
-                       AnchorPane.leftAnchor="113.0" AnchorPane.rightAnchor="112.40000000000009"/>
-            <TextField fx:id="tfTenChuHo" layoutX="309.0" layoutY="27.0" prefHeight="39.0" prefWidth="239.0"
-                       AnchorPane.leftAnchor="309.0" AnchorPane.rightAnchor="50.40000000000009"/>
-            <Label layoutX="15.0" layoutY="105.0" text="Quan hệ với chủ hộ"/>
-            <TextField fx:id="tfChuHo" editable="false" layoutX="145.0" layoutY="94.0" prefHeight="39.0"
-                       prefWidth="126.0" text="Chủ hộ"/>
-            <Label layoutX="333.0" layoutY="105.0" text="Giới tính"/>
-            <ChoiceBox fx:id="GioiTinh" layoutX="399.0" layoutY="94.0" prefHeight="39.0" prefWidth="114.0"/>
+             <TextField fx:id="tfMaChuHo" editable="false" layoutX="93.0" layoutY="27.0" prefHeight="39.0"
+                        prefWidth="63.0" AnchorPane.leftAnchor="93.0" AnchorPane.rightAnchor="443.20000000000005"/>
+             <Label layoutX="15.0" layoutY="161.0" prefHeight="17.0" prefWidth="56.0" text="Số CCCD"
+                    AnchorPane.leftAnchor="15.0"/>
+             <Label layoutX="15.0" layoutY="38.0" text="Mã chủ hộ" AnchorPane.leftAnchor="15.0"/>
+             <Label layoutX="208.0" layoutY="38.0" text="Họ tên chủ hộ" AnchorPane.leftAnchor="208.0"/>
+             <TextField fx:id="tfCCCD" layoutX="113.0" layoutY="150.0" prefHeight="39.0" prefWidth="373.0"
+                        AnchorPane.leftAnchor="113.0" AnchorPane.rightAnchor="112.40000000000009">
+                 <cursor>
+                     <Cursor fx:constant="TEXT"/>
+                 </cursor>
+             </TextField>
+             <TextField fx:id="tfTenChuHo" layoutX="309.0" layoutY="27.0" prefHeight="39.0" prefWidth="239.0"
+                        AnchorPane.leftAnchor="309.0" AnchorPane.rightAnchor="50.40000000000009">
+                 <cursor>
+                     <Cursor fx:constant="HAND"/>
+                 </cursor>
+             </TextField>
+             <Label layoutX="15.0" layoutY="105.0" text="Quan hệ với chủ hộ"/>
+             <TextField fx:id="tfChuHo" editable="false" layoutX="145.0" layoutY="94.0" prefHeight="39.0"
+                        prefWidth="126.0" text="Chủ hộ"/>
+             <Label layoutX="333.0" layoutY="105.0" text="Giới tính"/>
+             <ChoiceBox fx:id="GioiTinh" layoutX="399.0" layoutY="94.0" prefHeight="39.0" prefWidth="114.0">
+                 <cursor>
+                     <Cursor fx:constant="HAND"/>
+                 </cursor>
+             </ChoiceBox>
          </children>
       </Pane>
-      <Button layoutX="366.0" layoutY="553.0" mnemonicParsing="false" onAction="#addHoKhau"
-              style="-fx-background-color: #ffffff;" text="Xác nhận"/>
+       <Button layoutX="366.0" layoutY="553.0" mnemonicParsing="false" onAction="#addHoKhau"
+               style="-fx-background-color: #ffffff;" text="Xác nhận">
+           <cursor>
+               <Cursor fx:constant="HAND"/>
+           </cursor>
+       </Button>
       <Label layoutX="37.0" layoutY="14.0" text="Thông tin hộ khẩu" textFill="WHITE">
          <font>
-            <Font name="System Bold" size="20.0"/>
+             <Font name="System Bold" size="20.0"/>
          </font>
       </Label>
       <Label layoutX="20.0" layoutY="285.0" text="Thông tin chủ hộ" textFill="WHITE">
          <font>
-            <Font name="System Bold" size="20.0"/>
+             <Font name="System Bold" size="20.0"/>
          </font>
       </Label>
    </children>

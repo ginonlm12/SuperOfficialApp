@@ -7,8 +7,8 @@
             stylesheets="@../../source/change.css" xmlns="http://javafx.com/javafx/21"
             fx:controller="controller.hokhau.UpdateHoKhau_Lam">
     <children>
-        <Pane layoutX="55.333333333333336" layoutY="69.0" prefHeight="441.0" prefWidth="507.0" styleClass="subpane"
-              AnchorPane.leftAnchor="55.0" AnchorPane.rightAnchor="38.0">
+        <Pane fx:id="PaneField" layoutX="55.333333333333336" layoutY="69.0" prefHeight="441.0" prefWidth="507.0"
+              styleClass="subpane" AnchorPane.leftAnchor="55.0" AnchorPane.rightAnchor="38.0">
             <children>
                 <TextField fx:id="tfHoTen" editable="false" layoutX="130.0" layoutY="161.0" prefHeight="39.0"
                            prefWidth="346.0" style="-fx-background-color: #eaeaea;" styleClass="text-field-rounded"

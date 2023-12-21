@@ -69,13 +69,6 @@ public class NhanKhauController_Lam implements Initializable {
 			nhankhau.setSoPhong(NhanKhauService_Lam.getSoPhong(nhankhau.getIDHoKhau()));
 		}
 
-		// tao map anh xa gia tri Id sang maHo
-		//Map<Integer, Integer> mapIdToMaho = new HashMap<>();
-		//List<QuanHeModel> listQuanHe = new QuanHeService().getListQuanHe();
-//		listQuanHe.forEach(quanhe -> {
-//			mapIdToMaho.put(quanhe.getIdThanhVien(), quanhe.getMaHo());
-//		});
-
 		// thiet lap cac cot cho tableviews
 		colMaNhanKhau.setCellValueFactory(new PropertyValueFactory<NhanKhauModel_Lam, String>("IDNhanKhau"));
 		colTen.setCellValueFactory(new PropertyValueFactory<NhanKhauModel_Lam, String>("HoTen"));
