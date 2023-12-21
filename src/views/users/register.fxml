@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21"
+            fx:controller="controller.users.registerController">
+    <children>
+        <TextField layoutX="225.0" layoutY="79.0"/>
+        <TextField layoutX="225.0" layoutY="184.0"/>
+        <TextField layoutX="225.0" layoutY="239.0"/>
+        <PasswordField layoutX="225.0" layoutY="132.0"/>
+        <Label layoutX="226.0" layoutY="59.0" prefHeight="17.0" prefWidth="149.0" text="Tên đăng nhập"/>
+        <Label layoutX="225.0" layoutY="115.0" prefHeight="17.0" prefWidth="149.0" text="Mật khẩu"/>
+        <Label layoutX="225.0" layoutY="164.0" prefHeight="17.0" prefWidth="149.0" text="Email"/>
+        <Label layoutX="225.0" layoutY="219.0" prefHeight="17.0" prefWidth="149.0" text="Số điện thoại"/>
+        <Button layoutX="267.0" layoutY="276.0" mnemonicParsing="false" onAction="#confirmClicked" text="Xác nhận"/>
+    </children>
+</AnchorPane>
