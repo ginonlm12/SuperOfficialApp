@@ -28,7 +28,7 @@
                   <Font size="20.0" />
                </font>
             </PasswordField>
-            <Label fx:id="welcomeLabel" layoutX="46.0" layoutY="90.0" prefHeight="95.0" prefWidth="300.0" text="Log In">
+            <Label id="loginlabel" layoutX="46.0" layoutY="90.0" prefHeight="95.0" prefWidth="300.0" text="Log In">
                <font>
                   <Font name="Symbol" size="40.0" />
                </font>
@@ -49,7 +49,7 @@
                </font>
             </TextField>
             <Label id="createaccount" layoutX="528.0" layoutY="420.0" onMouseClicked="#create_acc_clicked" prefHeight="17.0" prefWidth="142.0" styleClass="label_can_clicked" text="Create an account?" />
-            <Label fx:id="forgot_label" layoutX="106.0" layoutY="381.0" onMouseClicked="#forgot_clicked" prefHeight="17.0" prefWidth="249.0" styleClass="label_can_clicked" text="Forgotten password?" visible="false" />
+            <Label fx:id="forgot_label" layoutX="106.0" layoutY="381.0" onMouseClicked="#forgot_clicked" prefHeight="17.0" prefWidth="249.0" styleClass="label_can_clicked" text="Forgotten password?" />
          </children>
       </AnchorPane>
    </children>

@@ -24,11 +24,10 @@ public class LoginController {
 	private TextField tfUsername;
 	@FXML
 	private PasswordField tfPassword;
-
-	@FXML
-	private Label forgot_label;
+//	@FXML
+//	private Label forgot_label;
 	Connection conn = null;
-	int count_times_wrong_acc = 0;
+
 	public void Login(ActionEvent event) throws IOException,SQLException, ClassNotFoundException {
 		String username = tfUsername.getText();
 		String password = tfPassword.getText();
@@ -49,14 +48,9 @@ public class LoginController {
 			conn.close();
 		}
 		else {
-			count_times_wrong_acc += 1;
 			Alert alert = new Alert(AlertType.WARNING, "Bạn nhập sai tài khoản hoặc mật khẩu rồi !", ButtonType.OK);
 			alert.setHeaderText(null);
 			alert.showAndWait();
-			if (count_times_wrong_acc == 3) {
-				count_times_wrong_acc = 0;
-				forgot_label.setVisible(true);
-			}
 		}
 
 	}
