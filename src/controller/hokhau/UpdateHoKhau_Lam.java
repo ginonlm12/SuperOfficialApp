@@ -32,38 +32,39 @@ public class UpdateHoKhau_Lam {
 	ObservableList<Integer> IDNhanKhauinHoKhau = FXCollections.observableArrayList();
 	ObservableList<Integer> SoPhong = FXCollections.observableArrayList();
 
-	@FXML
-	private Pane PaneField;
-	@FXML
-	private TextField tfHoTen;
-	@FXML
-	private TextField tfIDHoKhau;
-	@FXML
-    private ComboBox<Integer> tfIDNhanKhau;
-	@FXML
-	private DatePicker tfNgayDen;
-	@FXML
-	private TextField tfSDT;
-	@FXML
+    @FXML
+    private Pane PaneField;
+    @FXML
+    private TextField tfHoTen;
+    @FXML
+    private TextField tfIDHoKhau;
+    @FXML
+      private ComboBox<Integer> tfIDNhanKhau;
+    @FXML
+    private DatePicker tfNgayDen;
+    @FXML
+    private TextField tfSDT;
+    @FXML
     private ComboBox<Integer> tfSoPhong;
+  
 	private HoKhauBean_Tuan hoKhauBean;
 	private HoKhauBean_Tuan newhoKhauBean;
 	private List<NhanKhauModel_Lam> nhanKhauList = new ArrayList<>();
 	private HoKhauModel_Tuan hoKhauModel;
 	private NhanKhauModel_Lam chuHo;
 
-	//set Mouse Moved
-	private void setMouseMoved() {
-		PaneField.setOnMouseMoved(event -> {
-			Node node = event.getPickResult().getIntersectedNode();
-			if (node instanceof Label || node instanceof TextField) {
-				PaneField.setCursor(Cursor.TEXT);
-			}
-			if(node instanceof Button || node instanceof ComboBox || node instanceof DatePicker) {
-				PaneField.setCursor(Cursor.HAND);
-			}
-		});
-	}
+    //set Mouse Moved
+    private void setMouseMoved() {
+        PaneField.setOnMouseMoved(event -> {
+            Node node = event.getPickResult().getIntersectedNode();
+            if (node instanceof Label || node instanceof TextField) {
+                PaneField.setCursor(Cursor.TEXT);
+            }
+            if (node instanceof Button || node instanceof ComboBox || node instanceof DatePicker) {
+                PaneField.setCursor(Cursor.HAND);
+            }
+        });
+    }
 
 	@FXML
 	void updateHoKhau(ActionEvent event) throws SQLException, ClassNotFoundException, IOException {
@@ -141,6 +142,7 @@ public class UpdateHoKhau_Lam {
 	}
 
 	public void setHoKhauModel(HoKhauBean_Tuan hoKhauBean) throws ClassNotFoundException, SQLException {
+
 
 		this.hoKhauBean = hoKhauBean;
 		this.nhanKhauList = hoKhauBean.getListNhanKhau();

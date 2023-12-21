@@ -4,48 +4,60 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="600.0" prefWidth="800.0" stylesheets="@../source/Main.css"
-            xmlns="http://javafx.com/javafx/21" fx:controller="controller.NhanKhauController_Lam">
-   <children>
-       <TableView fx:id="tvNhanKhau" layoutX="11.0" layoutY="129.33333333333334" prefHeight="463.0" prefWidth="775.0"
-                  AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="11.0" AnchorPane.rightAnchor="14.0"
-                  AnchorPane.topAnchor="129.0">
-        <columns>
-          <TableColumn fx:id="colMaNhanKhau" prefWidth="38.0000022649765" text="ID" />
-          <TableColumn fx:id="colTen" prefWidth="154.00000762939453" text="Họ và tên" />
-            <TableColumn fx:id="colTuoi" prefWidth="66.66665649414062" text="Phòng" />
-            <TableColumn fx:id="colCMND" prefWidth="82.6666259765625" text="CCCD" />
-            <TableColumn fx:id="colSDT" prefWidth="118.6666259765625" text="Nghề nghiệp" />
-            <TableColumn fx:id="colMaHo" prefWidth="112.00006103515625" text="Ngày sinh" />
-            <TableColumn fx:id="colQHvsChuHo" prefWidth="187.3333740234375" text="Quan hệ với chủ hộ"/>
-        </columns>
-      </TableView>
-       <TextField fx:id="tfSearch" layoutX="7.0" layoutY="49.0" prefHeight="40.0" prefWidth="310.0"
-                  AnchorPane.bottomAnchor="510.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="300.0"
+<?import java.net.URL?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="600.0" prefWidth="800.0" styleClass="background"
+            stylesheets="@../source/nhankhau_va_hokhau.css" xmlns="http://javafx.com/javafx/21"
+            fx:controller="controller.NhanKhauController_Lam">
+    <children>
+        <TableView fx:id="tvNhanKhau" focusTraversable="false" layoutX="11.0" layoutY="124.0" prefHeight="466.0"
+                   prefWidth="769.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="15.0"
+                   AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="124.0">
+            <columns>
+                <TableColumn id="clmID" fx:id="colMaNhanKhau" prefWidth="38.0000022649765" styleClass="btnchan"
+                             text="ID"/>
+                <TableColumn fx:id="colTen" prefWidth="154.00000762939453" styleClass="btnle" text="Họ và tên"/>
+                <TableColumn fx:id="colTuoi" prefWidth="66.66665649414062" styleClass="btnchan" text="Phòng"/>
+                <TableColumn fx:id="colCMND" prefWidth="82.6666259765625" styleClass="btnle" text="CCCD"/>
+                <TableColumn fx:id="colSDT" prefWidth="118.6666259765625" styleClass="btnchan" text="Nghề nghiệp"/>
+                <TableColumn fx:id="colMaHo" prefWidth="112.00006103515625" styleClass="btnle" text="Ngày sinh"/>
+                <TableColumn fx:id="colQHvsChuHo" prefWidth="199.0" styleClass="btnchan" text="Quan hệ với chủ hộ"/>
+            </columns>
+        </TableView>
+        <TextField fx:id="tfSearch" layoutX="7.0" layoutY="49.0" prefHeight="41.0" prefWidth="310.0" styleClass="search"
+                   stylesheets="@../source/nhankhau_va_hokhau.css" AnchorPane.leftAnchor="15.0"
+                   AnchorPane.rightAnchor="300.0" AnchorPane.topAnchor="50.0"/>
+        <ComboBox id="choose" fx:id="cbChooseSearch" layoutX="345.0" layoutY="40.0" prefHeight="41.0" prefWidth="239.0"
+                  styleClass="boxluachon" stylesheets="@../source/nhankhau_va_hokhau.css" AnchorPane.rightAnchor="216.0"
                   AnchorPane.topAnchor="50.0"/>
-       <ComboBox fx:id="cbChooseSearch" layoutX="343.3333333333333" layoutY="49.0" prefHeight="40.0" prefWidth="181.0"
-                 AnchorPane.bottomAnchor="510.0" AnchorPane.leftAnchor="343.0" AnchorPane.rightAnchor="125.0"
-                 AnchorPane.topAnchor="50.0"/>
-       <Button layoutX="507.3333333333333" layoutY="50.0" mnemonicParsing="false" onAction="#searchNhanKhau"
-               prefHeight="40.0" prefWidth="129.0" text="Tìm kiếm" AnchorPane.bottomAnchor="510.0"
-               AnchorPane.leftAnchor="507.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="50.0"/>
-       <Button layoutX="100.0" layoutY="9.0" mnemonicParsing="false" onAction="#addNhanKhau" prefHeight="33.0"
-               prefWidth="150.0" styleClass="button1" stylesheets="@../source/Main.css" text="Thêm nhân khẩu"
-               textFill="#2e088d" wrapText="true"/>
-       <Button layoutX="250.0" layoutY="8.0" mnemonicParsing="false" onAction="#delNhanKhau" prefHeight="36.0"
-               prefWidth="150.0" styleClass="button1" stylesheets="@../source/Main.css" text="Xóa nhân khẩu"
-               textFill="#2e088d" wrapText="true"/>
-       <Button layoutX="400.0" layoutY="10.0" mnemonicParsing="false" onAction="#updateNhanKhau" prefHeight="33.0"
-               prefWidth="150.0" styleClass="button1" stylesheets="@../source/Main.css" text="Cập nhật nhân khẩu"
-               textFill="#2e088d" wrapText="true"/>
-       <Button layoutX="550.0" layoutY="10.0" mnemonicParsing="false" onAction="#showChiTiet" prefHeight="33.0"
-               prefWidth="150.0" styleClass="button1" stylesheets="@../source/Main.css" text="Xem chi tiết"
-               textFill="#2e088d" wrapText="true"/>
-       <Text layoutX="86.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0"
-             text="DANH SÁCH NHÂN KHẨU ĐANG CƯ TRÚ TẠI CHUNG CƯ BLUEMOON">
-           <font>
-               <Font name="System Bold Italic" size="17.0"/>
-           </font>
-       </Text>
-   </children>
+        <Button layoutX="507.0" layoutY="50.0" mnemonicParsing="false" onAction="#searchNhanKhau" prefHeight="40.0"
+                prefWidth="230.0" styleClass="btntimkiem" text="Tìm kiếm" AnchorPane.rightAnchor="15.0"
+                AnchorPane.topAnchor="50.0">
+            <stylesheets>
+                <URL value="@../source/nhankhau_va_hokhau.css"/>
+                <URL value="@../source/nhankhau_va_hokhau.css"/>
+            </stylesheets>
+        </Button>
+        <Button focusTraversable="false" layoutX="100.0" layoutY="10.0" mnemonicParsing="false" onAction="#addNhanKhau"
+                prefHeight="30.0" prefWidth="150.0" styleClass="buttonChucnang"
+                stylesheets="@../source/nhankhau_va_hokhau.css" text="Thêm nhân khẩu" textFill="#2e088d" wrapText="true"
+                AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="10.0"/>
+        <Button focusTraversable="false" layoutX="250.0" layoutY="10.0" mnemonicParsing="false" onAction="#delNhanKhau"
+                prefHeight="30.0" prefWidth="150.0" styleClass="buttonChucnang"
+                stylesheets="@../source/nhankhau_va_hokhau.css" text="Xóa nhân khẩu" textFill="#2e088d" wrapText="true"
+                AnchorPane.leftAnchor="250.0" AnchorPane.topAnchor="10.0"/>
+        <Button focusTraversable="false" layoutX="400.0" layoutY="10.0" mnemonicParsing="false"
+                onAction="#updateNhanKhau" prefHeight="30.0" prefWidth="150.0" styleClass="buttonChucnang"
+                stylesheets="@../source/nhankhau_va_hokhau.css" text="Cập nhật nhân khẩu" textFill="#2e088d"
+                wrapText="true" AnchorPane.topAnchor="10.0"/>
+        <Button focusTraversable="false" layoutX="550.0" layoutY="10.0" mnemonicParsing="false" onAction="#showChiTiet"
+                prefHeight="30.0" prefWidth="150.0" styleClass="buttonChucnang"
+                stylesheets="@../source/nhankhau_va_hokhau.css" text="Xem chi tiết" textFill="#2e088d" wrapText="true"
+                AnchorPane.topAnchor="10.0"/>
+        <Text layoutX="128.0" layoutY="116.0" strokeType="OUTSIDE" strokeWidth="0.0"
+              text="DANH SÁCH NHÂN KHẨU ĐANG CƯ TRÚ TẠI CHUNG CƯ BLUEMOON" textAlignment="CENTER">
+            <font>
+                <Font name="System Bold Italic" size="17.0"/>
+            </font>
+        </Text>
+    </children>
 </AnchorPane>
