@@ -27,12 +27,12 @@ public class LoginController {
 
 	@FXML
 	private Label forgot_label;
-
+	Connection conn = null;
 	int count_times_wrong_acc = 0;
 	public void Login(ActionEvent event) throws IOException,SQLException, ClassNotFoundException {
 		String username = tfUsername.getText();
 		String password = tfPassword.getText();
-		Connection conn = getMysqlConnection();
+		if (conn == null) conn = getMysqlConnection();
 
 		// SQL query to check credentials
 		String sql = "SELECT * FROM users WHERE username = ? AND password = ?";
@@ -46,6 +46,7 @@ public class LoginController {
 
 		if (have_first_row) {
 			showMainMenu(event);
+			conn.close();
 		}
 		else {
 			count_times_wrong_acc += 1;
@@ -62,9 +63,9 @@ public class LoginController {
 
 	void showMainMenu(ActionEvent event) throws IOException {
 		Parent home = FXMLLoader.load(getClass().getResource("/views/Home.fxml"));
-		Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
 		Scene scene = new Scene(home);
 
+		Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
 		stage.setScene(scene);
 		stage.setResizable(false);
 		stage.show();

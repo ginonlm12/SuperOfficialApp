@@ -7,11 +7,19 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.Control;
 import javafx.scene.effect.BoxBlur;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.control.MenuItem;
 import javafx.scene.layout.*;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.awt.*;
@@ -110,6 +118,41 @@ public class HomeController implements Initializable {
 		} catch (IOException e) {
 			throw new RuntimeException(e);
 		}
+	}
+
+	@FXML
+	void backupClicked(ActionEvent event) {
+		Alert alert = new Alert(Alert.AlertType.WARNING, "Tính năng đang phát triển!!!", ButtonType.OK);
+		alert.setHeaderText(null);
+		alert.showAndWait();
+	}
+
+	@FXML
+	void restoreClicked(ActionEvent event) {
+		Alert alert = new Alert(Alert.AlertType.WARNING, "Tính năng đang phát triển!!!", ButtonType.OK);
+		alert.setHeaderText(null);
+		alert.showAndWait();
+	}
+
+	@FXML
+	void changepassClicked(ActionEvent event) throws IOException	 {
+		Parent home = FXMLLoader.load(getClass().getResource("/views/users/changepass.fxml"));
+		Stage stage = new Stage();
+		stage.setScene(new Scene(home, 400, 300));
+		stage.setResizable(false);
+		stage.showAndWait();
+	}
+
+	@FXML
+	void logoutClicked(ActionEvent event)  throws IOException{
+
+		Parent home = FXMLLoader.load(getClass().getResource("/views/login.fxml"));
+		Scene scene = new Scene(home);
+
+		Stage stage = (Stage)((MenuItem) event.getSource()).getParentPopup().getOwnerNode().getScene().getWindow();
+		stage.setScene(scene);
+		stage.setResizable(false);
+		stage.show();
 	}
 
 	@Override

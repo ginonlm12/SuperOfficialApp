@@ -31,10 +31,11 @@
                   </Button>
                   <MenuButton id="menubutton" focusTraversable="false" layoutX="93.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="126.0" text="Manager" AnchorPane.rightAnchor="0.0">
                     <items>
-                      <MenuItem mnemonicParsing="false" text="Thay đổi mật khẩu" />
+                      <MenuItem mnemonicParsing="false" onAction="#changepassClicked" text="Thay đổi mật khẩu" />
+                        <MenuItem mnemonicParsing="false" onAction="#logoutClicked" text="Đăng xuất" />
                         <SeparatorMenuItem mnemonicParsing="false" />
-                        <MenuItem mnemonicParsing="false" text="Restore Dữ liệu" />
-                        <MenuItem mnemonicParsing="false" text="Backup Dữ liệu" />
+                        <MenuItem mnemonicParsing="false" onAction="#restoreClicked" text="Restore Dữ liệu" />
+                        <MenuItem mnemonicParsing="false" onAction="#backupClicked" text="Backup Dữ liệu" />
                     </items>
                      <graphic>
                         <ImageView fitHeight="38.0" fitWidth="38.0">

@@ -14,12 +14,12 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-	    	Parent login = FXMLLoader.load(getClass().getResource("/views/Login.fxml"));
+//	    	Parent login = FXMLLoader.load(getClass().getResource("/views/Login.fxml"));
+//			Scene scene = new Scene(login,800,650);
+//			scene.getStylesheets().add("source/login.css");
+//
+			Parent login = FXMLLoader.load(getClass().getResource("/views/home.fxml"));
 			Scene scene = new Scene(login,800,650);
-			scene.getStylesheets().add("source/login.css");
-
-//			Parent login = FXMLLoader.load(getClass().getResource("/views/login.fxml"));
-//			Scene scene = new Scene(login,800,600);
 //			scene.getStylesheets().add("source/nhankhau_va_hokhau.css");
 
 			primaryStage.setScene(scene);

@@ -22,8 +22,8 @@
         </columns>
       </TableView>
        <TextField fx:id="tfSearch" layoutX="7.0" layoutY="49.0" prefHeight="41.0" prefWidth="310.0" styleClass="search" stylesheets="@../source/nhankhau_va_hokhau.css" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="300.0" AnchorPane.topAnchor="50.0" />
-       <ComboBox id="choose" fx:id="cbChooseSearch" layoutX="345.0" layoutY="40.0" prefHeight="41.0" prefWidth="200.0" styleClass="boxluachon" stylesheets="@../source/nhankhau_va_hokhau.css" AnchorPane.rightAnchor="255.0" AnchorPane.topAnchor="50.0" />
-       <Button layoutX="507.0" layoutY="50.0" mnemonicParsing="false" onAction="#searchNhanKhau" prefHeight="40.0" prefWidth="280.0" styleClass="btntimkiem" text="Tìm kiếm" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="50.0">
+       <ComboBox id="choose" fx:id="cbChooseSearch" layoutX="345.0" layoutY="40.0" prefHeight="41.0" prefWidth="239.0" styleClass="boxluachon" stylesheets="@../source/nhankhau_va_hokhau.css" AnchorPane.rightAnchor="216.0" AnchorPane.topAnchor="50.0" />
+       <Button layoutX="507.0" layoutY="50.0" mnemonicParsing="false" onAction="#searchNhanKhau" prefHeight="40.0" prefWidth="230.0" styleClass="btntimkiem" text="Tìm kiếm" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="50.0">
            <stylesheets>
                <URL value="@../source/nhankhau_va_hokhau.css" />
                <URL value="@../source/nhankhau_va_hokhau.css" />

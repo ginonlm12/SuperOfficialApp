@@ -33,14 +33,16 @@
     -fx-background-color: #858c1d;
 }
 
+.boxluachon: hover{
+    -fx-background-color: #858c1d;
+}
+
 .boxluachon .list-cell:selected {
     -fx-font-weight: bold;
     -fx-background-color: #557C55;
     -fx-text-fill: #D2DE32;
 }
 
-
-
-#chosse {
-    -fx-text-fill: #D2DE32;
+.boxluachon: hover .list-cell:selected {
+    -fx-background-color: #858c1d;
 }
