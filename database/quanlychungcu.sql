@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th12 20, 2023 lúc 10:48 AM
+-- Thời gian đã tạo: Th12 21, 2023 lúc 03:31 PM
 -- Phiên bản máy phục vụ: 10.4.28-MariaDB
 -- Phiên bản PHP: 8.0.28
 
@@ -90,7 +90,7 @@ CREATE TABLE `nhankhau` (
 
 INSERT INTO `nhankhau` (`IDNhanKhau`, `IDHoKhau`, `QHvsChuHo`, `HoTen`, `NgaySinh`, `CCCD`, `NgheNghiep`, `GioiTinh`, `DanToc`, `QueQuan`) VALUES
 (1, 1, 'Vợ/Chồng', 'Nguyễn Hoàng Lâm', '2003-02-11', '(Chưa nhập)', 'Sinh viên', 'Nam', 'Kinh', 'Đồng Hợp, Quỳ Hợp, Nghệ An, Việt Nam'),
-(2, 1, 'Chủ hộ', 'Nguyễn Trọng Tuấn', '2003-02-04', '(Chưa nhập)', '(Chưa nhập)', 'Nam', 'Kinh', '(Chưa nhập)'),
+(2, 1, 'Chủ hộ', 'Nguyễn Trọng Tuấn', '2003-02-04', '(Chưa nhập)', 'Quái vật', 'Nam', 'Kinh', '(Chưa nhập)'),
 (3, 1, 'Vợ/Chồng', 'Nguyễn Minh Quang', '2003-04-14', '(Chưa nhập)', '(Chưa nhập)', '(Chưa nhập)', '(Chưa nhập)', '(Chưa nhập)'),
 (4, 2, 'Chủ hộ', 'Đào Quốc Tuấn', '2003-01-01', '(Chưa nhập)', '(Chưa nhập)', '(Chưa nhập)', '(Chưa nhập)', '(Chưa nhập)'),
 (5, 3, 'Bố mẹ', 'Vương Đình Minh', '2003-07-19', '(Chưa nhập)', '(Chưa nhập)', '(Chưa nhập)', '(Chưa nhập)', '(Chưa nhập)'),
@@ -122,12 +122,12 @@ CREATE TABLE `phong` (
 
 INSERT INTO `phong` (`SoPhong`, `DienTich`, `LoaiPhong`) VALUES
 (1, 100, 'Cao cấp'),
-(2, 20, '(Chưa điền)'),
-(3, 0, '(Chưa điền)'),
+(2, 20, 'Thường'),
+(3, 20, 'Cao cấp'),
 (4, 50, '(Chưa điền)'),
 (5, 25, '(Chưa điền)'),
 (6, 20, '(Chưa điền)'),
-(7, 100, 'Cao cấp'),
+(7, 40, 'Cao cấp'),
 (9, 40, 'Thường');
 
 -- --------------------------------------------------------
@@ -142,6 +142,26 @@ CREATE TABLE `thuphi` (
   `TienDaDong` int(11) NOT NULL,
   `NgayDong` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `users`
+--
+
+CREATE TABLE `users` (
+  `username` varchar(20) NOT NULL,
+  `password` varchar(20) NOT NULL DEFAULT '0',
+  `SDT` varchar(10) NOT NULL DEFAULT '0',
+  `Email` varchar(30) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `users`
+--
+
+INSERT INTO `users` (`username`, `password`, `SDT`, `Email`) VALUES
+('1', '1', '0', '0');
 
 -- --------------------------------------------------------
 
@@ -193,6 +213,12 @@ ALTER TABLE `phong`
 ALTER TABLE `thuphi`
   ADD PRIMARY KEY (`IDKhoanThu`,`IDHoKhau`),
   ADD KEY `fk_idnk` (`IDHoKhau`);
+
+--
+-- Chỉ mục cho bảng `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`username`);
 
 --
 -- Chỉ mục cho bảng `xe`
