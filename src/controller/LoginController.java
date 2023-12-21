@@ -24,8 +24,6 @@ public class LoginController {
 	private TextField tfUsername;
 	@FXML
 	private PasswordField tfPassword;
-//	@FXML
-//	private Label forgot_label;
 	Connection conn = null;
 
 	public void Login(ActionEvent event) throws IOException,SQLException, ClassNotFoundException {
@@ -65,17 +63,20 @@ public class LoginController {
 		stage.show();
 	}
 
+	void showNewStage(String fxmlFilePath) throws IOException {
+		Parent home = FXMLLoader.load(getClass().getResource(fxmlFilePath));
+		Stage stage = new Stage();
+		stage.setScene(new Scene(home, 600, 400));
+		stage.setResizable(false);
+		stage.showAndWait();
+	}
 	@FXML
-	void create_acc_clicked(MouseEvent event) {
-		Alert alert = new Alert(AlertType.WARNING, "Tính năng đang phát triển!!!", ButtonType.OK);
-		alert.setHeaderText(null);
-		alert.showAndWait();
+	void create_acc_clicked(MouseEvent event) throws IOException{
+		showNewStage("/views/users/register.fxml");
 	}
 
 	@FXML
-	void forgot_clicked(MouseEvent event) {
-		Alert alert = new Alert(AlertType.WARNING, "Tính năng đang phát triển!!!", ButtonType.OK);
-		alert.setHeaderText(null);
-		alert.showAndWait();
+	void forgot_clicked(MouseEvent event) throws IOException{
+		showNewStage("/views/users/forgetpass.fxml");
 	}
 }

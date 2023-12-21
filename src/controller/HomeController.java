@@ -31,18 +31,29 @@ import java.util.ResourceBundle;
 
 public class HomeController implements Initializable {
 	@FXML
+	private AnchorPane allElements;
+	@FXML
 	private Button showBtn;
 	@FXML
-	private HBox hBox;
+	private VBox phanconlai;
 
 	@FXML
-	private VBox vbox;
+	private VBox menu;
 
 	@FXML Pane middlePane;
 
 	@FXML
 	private Pane mainPane;
 
+	void createNewStage(String fxmlFilePath) throws IOException{
+		Parent home = FXMLLoader.load(getClass().getResource(fxmlFilePath));
+		Stage stage = new Stage();
+		home.setFocusTraversable(true);
+		stage.setScene(new Scene(home, 600, 400));
+
+		stage.setResizable(false);
+		stage.showAndWait();
+	}
 	private void changeMainPane(String fxmlfile) throws IOException {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlfile));
 		Pane newContentPane = loader.load();
@@ -75,23 +86,24 @@ public class HomeController implements Initializable {
 	}
 
 	public void anim(int x, int y) {
-		KeyValue keyValue = new KeyValue(vbox.translateXProperty(), x);
-		KeyValue keyValue1 = new KeyValue(vbox.translateXProperty(), y);
+		KeyValue keyValue = new KeyValue(menu.translateXProperty(), x);
+		KeyValue keyValue1 = new KeyValue(menu.translateXProperty(), y);
 		KeyFrame keyFrame = new KeyFrame(Duration.seconds(0.35), keyValue);
 		KeyFrame keyFrame1 = new KeyFrame(Duration.seconds(0.35), keyValue1);
 		Timeline timeline = new Timeline(keyFrame, keyFrame1);
 		timeline.play();
 	}
 
+	@FXML
 	void menuShow() {
 		anim(165, 0);
-		mainPane.setEffect(new BoxBlur(5, 5, 3));
 		middlePane.setDisable(false);
+		phanconlai.setEffect(new BoxBlur(5, 5, 3));
 	}
 
 	void menuHide() {
 		anim(0, 0);
-		mainPane.setEffect(null);
+		phanconlai.setEffect(null);
 		middlePane.setDisable(true);
 	}
 
@@ -121,26 +133,18 @@ public class HomeController implements Initializable {
 	}
 
 	@FXML
-	void backupClicked(ActionEvent event) {
-		Alert alert = new Alert(Alert.AlertType.WARNING, "Tính năng đang phát triển!!!", ButtonType.OK);
-		alert.setHeaderText(null);
-		alert.showAndWait();
+	void backupClicked(ActionEvent event) throws IOException {
+		createNewStage("/views/users/backupdata.fxml");
 	}
 
 	@FXML
-	void restoreClicked(ActionEvent event) {
-		Alert alert = new Alert(Alert.AlertType.WARNING, "Tính năng đang phát triển!!!", ButtonType.OK);
-		alert.setHeaderText(null);
-		alert.showAndWait();
+	void restoreClicked(ActionEvent event) throws IOException {
+		createNewStage("/views/users/restoredata.fxml");
 	}
 
 	@FXML
 	void changepassClicked(ActionEvent event) throws IOException	 {
-		Parent home = FXMLLoader.load(getClass().getResource("/views/users/changepass.fxml"));
-		Stage stage = new Stage();
-		stage.setScene(new Scene(home, 400, 300));
-		stage.setResizable(false);
-		stage.showAndWait();
+		createNewStage("/views/users/changepass.fxml");
 	}
 
 	@FXML
