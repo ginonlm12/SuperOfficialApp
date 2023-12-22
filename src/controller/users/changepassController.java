@@ -54,6 +54,8 @@ public class changepassController {
         }
 
         UserService.changPassword(user.getUsername(), newpassText1);
+        // set pass cho biến user đang dùng
+        user.setPasswd(newpassText1);
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION, "Đổi mật khẩu thành công!!!", ButtonType.OK);
         alert.setHeaderText(null);
