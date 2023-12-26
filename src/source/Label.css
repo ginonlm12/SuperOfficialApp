@@ -1,0 +1,13 @@
+.label-transparent {
+    -fx-background-color: transparent; /* Nền trong suốt */
+    -fx-text-fill: #336699; /* Màu chữ */
+    -fx-font-size: 18px; /* Kích thước font chữ */
+}
+.label-hover {
+    -fx-text-fill: #990000; /* Màu chữ mặc định */
+}
+
+.label-hover:hover {
+    -fx-text-fill: #ff0000; /* Màu chữ khi di chuột vào */
+    -fx-font-weight: bold; /* In đậm */
+}

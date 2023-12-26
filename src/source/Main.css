@@ -5,6 +5,7 @@
 }
 
 .main-bg {
+
     -fx-background-size: cover;
 }
   
@@ -66,6 +67,22 @@
 .button4:pressed
 {
     -fx-background-color :linear-gradient(to top left, #41951C, #D4CEE3);
+    -fx-background-radius :  30 30 30 30;
+}
+
+.button5
+{
+    -fx-border-color:linear-gradient(to bottom right, #272b3f, #256b51);
+
+}
+.button5:hover
+{
+    -fx-background-color :linear-gradient(to top left, #256b51, #272b3f);
+    -fx-background-radius :  30 30 30 30;
+}
+.button5:pressed
+{
+    -fx-background-color :linear-gradient(to top left, #272b3f, #256b51);
     -fx-background-radius :  30 30 30 30;
 }
 
@@ -151,7 +168,7 @@
 /* Kiểu TextField với độ bo tròn */
 .text-field-rounded {
     -fx-background-color: #ffffff; /* Màu nền */
-    -fx-border-color: #000000; /* Màu viền */
+    -fx-border-color: linear-gradient(to bottom right, #272b3f, #256b51); /* Màu viền */
     -fx-border-width: 1; /* Độ rộng viền */
     -fx-border-radius: 10; /* Độ bo tròn của viền */
 }

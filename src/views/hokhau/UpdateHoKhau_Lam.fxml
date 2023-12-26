@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
@@ -10,28 +10,29 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="600.0" prefWidth="600.0" styleClass="pane" stylesheets="@../../source/change.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.hokhau.UpdateHoKhau_Lam">
-   <children>
-      <Pane layoutX="55.333333333333336" layoutY="69.0" prefHeight="441.0" prefWidth="507.0" styleClass="subpane" AnchorPane.leftAnchor="55.0" AnchorPane.rightAnchor="38.0">
-         <children>
-            <TextField fx:id="tfHoTen" editable="false" layoutX="130.0" layoutY="161.0" prefHeight="39.0" prefWidth="346.0" style="-fx-background-color: #eaeaea;" styleClass="text-field-rounded" stylesheets="@../../source/Main.css" AnchorPane.leftAnchor="130.0" AnchorPane.rightAnchor="30.66666666666663" />
-            <TextField fx:id="tfIDHoKhau" editable="false" layoutX="131.0" layoutY="42.0" prefHeight="39.0" prefWidth="346.0" styleClass="text-field-rounded" stylesheets="@../../source/Main.css" AnchorPane.leftAnchor="131.0" AnchorPane.rightAnchor="29.66666666666663" />
-            <Label layoutX="20.0" layoutY="56.0" text="Mã hộ" textFill="#4700ee" />
-            <Label layoutX="19.0" layoutY="354.0" text="Số điện thoại" textFill="#4700ee" />
-            <Label layoutX="16.0" layoutY="172.0" text="Tên chủ hộ" textFill="#4700ee" />
-            <TextField fx:id="tfSDT" layoutX="130.0" layoutY="343.0" prefHeight="39.0" prefWidth="346.0" styleClass="text-field-rounded" stylesheets="@../../source/Main.css" AnchorPane.leftAnchor="130.0" AnchorPane.rightAnchor="61.66666666666663" />
-            <Label layoutX="18.0" layoutY="111.0" text="ID Chủ hộ" textFill="#4700ee" />
-            <Label layoutX="20.0" layoutY="232.0" text="Số phòng" textFill="#4700ee" />
-            <ChoiceBox fx:id="tfSoPhong" layoutX="130.0" layoutY="221.0" prefHeight="39.0" prefWidth="346.0" styleClass="text-field-rounded" stylesheets="@../../source/Main.css" />
-            <Label layoutX="19.0" layoutY="277.0" prefHeight="54.0" prefWidth="99.0" text="Ngày chuyển đến" textFill="#4700ee" wrapText="true" />
-            <ChoiceBox fx:id="tfIDNhanKhau" layoutX="130.0" layoutY="100.0" prefHeight="39.0" prefWidth="346.0" styleClass="text-field-rounded" stylesheets="@../../source/Main.css" />
-            <DatePicker fx:id="tfNgayDen" layoutX="130.0" layoutY="284.0" prefHeight="39.0" prefWidth="346.0" styleClass="text-field-rounded" stylesheets="@../../source/Main.css" />
-         </children>
-      </Pane>
-      <Button layoutX="259.0" layoutY="535.0" mnemonicParsing="false" onAction="#updateHoKhau" prefHeight="39.0" prefWidth="99.0" styleClass="button1" stylesheets="@../../source/Main.css" text="Cập Nhật" textFill="#2e00ff" />
-      <Label layoutX="151.0" layoutY="14.0" text="Sửa thông tin hộ khẩu" textFill="#ebebeb">
-         <font>
-            <Font name="System Bold" size="30.0" />
-         </font>
-      </Label>
-   </children>
+    <children>
+        <Pane fx:id="PaneField" layoutX="55.333333333333336" layoutY="69.0" prefHeight="441.0" prefWidth="507.0"
+              styleClass="subpane" AnchorPane.leftAnchor="55.0" AnchorPane.rightAnchor="38.0">
+            <children>
+                <TextField fx:id="tfHoTen" editable="false" layoutX="130.0" layoutY="161.0" prefHeight="39.0" prefWidth="346.0" style="-fx-background-color: #eaeaea;" styleClass="text-field-rounded" stylesheets="@../../source/Main.css" AnchorPane.leftAnchor="130.0" AnchorPane.rightAnchor="30.66666666666663" />
+                <TextField fx:id="tfIDHoKhau" editable="false" layoutX="131.0" layoutY="42.0" prefHeight="39.0" prefWidth="346.0" styleClass="text-field-rounded" stylesheets="@../../source/Main.css" AnchorPane.leftAnchor="131.0" AnchorPane.rightAnchor="29.66666666666663" />
+                <Label layoutX="20.0" layoutY="56.0" text="Mã hộ" textFill="#4700ee" />
+                <Label layoutX="19.0" layoutY="354.0" text="Số điện thoại" textFill="#4700ee" />
+                <Label layoutX="16.0" layoutY="172.0" text="Tên chủ hộ" textFill="#4700ee" />
+                <TextField fx:id="tfSDT" layoutX="130.0" layoutY="343.0" prefHeight="39.0" prefWidth="346.0" styleClass="text-field-rounded" stylesheets="@../../source/Main.css" AnchorPane.leftAnchor="130.0" AnchorPane.rightAnchor="61.66666666666663" />
+                <Label layoutX="18.0" layoutY="111.0" text="ID Chủ hộ" textFill="#4700ee" />
+                <Label layoutX="20.0" layoutY="232.0" text="Số phòng" textFill="#4700ee" />
+                <Label layoutX="19.0" layoutY="277.0" prefHeight="54.0" prefWidth="99.0" text="Ngày chuyển đến" textFill="#4700ee" wrapText="true" />
+                <DatePicker fx:id="tfNgayDen" layoutX="130.0" layoutY="284.0" prefHeight="39.0" prefWidth="346.0" styleClass="text-field-rounded" stylesheets="@../../source/Main.css" />
+                <ComboBox fx:id="tfIDNhanKhau" layoutX="130.0" layoutY="100.0" prefHeight="39.0" prefWidth="346.0" />
+                <ComboBox fx:id="tfSoPhong" layoutX="131.0" layoutY="221.0" prefHeight="39.0" prefWidth="346.0" />
+            </children>
+        </Pane>
+        <Button layoutX="259.0" layoutY="535.0" mnemonicParsing="false" onAction="#updateHoKhau" prefHeight="39.0" prefWidth="99.0" styleClass="button1" stylesheets="@../../source/Main.css" text="Cập Nhật" textFill="#2e00ff" />
+        <Label layoutX="151.0" layoutY="14.0" text="Sửa thông tin hộ khẩu" textFill="#ebebeb">
+            <font>
+                <Font name="System Bold" size="30.0" />
+            </font>
+        </Label>
+    </children>
 </AnchorPane>

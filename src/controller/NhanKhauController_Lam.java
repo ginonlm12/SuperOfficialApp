@@ -20,7 +20,10 @@ import services.NhanKhauService_Lam;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.ResourceBundle;
 import java.util.regex.Pattern;
 
 public class NhanKhauController_Lam implements Initializable {
@@ -48,8 +51,8 @@ public class NhanKhauController_Lam implements Initializable {
 
 	private ObservableList<NhanKhauModel_Lam> listValueTableView;
 	private List<NhanKhauModel_Lam> listNhanKhau;
+	private int ID_dexemchitiet;
 
-	
 	public TableView<NhanKhauModel_Lam> getTvNhanKhau() {
 		return tvNhanKhau;
 	}
@@ -62,17 +65,10 @@ public class NhanKhauController_Lam implements Initializable {
 	public void showNhanKhau() throws ClassNotFoundException, SQLException {
 		listNhanKhau = new NhanKhauService_Lam().getListNhanKhau();
 		listValueTableView = FXCollections.observableArrayList(listNhanKhau);
-		for(NhanKhauModel_Lam nhankhau: listNhanKhau){
+		for (NhanKhauModel_Lam nhankhau : listNhanKhau) {
 			nhankhau.setSoPhong(NhanKhauService_Lam.getSoPhong(nhankhau.getIDHoKhau()));
 		}
-		
-		// tao map anh xa gia tri Id sang maHo
-		//Map<Integer, Integer> mapIdToMaho = new HashMap<>();
-		//List<QuanHeModel> listQuanHe = new QuanHeService().getListQuanHe();
-//		listQuanHe.forEach(quanhe -> {
-//			mapIdToMaho.put(quanhe.getIdThanhVien(), quanhe.getMaHo());
-//		});
-		
+
 		// thiet lap cac cot cho tableviews
 		colMaNhanKhau.setCellValueFactory(new PropertyValueFactory<NhanKhauModel_Lam, String>("IDNhanKhau"));
 		colTen.setCellValueFactory(new PropertyValueFactory<NhanKhauModel_Lam, String>("HoTen"));
@@ -88,7 +84,7 @@ public class NhanKhauController_Lam implements Initializable {
 //		} catch (Exception e) {
 //			// TODO: handle exception
 //		}
-		
+
 		tvNhanKhau.setItems(listValueTableView);
 
 		// Thiết lập giá trị cho ComboBox
@@ -120,8 +116,8 @@ public class NhanKhauController_Lam implements Initializable {
 
 				int index = 0;
 				List<NhanKhauModel_Lam> listNhanhKhauModelsSearch = new ArrayList<>();
-				for(NhanKhauModel_Lam nhanKhauModel : listNhanKhau) {
-					if(nhanKhauModel.getHoTen().contains(keySearch)) {
+				for (NhanKhauModel_Lam nhanKhauModel : listNhanKhau) {
+					if (nhanKhauModel.getHoTen().contains(keySearch)) {
 						listNhanhKhauModelsSearch.add(nhanKhauModel);
 						index++;
 					}
@@ -150,7 +146,7 @@ public class NhanKhauController_Lam implements Initializable {
 
 				// kiem tra chuoi nhap vao co phai la chuoi hop le hay khong
 				Pattern pattern = Pattern.compile("^[1-9]\\d*$");
-				if(!pattern.matcher(keySearch).matches()) {
+				if (!pattern.matcher(keySearch).matches()) {
 					Alert alert = new Alert(AlertType.WARNING, "Số phòng phải là số nguyên dương!", ButtonType.OK);
 					alert.setHeaderText(null);
 					alert.showAndWait();
@@ -189,7 +185,7 @@ public class NhanKhauController_Lam implements Initializable {
 
 				// kiem tra thong tin tim kiem co hop le hay khong
 				Pattern pattern = Pattern.compile("^[1-9]\\d*$");
-				if(!pattern.matcher(keySearch).matches()) {
+				if (!pattern.matcher(keySearch).matches()) {
 					Alert alert = new Alert(AlertType.WARNING, "Bạn phải nhập vào 1 số!", ButtonType.OK);
 					alert.setHeaderText(null);
 					alert.showAndWait();
@@ -217,38 +213,38 @@ public class NhanKhauController_Lam implements Initializable {
 	public void addNhanKhau(ActionEvent event) throws IOException, ClassNotFoundException, SQLException {
 		// return ;
 		Parent home = FXMLLoader.load(getClass().getResource("/views/nhankhau/AddNhanKhau_Lam.fxml"));
-        Stage stage = new Stage();
-        stage.setScene(new Scene(home,800,600));
-        stage.setResizable(false);
-        stage.showAndWait();
-        showNhanKhau();
+		Stage stage = new Stage();
+		stage.setScene(new Scene(home, 800, 600));
+		stage.setResizable(false);
+		stage.showAndWait();
+		showNhanKhau();
 	}
-	
+
 	// con truong hop neu xoa chu ho chua xet
 	@FXML
 	public void delNhanKhau(ActionEvent event) throws IOException, ClassNotFoundException, SQLException {
 		NhanKhauModel_Lam nhanKhauModel = tvNhanKhau.getSelectionModel().getSelectedItem();
 		// int maho = 0;
-		
-		if(nhanKhauModel == null) {
+
+		if (nhanKhauModel == null) {
 			Alert alert = new Alert(AlertType.WARNING, "Hãy chọn nhân khẩu bạn muốn xóa!", ButtonType.OK);
 			alert.setHeaderText(null);
 			alert.showAndWait();
 		} else {
 			// kiem tra dieu kien chu ho
 			// List<ChuHoModel> listChuHo = new ChuHoService().getListChuHo();
-			if(nhanKhauModel.getQHvsChuHo().equals("Chủ hộ")) {
+			if (nhanKhauModel.getQHvsChuHo().equals("Chủ hộ")) {
 				Alert alert = new Alert(AlertType.WARNING, "Bạn không thể xóa chủ hộ tại đây, hãy xóa chủ hộ tại mục hộ khẩu!", ButtonType.OK);
 				alert.setHeaderText("Nhân khẩu này là 1 chủ hộ!");
 				alert.showAndWait();
 				return;
 			}
-			
+
 			Alert alert = new Alert(AlertType.WARNING, "Bạn có chắc chắn muốn xóa nhân khẩu này!", ButtonType.YES, ButtonType.NO);
 			alert.setHeaderText(null);
 			Optional<ButtonType> result = alert.showAndWait();
-			
-			if(result.get() == ButtonType.NO) {
+
+			if (result.get() == ButtonType.NO) {
 				return;
 			} else {
 				new NhanKhauService_Lam().del(nhanKhauModel.getIDNhanKhau());
@@ -265,48 +261,48 @@ public class NhanKhauController_Lam implements Initializable {
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(getClass().getResource("/views/nhankhau/UpdateNhanKhau_Lam.fxml"));
 		Parent home = loader.load();
-        Stage stage = new Stage();
-        stage.setScene(new Scene(home,800,600));
-        UpdateNhanKhau_Lam updateNhanKhau = loader.getController();
+		Stage stage = new Stage();
+		stage.setScene(new Scene(home, 800, 600));
+		UpdateNhanKhau_Lam updateNhanKhau = loader.getController();
 
-        // bat loi truong hop khong hop le
-        if(updateNhanKhau == null) return;
-        if(nhanKhauModel == null) {
+		// bat loi truong hop khong hop le
+		if (updateNhanKhau == null) return;
+		if (nhanKhauModel == null) {
 			Alert alert = new Alert(AlertType.WARNING, "Chọn nhân khẩu cần update !", ButtonType.OK);
 			alert.setHeaderText(null);
 			alert.showAndWait();
 			return;
 		}
-        updateNhanKhau.setNhanKhauModel(nhanKhauModel);
+		updateNhanKhau.setNhanKhauModel(nhanKhauModel);
 
-        stage.setResizable(false);
-        stage.showAndWait();
-        showNhanKhau();
+		stage.setResizable(false);
+		stage.showAndWait();
+		showNhanKhau();
 	}
 
 	public int getID_dexemchitiet() {
 		return ID_dexemchitiet;
 	}
+
 	public void setID_dexemchitiet(int ID_dexemchitiet) {
 		this.ID_dexemchitiet = ID_dexemchitiet;
 	}
 
-	private int ID_dexemchitiet;
 	@FXML
-	void showChiTiet(ActionEvent event) throws IOException, ClassNotFoundException, SQLException{
+	void showChiTiet(ActionEvent event) throws IOException, ClassNotFoundException, SQLException {
 		// lay ra nhan khau can xem chi tiet
 		NhanKhauModel_Lam nhanKhauModel = tvNhanKhau.getSelectionModel().getSelectedItem();
-
+		// Lấy cái code ni đưa vào button Xem thông tin của Tuấn này
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(getClass().getResource("/views/nhankhau/ShowChiTiet_Lam.fxml"));
 		Parent home = loader.load();
 		Stage stage = new Stage();
-		stage.setScene(new Scene(home,800,600));
+		stage.setScene(new Scene(home, 800, 600));
 		ShowChiTiet_Lam showChiTiet = loader.getController();
 
 		// bat loi truong hop khong hop le
-		if(showChiTiet == null) return;
-		if(nhanKhauModel == null) {
+		if (showChiTiet == null) return;
+		if (nhanKhauModel == null) {
 			Alert alert = new Alert(AlertType.WARNING, "Chọn nhân khẩu cần update !", ButtonType.OK);
 			alert.setHeaderText(null);
 			alert.showAndWait();
@@ -320,14 +316,13 @@ public class NhanKhauController_Lam implements Initializable {
 		//stage.showAndWait();
 		showNhanKhau();
 	}
-	
+
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
 		try {
 			showNhanKhau();
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

@@ -1,80 +1,38 @@
-/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
-
+/* Cài đặt cho các pane */
 .pane {
-	-fx-background-color : #ffffff;
-	-fx-background-radius : 8px;
+	-fx-background-color : #fefefe;
+	-fx-background-radius : 0px;
 }
 
-  
-.button1
-{
--fx-background-color : #393351;
--fx-background-radius :  30 0 0 30;
-}
-.button1:hover
-{
--fx-background-color : #524A7B ;
--fx-background-radius :  30 0 0 30;
-}
-.button1:pressed
-{
--fx-background-color : #2F2B43 ;
--fx-background-radius :  30 0 0 30;
+/* Cài đặt cho các label */
+#loginlabel {
+    -fx-alignment: center-left;
+    -fx-font-size: 50;
+    -fx-font-weight: bolder;
 }
 
-.button2
-{
--fx-background-color :  #5809d6;
--fx-background-radius :  20;
-}
-.button2:hover
-{
--fx-background-color : #524A7B ;
--fx-background-radius :  20;
-}
-.button2:pressed
-{
--fx-background-color : #2F2B43 ;
--fx-background-radius :  20;
+.label_can_clicked {
+    -fx-alignment: center;
+    -fx-font-size: 12px;
+    -fx-underline: true;
 }
 
-.button3
-{
-    -fx-background-color : #141124;
-    -fx-background-radius :  0 0 0 0;
-}
-.button3:hover
-{
-    -fx-background-color : #524A7B ;
-}
-.button3:pressed
-{
-    -fx-background-color : #2F2B43 ;
+.label_can_clicked: hover {
+    -fx-text-fill: #0560b1;
 }
 
-.button4
-{
-    -fx-background-color :linear-gradient(to top left, #41951C, #D4CEE3);
-    -fx-background-radius :  30 30 30 30;
-}
-.button4:hover
-{
-    -fx-background-color :linear-gradient(to top left, #D4CEE3, #41951C);
-    -fx-background-radius :  30 30 30 30;
-}
-.button4:pressed
-{
-    -fx-background-color :linear-gradient(to top left, #41951C, #D4CEE3);
-    -fx-background-radius :  30 30 30 30;
+/* Cài đặt cho các button */
+#buttonLogin {
+    -fx-font-size: 18px;
+    -fx-background-color: #0560b1;
 }
 
-.text-field {
-    -fx-background-color: #5809d6 , white , white;
-    -fx-background-insets: 1 1 1 1, 1 1 1 1, 1 1 1 1;
+#buttonLogin: hover {
+    -fx-background-color: #98D8FF;
 }
 
-.text-field:focused {
-    -fx-background-color: #5809d6 , white , white;
-    -fx-background-insets: 1 1 1 1, 1 1 1 1, 1 1 1 1;
+/* Cài đặt cho textfield */
+.username_f {
+    -fx-font-size: 20px;
 }
 

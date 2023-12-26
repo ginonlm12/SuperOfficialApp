@@ -1,29 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
-
-<AnchorPane prefHeight="600.0" prefWidth="625.0" styleClass="pane" stylesheets="@../source/Main.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HoKhauController_Tuan">
-   <children>
-      <TableView fx:id="tvHoKhau" layoutX="11.2" layoutY="128.8" prefHeight="461.0" prefWidth="603.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="11.0" AnchorPane.rightAnchor="11.0" AnchorPane.topAnchor="129.0">
-        <columns>
-          <TableColumn fx:id="colMaHoKhau" prefWidth="81.0" text="Mã hộ" />
-            <TableColumn fx:id="colTenCH" prefWidth="193.0" text="Tên chủ hộ" />
-            <TableColumn fx:id="colSoThanhVien" prefWidth="96.0" resizable="false" text="Số thành viên" />
-            <TableColumn fx:id="colSDT" prefWidth="234.0" text="SĐT liên hệ" />
-        </columns>
-      </TableView>
-      <TextField fx:id="tfSearch" layoutX="14.0" layoutY="55.0" prefHeight="40.0" prefWidth="310.0" AnchorPane.bottomAnchor="510.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="305.0" AnchorPane.topAnchor="50.0" />
-      <Button layoutX="547.0" layoutY="56.0" mnemonicParsing="false" onAction="#searchHoKhau" prefHeight="40.0" prefWidth="110.0" styleClass="button3" stylesheets="@../source/Main.css" text="Tìm kiếm" textFill="#2c0372" AnchorPane.bottomAnchor="510.0" AnchorPane.rightAnchor="10.0" />
-      <ComboBox fx:id="cbChooseSearch" layoutX="315.0" layoutY="55.0" prefHeight="40.0" prefWidth="170.0" AnchorPane.bottomAnchor="510.0" AnchorPane.leftAnchor="330.0" AnchorPane.rightAnchor="125.0" />
-      <Button layoutX="14.0" layoutY="10.0" mnemonicParsing="false" onAction="#addHoKhau" prefHeight="40.0" prefWidth="139.0" styleClass="button1" stylesheets="@../source/Main.css" text="Thêm hộ" textFill="#3400b9" />
-      <Button layoutX="165.0" layoutY="10.0" mnemonicParsing="false" onAction="#updateHoKhau" prefHeight="40.0" prefWidth="139.0" styleClass="button1" stylesheets="@../source/Main.css" text="Sửa hộ" textFill="#3400b9" />
-      <Button layoutX="304.0" layoutY="10.0" mnemonicParsing="false" onAction="#delHoKhau" prefHeight="40.0" prefWidth="156.0" styleClass="button1" stylesheets="@../source/Main.css" text="Xóa hộ" textFill="#3400b9" />
-      <Button layoutX="478.0" layoutY="10.0" mnemonicParsing="false" onAction="#detailHoKhau" prefHeight="40.0" prefWidth="139.0" styleClass="button1" stylesheets="@../source/Main.css" text="Xem chi tiết" textFill="#3400b9" />
-      <ComboBox fx:id="cbTrangThai" layoutX="453.0" layoutY="102.0" onAction="#ShowHoKhauTable" prefHeight="26.0" prefWidth="126.0" />
-   </children>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="600.0" prefWidth="800.0" styleClass="background"
+            stylesheets="@../source/nhankhau_va_hokhau.css" xmlns="http://javafx.com/javafx/21"
+            fx:controller="controller.HoKhauController_Tuan">
+    <children>
+        <TableView fx:id="tvHoKhau" layoutX="10.0" layoutY="130.0" prefHeight="500.0" prefWidth="625.0"
+                   AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0"
+                   AnchorPane.topAnchor="105.0">
+            <columns>
+                <TableColumn fx:id="colMaHoKhau" prefWidth="81.0" text="Mã hộ"/>
+                <TableColumn fx:id="colTenCH" prefWidth="244.0" text="Tên chủ hộ"/>
+                <TableColumn fx:id="colSoThanhVien" prefWidth="108.0" resizable="false" text="Số thành viên"/>
+                <TableColumn fx:id="colSDT" prefWidth="344.0" text="SĐT liên hệ"/>
+            </columns>
+        </TableView>
+        <TextField fx:id="tfSearch" layoutX="7.0" layoutY="49.0" prefHeight="40.0" prefWidth="310.0"
+                   AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="300.0" AnchorPane.topAnchor="50.0"/>
+        <ComboBox fx:id="cbChooseSearch" layoutX="315.0" layoutY="55.0" prefHeight="40.0" prefWidth="142.0"
+                  styleClass="boxluachon" AnchorPane.rightAnchor="313.0" AnchorPane.topAnchor="50.0"/>
+        <Button layoutX="100.0" layoutY="10.0" mnemonicParsing="false" onAction="#addHoKhau" prefHeight="30.0"
+                prefWidth="150.0" styleClass="buttonChucnang" stylesheets="@../source/nhankhau_va_hokhau.css"
+                text="Thêm hộ" textFill="#3400b9" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="10.0"/>
+        <Button layoutX="261.0" layoutY="10.0" mnemonicParsing="false" onAction="#updateHoKhau" prefHeight="40.0"
+                prefWidth="139.0" styleClass="buttonChucnang" stylesheets="@../source/nhankhau_va_hokhau.css"
+                text="Sửa hộ" textFill="#3400b9" AnchorPane.leftAnchor="250.0" AnchorPane.topAnchor="10.0"/>
+        <Button layoutX="400.0" layoutY="10.0" mnemonicParsing="false" onAction="#delHoKhau" prefHeight="40.0"
+                prefWidth="156.0" styleClass="buttonChucnang" stylesheets="@../source/nhankhau_va_hokhau.css"
+                text="Xóa hộ" textFill="#3400b9" AnchorPane.topAnchor="10.0"/>
+        <Button layoutX="550.0" layoutY="10.0" mnemonicParsing="false" onAction="#detailHoKhau" prefHeight="40.0"
+                prefWidth="139.0" styleClass="buttonChucnang" stylesheets="@../source/nhankhau_va_hokhau.css"
+                text="Xem chi tiết" textFill="#3400b9" AnchorPane.topAnchor="10.0"/>
+        <ComboBox fx:id="cbTrangThai" layoutX="456.0" layoutY="50.0" onAction="#ShowHoKhauTable" prefHeight="40.0"
+                  prefWidth="142.0" styleClass="boxluachon" AnchorPane.topAnchor="50.0"/>
+        <Button layoutX="547.0" layoutY="50.0" mnemonicParsing="false" onAction="#searchHoKhau" prefHeight="39.0"
+                prefWidth="230.0" styleClass="btntimkiem" stylesheets="@../source/nhankhau_va_hokhau.css"
+                text="Tìm kiếm" textFill="#2c0372" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="50.0"/>
+    </children>
 </AnchorPane>

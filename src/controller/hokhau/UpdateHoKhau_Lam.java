@@ -4,48 +4,70 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Cursor;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import models.*;
-import services.*;
+import models.HoKhauBean_Tuan;
+import models.HoKhauModel_Tuan;
+import models.NhanKhauModel_Lam;
+import services.HoKhauService_Tuan;
+import services.PhongService;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 import java.util.regex.Pattern;
 
 public class UpdateHoKhau_Lam {
 
-	@FXML
-	private TextField tfHoTen;
+	ObservableList<Integer> IDNhanKhauinHoKhau = FXCollections.observableArrayList();
+	ObservableList<Integer> SoPhong = FXCollections.observableArrayList();
 
-	@FXML
-	private TextField tfIDHoKhau;
-
-	@FXML
-	private ChoiceBox<Integer> tfIDNhanKhau;
-
-	@FXML
-	private DatePicker tfNgayDen;
-
-	@FXML
-	private TextField tfSDT;
-
-	@FXML
-	private ChoiceBox<Integer> tfSoPhong;
-
+    @FXML
+    private Pane PaneField;
+    @FXML
+    private TextField tfHoTen;
+    @FXML
+    private TextField tfIDHoKhau;
+    @FXML
+      private ComboBox<Integer> tfIDNhanKhau;
+    @FXML
+    private DatePicker tfNgayDen;
+    @FXML
+    private TextField tfSDT;
+    @FXML
+    private ComboBox<Integer> tfSoPhong;
+  
 	private HoKhauBean_Tuan hoKhauBean;
 	private HoKhauBean_Tuan newhoKhauBean;
 	private List<NhanKhauModel_Lam> nhanKhauList = new ArrayList<>();
 	private HoKhauModel_Tuan hoKhauModel;
 	private NhanKhauModel_Lam chuHo;
 
-	ObservableList<Integer> IDNhanKhauinHoKhau = FXCollections.observableArrayList();
-	ObservableList<Integer> SoPhong = FXCollections.observableArrayList();
+    //set Mouse Moved
+    private void setMouseMoved() {
+        PaneField.setOnMouseMoved(event -> {
+            Node node = event.getPickResult().getIntersectedNode();
+            if (node instanceof Label || node instanceof TextField) {
+                PaneField.setCursor(Cursor.TEXT);
+            }
+            if (node instanceof Button || node instanceof ComboBox || node instanceof DatePicker) {
+                PaneField.setCursor(Cursor.HAND);
+            }
+        });
+    }
+
 	@FXML
-	void updateHoKhau(ActionEvent event) throws SQLException, ClassNotFoundException {
+	void updateHoKhau(ActionEvent event) throws SQLException, ClassNotFoundException, IOException {
 
 		Pattern pattern;
 		// kiem tra sdt nhap vao
@@ -64,6 +86,7 @@ public class UpdateHoKhau_Lam {
 			return;
 		}
 
+
 		// ghi nhan gia tri ghi tat ca deu da hop le
 		HoKhauModel_Tuan newHoKhauModel = new HoKhauModel_Tuan();
 		newHoKhauModel = hoKhauModel;
@@ -80,28 +103,47 @@ public class UpdateHoKhau_Lam {
 		//System.out.println("Số phòng cũ 3: " + hoKhauModel.getSoPhong());
 //		System.out.println("ID Nhân khẩu mới: " + tfIDNhanKhau);
 //		System.out.println("ID Nhân khẩu cũ: " + chuHo.getIDNhanKhau());
-		if(!tfIDNhanKhau.getValue().equals(chuHo.getIDNhanKhau())){
+		if (!tfIDNhanKhau.getValue().equals(chuHo.getIDNhanKhau())) {
 			int IDHoKhau = hoKhauBean.getHoKhauModel_tuan().getIDHoKhau();
 			//int old_IDChuho = chuHo.getIDNhanKhau();
 			int new_IDChuho = tfIDNhanKhau.getValue();
 			System.out.println("haha");
-			HoKhauService_Tuan.changeChuHo(IDHoKhau, new_IDChuho);
+			// HoKhauService_Tuan.changeChuHo(IDHoKhau, new_IDChuho);
 
-			Alert alert = new Alert(Alert.AlertType.WARNING, "Vui lòng cập nhật lại quan hệ với chủ hộ mới", ButtonType.OK);
+			Alert alert = new Alert(Alert.AlertType.WARNING, "Vui lòng cập nhật lại quan hệ với chủ hộ mới", ButtonType.OK, ButtonType.NO);
 			alert.setHeaderText(null);
-			alert.showAndWait();
+			Optional<ButtonType> result = alert.showAndWait();
+
+			if (result.isPresent() && result.get() == ButtonType.NO) {
+				return;
+			} else {
+				HoKhauService_Tuan.changeChuHo(IDHoKhau, new_IDChuho);
+
+				FXMLLoader loader = new FXMLLoader();
+				loader.setLocation(getClass().getResource("/views/hokhau/UpdateQHvsChuHo_Lam.fxml"));
+				Parent home = loader.load();
+				Stage stage = new Stage();
+				stage.setScene(new Scene(home, 500, 500));
+				UpdateQHvsChuHo_Lam updateQHvsChuHo = loader.getController();
+
+				if (updateQHvsChuHo == null)
+					return;
+				updateQHvsChuHo.setHoKhauBean(hoKhauBean);
+				stage.setResizable(false);
+				stage.showAndWait();
+				nhanKhauList = updateQHvsChuHo.getNhanKhauList();
+			}
 		}
-
 		HoKhauService_Tuan.updateHoKhau(newHoKhauModel);
-
-
 		hoKhauBean.setHoKhauModel_tuan(newHoKhauModel);
 
-		Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
+		Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		stage.close();
 	}
 
 	public void setHoKhauModel(HoKhauBean_Tuan hoKhauBean) throws ClassNotFoundException, SQLException {
+
+
 		this.hoKhauBean = hoKhauBean;
 		this.nhanKhauList = hoKhauBean.getListNhanKhau();
 		this.hoKhauModel = hoKhauBean.getHoKhauModel_tuan();
@@ -123,7 +165,7 @@ public class UpdateHoKhau_Lam {
 		tfHoTen.setText(chuHo.getHoTen());
 
 		tfIDNhanKhau.setItems(IDNhanKhauinHoKhau);
-		SoPhong = SoPhongService_Tuan.getListSoPhong();
+		SoPhong = PhongService.getListSoPhong("Duoc su dung");
 		SoPhong.add(hoKhauModel.getSoPhong());
 		tfSoPhong.setItems(SoPhong);
 

@@ -1,14 +1,11 @@
 package services;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import models.KhoanThuModel;
+
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import models.KhoanThuModel;
 
 public class KhoanThuService {
 	public boolean add(KhoanThuModel khoanThuModel) throws ClassNotFoundException, SQLException {
@@ -31,19 +28,17 @@ public class KhoanThuService {
 
 	public boolean del(int IDKhoanThu) throws ClassNotFoundException, SQLException {
 		Connection connection = MysqlConnection.getMysqlConnection();
-
-		// Delete matching records from thuphi table directly using SQL DELETE statement
-		String query = "DELETE FROM thuphi WHERE IDKhoanThu=?";
-		PreparedStatement preparedStatement = connection.prepareStatement(query);
-		preparedStatement.setInt(1, IDKhoanThu); // Set the parameter
-		preparedStatement.executeUpdate(); // Execute the delete statement for thuphi table
-
-		// Delete matching records from khoan_thu table
-		query = "DELETE FROM khoanthu WHERE IDKhoanThu = ?";
-		preparedStatement = connection.prepareStatement(query);
-		preparedStatement.setInt(1, IDKhoanThu); // Set the parameter
-		preparedStatement.executeUpdate(); // Execute the delete statement for khoan_thu table
-
+		String query = "SELECT * FROM nop_tien WHERE MaKhoanThu='"+maKhoanThu+"';";
+	    PreparedStatement preparedStatement = connection.prepareStatement(query);
+	    ResultSet rs = preparedStatement.executeQuery();
+	    while (rs.next()){
+	    	query="DELETE FROM nop_tien WHERE MaKhoanThu='"+maKhoanThu+"'";
+	    	preparedStatement = connection.prepareStatement(query);
+	    	preparedStatement.executeUpdate();
+	    }
+	    query ="DELETE FROM khoan_thu WHERE MaKhoanThu = '"+maKhoanThu+"'";
+	    preparedStatement = connection.prepareStatement(query);
+		preparedStatement.executeUpdate();
 		preparedStatement.close();
 		connection.close();
 		return true;
@@ -80,18 +75,16 @@ public class KhoanThuService {
 		List<KhoanThuModel> list = new ArrayList<>();
 
 		Connection connection = MysqlConnection.getMysqlConnection();
-		String query = "SELECT * FROM khoanthu";
-		PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement(query);
-		ResultSet rs = preparedStatement.executeQuery();
-		while (rs.next()) {
-			KhoanThuModel khoanThuModel = new KhoanThuModel(rs.getInt("IDKhoanThu"), rs.getString("TenKT"),
-					rs.getString("NgayBatDau"), rs.getString("NgayKetThuc"), rs.getDouble("TrongSoDienTich"),
-					rs.getDouble("TrongSoSTV"), rs.getDouble("hangSo"));
-			list.add(khoanThuModel);
-		}
-		preparedStatement.close();
-		connection.close();
-		// System.out.println("Get list khoan thu successfully"); // ok
+	    String query = "SELECT * FROM khoan_thu";
+	    PreparedStatement preparedStatement = connection.prepareStatement(query);
+	    ResultSet rs = preparedStatement.executeQuery();
+	    while (rs.next()){
+	        KhoanThuModel khoanThuModel = new KhoanThuModel(rs.getInt("MaKhoanThu"),rs.getString("TenKhoanThu"),
+	        		rs.getDouble("SoTien"),rs.getInt("LoaiKhoanThu"));
+	        list.add(khoanThuModel);
+	   }
+	    preparedStatement.close();
+	    connection.close();
 		return list;
 	}
 }

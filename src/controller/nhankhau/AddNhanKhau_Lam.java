@@ -9,12 +9,7 @@ import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
-import models.HoKhauModel;
-import models.NhanKhauModel;
 import models.NhanKhauModel_Lam;
-import models.QuanHeModel;
-import services.HoKhauService;
-import services.NhanKhauService;
 import services.NhanKhauService_Lam;
 
 import java.io.File;
@@ -29,10 +24,9 @@ import java.util.regex.Pattern;
 public class AddNhanKhau_Lam implements Initializable {
 	@FXML
 	private TextField tfCCCD;
+	ObservableList<String> ethnicityList = FXCollections.observableArrayList("Không mang dân tộc Việt Nam");
 	@FXML
-	private ChoiceBox<String> tfDanToc;
-	@FXML
-	private ChoiceBox<String> tfGioiTinh;
+	private ComboBox<String> tfDanToc;
 	@FXML
 	private TextField tfHoTen;
 	//@FXML
@@ -44,19 +38,19 @@ public class AddNhanKhau_Lam implements Initializable {
 	@FXML
 	private TextField tfNgheNghiep;
 	@FXML
-	private ChoiceBox<String> tfQHvsChuHo;
+	private ComboBox<String> tfGioiTinh;
 	@FXML
 	private TextField tfQueQuan;
 	@FXML
-	private ChoiceBox<String> tfCountry;
+	private ComboBox<String> tfQHvsChuHo;
 	@FXML
-	private ChoiceBox<String> tfProvince;
+	private ComboBox<String> tfCountry;
 	@FXML
-	private ChoiceBox<String> tfDistrict;
+	private ComboBox<String> tfProvince;
 	@FXML
-	private ChoiceBox<String> tfWard;
+	private ComboBox<String> tfDistrict;
 	@FXML
-	private ChoiceBox<String> tfIDHoKhau;
+	private ComboBox<String> tfWard;
 	@FXML
 	private CheckBox tfXacNhan;
 	@FXML
@@ -70,14 +64,15 @@ public class AddNhanKhau_Lam implements Initializable {
 	private List<NhanKhauModel_Lam> listNhanKhau;
 	ObservableList<String> genderList = FXCollections.observableArrayList("Nam", "Nữ");
 	ObservableList<String> relationshipList = FXCollections.observableArrayList("Vợ/Chồng", "Con cái", "Bố mẹ", "Ông bà", "Cháu chắt", "Khác");
-	ObservableList<String> ethnicityList = FXCollections.observableArrayList();
+	@FXML
+	private ComboBox<String> tfIDHoKhau;
 	ObservableList<String> QueQuanList = FXCollections.observableArrayList("Việt Nam", "Khác");
 	ObservableList<String> Tinh_List = FXCollections.observableArrayList();
 	ObservableList<String> Huyen_List = FXCollections.observableArrayList();
 	ObservableList<String> Xa_List = FXCollections.observableArrayList();
 	ObservableList<String> IDHoKhau_List = FXCollections.observableArrayList();
 
-	private String CCCD = "-1";
+	private final String CCCD = "-1";
 	public void initialize(URL url, ResourceBundle resourceBundle) {
 		try {
 			listNhanKhau = new NhanKhauService_Lam().getListNhanKhau();
@@ -187,29 +182,7 @@ public class AddNhanKhau_Lam implements Initializable {
 	void addNhanKhau(ActionEvent event) throws ClassNotFoundException, SQLException{
 		// khai bao mot mau de so sanh
 		Pattern pattern;
-		System.out.println("haha");
-		// kiem tra id nhap vao
-		// id la day so tu 1 toi 11 chu so
-//		pattern = Pattern.compile("\\d{1,11}");
-//		if (!pattern.matcher(tfId.getText()).matches()) {
-//			Alert alert = new Alert(AlertType.WARNING, "Hãy nhập vào mã nhân khẩu hợp lệ!", ButtonType.OK);
-//			alert.setHeaderText(null);
-//			alert.showAndWait();
-//			return;
-//		}
-		// kiem tra ID them moi co bi trung voi nhung ID da ton tai hay khong
-//		List<NhanKhauModel> listNhanKhauModels = new NhanKhauService().getListNhanKhau();
-//		for (NhanKhauModel nhankhau : listNhanKhauModels) {
-//			if (nhankhau.getId() == Integer.parseInt(tfId.getText())) {
-//				Alert alert = new Alert(AlertType.WARNING, "ID bị trùng với một người khác!", ButtonType.OK);
-//				alert.setHeaderText(null);
-//				alert.showAndWait();
-//				return;
-//			}
-//		}
 
-		// kiem tra ten nhap vao
-		// ten nhap vao la chuoi tu 1 toi 50 ki tu
 		if (tfHoTen.getText().length() >= 50 || tfHoTen.getText().length() <= 1) {
 			Alert alert = new Alert(AlertType.WARNING, "Hãy nhập vào 1 tên hợp lệ!", ButtonType.OK);
 			alert.setHeaderText(null);
@@ -273,7 +246,7 @@ public class AddNhanKhau_Lam implements Initializable {
 				break;
 			}
 		}
-		if(checkExistedHoKhau == false){
+		if (!checkExistedHoKhau) {
 			Alert alert = new Alert(AlertType.WARNING, "Hãy nhập vào ID hộ khẩu đã tồn tại!", ButtonType.OK);
 			alert.setHeaderText(null);
 			alert.showAndWait();
@@ -366,7 +339,6 @@ public class AddNhanKhau_Lam implements Initializable {
 			Alert alert = new Alert(AlertType.WARNING, "Hãy nhập vào ID hộ khẩu đã tồn tại!", ButtonType.OK);
 			alert.setHeaderText(null);
 			alert.showAndWait();
-			return;
 		}
 		else{
 			Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

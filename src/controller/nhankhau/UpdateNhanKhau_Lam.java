@@ -1,5 +1,6 @@
 package controller.nhankhau;
 
+import javafx.beans.value.ChangeListener;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -7,9 +8,10 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import models.NhanKhauModel_Lam;
-import services.NhanKhauService;
+import services.NhanKhauService_Lam;
 
 import java.io.File;
 import java.sql.SQLException;
@@ -18,27 +20,27 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Scanner;
 import java.util.regex.Pattern;
-import javafx.scene.text.Text;
-import services.NhanKhauService_Lam;
-import javafx.application.Application;
-import javafx.scene.Scene;
-import javafx.scene.control.CheckBox;
-import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
-import javafx.beans.value.ChangeListener;
 
 public class UpdateNhanKhau_Lam {
+	ObservableList<String> genderList = FXCollections.observableArrayList("Nam", "Nữ");
+	ObservableList<String> relationshipList = FXCollections.observableArrayList("Vợ/Chồng", "Con cái", "Bố mẹ", "Ông bà", "Cháu chắt", "Khác");
+    ObservableList<String> ethnicityList = FXCollections.observableArrayList("Không mang dân tộc Việt Nam");
+	ObservableList<String> QueQuanList = FXCollections.observableArrayList("Việt Nam", "Khác");
+	ObservableList<String> Tinh_List = FXCollections.observableArrayList();
+	ObservableList<String> Huyen_List = FXCollections.observableArrayList();
+	ObservableList<String> Xa_List = FXCollections.observableArrayList();
+	ObservableList<String> IDHoKhau_List = FXCollections.observableArrayList();
 	private int maNhanKhau;
 	@FXML
 	private TextField tfCCCD;
 	@FXML
-	private ChoiceBox<String> tfCountry;
+    private ComboBox<String> tfCountry;
 	@FXML
-	private ChoiceBox<String> tfDanToc;
+    private ComboBox<String> tfDanToc;
 	@FXML
-	private ChoiceBox<String> tfDistrict;
+    private ComboBox<String> tfDistrict;
 	@FXML
-	private ChoiceBox<String> tfGioiTinh;
+    private ComboBox<String> tfGioiTinh;
 	@FXML
 	private TextField tfHoTen;
 	@FXML
@@ -50,15 +52,15 @@ public class UpdateNhanKhau_Lam {
 	@FXML
 	private TextField tfNgheNghiep;
 	@FXML
-	private ChoiceBox<String> tfProvince;
+    private ComboBox<String> tfProvince;
 	@FXML
-	private ChoiceBox<String> tfQHvsChuHo;
+    private ComboBox<String> tfQHvsChuHo;
 	@FXML
 	private TextField tfQueQuan;
 	@FXML
 	private Label tfTinh;
 	@FXML
-	private ChoiceBox<String> tfWard;
+    private ComboBox<String> tfWard;
 	@FXML
 	private Label tfXa;
 	@FXML
@@ -72,23 +74,14 @@ public class UpdateNhanKhau_Lam {
 	@FXML
 	private Label tfQuequanmoi_text;
 	@FXML
-	private ChoiceBox<String> tfIDHoKhau;
+    private ComboBox<String> tfIDHoKhau;
 	private NhanKhauModel_Lam nhanKhauModel;
 	private NhanKhauModel_Lam newNhanKhauModel;
+	private List<NhanKhauModel_Lam> listNhanKhau;
 
 	public NhanKhauModel_Lam getNhanKhauModel() {
 		return nhanKhauModel;
 	}
-
-	ObservableList<String> genderList = FXCollections.observableArrayList("Nam", "Nữ");
-	ObservableList<String> relationshipList = FXCollections.observableArrayList("Vợ/Chồng", "Con cái", "Bố mẹ", "Ông bà", "Cháu chắt", "Khác");
-	ObservableList<String> ethnicityList = FXCollections.observableArrayList();
-	ObservableList<String> QueQuanList = FXCollections.observableArrayList("Việt Nam", "Khác");
-	ObservableList<String> Tinh_List = FXCollections.observableArrayList();
-	ObservableList<String> Huyen_List = FXCollections.observableArrayList();
-	ObservableList<String> Xa_List = FXCollections.observableArrayList();
-	ObservableList<String> IDHoKhau_List = FXCollections.observableArrayList();
-	private List<NhanKhauModel_Lam> listNhanKhau;
 
 	public void setNhanKhauModel(NhanKhauModel_Lam nhanKhauModel) throws ClassNotFoundException, SQLException {
 		this.nhanKhauModel = nhanKhauModel;
@@ -116,10 +109,11 @@ public class UpdateNhanKhau_Lam {
 
 		initializeLogic();
 	}
+
 	private void initializeLogic() {
 		try {
 			listNhanKhau = new NhanKhauService_Lam().getListNhanKhau();
-			for(NhanKhauModel_Lam nhankhau: listNhanKhau){
+			for (NhanKhauModel_Lam nhankhau : listNhanKhau) {
 				String data = String.valueOf(nhankhau.getIDHoKhau());
 				if (!IDHoKhau_List.contains(data)) {
 					IDHoKhau_List.add(data);
@@ -144,7 +138,7 @@ public class UpdateNhanKhau_Lam {
 		}
 		tfDanToc.setItems(ethnicityList);
 
-		if(nhanKhauModel.getQHvsChuHo().equals("Chủ hộ")){
+		if (nhanKhauModel.getQHvsChuHo().equals("Chủ hộ")) {
 			IDHoKhau_List.clear();
 			IDHoKhau_List.add(String.valueOf(nhanKhauModel.getIDHoKhau()));
 			tfIDHoKhau.setItems(IDHoKhau_List);
@@ -193,7 +187,7 @@ public class UpdateNhanKhau_Lam {
 							tfDistrict.setVisible(false);
 							tfWard.setVisible(false);
 						}
-						if (selectedCountry.equals("Việt Nam")){
+						if (selectedCountry.equals("Việt Nam")) {
 							tfQueQuan.setVisible(false);
 							tfTinh.setVisible(true);
 							tfHuyen.setVisible(true);
@@ -251,6 +245,7 @@ public class UpdateNhanKhau_Lam {
 			}
 		});
 	}
+
 	public void updateNhanKhau(ActionEvent event) throws ClassNotFoundException, SQLException {
 		Pattern pattern;
 		System.out.println("haha");
@@ -339,7 +334,7 @@ public class UpdateNhanKhau_Lam {
 				break;
 			}
 		}
-		if(checkExistedHoKhau == false){
+		if (!checkExistedHoKhau) {
 			Alert alert = new Alert(AlertType.WARNING, "Hãy nhập vào ID hộ khẩu đã tồn tại!", ButtonType.OK);
 			alert.setHeaderText(null);
 			alert.showAndWait();
@@ -353,7 +348,7 @@ public class UpdateNhanKhau_Lam {
 			return;
 		}
 
-		if(tfQHvsChuHo.equals("Chủ hộ") && !tfIDHoKhau.equals(nhanKhauModel.getIDHoKhau())){
+		if (tfQHvsChuHo.equals("Chủ hộ") && !tfIDHoKhau.equals(nhanKhauModel.getIDHoKhau())) {
 			Alert alert = new Alert(AlertType.WARNING, "Không thiết lập thay đổi ID Hộ khẩu mới cho Chủ hộ!", ButtonType.OK);
 			alert.setHeaderText(null);
 			alert.showAndWait();
@@ -368,8 +363,8 @@ public class UpdateNhanKhau_Lam {
 		}
 
 		String QueQuan = nhanKhauModel.getQueQuan();
-		if(tfCountry.getValue() != null && tfCountry.getValue().equals("Khác")){
-			if(tfQueQuan.getText() == null || tfQueQuan.getText().isEmpty()){
+		if (tfCountry.getValue() != null && tfCountry.getValue().equals("Khác")) {
+			if (tfQueQuan.getText() == null || tfQueQuan.getText().isEmpty()) {
 				Alert alert = new Alert(AlertType.WARNING, "Vui lòng điền đầy đủ quê quán nước ngoài", ButtonType.OK);
 				alert.setHeaderText(null);
 				alert.showAndWait();
@@ -377,8 +372,8 @@ public class UpdateNhanKhau_Lam {
 			}
 			QueQuan = tfQueQuan.getText();
 		}
-		if(tfCountry.getValue() != null && tfCountry.getValue().equals("Việt Nam")){
-			if(tfWard.getValue() == null){
+		if (tfCountry.getValue() != null && tfCountry.getValue().equals("Việt Nam")) {
+			if (tfWard.getValue() == null) {
 				Alert alert = new Alert(AlertType.WARNING, "Vui lòng điền đầy đủ quê quán trong nước", ButtonType.OK);
 				alert.setHeaderText(null);
 				alert.showAndWait();
@@ -387,7 +382,7 @@ public class UpdateNhanKhau_Lam {
 			QueQuan = tfWard.getValue() + ", " + tfDistrict.getValue() + ", " + tfProvince.getValue() + ", Việt Nam";
 		}
 
-		if(!tfXacNhan.isSelected()){
+		if (!tfXacNhan.isSelected()) {
 			Alert alert = new Alert(AlertType.WARNING, "Vui lòng xác nhận những thông tin cung cấp thay đổi trên là chính xác", ButtonType.OK);
 			alert.setHeaderText(null);
 			alert.showAndWait();
@@ -403,15 +398,15 @@ public class UpdateNhanKhau_Lam {
 		String HoTen = tfHoTen.getText();
 		String NgaySinh = String.valueOf(tfNgaySinh.getValue());
 		String CCCD;
-		if(tfCCCD.getText() == null || tfIDHoKhau.getValue().isEmpty())
+		if (tfCCCD.getText() == null || tfIDHoKhau.getValue().isEmpty())
 			CCCD = "Chưa cung cấp";
-		else{
+		else {
 			CCCD = tfCCCD.getText();
 		}
 		String NgheNghiep;
-		if(tfNgheNghiep.getText() == null || tfNgheNghiep.getText().isEmpty())
+		if (tfNgheNghiep.getText() == null || tfNgheNghiep.getText().isEmpty())
 			NgheNghiep = "Chưa cung cấp";
-		else{
+		else {
 			NgheNghiep = tfNgheNghiep.getText();
 		}
 		String GioiTinh = tfGioiTinh.getValue();
@@ -428,35 +423,22 @@ public class UpdateNhanKhau_Lam {
 //
 		newNhanKhauModel = new NhanKhauModel_Lam(IDNhanKhau, IDHoKhau, QHvsChuHo, HoTen, NgaySinh, CCCD, NgheNghiep, GioiTinh, DanToc, QueQuan);
 //		QuanHeModel quanHeModel = new QuanHeModel(mahokhauInt, idInt, quanheString);
-		if(compareNhanKhauModels(newNhanKhauModel, nhanKhauModel)){
+		if (NhanKhauModel_Lam.compareNhanKhauModels(newNhanKhauModel, nhanKhauModel)) {
 			Alert alert = new Alert(AlertType.WARNING, "Thông tin không thay đổi", ButtonType.OK);
 			alert.setHeaderText(null);
 			alert.showAndWait();
 			return;
 		}
 
-		if(!nhanKhauService.update(newNhanKhauModel)){
+		if (!NhanKhauService_Lam.update(newNhanKhauModel)) {
 			Alert alert = new Alert(AlertType.WARNING, "Hãy nhập vào ID hộ khẩu đã tồn tại!", ButtonType.OK);
 			alert.setHeaderText(null);
 			alert.showAndWait();
-			return;
-		}
-		else{
+        } else {
 			nhanKhauModel = newNhanKhauModel;
 			Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 			stage.close();
 		}
 	}
-	public static boolean compareNhanKhauModels(NhanKhauModel_Lam nhanKhau1, NhanKhauModel_Lam nhanKhau2) {
-		return nhanKhau1.getIDNhanKhau() == nhanKhau2.getIDNhanKhau() &&
-				nhanKhau1.getIDHoKhau() == nhanKhau2.getIDHoKhau() &&
-				nhanKhau1.getQHvsChuHo().equals(nhanKhau2.getQHvsChuHo()) &&
-				nhanKhau1.getHoTen().equals(nhanKhau2.getHoTen()) &&
-				nhanKhau1.getNgaySinh().equals(nhanKhau2.getNgaySinh()) &&
-				nhanKhau1.getCCCD().equals(nhanKhau2.getCCCD()) &&
-				nhanKhau1.getNgheNghiep().equals(nhanKhau2.getNgheNghiep()) &&
-				nhanKhau1.getGioiTinh().equals(nhanKhau2.getGioiTinh()) &&
-				nhanKhau1.getDanToc().equals(nhanKhau2.getDanToc()) &&
-				nhanKhau1.getQueQuan().equals(nhanKhau2.getQueQuan());
-	}
+
 }
