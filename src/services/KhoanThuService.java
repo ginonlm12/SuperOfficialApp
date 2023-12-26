@@ -50,24 +50,29 @@ public class KhoanThuService {
 	}
 
 	// modify the update method to match the khoanthu table
-	public boolean update(int IDKhoanThu, String TenKT, String NgayBatDau, String NgayKetThuc, double TrongSoDienTich,
-			double TrongSoSTV, double HangSo) throws ClassNotFoundException, SQLException {
+	public boolean update(int IDKhoanThu_old, KhoanThuModel khoanThuModel) throws ClassNotFoundException, SQLException {
 		Connection connection = MysqlConnection.getMysqlConnection();
 		PreparedStatement preparedStatement;
 
-		String query = "UPDATE khoanthu SET TenKT = ?, NgayBatDau = ?, NgayKetThuc = ?, TrongSoDienTich = ?, TrongSoSTV = ?, HangSo = ? WHERE IDKhoanThu = ?";
+		String query = "UPDATE khoanthu SET TenKT = ?, NgayBatDau = ?, NgayKetThuc = ?, TrongSoDienTich = ?, TrongSoSTV = ?, HangSo = ?, IDKhoanThu = ? WHERE IDKhoanThu = ?";
 		preparedStatement = connection.prepareStatement(query);
-		preparedStatement.setString(1, TenKT);
-		preparedStatement.setString(2, NgayBatDau);
-		preparedStatement.setString(3, NgayKetThuc);
-		preparedStatement.setDouble(4, TrongSoDienTich);
-		preparedStatement.setDouble(5, TrongSoSTV);
-		preparedStatement.setDouble(6, HangSo);
-		preparedStatement.setInt(7, IDKhoanThu);
+		preparedStatement.setString(1, khoanThuModel.getTenKT());
+		preparedStatement.setString(2, khoanThuModel.getNgayBatDau());
+		preparedStatement.setString(3, khoanThuModel.getNgayKetThuc());
+		preparedStatement.setDouble(4, khoanThuModel.getTrongSoDienTich());
+		preparedStatement.setDouble(5, khoanThuModel.getTrongSoSTV());
+		preparedStatement.setDouble(6, khoanThuModel.getHangSo());
+		preparedStatement.setInt(7, khoanThuModel.getIDKhoanThu());
+		preparedStatement.setInt(8, IDKhoanThu_old);
+		preparedStatement.executeUpdate();
+
+		String query2 = "UPDATE thuphi SET IDKhoanThu = ? WHERE IDKhoanThu = ?";
+		preparedStatement = connection.prepareStatement(query2);
+		preparedStatement.setInt(1, khoanThuModel.getIDKhoanThu());
+		preparedStatement.setInt(2, IDKhoanThu_old);
 		preparedStatement.executeUpdate();
 		preparedStatement.close();
 		connection.close();
-
 		return true;
 	}
 
