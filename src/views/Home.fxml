@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.image.*?>
@@ -49,6 +50,31 @@
         </VBox>
         <Pane fx:id="middlePane" disable="true" onMouseClicked="#middlePaneClicked" prefHeight="650.0"
               prefWidth="800.0"/>
+        <VBox fx:id="menuNhanKhau" layoutX="-265.0" layoutY="140.0" prefHeight="123.0" prefWidth="100.0">
+            <children>
+                <Button mnemonicParsing="false" onAction="#setCuTru" prefHeight="39.0" prefWidth="101.0"
+                        styleClass="buttoninsubmenu" stylesheets="@../source/Home.css" text="Hiện trú">
+                    <cursor>
+                        <Cursor fx:constant="HAND"/>
+                    </cursor>
+                </Button>
+                <Button mnemonicParsing="false" onAction="#setTamVang" prefHeight="39.0" prefWidth="104.0"
+                        styleClass="buttoninsubmenu" stylesheets="@../source/Home.css" text="Tạm vắng">
+                    <cursor>
+                        <Cursor fx:constant="HAND"/>
+                    </cursor>
+                </Button>
+                <Button mnemonicParsing="false" onAction="#setTamTru" prefHeight="39.0" prefWidth="105.0"
+                        styleClass="buttoninsubmenu" stylesheets="@../source/Home.css" text="Tạm trú">
+                    <opaqueInsets>
+                        <Insets/>
+                    </opaqueInsets>
+                    <cursor>
+                        <Cursor fx:constant="HAND"/>
+                    </cursor>
+                </Button>
+            </children>
+        </VBox>
         <VBox id="menubar" fx:id="menu" layoutX="-165.0" prefHeight="650.0" prefWidth="165.0">
             <children>
                 <Button id="logobtn" focusTraversable="false" mnemonicParsing="false" onMouseClicked="#logobtnClicked"
@@ -126,7 +152,7 @@
                         <Cursor fx:constant="HAND"/>
                     </cursor>
                 </Button>
-                <Button fx:id="btnNhanKhau" mnemonicParsing="false" onAction="#setNhanKhau" prefHeight="60.0"
+                <Button fx:id="btnNhanKhau" mnemonicParsing="false" onMouseClicked="#setNhanKhau" prefHeight="60.0"
                         prefWidth="218.0" styleClass="buttoninmenu" stylesheets="@../source/Home.css" text="Nhân khẩu"
                         textFill="WHITE">
                     <font>

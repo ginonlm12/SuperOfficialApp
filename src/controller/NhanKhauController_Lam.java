@@ -2,6 +2,7 @@ package controller;
 
 import controller.nhankhau.ShowChiTiet_Lam;
 import controller.nhankhau.UpdateNhanKhau_Lam;
+import controller.tamtrutamvang.AddTamVang;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -16,6 +17,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import models.NhanKhauModel_Lam;
 import services.NhanKhauService_Lam;
+import services.TamVangService;
 
 import java.io.IOException;
 import java.net.URL;
@@ -53,13 +55,6 @@ public class NhanKhauController_Lam implements Initializable {
 	private List<NhanKhauModel_Lam> listNhanKhau;
 	private int ID_dexemchitiet;
 
-	public TableView<NhanKhauModel_Lam> getTvNhanKhau() {
-		return tvNhanKhau;
-	}
-
-	public void setTvNhanKhau(TableView<NhanKhauModel_Lam> tvNhanKhau) {
-		this.tvNhanKhau = tvNhanKhau;
-	}
 
 	// hien thi thong tin nhan khau
 	public void showNhanKhau() throws ClassNotFoundException, SQLException {
@@ -77,13 +72,6 @@ public class NhanKhauController_Lam implements Initializable {
 		colSDT.setCellValueFactory(new PropertyValueFactory<NhanKhauModel_Lam, String>("NgheNghiep"));
 		colMaHo.setCellValueFactory(new PropertyValueFactory<NhanKhauModel_Lam, String>("NgaySinh"));
 		colQHvsChuHo.setCellValueFactory(new PropertyValueFactory<NhanKhauModel_Lam, String>("QHvsChuHo"));
-//		try {
-//			colMaHo.setCellValueFactory(
-//					(CellDataFeatures<NhanKhauModel_Lam, String> p) -> new ReadOnlyStringWrapper(mapIdToMaho.get(p.getValue().getId()).toString())
-//			);
-//		} catch (Exception e) {
-//			// TODO: handle exception
-//		}
 
 		tvNhanKhau.setItems(listValueTableView);
 
@@ -211,7 +199,6 @@ public class NhanKhauController_Lam implements Initializable {
 
 	@FXML
 	public void addNhanKhau(ActionEvent event) throws IOException, ClassNotFoundException, SQLException {
-		// return ;
 		Parent home = FXMLLoader.load(getClass().getResource("/views/nhankhau/AddNhanKhau_Lam.fxml"));
 		Stage stage = new Stage();
 		stage.setScene(new Scene(home, 800, 600));
@@ -220,19 +207,16 @@ public class NhanKhauController_Lam implements Initializable {
 		showNhanKhau();
 	}
 
-	// con truong hop neu xoa chu ho chua xet
 	@FXML
 	public void delNhanKhau(ActionEvent event) throws IOException, ClassNotFoundException, SQLException {
 		NhanKhauModel_Lam nhanKhauModel = tvNhanKhau.getSelectionModel().getSelectedItem();
-		// int maho = 0;
 
 		if (nhanKhauModel == null) {
 			Alert alert = new Alert(AlertType.WARNING, "Hãy chọn nhân khẩu bạn muốn xóa!", ButtonType.OK);
 			alert.setHeaderText(null);
 			alert.showAndWait();
 		} else {
-			// kiem tra dieu kien chu ho
-			// List<ChuHoModel> listChuHo = new ChuHoService().getListChuHo();
+
 			if (nhanKhauModel.getQHvsChuHo().equals("Chủ hộ")) {
 				Alert alert = new Alert(AlertType.WARNING, "Bạn không thể xóa chủ hộ tại đây, hãy xóa chủ hộ tại mục hộ khẩu!", ButtonType.OK);
 				alert.setHeaderText("Nhân khẩu này là 1 chủ hộ!");
@@ -247,7 +231,9 @@ public class NhanKhauController_Lam implements Initializable {
 			if (result.get() == ButtonType.NO) {
 				return;
 			} else {
-				new NhanKhauService_Lam().del(nhanKhauModel.getIDNhanKhau());
+				NhanKhauService_Lam.del(nhanKhauModel.getIDNhanKhau());
+				// Xóa luôn nhân khẩu ở bảng tạm vắng
+				TamVangService.delbyIDNhanKhau(nhanKhauModel.getIDNhanKhau());
 			}
 		}
 		showNhanKhau();
@@ -292,7 +278,7 @@ public class NhanKhauController_Lam implements Initializable {
 	void showChiTiet(ActionEvent event) throws IOException, ClassNotFoundException, SQLException {
 		// lay ra nhan khau can xem chi tiet
 		NhanKhauModel_Lam nhanKhauModel = tvNhanKhau.getSelectionModel().getSelectedItem();
-		// Lấy cái code ni đưa vào button Xem thông tin của Tuấn này
+
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(getClass().getResource("/views/nhankhau/ShowChiTiet_Lam.fxml"));
 		Parent home = loader.load();
@@ -314,6 +300,33 @@ public class NhanKhauController_Lam implements Initializable {
 		stage.setResizable(false);
 		stage.show();
 		//stage.showAndWait();
+		showNhanKhau();
+	}
+
+	@FXML
+	void addTamvang(ActionEvent event) throws IOException, ClassNotFoundException, SQLException {
+		NhanKhauModel_Lam nhanKhauModel = tvNhanKhau.getSelectionModel().getSelectedItem();
+
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(getClass().getResource("/views/tamtrutamvang/AddTamVang.fxml"));
+		Parent home = loader.load();
+		Stage stage = new Stage();
+		stage.setScene(new Scene(home, 400, 300));
+		AddTamVang addTamVang = loader.getController();
+
+		// bat loi truong hop khong hop le
+		if (addTamVang == null) return;
+		if (nhanKhauModel == null) {
+			Alert alert = new Alert(AlertType.WARNING, "Chưa chọn nhân khẩu!", ButtonType.OK);
+			alert.setHeaderText(null);
+			alert.showAndWait();
+			return;
+		}
+
+		addTamVang.setNhanKhauModel(nhanKhauModel);
+
+		stage.setResizable(false);
+		stage.show();
 		showNhanKhau();
 	}
 
