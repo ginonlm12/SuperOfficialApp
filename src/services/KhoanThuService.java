@@ -28,15 +28,15 @@ public class KhoanThuService {
 
 	public boolean del(int IDKhoanThu) throws ClassNotFoundException, SQLException {
 		Connection connection = MysqlConnection.getMysqlConnection();
-		String query = "SELECT * FROM nop_tien WHERE MaKhoanThu='"+maKhoanThu+"';";
+		String query = "SELECT * FROM nop_tien WHERE IDKhoanThu='"+IDKhoanThu+"';";
 	    PreparedStatement preparedStatement = connection.prepareStatement(query);
 	    ResultSet rs = preparedStatement.executeQuery();
 	    while (rs.next()){
-	    	query="DELETE FROM nop_tien WHERE MaKhoanThu='"+maKhoanThu+"'";
+	    	query="DELETE FROM nop_tien WHERE IDKhoanThu='"+IDKhoanThu+"'";
 	    	preparedStatement = connection.prepareStatement(query);
 	    	preparedStatement.executeUpdate();
 	    }
-	    query ="DELETE FROM khoan_thu WHERE MaKhoanThu = '"+maKhoanThu+"'";
+	    query ="DELETE FROM khoan_thu WHERE IDKhoanThu = '"+IDKhoanThu+"'";
 	    preparedStatement = connection.prepareStatement(query);
 		preparedStatement.executeUpdate();
 		preparedStatement.close();
@@ -79,8 +79,19 @@ public class KhoanThuService {
 	    PreparedStatement preparedStatement = connection.prepareStatement(query);
 	    ResultSet rs = preparedStatement.executeQuery();
 	    while (rs.next()){
-	        KhoanThuModel khoanThuModel = new KhoanThuModel(rs.getInt("MaKhoanThu"),rs.getString("TenKhoanThu"),
-	        		rs.getDouble("SoTien"),rs.getInt("LoaiKhoanThu"));
+	        // KhoanThuModel khoanThuModel = new KhoanThuModel(rs.getInt("MaKhoanThu"),rs.getString("TenKhoanThu"),
+	        // 		rs.getDouble("SoTien"),rs.getInt("LoaiKhoanThu"));
+			// create a new KhoanThuModel object with attributes from the database
+			KhoanThuModel khoanThuModel = new KhoanThuModel(
+				rs.getInt("IDKhoanThu"), 
+				rs.getString("TenKT"),	
+				rs.getString("NgayBatDau"),	
+				rs.getString("NgayKetThuc"),
+				rs.getDouble("TrongSoDienTich"),
+				rs.getDouble("TrongSoSTV"),
+				rs.getDouble("HangSo")
+			);
+
 	        list.add(khoanThuModel);
 	   }
 	    preparedStatement.close();

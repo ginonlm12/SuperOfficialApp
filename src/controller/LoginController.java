@@ -35,15 +35,15 @@ public class LoginController implements Initializable {
         String username = tfUsername.getText();
         String password = tfPassword.getText();
 
-        if (UserService.checkUser(username, password)) {
+        // if (UserService.checkUser(username, password)) {
             user.setUsername(username);
             user.setPasswd(password);
             showMainMenu(event);
-        } else {
-            Alert alert = new Alert(AlertType.WARNING, "Bạn nhập sai tài khoản hoặc mật khẩu rồi !", ButtonType.OK);
-            alert.setHeaderText(null);
-            alert.showAndWait();
-        }
+        // } else {
+        //     Alert alert = new Alert(AlertType.WARNING, "Bạn nhập sai tài khoản hoặc mật khẩu rồi !", ButtonType.OK);
+        //     alert.setHeaderText(null);
+        //     alert.showAndWait();
+        // }
     }
 
     public void initialize(URL arg0, ResourceBundle arg1) {
