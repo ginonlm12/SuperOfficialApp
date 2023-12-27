@@ -127,6 +127,7 @@ public class HomeController implements Initializable {
         Timeline timeline = new Timeline(keyFrame, keyFrame1);
         timeline.play();
 	}
+
   
    @FXML
    void setPhong(ActionEvent event) throws IOException {
