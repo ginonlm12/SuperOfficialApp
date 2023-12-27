@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th12 21, 2023 lúc 03:31 PM
+-- Thời gian đã tạo: Th12 26, 2023 lúc 05:29 PM
 -- Phiên bản máy phục vụ: 10.4.28-MariaDB
 -- Phiên bản PHP: 8.0.28
 
@@ -46,8 +46,9 @@ INSERT INTO `hokhau` (`IDHoKhau`, `SoPhong`, `NgayDen`, `NgayDi`, `SDT`) VALUES
 (4, 4, '2017-02-11', '0001-01-01', '032848234'),
 (5, 6, '2023-12-15', '0001-01-01', '0376535353'),
 (6, 5, '2023-12-16', '2023-12-18', '038383833'),
-(7, 7, '2023-12-16', '2023-12-17', '1234'),
-(8, 7, '2023-12-08', '2023-12-18', '123');
+(7, 7, '2023-12-16', '2023-12-26', '1234'),
+(8, 7, '2023-12-08', '2023-12-26', '123'),
+(9, 7, '2023-12-21', '0001-01-01', '0123456789');
 
 -- --------------------------------------------------------
 
@@ -89,7 +90,7 @@ CREATE TABLE `nhankhau` (
 --
 
 INSERT INTO `nhankhau` (`IDNhanKhau`, `IDHoKhau`, `QHvsChuHo`, `HoTen`, `NgaySinh`, `CCCD`, `NgheNghiep`, `GioiTinh`, `DanToc`, `QueQuan`) VALUES
-(1, 1, 'Vợ/Chồng', 'Nguyễn Hoàng Lâm', '2003-02-11', '(Chưa nhập)', 'Sinh viên', 'Nam', 'Kinh', 'Đồng Hợp, Quỳ Hợp, Nghệ An, Việt Nam'),
+(1, 1, 'Cháu chắt', 'Nguyễn Hoàng Lâm', '2003-02-11', '(Chưa nhập)', 'Sinh viên', 'Nam', 'Kinh', 'Đồng Hợp, Quỳ Hợp, Nghệ An, Việt Nam'),
 (2, 1, 'Chủ hộ', 'Nguyễn Trọng Tuấn', '2003-02-04', '(Chưa nhập)', 'Quái vật', 'Nam', 'Kinh', '(Chưa nhập)'),
 (3, 1, 'Vợ/Chồng', 'Nguyễn Minh Quang', '2003-04-14', '(Chưa nhập)', '(Chưa nhập)', '(Chưa nhập)', '(Chưa nhập)', '(Chưa nhập)'),
 (4, 2, 'Chủ hộ', 'Đào Quốc Tuấn', '2003-01-01', '(Chưa nhập)', '(Chưa nhập)', '(Chưa nhập)', '(Chưa nhập)', '(Chưa nhập)'),
@@ -102,7 +103,11 @@ INSERT INTO `nhankhau` (`IDNhanKhau`, `IDHoKhau`, `QHvsChuHo`, `HoTen`, `NgaySin
 (11, 6, 'Chủ hộ', 'Huỳnh Thị Thanh Bình', '0001-01-01', '23456789', '(Chưa điền)', 'Nữ', 'Kinh', 'Việt Nam'),
 (12, 7, 'Chủ hộ', 'Nguyễn Thị Mỹ Bình', '0001-01-01', '12345678', 'Chủ hộ', 'Nam', 'Kinh', 'Việt Nam'),
 (13, 8, 'Chủ hộ', 'A B C', '0001-01-01', '123', 'Chủ hộ', 'Nữ', 'Kinh', 'Việt Nam'),
-(14, 3, 'Chủ hộ', 'Vương Đình Lâm', '2023-12-17', '', 'Chưa cung cấp', 'Nam', 'Kinh', 'Tân Kỳ, Tân Kỳ, Nghệ An, Việt Nam');
+(14, 3, 'Chủ hộ', 'Vương Đình Lâm', '2023-12-17', '', 'Chưa cung cấp', 'Nam', 'Kinh', 'Tân Kỳ, Tân Kỳ, Nghệ An, Việt Nam'),
+(15, 3, 'Vợ/Chồng', 'Đỗ Đức Mạnh', '2003-01-01', '111111111111', 'Chưa cung cấp', 'Nam', 'Kinh', 'Nghĩa Thuận, Thái Hoà, Nghệ An, Việt Nam'),
+(16, 4, 'Con cái', 'Nguyễn Tiến Thành', '1978-10-28', '1237562345', 'Giảng viên', 'Nam', 'Kinh', 'Nậm Chua, Nậm Pồ, Điện Biên, Việt Nam'),
+(17, 9, 'Chủ hộ', 'Phùng Cảnh Châu', '0001-01-01', '12345123', '(Chưa nhập)', 'Nam', '(Chưa nhập)', '(Chưa nhập)'),
+(18, 1, 'Khác', 'Nguyễn Đức Hiếu', '2003-10-03', '17248183838', 'Rapper', 'Nam', 'Mường', 'Avenue Victor Hugo, Paris, France');
 
 -- --------------------------------------------------------
 
@@ -129,6 +134,57 @@ INSERT INTO `phong` (`SoPhong`, `DienTich`, `LoaiPhong`) VALUES
 (6, 20, '(Chưa điền)'),
 (7, 40, 'Cao cấp'),
 (9, 40, 'Thường');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `tamtru`
+--
+
+CREATE TABLE `tamtru` (
+  `IDTamTru` int(11) NOT NULL,
+  `IDHoKhau` int(11) NOT NULL,
+  `HoTen` varchar(30) NOT NULL DEFAULT '(Chưa nhập)',
+  `ThuongTru` varchar(100) NOT NULL DEFAULT '(Chưa nhập)',
+  `NgayBatDau` date NOT NULL DEFAULT '0001-01-01',
+  `NgayKetThuc` date NOT NULL DEFAULT '0001-01-01',
+  `LyDo` varchar(100) NOT NULL DEFAULT '(Chưa nhập)',
+  `NgaySinh` date NOT NULL DEFAULT '0001-01-01',
+  `CCCD` varchar(15) NOT NULL DEFAULT '(Chưa nhập)',
+  `GioiTinh` varchar(15) NOT NULL DEFAULT '(Chưa nhập)'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `tamtru`
+--
+
+INSERT INTO `tamtru` (`IDTamTru`, `IDHoKhau`, `HoTen`, `ThuongTru`, `NgayBatDau`, `NgayKetThuc`, `LyDo`, `NgaySinh`, `CCCD`, `GioiTinh`) VALUES
+(1, 5, 'Hoàng Tiến Nguyên', '(Chưa nhập)', '2023-01-01', '2023-12-31', '(Chưa nhập)', '2004-01-01', '01324832', 'Nam'),
+(3, 5, 'Trương Xuân Thông', 'Chiềng Hặc, Yên Châu, Sơn La, Việt Nam', '2023-12-26', '2024-04-12', 'Vui chơi giải trí là chính', '2004-05-16', '1028529583', 'Nam');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `tamvang`
+--
+
+CREATE TABLE `tamvang` (
+  `IDTamvang` int(11) NOT NULL,
+  `IDNhanKhau` int(11) NOT NULL,
+  `NgayBatDau` date NOT NULL DEFAULT '0001-01-01',
+  `NgayKetThuc` date NOT NULL DEFAULT '0001-01-01',
+  `LyDo` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `tamvang`
+--
+
+INSERT INTO `tamvang` (`IDTamvang`, `IDNhanKhau`, `NgayBatDau`, `NgayKetThuc`, `LyDo`) VALUES
+(1, 15, '2023-12-23', '2024-02-11', 'Đi du học'),
+(2, 17, '2023-12-25', '2023-12-25', 'Đi thăm bạn bè ở Cà Mau'),
+(3, 16, '2023-12-20', '2024-12-20', 'Đi xuất khẩu lao động'),
+(9, 12, '2023-12-26', '2023-12-26', 'Đi giảng dạy cho sinh viên đại học Công Nghiệp');
 
 -- --------------------------------------------------------
 
@@ -208,6 +264,19 @@ ALTER TABLE `phong`
   ADD PRIMARY KEY (`SoPhong`);
 
 --
+-- Chỉ mục cho bảng `tamtru`
+--
+ALTER TABLE `tamtru`
+  ADD PRIMARY KEY (`IDTamTru`);
+
+--
+-- Chỉ mục cho bảng `tamvang`
+--
+ALTER TABLE `tamvang`
+  ADD PRIMARY KEY (`IDTamvang`),
+  ADD KEY `fk_idnktv` (`IDNhanKhau`);
+
+--
 -- Chỉ mục cho bảng `thuphi`
 --
 ALTER TABLE `thuphi`
@@ -235,13 +304,25 @@ ALTER TABLE `xe`
 -- AUTO_INCREMENT cho bảng `hokhau`
 --
 ALTER TABLE `hokhau`
-  MODIFY `IDHoKhau` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `IDHoKhau` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT cho bảng `nhankhau`
 --
 ALTER TABLE `nhankhau`
-  MODIFY `IDNhanKhau` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `IDNhanKhau` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+
+--
+-- AUTO_INCREMENT cho bảng `tamtru`
+--
+ALTER TABLE `tamtru`
+  MODIFY `IDTamTru` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT cho bảng `tamvang`
+--
+ALTER TABLE `tamvang`
+  MODIFY `IDTamvang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- Các ràng buộc cho các bảng đã đổ
@@ -258,6 +339,12 @@ ALTER TABLE `hokhau`
 --
 ALTER TABLE `nhankhau`
   ADD CONSTRAINT `fk_idhk` FOREIGN KEY (`IDHoKhau`) REFERENCES `hokhau` (`IDHoKhau`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Các ràng buộc cho bảng `tamvang`
+--
+ALTER TABLE `tamvang`
+  ADD CONSTRAINT `fk_idnktv` FOREIGN KEY (`IDNhanKhau`) REFERENCES `nhankhau` (`IDNhanKhau`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Các ràng buộc cho bảng `thuphi`

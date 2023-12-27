@@ -30,6 +30,8 @@ public class HomeController implements Initializable {
     @FXML
     Pane middlePane;
     @FXML
+    private VBox menuNhanKhau;
+    @FXML
     private AnchorPane allElements;
     @FXML
     private Button showBtn;
@@ -51,35 +53,77 @@ public class HomeController implements Initializable {
         stage.setResizable(false);
         stage.showAndWait();
     }
+
+    private boolean show = false;
+
     private void changeMainPane(String fxmlfile) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlfile));
         Pane newContentPane = loader.load();
         // Replace the content of mainPane with the new content
         mainPane.getChildren().setAll(newContentPane);
+        anim(menuNhanKhau, 330, 0, 0.5);
     }
 
-	public void setNhanKhau(ActionEvent event) throws IOException {
-        changeMainPane("/views/NhanKhau_Lam.fxml");
-	}
+    public void setNhanKhau(MouseEvent event) {
+        //changeMainPane("/views/NhanKhau_Lam.fxml");
+        if (!show) {
+            show = !show;
+            menuShow(menuNhanKhau, 430, 0, 0.5);
+        } else {
+            show = !show;
+            anim(menuNhanKhau, 330, 0, 0.6);
+        }
+    }
 
-	public void setHoKhau(ActionEvent event) throws IOException {
+    @FXML
+    public void setCuTru(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/NhanKhau_Lam.fxml"));
+        Pane newContentPane = loader.load();
+        // Replace the content of mainPane with the new content
+        mainPane.getChildren().setAll(newContentPane);
+    }
+
+    @FXML
+    public void setTamTru(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/TamTru.fxml"));
+        Pane newContentPane = loader.load();
+        // Replace the content of mainPane with the new content
+        mainPane.getChildren().setAll(newContentPane);
+    }
+
+    @FXML
+    public void setTamVang(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/TamVang.fxml"));
+        Pane newContentPane = loader.load();
+        // Replace the content of mainPane with the new content
+        mainPane.getChildren().setAll(newContentPane);
+    }
+
+    public void setHoKhau(ActionEvent event) throws IOException {
         changeMainPane("/views/HoKhau.fxml");
-	}
+    }
 
-	public void setKhoanPhi(ActionEvent event) throws IOException {
+    public void setKhoanPhi(ActionEvent event) throws IOException {
         changeMainPane("/views/KhoanThu.fxml");
-	}
+    }
 
-	public void setDongPhi(ActionEvent event) throws IOException {
+    public void setDongPhi(ActionEvent event) throws IOException {
         changeMainPane("/views/NopTien.fxml");
-	}
+    }
 
-	public void setThongKe(ActionEvent event) throws IOException {
+    public void setThongKe(ActionEvent event) throws IOException {
         changeMainPane("/views/ThongKe.fxml");
-	}
+    }
 
-	public void setTrangChu(ActionEvent event) throws IOException {
+    public void setTrangChu(ActionEvent event) throws IOException {
         changeMainPane("/views/Main.fxml");
+    }
+
+    public void anim(VBox menu, int x, int y, double keysecond) {
+        KeyValue keyValue = new KeyValue(menu.translateXProperty(), x);
+        KeyValue keyValue1 = new KeyValue(menu.translateXProperty(), y);
+        KeyFrame keyFrame = new KeyFrame(Duration.seconds(keysecond), keyValue);
+        KeyFrame keyFrame1 = new KeyFrame(Duration.seconds(keysecond), keyValue1);
 	}
   
    @FXML
@@ -91,37 +135,32 @@ public class HomeController implements Initializable {
         changeMainPane("/views/GuiXe_Tuan.fxml");
     }
 
-	public void anim(int x, int y) {
-        KeyValue keyValue = new KeyValue(vbox.translateXProperty(), x);
-        KeyValue keyValue1 = new KeyValue(vbox.translateXProperty(), y);
-
-
-        KeyFrame keyFrame = new KeyFrame(Duration.seconds(0.35), keyValue);
-        KeyFrame keyFrame1 = new KeyFrame(Duration.seconds(0.35), keyValue1);
         Timeline timeline = new Timeline(keyFrame, keyFrame1);
         timeline.play();
     }
 
-    void menuShow() {
-        anim(165, 0);
+    void menuShow(VBox menu, int x, int y, double keysecond) {
+        anim(menu, x, y, keysecond);
         mainPane.setEffect(new BoxBlur(5, 5, 3));
         middlePane.setDisable(false);
     }
 
-    void menuHide() {
-        anim(0, 0);
+    void menuHide(VBox menu) {
+        anim(menu, 0, 0, 0.35);
         mainPane.setEffect(null);
         middlePane.setDisable(true);
     }
 
     @FXML
     void onShowbtnClicked(MouseEvent event) {
-        menuShow();
+        menuShow(menu, 165, 0, 0.35);
+        menuShow(menuNhanKhau, 330, 0, 0.35);
     }
 
     @FXML
     void middlePaneClicked(MouseEvent event) {
-        menuHide();
+        menuHide(menu);
+        menuHide(menuNhanKhau);
     }
 
     @FXML
@@ -152,16 +191,16 @@ public class HomeController implements Initializable {
     }
 
     @Override
-	public void initialize(URL arg0, ResourceBundle arg1) {
-		try {
+    public void initialize(URL arg0, ResourceBundle arg1) {
+        try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/Main.fxml"));
             Pane newContentPane = loader.load();
             // Replace the content of mainPane with the new content
             mainPane.getChildren().setAll(newContentPane);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
 
     @FXML
@@ -178,4 +217,5 @@ public class HomeController implements Initializable {
             throw new RuntimeException(e);
         }
     }
+
 }

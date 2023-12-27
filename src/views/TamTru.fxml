@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<?import java.net.URL?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="600.0" prefWidth="800.0" styleClass="background"
+            stylesheets="@../source/nhankhau_va_hokhau.css" xmlns="http://javafx.com/javafx/21"
+            fx:controller="controller.TamTruController">
+    <children>
+        <TableView fx:id="tvTamTru" focusTraversable="false" layoutX="15.0" layoutY="140.0" prefHeight="447.0"
+                   prefWidth="767.0">
+            <columns>
+                <TableColumn fx:id="colHoTenTT" prefWidth="153.3333387374878" text="Họ và tên"/>
+                <TableColumn fx:id="colNgayBatDauTT" prefWidth="87.3333740234375" text="Ngày bắt đầu"/>
+                <TableColumn fx:id="colNgayKetThucTT" prefWidth="155.99993896484375" text="Ngày kết thúc (dự kiến)"/>
+                <TableColumn fx:id="colLyDoTT" prefWidth="367.999989827474" text="Lý do"/>
+            </columns>
+        </TableView>
+        <Text layoutX="255.0" layoutY="128.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DANH SÁCH NHÂN KHẨU TẠM TRÚ"
+              textAlignment="CENTER">
+            <font>
+                <Font name="System Bold Italic" size="17.0"/>
+            </font>
+        </Text>
+        <TextField fx:id="tfSearchTT" layoutX="15.0" layoutY="53.0" prefHeight="41.0" prefWidth="299.0"
+                   styleClass="search" stylesheets="@../source/nhankhau_va_hokhau.css"/>
+        <ComboBox id="choose" fx:id="cbChooseSearchTT" layoutX="295.0" layoutY="53.0" prefHeight="41.0"
+                  prefWidth="271.0" styleClass="boxluachon" stylesheets="@../source/nhankhau_va_hokhau.css"/>
+        <Button layoutX="532.0" layoutY="53.0" mnemonicParsing="false" onAction="#searchTamTru" prefHeight="41.0"
+                prefWidth="253.0" styleClass="btntimkiem" text="Tìm kiếm">
+            <stylesheets>
+                <URL value="@../source/nhankhau_va_hokhau.css"/>
+                <URL value="@../source/nhankhau_va_hokhau.css"/>
+            </stylesheets>
+        </Button>
+        <Button focusTraversable="false" layoutX="324.0" layoutY="14.0" mnemonicParsing="false" onAction="#delTamtru"
+                prefHeight="30.0" prefWidth="150.0" styleClass="buttonChucnang"
+                stylesheets="@../source/nhankhau_va_hokhau.css" text="Xóa tạm trú" textFill="#2e088d" wrapText="true"/>
+        <Button focusTraversable="false" layoutX="174.0" layoutY="14.0" mnemonicParsing="false" onAction="#addTamtru"
+                prefHeight="30.0" prefWidth="150.0" styleClass="buttonChucnang"
+                stylesheets="@../source/nhankhau_va_hokhau.css" text="Thêm tạm trú" textFill="#2e088d" wrapText="true"/>
+        <Button focusTraversable="false" layoutX="474.0" layoutY="14.0" mnemonicParsing="false" onAction="#showTamtru"
+                prefHeight="30.0" prefWidth="150.0" styleClass="buttonChucnang"
+                stylesheets="@../source/nhankhau_va_hokhau.css" text="Xem chi tiết" textFill="#2e088d" wrapText="true"/>
+    </children>
+</AnchorPane>

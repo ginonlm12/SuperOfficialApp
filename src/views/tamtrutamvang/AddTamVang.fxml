@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.*?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="300.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/21"
+            fx:controller="controller.tamtrutamvang.AddTamVang">
+   <children>
+      <Label fx:id="textKhaibao" layoutX="21.0" layoutY="9.0" text="Khai báo tạm vắng">
+         <font>
+            <Font name="System Bold Italic" size="23.0"/>
+         </font>
+      </Label>
+      <Text layoutX="21.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ID">
+         <font>
+            <Font size="14.0"/>
+         </font>
+      </Text>
+      <Text layoutX="101.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Họ và tên">
+         <font>
+            <Font size="14.0"/>
+         </font>
+      </Text>
+      <DatePicker fx:id="tfNgaybatdau" layoutX="21.0" layoutY="118.0" prefHeight="25.0" prefWidth="357.0"
+                  styleClass="text-field-rounded" stylesheets="@../../source/Main.css"/>
+      <TextField fx:id="tfHoTen" editable="false" layoutX="172.0" layoutY="43.0" prefHeight="39.0" prefWidth="206.0"
+                 promptText="Nhập vào Họ và tên" styleClass="text-field-rounded" stylesheets="@../../source/Main.css"/>
+      <DatePicker fx:id="tfNgayketthuc" layoutX="21.0" layoutY="176.0" prefHeight="28.0" prefWidth="357.0"
+                  styleClass="text-field-rounded" stylesheets="@../../source/Main.css"/>
+      <Text layoutX="21.0" layoutY="108.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ngày bắt đầu">
+         <font>
+            <Font size="14.0"/>
+         </font>
+      </Text>
+      <Text layoutX="21.0" layoutY="165.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ngày dự kiến kết thúc">
+         <font>
+            <Font size="14.0"/>
+         </font>
+      </Text>
+      <Button fx:id="addbtn" layoutX="332.0" layoutY="260.0" mnemonicParsing="false" onAction="#addTamVang"
+              text="Thêm"/>
+      <TextField fx:id="tfIDNhanKhau" editable="false" layoutX="41.0" layoutY="43.0" prefHeight="39.0" prefWidth="53.0"
+                 promptText="Nhập vào Họ và tên" styleClass="text-field-rounded" stylesheets="@../../source/Main.css"/>
+      <Label fx:id="Error" layoutX="241.0" layoutY="162.0" text="Error" textFill="RED">
+         <font>
+            <Font size="9.0"/>
+         </font>
+      </Label>
+      <Text layoutX="21.0" layoutY="226.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lý do">
+         <font>
+            <Font size="14.0"/>
+         </font>
+      </Text>
+      <TextArea fx:id="tfLydo" layoutX="21.0" layoutY="233.0" prefHeight="54.0" prefWidth="296.0"
+                styleClass="text-field-rounded" stylesheets="@../../source/Main.css"/>
+   </children>
+</AnchorPane>
