@@ -16,7 +16,7 @@ import models.HoKhauBean_Tuan;
 import models.HoKhauModel_Tuan;
 import models.NhanKhauModel_Lam;
 import services.HoKhauService_Tuan;
-import services.SoPhongService_Tuan;
+import services.PhongService;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -32,27 +32,27 @@ public class UpdateHoKhau_Lam {
 	ObservableList<Integer> IDNhanKhauinHoKhau = FXCollections.observableArrayList();
 	ObservableList<Integer> SoPhong = FXCollections.observableArrayList();
 
-	@FXML
-	private Pane PaneField;
-	@FXML
-	private TextField tfHoTen;
-	@FXML
-	private TextField tfIDHoKhau;
-	@FXML
-    private ComboBox<Integer> tfIDNhanKhau;
-	@FXML
-	private DatePicker tfNgayDen;
-	@FXML
-	private TextField tfSDT;
-	@FXML
+    @FXML
+    private Pane PaneField;
+    @FXML
+    private TextField tfHoTen;
+    @FXML
+    private TextField tfIDHoKhau;
+    @FXML
+      private ComboBox<Integer> tfIDNhanKhau;
+    @FXML
+    private DatePicker tfNgayDen;
+    @FXML
+    private TextField tfSDT;
+    @FXML
     private ComboBox<Integer> tfSoPhong;
+  
 	private HoKhauBean_Tuan hoKhauBean;
 	private HoKhauBean_Tuan newhoKhauBean;
 	private List<NhanKhauModel_Lam> nhanKhauList = new ArrayList<>();
 	private HoKhauModel_Tuan hoKhauModel;
 	private NhanKhauModel_Lam chuHo;
 
-	//set Mouse Moved
 
 	@FXML
 	void updateHoKhau(ActionEvent event) throws SQLException, ClassNotFoundException, IOException {
@@ -131,6 +131,7 @@ public class UpdateHoKhau_Lam {
 
 	public void setHoKhauModel(HoKhauBean_Tuan hoKhauBean) throws ClassNotFoundException, SQLException {
 
+
 		this.hoKhauBean = hoKhauBean;
 		this.nhanKhauList = hoKhauBean.getListNhanKhau();
 		this.hoKhauModel = hoKhauBean.getHoKhauModel_tuan();
@@ -152,7 +153,7 @@ public class UpdateHoKhau_Lam {
 		tfHoTen.setText(chuHo.getHoTen());
 
 		tfIDNhanKhau.setItems(IDNhanKhauinHoKhau);
-		SoPhong = SoPhongService_Tuan.getListSoPhong();
+		SoPhong = PhongService.getListSoPhong("Duoc su dung");
 		SoPhong.add(hoKhauModel.getSoPhong());
 		tfSoPhong.setItems(SoPhong);
 

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="600.0" prefWidth="800.0" stylesheets="@../source/Main.css"
+            xmlns="http://javafx.com/javafx/21" fx:controller="controller.PhongController">
+    <children>
+        <TableView fx:id="tvPhong" layoutX="12.0" layoutY="99.0" prefHeight="500.0" prefWidth="625.0"
+                   AnchorPane.bottomAnchor="14.333333333333258" AnchorPane.leftAnchor="12.0"
+                   AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="99.0">
+            <columns>
+                <TableColumn fx:id="colSoPhong" prefWidth="123.3333410024643" text="Số phòng"/>
+                <TableColumn fx:id="colDienTich" prefWidth="194.66670989990234" text="Diện tích"/>
+                <TableColumn fx:id="colLoaiPhong" prefWidth="192.666748046875" text="Loại phòng"/>
+                <TableColumn fx:id="colTrangThai" prefWidth="262.0" text="Trạng thái"/>
+            </columns>
+        </TableView>
+        <TextField fx:id="tfSearch" layoutX="7.0" layoutY="49.0" prefHeight="40.0" prefWidth="310.0"
+                   AnchorPane.bottomAnchor="510.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="300.0"
+                   AnchorPane.topAnchor="50.0"/>
+        <ComboBox fx:id="cbChooseSearch" layoutX="343.3333333333333" layoutY="49.0" prefHeight="40.0" prefWidth="181.0"
+                  AnchorPane.bottomAnchor="510.0" AnchorPane.leftAnchor="343.0" AnchorPane.rightAnchor="125.0"
+                  AnchorPane.topAnchor="50.0"/>
+        <Button layoutX="507.3333333333333" layoutY="50.0" mnemonicParsing="false" onAction="#searchPhong"
+                prefHeight="40.0" prefWidth="129.0" text="Tìm kiếm" AnchorPane.bottomAnchor="510.0"
+                AnchorPane.leftAnchor="507.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="50.0"/>
+        <Button layoutX="100.0" layoutY="9.0" mnemonicParsing="false" onAction="#addPhong" prefHeight="33.0"
+                prefWidth="150.0" styleClass="button1" stylesheets="@../source/Main.css" text="Thêm phòng"
+                textFill="#2e088d" wrapText="true"/>
+        <Button layoutX="250.0" layoutY="8.0" mnemonicParsing="false" onAction="#delPhong" prefHeight="36.0"
+                prefWidth="150.0" styleClass="button1" stylesheets="@../source/Main.css" text="Xóa phòng"
+                textFill="#2e088d" wrapText="true"/>
+        <Button layoutX="400.0" layoutY="10.0" mnemonicParsing="false" onAction="#updatePhong" prefHeight="33.0"
+                prefWidth="150.0" styleClass="button1" stylesheets="@../source/Main.css" text="Cập nhật phòng"
+                textFill="#2e088d" wrapText="true"/>
+    </children>
+</AnchorPane>

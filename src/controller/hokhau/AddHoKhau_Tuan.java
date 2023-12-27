@@ -13,7 +13,7 @@ import models.HoKhauModel_Tuan;
 import models.NhanKhauModel_Lam;
 import services.HoKhauService_Tuan;
 import services.NhanKhauService_Lam;
-import services.SoPhongService_Tuan;
+import services.PhongService;
 
 import java.net.URL;
 import java.sql.SQLException;
@@ -54,7 +54,7 @@ public class AddHoKhau_Tuan implements Initializable {
 		// set cac gia tri cho gioi tinh va so phong
 		GioiTinh.setItems(listGioiTinh);
 		try {
-			listSoPhong = SoPhongService_Tuan.getListSoPhong();
+			listSoPhong = PhongService.getListSoPhong("Duoc su dung");
 		} catch (ClassNotFoundException e) {
 			throw new RuntimeException(e);
 		} catch (SQLException e) {

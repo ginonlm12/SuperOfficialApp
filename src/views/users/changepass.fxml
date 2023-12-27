@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="300.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/21"
+            fx:controller="controller.users.changepassController">
+    <children>
+        <Label layoutX="126.0" layoutY="34.0" prefHeight="17.0" prefWidth="149.0" text="Mật khẩu cũ"/>
+        <PasswordField fx:id="oldpass" layoutX="126.0" layoutY="51.0"/>
+        <PasswordField fx:id="newpaass1" layoutX="126.0" layoutY="108.0"/>
+        <Label layoutX="126.0" layoutY="91.0" prefHeight="17.0" prefWidth="149.0" text="Mật khẩu mới"/>
+        <PasswordField fx:id="newpass2" layoutX="126.0" layoutY="159.0"/>
+        <Label layoutX="126.0" layoutY="142.0" prefHeight="17.0" prefWidth="149.0" text="Nhập lại mật khẩu mới"/>
+        <Button layoutX="168.0" layoutY="208.0" mnemonicParsing="false" onMouseClicked="#comfirmClicked"
+                text="Xác nhận"/>
+    </children>
+</AnchorPane>

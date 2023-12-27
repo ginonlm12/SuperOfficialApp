@@ -1,23 +1,18 @@
 package models;
 
-
-public class UsersModel {
-	int id;
+public class UserModel {
 	String username;
 	String passwd;
-	
-	public UsersModel() {}
-	public UsersModel(String username, String passwd) {
+
+    public UserModel() {
+    }
+
+    public UserModel(String username, String passwd) {
 		this.username = username;
 		this.passwd = passwd;
 	}
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
-	public String getUsername() {
+
+    public String getUsername() {
 		return username;
 	}
 	public void setUsername(String username) {
