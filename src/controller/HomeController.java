@@ -81,10 +81,21 @@ public class HomeController implements Initializable {
 	public void setTrangChu(ActionEvent event) throws IOException {
         changeMainPane("/views/Main.fxml");
 	}
+  
+   @FXML
+   void setPhong(ActionEvent event) throws IOException {
+        changeMainPane("/views/Phong.fxml");
+   }
 
-    public void anim(int x, int y) {
-        KeyValue keyValue = new KeyValue(menu.translateXProperty(), x);
-        KeyValue keyValue1 = new KeyValue(menu.translateXProperty(), y);
+    public void setGuiXe(ActionEvent event) throws IOException {
+        changeMainPane("/views/GuiXe_Tuan.fxml");
+    }
+
+	public void anim(int x, int y) {
+        KeyValue keyValue = new KeyValue(vbox.translateXProperty(), x);
+        KeyValue keyValue1 = new KeyValue(vbox.translateXProperty(), y);
+
+
         KeyFrame keyFrame = new KeyFrame(Duration.seconds(0.35), keyValue);
         KeyFrame keyFrame1 = new KeyFrame(Duration.seconds(0.35), keyValue1);
         Timeline timeline = new Timeline(keyFrame, keyFrame1);
@@ -152,10 +163,6 @@ public class HomeController implements Initializable {
 		}
 	}
 
-    @FXML
-    void setPhong(ActionEvent event) throws IOException {
-        changeMainPane("/views/Phong.fxml");
-    }
 
     @FXML
     void logobtnClicked(MouseEvent event) throws URISyntaxException {
