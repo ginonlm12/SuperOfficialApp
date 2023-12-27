@@ -47,6 +47,7 @@ public class LoginController implements Initializable {
     }
 
     public void initialize(URL arg0, ResourceBundle arg1) {
+        // cài listener cho tfUsername, nếu length < 6 thì đặt ô tf là màu đỏ
         tfUsername.textProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue.length() < 6) {
                 tfUsername.setStyle("-fx-border-color: red ; -fx-border-width: 2px ;");
