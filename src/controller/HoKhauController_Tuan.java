@@ -39,6 +39,8 @@ public class HoKhauController_Tuan implements Initializable {
 	@FXML
 	TableColumn<HoKhauBean_Tuan, String> colSDT;
 	@FXML
+	TableColumn<HoKhauBean_Tuan, Integer> colSoPhong;
+	@FXML
 	TableView<HoKhauBean_Tuan> tvHoKhau;
 	@FXML
 	TextField tfSearch;
@@ -61,8 +63,10 @@ public class HoKhauController_Tuan implements Initializable {
 		setTrangThai();
 
         if (cbTrangThai.getValue() == "Đang cư trú") {
+			colSoPhong.setText("Số phòng");
 			showHoKhau(temp_listHoKhauDangCuTru);
         } else {
+			colSoPhong.setText("Số phòng (đã ở)");
 			showHoKhau(temp_listHoKhauChuyenDi);
 		}
 	}
@@ -95,6 +99,10 @@ public class HoKhauController_Tuan implements Initializable {
 		colSDT.setCellValueFactory(
 				(TableColumn.CellDataFeatures<HoKhauBean_Tuan, String> p) ->
 						new ReadOnlyStringWrapper(p.getValue().getHoKhauModel_tuan().getSDT())
+		);
+		colSoPhong.setCellValueFactory(
+				(TableColumn.CellDataFeatures<HoKhauBean_Tuan, Integer> p) ->
+						new ReadOnlyIntegerWrapper(p.getValue().getHoKhauModel_tuan().getSoPhong()).asObject()
 		);
 
 		tvHoKhau.setItems(listValueTableView);
@@ -140,10 +148,7 @@ public class HoKhauController_Tuan implements Initializable {
 			}
 		}
 
-
-		setTrangThai();
-		showHoKhau(temp_listHoKhauDangCuTru);
-		cbTrangThai.setValue("Đang cư trú");
+		reload();
 	}
 
 	public void detailHoKhau(ActionEvent event) throws ClassNotFoundException, SQLException, IOException {
@@ -304,5 +309,4 @@ public class HoKhauController_Tuan implements Initializable {
         showHoKhau(temp_listHoKhauDangCuTru);
         cbTrangThai.setValue("Đang cư trú");
     }
-
 }

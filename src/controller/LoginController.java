@@ -75,6 +75,7 @@ public class LoginController implements Initializable {
         stage.showAndWait();
     }
 
+
     @FXML
     void create_acc_clicked(MouseEvent event) throws IOException {
         showNewStage("/views/users/register.fxml");
@@ -84,4 +85,5 @@ public class LoginController implements Initializable {
     void forgot_clicked(MouseEvent event) throws IOException {
         showNewStage("/views/users/forgetpass.fxml");
     }
+
 }
