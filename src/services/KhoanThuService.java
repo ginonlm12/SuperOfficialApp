@@ -12,7 +12,7 @@ public class KhoanThuService {
 	// ckecked
 	public  boolean add(KhoanThuModel khoanThuModel) throws ClassNotFoundException, SQLException {
 		Connection connection = MysqlConnection.getMysqlConnection();
-        String query = "INSERT INTO khoan_thu(MaKhoanThu, TenKhoanThu, SoTien, LoaiKhoanThu)" 
+        String query = "INSERT INTO khoanthu(MaKhoanThu, TenKhoanThu, SoTien, LoaiKhoanThu)" 
                     + " values (?, ?, ?, ?)";
         PreparedStatement preparedStatement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
         preparedStatement.setInt(1,khoanThuModel.getMaKhoanThu());
@@ -36,7 +36,7 @@ public class KhoanThuService {
 	    	preparedStatement = connection.prepareStatement(query);
 	    	preparedStatement.executeUpdate();
 	    }
-	    query ="DELETE FROM khoan_thu WHERE MaKhoanThu = '"+maKhoanThu+"'";
+        query = "DELETE FROM khoanthu WHERE MaKhoanThu = '" + maKhoanThu + "'";
 	    preparedStatement = connection.prepareStatement(query);
 		preparedStatement.executeUpdate();
 		preparedStatement.close();
@@ -48,7 +48,7 @@ public class KhoanThuService {
 		Connection connection = MysqlConnection.getMysqlConnection();
 		PreparedStatement preparedStatement;
 
-		String query = "UPDATE khoan_thu " + "set TenKhoanThu =" + "'" + tenKhoanThu + "'," + "SoTien ="
+        String query = "UPDATE khoanthu " + "set TenKhoanThu =" + "'" + tenKhoanThu + "'," + "SoTien ="
 				+ soTien + "," + "LoaiKhoanThu =" + loaiKhoanThu + " where MaKhoanThu =" + maKhoanThu;
 		System.out.println(query);
 		preparedStatement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
@@ -65,7 +65,7 @@ public class KhoanThuService {
 		List<KhoanThuModel> list = new ArrayList<>();
 		
 		Connection connection = MysqlConnection.getMysqlConnection();
-	    String query = "SELECT * FROM khoan_thu";
+        String query = "SELECT * FROM khoanthu";
 	    PreparedStatement preparedStatement = connection.prepareStatement(query);
 	    ResultSet rs = preparedStatement.executeQuery();
 	    while (rs.next()){

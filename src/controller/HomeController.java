@@ -38,7 +38,7 @@ public class HomeController implements Initializable {
     @FXML
     private VBox phanconlai;
     @FXML
-    private VBox menu;
+    private VBox menu = new VBox();
     @FXML
     private Pane mainPane;
     @FXML
@@ -124,6 +124,8 @@ public class HomeController implements Initializable {
         KeyValue keyValue1 = new KeyValue(menu.translateXProperty(), y);
         KeyFrame keyFrame = new KeyFrame(Duration.seconds(keysecond), keyValue);
         KeyFrame keyFrame1 = new KeyFrame(Duration.seconds(keysecond), keyValue1);
+        Timeline timeline = new Timeline(keyFrame, keyFrame1);
+        timeline.play();
 	}
   
    @FXML
@@ -133,10 +135,6 @@ public class HomeController implements Initializable {
 
     public void setGuiXe(ActionEvent event) throws IOException {
         changeMainPane("/views/GuiXe_Tuan.fxml");
-    }
-
-        Timeline timeline = new Timeline(keyFrame, keyFrame1);
-        timeline.play();
     }
 
     void menuShow(VBox menu, int x, int y, double keysecond) {
