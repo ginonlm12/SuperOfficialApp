@@ -79,13 +79,13 @@ public class BackupdataController implements Initializable {
     @FXML
     void hokhau_pick_address(ActionEvent event) {
         // nếu click vào chọn địa chỉ
-        openFileChooser(hokhautf.getText());
+        openFileChooser(hokhautf.getText(), hokhautf);
     }
 
     @FXML
     void nhankhau_pick_address(ActionEvent event) {
         // nếu click vào chọn địa chỉ
-        openFileChooser(nhankhautf.getText());
+        openFileChooser(nhankhautf.getText(), nhankhautf);
     }
 
     public void confirmClicked(ActionEvent event) throws SQLException, ClassNotFoundException {
@@ -99,7 +99,7 @@ public class BackupdataController implements Initializable {
     }
 
 
-    private String openFileChooser(String filepath) {
+    private String openFileChooser(String filepath, TextField tf) {
         // Lấy parendiretorey của file path này
         File currentFile = new File(filepath);
         File parentDirectory = currentFile.getParentFile();
@@ -118,6 +118,7 @@ public class BackupdataController implements Initializable {
         Stage stage = new Stage();
         File selectedFile = fileChooser.showSaveDialog(stage);
 
+        tf.setText(selectedFile.getAbsolutePath());
         // Check if a file was selected
         if (selectedFile != null) {
             return selectedFile.getAbsolutePath();
