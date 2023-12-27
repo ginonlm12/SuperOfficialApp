@@ -62,6 +62,10 @@ public class HomeController implements Initializable {
         changeMainPane("/views/Main.fxml");
 	}
 
+    public void setGuiXe(ActionEvent event) throws IOException {
+        changeMainPane("/views/GuiXe_Tuan.fxml");
+    }
+
 	public void anim(int x, int y) {
         KeyValue keyValue = new KeyValue(vbox.translateXProperty(), x);
         KeyValue keyValue1 = new KeyValue(vbox.translateXProperty(), y);

@@ -53,17 +53,6 @@ public class UpdateHoKhau_Lam {
 	private NhanKhauModel_Lam chuHo;
 
 	//set Mouse Moved
-	private void setMouseMoved() {
-		PaneField.setOnMouseMoved(event -> {
-			Node node = event.getPickResult().getIntersectedNode();
-			if (node instanceof Label || node instanceof TextField) {
-				PaneField.setCursor(Cursor.TEXT);
-			}
-			if(node instanceof Button || node instanceof ComboBox || node instanceof DatePicker) {
-				PaneField.setCursor(Cursor.HAND);
-			}
-		});
-	}
 
 	@FXML
 	void updateHoKhau(ActionEvent event) throws SQLException, ClassNotFoundException, IOException {

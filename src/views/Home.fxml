@@ -94,8 +94,11 @@
                            </image>
                        </ImageView>
                    </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
                </Button>
-               <Button fx:id="btnHoKhau" mnemonicParsing="false" onAction="#setHoKhau" prefHeight="60.0" prefWidth="222.0" styleClass="buttoninmenu" stylesheets="@../source/Home.css" text="Hộ khẩu   " textFill="WHITE">
+               <Button fx:id="btnHoKhau" mnemonicParsing="false" onAction="#setHoKhau" prefHeight="60.0" prefWidth="231.0" styleClass="buttoninmenu" stylesheets="@../source/Home.css" text="Hộ khẩu   " textFill="WHITE">
                    <font>
                        <Font name="Arial Bold" size="20.0" />
                    </font>
@@ -134,6 +137,14 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
                </Button>
+            <Button fx:id="btnGuiXe" mnemonicParsing="false" onAction="#setGuiXe" prefHeight="26.0" prefWidth="170.0" styleClass="buttoninmenu" stylesheets="@../source/Home.css" text="Gửi xe" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
            </children>
        </VBox>
    </children>
