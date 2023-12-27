@@ -24,8 +24,6 @@
       <Label layoutX="144.0" layoutY="385.0" text="Diện tích" />
       <Label layoutX="333.0" layoutY="385.0" text="Số thành viên" />
       <Label layoutX="531.0" layoutY="385.0" text="Cộng thêm" />
-      <Text fill="RED" layoutX="223.0" layoutY="133.0" strokeType="OUTSIDE" strokeWidth="0.0" text="(*)" />
-      <Text fill="RED" layoutX="161.0" layoutY="191.0" strokeType="OUTSIDE" strokeWidth="0.0" text="(*)" />
       <DatePicker fx:id="dpNgayBatDau" layoutX="261.0" layoutY="235.0" prefHeight="39.0" prefWidth="354.0" promptText="MM/DD/YYYY" />
       <DatePicker fx:id="dpNgayKetThuc" layoutX="261.0" layoutY="289.0" prefHeight="39.0" prefWidth="354.0" promptText="MM/DD/YYYY" />
    </children>

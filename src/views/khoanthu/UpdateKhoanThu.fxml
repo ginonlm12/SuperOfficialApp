@@ -15,7 +15,7 @@
       <Label layoutX="144.0" layoutY="178.0" text="ID" />
       <TextField fx:id="tfIDKhoanThu" layoutX="261.0" layoutY="167.0" prefHeight="39.0" prefWidth="354.0"/>
       <Label layoutX="140.0" layoutY="239.0" text="Ngày bắt đầu" />
-      <Button layoutX="382.0" layoutY="450.0" mnemonicParsing="false" onAction="#addKhoanThu" text="Thêm" />
+      <Button layoutX="382.0" layoutY="450.0" mnemonicParsing="false" onAction="#updateKhoanThu" text="Thêm" />
       <Label layoutX="269.0" layoutY="46.0" text="UPDATE KHOẢN THU">
          <font>
             <Font name="Arial Bold" size="25.0" />

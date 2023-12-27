@@ -58,31 +58,6 @@ public class UpdateKhoanThu {
 	public void updateKhoanThu(ActionEvent event) throws ClassNotFoundException, SQLException {
 		Pattern pattern;
 		
-		// // kiem tra ten nhap vao
-		// // ten nhap vao la chuoi tu 1 toi 50 ki tu
-		// if (tfTenKhoanThu.getText().length() >= 50 || tfTenKhoanThu.getText().length() <= 1) {
-		// 	Alert alert = new Alert(AlertType.WARNING, "Hãy nhập vào 1 tên khoản thu hợp lệ!", ButtonType.OK);
-		// 	alert.setHeaderText(null);
-		// 	alert.showAndWait();
-		// 	return;
-		// }
-
-		// // kiem tra soTien nhap vao
-		// // so tien nhap vao phai la so va nho hon 11 chu so
-		// pattern = Pattern.compile("\\d{1,11}");
-		// if (!pattern.matcher(tfSoTien.getText()).matches()) {
-		// 	Alert alert = new Alert(AlertType.WARNING, "Hãy nhập vào số tiền hợp lệ!", ButtonType.OK);
-		// 	alert.setHeaderText(null);
-		// 	alert.showAndWait();
-		// 	return;
-		// }
-		
-		// // ghi nhan cac gia tri sau khi da kiem tra hop le
-		// int maKhoanThuInt = khoanThuModel.getMaKhoanThu();
-		// String tenKhoanThuString = tfTenKhoanThu.getText();
-		// int loaiKhoanThuInt = khoanThuModel.getLoaiKhoanThu();
-		// double soTienDouble = Double.parseDouble(tfSoTien.getText());
-		// kiem tra maKhoanThu nhap vao
 		// maKhoanThu la day so tu 1 toi 11 chu so
 		pattern = Pattern.compile("\\d{1,11}");
 		if (!pattern.matcher(tfIDKhoanThu.getText()).matches()) {
@@ -96,7 +71,7 @@ public class UpdateKhoanThu {
 		// hay khong
 		List<KhoanThuModel> listKhoanThuModels = new KhoanThuService().getListKhoanThu();
 		for (KhoanThuModel khoanThuModel : listKhoanThuModels) {
-			if (khoanThuModel.getIDKhoanThu() == Integer.parseInt(tfIDKhoanThu.getText())) {
+			if (khoanThuModel.getIDKhoanThu() == Integer.parseInt(tfIDKhoanThu.getText()) && khoanThuModel.getIDKhoanThu() != IDKhoanThu_old) {
 				Alert alert = new Alert(AlertType.WARNING, "Mã khoản thu đã bị trùng!", ButtonType.OK);
 				alert.setHeaderText(null);
 				alert.showAndWait();

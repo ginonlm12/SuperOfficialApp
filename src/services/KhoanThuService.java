@@ -28,16 +28,16 @@ public class KhoanThuService {
 
 	public boolean del(int IDKhoanThu) throws ClassNotFoundException, SQLException {
 		Connection connection = MysqlConnection.getMysqlConnection();
-		String query = "SELECT * FROM nop_tien WHERE IDKhoanThu='"+IDKhoanThu+"';";
+		// String query = "SELECT * FROM thutien WHERE IDKhoanThu='"+IDKhoanThu+"';";
+	    // PreparedStatement preparedStatement = connection.prepareStatement(query);
+	    // ResultSet rs = preparedStatement.executeQuery();
+	    // while (rs.next()){
+	    // 	query="DELETE FROM thuphi WHERE IDKhoanThu='"+IDKhoanThu+"'";
+	    // 	preparedStatement = connection.prepareStatement(query);
+	    // 	preparedStatement.executeUpdate();
+	    // }
+	    String query ="DELETE FROM khoanthu WHERE IDKhoanThu = '"+IDKhoanThu+"'";
 	    PreparedStatement preparedStatement = connection.prepareStatement(query);
-	    ResultSet rs = preparedStatement.executeQuery();
-	    while (rs.next()){
-	    	query="DELETE FROM nop_tien WHERE IDKhoanThu='"+IDKhoanThu+"'";
-	    	preparedStatement = connection.prepareStatement(query);
-	    	preparedStatement.executeUpdate();
-	    }
-	    query ="DELETE FROM khoan_thu WHERE IDKhoanThu = '"+IDKhoanThu+"'";
-	    preparedStatement = connection.prepareStatement(query);
 		preparedStatement.executeUpdate();
 		preparedStatement.close();
 		connection.close();
@@ -61,13 +61,13 @@ public class KhoanThuService {
 		preparedStatement.setInt(8, IDKhoanThu_old);
 		preparedStatement.executeUpdate();
 
-		String query2 = "UPDATE thuphi SET IDKhoanThu = ? WHERE IDKhoanThu = ?";
-		preparedStatement = connection.prepareStatement(query2);
-		preparedStatement.setInt(1, khoanThuModel.getIDKhoanThu());
-		preparedStatement.setInt(2, IDKhoanThu_old);
-		preparedStatement.executeUpdate();
-		preparedStatement.close();
-		connection.close();
+		// String query2 = "UPDATE thuphi SET IDKhoanThu = ? WHERE IDKhoanThu = ?";
+		// preparedStatement = connection.prepareStatement(query2);
+		// preparedStatement.setInt(1, khoanThuModel.getIDKhoanThu());
+		// preparedStatement.setInt(2, IDKhoanThu_old);
+		// preparedStatement.executeUpdate();
+		// preparedStatement.close();
+		// connection.close();
 		return true;
 	}
 
@@ -75,7 +75,7 @@ public class KhoanThuService {
 		List<KhoanThuModel> list = new ArrayList<>();
 
 		Connection connection = MysqlConnection.getMysqlConnection();
-	    String query = "SELECT * FROM khoan_thu";
+	    String query = "SELECT * FROM khoanthu";
 	    PreparedStatement preparedStatement = connection.prepareStatement(query);
 	    ResultSet rs = preparedStatement.executeQuery();
 	    while (rs.next()){
