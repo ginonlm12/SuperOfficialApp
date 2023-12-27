@@ -124,6 +124,17 @@ public class HomeController implements Initializable {
         KeyValue keyValue1 = new KeyValue(menu.translateXProperty(), y);
         KeyFrame keyFrame = new KeyFrame(Duration.seconds(keysecond), keyValue);
         KeyFrame keyFrame1 = new KeyFrame(Duration.seconds(keysecond), keyValue1);
+	}
+  
+   @FXML
+   void setPhong(ActionEvent event) throws IOException {
+        changeMainPane("/views/Phong.fxml");
+   }
+
+    public void setGuiXe(ActionEvent event) throws IOException {
+        changeMainPane("/views/GuiXe_Tuan.fxml");
+    }
+
         Timeline timeline = new Timeline(keyFrame, keyFrame1);
         timeline.play();
     }
@@ -191,10 +202,6 @@ public class HomeController implements Initializable {
         }
     }
 
-    @FXML
-    void setPhong(ActionEvent event) throws IOException {
-        changeMainPane("/views/Phong.fxml");
-    }
 
     @FXML
     void logobtnClicked(MouseEvent event) throws URISyntaxException {

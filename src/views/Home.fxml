@@ -216,7 +216,15 @@
                         <Cursor fx:constant="HAND"/>
                     </cursor>
                 </Button>
-                <Button fx:id="btnPhong" mnemonicParsing="false" onAction="#setPhong" prefHeight="60.0"
+            <Button fx:id="btnGuiXe" mnemonicParsing="false" onAction="#setGuiXe" prefHeight="60.0" prefWidth="214.0" styleClass="buttoninmenu" stylesheets="@../source/Home.css" text="Gửi xe" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+             <Button fx:id="btnPhong" mnemonicParsing="false" onAction="#setPhong" prefHeight="60.0"
                         prefWidth="214.0" styleClass="buttoninmenu" stylesheets="@../source/Home.css" text="Phòng"
                         textFill="WHITE">
                     <font>
@@ -226,7 +234,7 @@
                         <Cursor fx:constant="HAND"/>
                     </cursor>
                 </Button>
-            </children>
-        </VBox>
-    </children>
+           </children>
+       </VBox>
+   </children>
 </AnchorPane>
