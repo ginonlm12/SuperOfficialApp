@@ -1,4 +1,4 @@
-package controller.noptien;
+package controller.thuphi;
 
 import java.net.URL;
 import java.sql.SQLException;

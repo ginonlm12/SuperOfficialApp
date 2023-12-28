@@ -98,4 +98,23 @@ public class KhoanThuService {
 	    connection.close();
 		return list;
 	}
+	public KhoanThuModel getKhoanThu(int IDKhoanThu) throws ClassNotFoundException, SQLException {
+		Connection connection = MysqlConnection.getMysqlConnection();
+	    String query = "SELECT * FROM khoanthu WHERE IDKhoanThu = '"+IDKhoanThu+"'";
+	    PreparedStatement preparedStatement = connection.prepareStatement(query);
+	    ResultSet rs = preparedStatement.executeQuery();
+	    rs.next();
+		KhoanThuModel khoanThuModel = new KhoanThuModel(
+				rs.getInt("IDKhoanThu"), 
+				rs.getString("TenKT"),	
+				rs.getString("NgayBatDau"),	
+				rs.getString("NgayKetThuc"),
+				rs.getDouble("TrongSoDienTich"),
+				rs.getDouble("TrongSoSTV"),
+				rs.getDouble("HangSo")
+			);
+
+	    connection.close();
+		return khoanThuModel;
+	}
 }

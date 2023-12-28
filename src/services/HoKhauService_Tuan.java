@@ -9,6 +9,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class HoKhauService_Tuan {
+    public static String getTenChuHo(int id_hk) throws ClassNotFoundException, SQLException {
+        int id_chuho = getIDChuHo(id_hk);
+        NhanKhauModel_Lam nhanKhauModel_Lam = NhanKhauService_Lam.loadDatafromID(id_chuho);
+        return nhanKhauModel_Lam.getHoTen();
+    }
 
     public static List<HoKhauBean_Tuan> getListHoKhau() throws ClassNotFoundException, SQLException {
         List<HoKhauBean_Tuan> list = new ArrayList<>();

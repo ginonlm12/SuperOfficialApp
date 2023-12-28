@@ -108,7 +108,7 @@ public class HomeController implements Initializable {
     }
 
     public void setDongPhi(ActionEvent event) throws IOException {
-        changeMainPane("/views/NopTien.fxml");
+        changeMainPane("/views/ThuPhi.fxml");
     }
 
     public void setThongKe(ActionEvent event) throws IOException {
