@@ -295,4 +295,30 @@ public class NhanKhauService_Lam {
         }
         return 0;
     }
+
+    public static List<NhanKhauModel_Lam> getListChuHo() throws ClassNotFoundException, SQLException {
+        List<NhanKhauModel_Lam> list = new ArrayList<>();
+
+        Connection connection = MysqlConnection.getMysqlConnection();
+        String query = "SELECT * FROM nhankhau WHERE QHvsChuHo = 'Chủ hộ'";
+        PreparedStatement preparedStatement = connection.prepareStatement(query);
+        ResultSet rs = preparedStatement.executeQuery();
+        while (rs.next()) {
+            NhanKhauModel_Lam nhanKhauModel = new NhanKhauModel_Lam();
+            nhanKhauModel.setIDNhanKhau(rs.getInt("IDNhanKhau"));
+            nhanKhauModel.setIDHoKhau(rs.getInt("IDHoKhau"));
+            nhanKhauModel.setQHvsChuHo(rs.getString("QHvsChuHo"));
+            nhanKhauModel.setHoTen(rs.getString("HoTen"));
+            nhanKhauModel.setNgaySinh(rs.getString("NgaySinh"));
+            nhanKhauModel.setCCCD(rs.getString("CCCD"));
+            nhanKhauModel.setNgheNghiep(rs.getString("NgheNghiep"));
+            nhanKhauModel.setGioiTinh(rs.getString("GioiTinh"));
+            nhanKhauModel.setDanToc(rs.getString("DanToc"));
+            nhanKhauModel.setQueQuan(rs.getString("QueQuan"));
+            list.add(nhanKhauModel);
+        }
+        preparedStatement.close();
+        connection.close();
+        return list;
+    }
 }

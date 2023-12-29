@@ -12,6 +12,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
@@ -31,7 +32,7 @@ public class AddThuPhi {
 	@FXML
 	private TextField tfSoTienDong;
 	@FXML
-	private TextField tfNgayDong;
+	private DatePicker dpNgayDong;
 
 	private KhoanThuModel khoanThuModel;
 	private NhanKhauModel_Lam nhanKhauModel;
@@ -67,7 +68,6 @@ public class AddThuPhi {
 		nhanKhauModel = chooseChuHo.getNhanKhauChoose();
 		if (nhanKhauModel == null)
 			return;
-
 		tfTenChuHo.setText(nhanKhauModel.getHoTen());
 	}
 
@@ -92,7 +92,7 @@ public class AddThuPhi {
 					khoanThuModel.getIDKhoanThu(),
 					nhanKhauModel.getIDHoKhau(),
 					Double.parseDouble(tfSoTienDong.getText()),
-					tfNgayDong.getText()));
+					dpNgayDong.getValue().toString()));
 		}
 		Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		stage.setTitle("Thêm thu phí");

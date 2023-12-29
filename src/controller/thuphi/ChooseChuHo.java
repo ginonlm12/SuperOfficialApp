@@ -3,13 +3,10 @@ package controller.thuphi;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.regex.Pattern;
 
-import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -24,7 +21,6 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import models.NhanKhauModel_Lam;
@@ -32,25 +28,25 @@ import services.NhanKhauService_Lam;
 
 public class ChooseChuHo implements Initializable {
 	@FXML
-	private TableColumn<NhanKhauModel_Lam, String> colMaNhanKhau;
+	private TableView<NhanKhauModel_Lam> tvNhanKhau;
+	@FXML
+	private TableColumn<NhanKhauModel_Lam, String> colIDHoKhau;
 	@FXML
 	private TableColumn<NhanKhauModel_Lam, String> colTen;
 	@FXML
-	private TableColumn<NhanKhauModel_Lam, String> colTuoi;
+	private TableColumn<NhanKhauModel_Lam, String> colNgaySinh;
 	@FXML
-	private TableColumn<NhanKhauModel_Lam, String> colCMND;
+	private TableColumn<NhanKhauModel_Lam, String> colCCCD;
 	@FXML
 	private TableColumn<NhanKhauModel_Lam, String> colSDT;
-	@FXML
-	private TableColumn<NhanKhauModel_Lam, String> colMaHo;
-	@FXML
-	private TableView<NhanKhauModel_Lam> tvNhanKhau;
 	@FXML
 	private TextField tfSearch;
 	@FXML
 	private ComboBox<String> cbChooseSearch;
 
 	private NhanKhauModel_Lam nhanKhauChoose;
+	private ObservableList<NhanKhauModel_Lam> listValueTableView;
+	private List<NhanKhauModel_Lam> listNhanKhau;
 
 	public NhanKhauModel_Lam getNhanKhauChoose() {
 		return nhanKhauChoose;
@@ -60,38 +56,25 @@ public class ChooseChuHo implements Initializable {
 		this.nhanKhauChoose = nhanKhauChoose;
 	}
 
-	private ObservableList<NhanKhauModel_Lam> listValueTableView;
-	private List<NhanKhauModel_Lam> listNhanKhau;
-
 	public void showNhanKhau() throws ClassNotFoundException, SQLException {
-		listNhanKhau = new NhanKhauService_Lam().getListNhanKhau();
+		listNhanKhau = NhanKhauService_Lam.getListChuHo();
 		listValueTableView = FXCollections.observableArrayList(listNhanKhau);
-
-		// tao map anh xa gia tri Id sang maHo
-		Map<Integer, Integer> mapIdToMaho = new HashMap<>();
-		List<QuanHeModel> listQuanHe = new QuanHeService().getListQuanHe();
-		listQuanHe.forEach(quanhe -> {
-			mapIdToMaho.put(quanhe.getIdThanhVien(), quanhe.getMaHo());
-		});
+		for (NhanKhauModel_Lam nhankhau : listNhanKhau) {
+			nhankhau.setSoPhong(NhanKhauService_Lam.getSoPhong(nhankhau.getIDHoKhau()));
+		}
 
 		// thiet lap cac cot cho tableviews
-		colMaNhanKhau.setCellValueFactory(new PropertyValueFactory<NhanKhauModel_Lam, String>("id"));
-		colTen.setCellValueFactory(new PropertyValueFactory<NhanKhauModel_Lam, String>("ten"));
-		colTuoi.setCellValueFactory(new PropertyValueFactory<NhanKhauModel_Lam, String>("tuoi"));
-		colCMND.setCellValueFactory(new PropertyValueFactory<NhanKhauModel_Lam, String>("cmnd"));
-		colSDT.setCellValueFactory(new PropertyValueFactory<NhanKhauModel_Lam, String>("sdt"));
-		try {
-			colMaHo.setCellValueFactory((CellDataFeatures<NhanKhauModel_Lam, String> p) -> new ReadOnlyStringWrapper(
-					mapIdToMaho.get(p.getValue().getId()).toString()));
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
+		colIDHoKhau.setCellValueFactory(new PropertyValueFactory<NhanKhauModel_Lam, String>("IDHoKhau"));
+		colTen.setCellValueFactory(new PropertyValueFactory<NhanKhauModel_Lam, String>("HoTen"));
+		colNgaySinh.setCellValueFactory(new PropertyValueFactory<NhanKhauModel_Lam, String>("NgaySinh"));
+		colCCCD.setCellValueFactory(new PropertyValueFactory<NhanKhauModel_Lam, String>("CCCD"));
+		colSDT.setCellValueFactory(new PropertyValueFactory<NhanKhauModel_Lam, String>("NgheNghiep"));
 
 		tvNhanKhau.setItems(listValueTableView);
 
-		// thiet lap gia tri cho combobox
-		ObservableList<String> listComboBox = FXCollections.observableArrayList("Tên", "Tuổi", "id");
-		cbChooseSearch.setValue("Tên");
+		// Thiết lập giá trị cho ComboBox
+		ObservableList<String> listComboBox = FXCollections.observableArrayList("Họ tên", "Số phòng", "ID hộ khẩu");
+		cbChooseSearch.setValue("Họ tên");
 		cbChooseSearch.setItems(listComboBox);
 	}
 
@@ -105,7 +88,7 @@ public class ChooseChuHo implements Initializable {
 
 		// tim kiem thong tin theo lua chon da lay ra
 		switch (typeSearchString) {
-		case "Tên": {
+		case "Họ tên": {
 			// neu khong nhap gi -> thong bao loi
 			if (keySearch.length() == 0) {
 				tvNhanKhau.setItems(listValueTableView);
@@ -118,7 +101,7 @@ public class ChooseChuHo implements Initializable {
 			int index = 0;
 			List<NhanKhauModel_Lam> listNhanhKhauModelsSearch = new ArrayList<>();
 			for (NhanKhauModel_Lam NhanKhauModel_Lam : listNhanKhau) {
-				if (NhanKhauModel_Lam.getTen().contains(keySearch)) {
+				if (NhanKhauModel_Lam.getHoTen().contains(keySearch)) {
 					listNhanhKhauModelsSearch.add(NhanKhauModel_Lam);
 					index++;
 				}
@@ -136,7 +119,7 @@ public class ChooseChuHo implements Initializable {
 			}
 			break;
 		}
-		case "Tuổi": {
+		case "ID hộ khẩu": {
 			// neu khong nhap gi -> thong bao loi
 			if (keySearch.length() == 0) {
 				tvNhanKhau.setItems(listValueTableView);
@@ -158,7 +141,7 @@ public class ChooseChuHo implements Initializable {
 			int index = 0;
 			List<NhanKhauModel_Lam> listNhanKhau_tmp = new ArrayList<>();
 			for (NhanKhauModel_Lam NhanKhauModel_Lam : listNhanKhau) {
-				if (NhanKhauModel_Lam.getTuoi() == Integer.parseInt(keySearch)) {
+				if (NhanKhauModel_Lam.getIDHoKhau() == Integer.parseInt(keySearch)) {
 					listNhanKhau_tmp.add(NhanKhauModel_Lam);
 					index++;
 				}
@@ -194,7 +177,7 @@ public class ChooseChuHo implements Initializable {
 			}
 
 			for (NhanKhauModel_Lam NhanKhauModel_Lam : listNhanKhau) {
-				if (NhanKhauModel_Lam.getId() == Integer.parseInt(keySearch)) {
+				if (NhanKhauModel_Lam.getSoPhong() == Integer.parseInt(keySearch)) {
 					listValueTableView_tmp = FXCollections.observableArrayList(NhanKhauModel_Lam);
 					tvNhanKhau.setItems(listValueTableView_tmp);
 					return;
