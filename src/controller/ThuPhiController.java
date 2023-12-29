@@ -14,6 +14,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -31,7 +32,7 @@ import models.ThuPhiBean;
 import services.KhoanThuService;
 import services.ThuPhiService;
 
-public class ThuPhiController {
+public class ThuPhiController implements Initializable {
     @FXML
     TableView<ThuPhiBean> tvThuPhi;
     @FXML
@@ -147,7 +148,7 @@ public class ThuPhiController {
 	}
 
 	public void addThuPhi() throws IOException, ClassNotFoundException, SQLException {
-		Parent home = FXMLLoader.load(getClass().getResource("/views/khoanthu/AddKhoanThu.fxml"));
+		Parent home = FXMLLoader.load(getClass().getResource("/views/thuphi/AddThuPhi.fxml"));
 		Stage stage = new Stage();
 		stage.setScene(new Scene(home, 800, 600));
 		stage.setResizable(false);
@@ -159,24 +160,24 @@ public class ThuPhiController {
 		ThuPhiBean ThuPhiBean = tvThuPhi.getSelectionModel().getSelectedItem();
 
 		if (ThuPhiBean == null) {
-			Alert alert = new Alert(AlertType.WARNING, "Chọn khoản thu bạn muốn xóa!", ButtonType.OK);
+			Alert alert = new Alert(AlertType.WARNING, "Chọn mục thu phí bạn muốn xóa!", ButtonType.OK);
 			alert.setHeaderText(null);
 			alert.showAndWait();
 		} else {
-			Alert alert = new Alert(AlertType.WARNING, "Bạn có chắc chắn muốn xóa khoản thu này!", ButtonType.YES,
+			Alert alert = new Alert(AlertType.WARNING, "Bạn có chắc chắn muốn xóa mục thu phí này!", ButtonType.YES,
 					ButtonType.NO);
 			alert.setHeaderText(null);
 			Optional<ButtonType> result = alert.showAndWait();
 
 			if (result.get() == ButtonType.NO) {
 				return;
-			} else {
-				new KhoanThuService().del(ThuPhiBean.getIDKhoanThu());
+			} 
+			else {
+				new ThuPhiService().del(ThuPhiBean.getThuPhiModel());
 			}
 		}
 		hienThuPhi();
 	}
-
 	public void updateThuPhi() throws ClassNotFoundException, SQLException, IOException {
 		// lay ra nhan khau can update
 		ThuPhiBean ThuPhiBean = tvThuPhi.getSelectionModel().getSelectedItem();

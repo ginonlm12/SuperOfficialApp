@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.noptien.ChooseNguoiNop">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.thuphi.ChooseChuHo">
    <children>
       <Button layoutX="673.0" layoutY="59.0" mnemonicParsing="false" onAction="#searchNhanKhau" prefHeight="39.0" prefWidth="109.0" text="Tìm kiếm" />
       <ComboBox fx:id="cbChooseSearch" layoutX="509.0" layoutY="59.0" prefWidth="150.0" />

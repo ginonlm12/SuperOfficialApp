@@ -24,9 +24,9 @@ public class ThuPhiService {
 		return true;
 	}
 
-	public boolean del(int IDKhoanThu, int IDHoKhau) throws ClassNotFoundException, SQLException {
+	public boolean del(ThuPhiModel thuPhiModel) throws ClassNotFoundException, SQLException {
 		Connection connection = MysqlConnection.getMysqlConnection();
-	    String query ="DELETE FROM thuphi WHERE IDKhoanThu = '"+IDKhoanThu+"' AND IDHoKhau = '"+IDHoKhau+"'";
+	    String query ="DELETE FROM thuphi WHERE IDKhoanThu = '"+thuPhiModel.getIDKhoanThu()+"' AND IDHoKhau = '"+thuPhiModel.getIDHoKhau()+"'";
 	    PreparedStatement preparedStatement = connection.prepareStatement(query);
 		preparedStatement.executeUpdate();
 		preparedStatement.close();

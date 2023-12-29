@@ -4,6 +4,7 @@ public class ThuPhiBean {
     private ThuPhiModel thuPhiModel;
     private String tenKhoanThu;
     private String tenChuHo;
+    private double soTienPhaiDong;
 
     // getter and setter
     public ThuPhiModel getThuPhiModel() {
@@ -29,5 +30,11 @@ public class ThuPhiBean {
     }
     public String getNgayDong() {
         return thuPhiModel.getNgayDong();
+    }
+    public double getSoTienPhaiDong() {
+        return soTienPhaiDong;
+    }
+    public void setSoTienPhaiDong(double soTienPhaiDong) {
+        this.soTienPhaiDong = soTienPhaiDong;
     }
 }
