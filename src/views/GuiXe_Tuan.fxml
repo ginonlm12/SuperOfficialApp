@@ -1,28 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
-
-<AnchorPane prefHeight="600" prefWidth="800" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.GuiXeController_Tuan">
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="600" prefWidth="800" styleClass="background"
+            stylesheets="@../source/nhankhau_va_hokhau.css" xmlns="http://javafx.com/javafx/21"
+            fx:controller="controller.GuiXeController_Tuan">
    <children>
-      <TableView fx:id="tbGuiXe" layoutX="58.0" layoutY="124.0" prefHeight="402.0" prefWidth="682.0">
+       <TableView fx:id="tbGuiXe" layoutX="58.0" layoutY="124.0" prefHeight="433.0" prefWidth="682.0">
          <columns>
             <TableColumn fx:id="colMaHoKhau" prefWidth="56.800018310546875" text="Mã hộ" />
             <TableColumn fx:id="colChuHo" prefWidth="193.60006713867188" text="Họ tên chủ hộ" />
             <TableColumn fx:id="colXeDap" prefWidth="99.20001220703125" text="Số xe đạp" />
             <TableColumn fx:id="colXeMay" prefWidth="90.4000244140625" resizable="false" text="Số xe máy" />
-            <TableColumn fx:id="colOTo" prefWidth="89.5999755859375" text="Số Oto" />
-            <TableColumn fx:id="colTotal" prefWidth="147.199951171875" text="Tổng số xe" />
+             <TableColumn fx:id="colOTo" prefWidth="89.5999755859375" text="Số xe ô tô"/>
+             <TableColumn fx:id="colTotal" prefWidth="149.3333740234375" text="Tổng số xe"/>
          </columns>
       </TableView>
-      <TextField fx:id="tfSearch" layoutX="59.0" layoutY="43.0" prefHeight="39.0" prefWidth="233.0" />
-      <Button layoutX="293.0" layoutY="43.0" mnemonicParsing="false" onAction="#searchHoKhau" prefHeight="38.0" prefWidth="261.0" styleClass="button3" stylesheets="@../source/Main.css" text="Tìm kiếm theo Mã hộ" textFill="#2c0372" />
-      <Button layoutX="583.0" layoutY="43.0" mnemonicParsing="false" onAction="#CapNhatSoXe" prefHeight="38.0" prefWidth="158.0" styleClass="button3" stylesheets="@../source/Main.css" text="Cập nhật" textFill="#2c0372" />
+       <TextField fx:id="tfSearch" layoutX="59.0" layoutY="43.0" prefHeight="39.0" prefWidth="261.0"/>
+       <Button layoutX="293.0" layoutY="43.0" mnemonicParsing="false" onAction="#searchHoKhau" prefHeight="38.0"
+               prefWidth="261.0" styleClass="btntimkiem" stylesheets="@../source/nhankhau_va_hokhau.css"
+               text="Tìm kiếm theo Mã hộ" textFill="#2c0372"/>
+       <Button layoutX="590.0" layoutY="44.0" maxHeight="39.0" maxWidth="261.0" minWidth="149.0" mnemonicParsing="false"
+               onAction="#CapNhatSoXe" prefHeight="39.0" prefWidth="149.0" styleClass="buttonChucnang"
+               stylesheets="@../source/nhankhau_va_hokhau.css" text="Cập nhật" textFill="#2c0372"/>
       <Label fx:id="noti" layoutX="94.0" layoutY="94.0" prefHeight="18.0" prefWidth="179.0" textFill="#ec0606">
          <font>
             <Font name="System Italic" size="14.0" />

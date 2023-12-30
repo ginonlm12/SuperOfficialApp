@@ -241,5 +241,18 @@ public class HoKhauService_Tuan {
         }
         return "Chưa đuợc sử dụng";
     }
+
+    public static String countHoKhau() throws ClassNotFoundException, SQLException {
+        Connection connection = MysqlConnection.getMysqlConnection();
+        String query = "SELECT Count(IDHoKhau) FROM hokhau WHERE NgayDi = '0001-01-01'";
+
+        PreparedStatement preparedStatement = connection.prepareStatement(query);
+        ResultSet rs = preparedStatement.executeQuery();
+        if (rs.next()) {
+            int count = rs.getInt(1);
+            return String.valueOf(count);
+        }
+        return "0";
+    }
 }
 

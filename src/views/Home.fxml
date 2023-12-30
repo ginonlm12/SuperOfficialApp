@@ -45,11 +45,16 @@
                         </MenuButton>
                     </children>
                 </AnchorPane>
-                <Pane id="mainPane" fx:id="mainPane" prefHeight="600.0" prefWidth="800.0"/>
+                <Pane id="mainPane" fx:id="mainPane" prefHeight="600.0" prefWidth="800.0" styleClass="white-bg"
+                      stylesheets="@../source/nhankhau_va_hokhau.css"/>
             </children>
         </VBox>
         <Pane fx:id="middlePane" disable="true" onMouseClicked="#middlePaneClicked" prefHeight="650.0"
-              prefWidth="800.0"/>
+              prefWidth="800.0">
+            <children>
+                <Pane fx:id="pain" layoutX="94.0" layoutY="86.0" prefHeight="200.0" prefWidth="660.0"/>
+            </children>
+        </Pane>
         <VBox fx:id="menuNhanKhau" layoutX="-265.0" layoutY="140.0" prefHeight="123.0" prefWidth="100.0">
             <children>
                 <Button mnemonicParsing="false" onAction="#setCuTru" prefHeight="39.0" prefWidth="101.0"
@@ -78,14 +83,15 @@
         <VBox id="menubar" fx:id="menu" layoutX="-165.0" prefHeight="650.0" prefWidth="165.0">
             <children>
                 <Button id="logobtn" focusTraversable="false" mnemonicParsing="false" onMouseClicked="#logobtnClicked"
-                        prefHeight="80.0" prefWidth="165.0" stylesheets="@../source/Home.css" text="SPM">
+                        prefHeight="80.0" prefWidth="165.0" styleClass="buttoninmenu" stylesheets="@../source/Home.css"
+                        text="SPM">
                     <font>
                         <Font name="Britannic Bold" size="20.0"/>
                     </font>
                     <graphic>
                         <ImageView fitHeight="40.0" fitWidth="40.0">
                             <image>
-                                <Image url="@../source/logo.png"/>
+                                <Image url="@../source/cityy.png"/>
                             </image>
                         </ImageView>
                     </graphic>
@@ -224,7 +230,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-             <Button fx:id="btnPhong" mnemonicParsing="false" onAction="#setPhong" prefHeight="60.0"
+                <Button fx:id="btnPhong" mnemonicParsing="false" onAction="#setPhong" prefHeight="60.0"
                         prefWidth="214.0" styleClass="buttoninmenu" stylesheets="@../source/Home.css" text="Phòng"
                         textFill="WHITE">
                     <font>

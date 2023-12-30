@@ -1,84 +1,134 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.*?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="600.0" prefWidth="800.0" styleClass="main-bg"
             stylesheets="@../source/Main.css" xmlns="http://javafx.com/javafx/21"
             fx:controller="controller.MainController">
-    <children>
-        <GridPane fx:id="grid" hgap="20.0" layoutX="73.0" layoutY="40.0" prefHeight="560.0" prefWidth="652.0">
-            <columnConstraints>
-                <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints fillWidth="false" halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0"
-                                   prefWidth="100.0"/>
-            </columnConstraints>
-            <rowConstraints>
-                <RowConstraints fillHeight="false" maxHeight="296.00002136230466" minHeight="10.0"
-                                prefHeight="56.39999694824219" vgrow="SOMETIMES"/>
-                <RowConstraints maxHeight="398.79999389648435" minHeight="10.0" prefHeight="246.0000030517578"
-                                vgrow="SOMETIMES"/>
-                <RowConstraints maxHeight="257.1999877929687" minHeight="10.0" prefHeight="257.1999877929687"
-                                vgrow="SOMETIMES"/>
-            </rowConstraints>
-            <children>
-                <Pane prefHeight="57.0" prefWidth="258.0"
-                      style="-fx-background-radius: 30; -fx-background-color: #ffdc57;">
-                    <children>
-                        <ImageView fitHeight="51.0" fitWidth="39.0" layoutX="23.0" layoutY="-11.0" pickOnBounds="true"
-                                   preserveRatio="true">
-                            <image>
-                                <Image url="@../source/house.png"/>
-                            </image>
-                        </ImageView>
-                        <Label layoutX="71.0" layoutY="4.0" prefHeight="51.0" prefWidth="149.0" text="Số hộ khẩu"
-                               textFill="WHITE">
-                            <font>
-                                <Font name="System Bold" size="26.0"/>
-                            </font>
+   <children>
+      <VBox layoutX="16.0" layoutY="20.0" prefHeight="559.0" prefWidth="767.0" spacing="15.0">
+         <children>
+            <VBox prefHeight="160.0" prefWidth="703.0" spacing="1.0"
+                  style="-fx-background-color: #EEF5FF; -fx-background-radius: 15; -fx-effect: dropshadow(two-pass-box, #AAAAAA, 5, 0, 0, 4);">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="6.0" prefWidth="767.0" spacing="400.0">
+                     <children>
+                        <Label contentDisplay="CENTER" prefHeight="31.0" prefWidth="366.0" text="Thống kê chung"
+                               textAlignment="CENTER" textOverrun="CLIP">
+                           <font>
+                              <Font name="System Bold" size="21.0"/>
+                           </font>
+                           <HBox.margin>
+                              <Insets left="10.0" top="10.0"/>
+                           </HBox.margin>
                         </Label>
-                        <Label fx:id="lbSoHoKhau" layoutX="211.0" layoutY="11.0" prefHeight="36.0" prefWidth="19.0"
-                               textFill="WHITE">
-                            <font>
-                                <Font name="System Bold" size="26.0"/>
-                            </font>
+                        <Label fx:id="currentDate" contentDisplay="CENTER" prefHeight="31.0" prefWidth="232.0"
+                               text="Ngày tháng năm" textAlignment="CENTER" textOverrun="CLIP">
+                           <font>
+                              <Font name="System Italic" size="12.0"/>
+                           </font>
                         </Label>
-                    </children>
-                    <effect>
-                        <DropShadow/>
-                    </effect>
-                </Pane>
-                <Pane prefHeight="57.0" prefWidth="259.0"
-                      style="-fx-background-color: #41c4b5; -fx-background-radius: 30;" GridPane.columnIndex="1">
-                    <children>
-                        <ImageView fitHeight="51.0" fitWidth="39.0" layoutX="14.0" layoutY="10.0" pickOnBounds="true"
-                                   preserveRatio="true">
-                            <image>
-                                <Image url="@../source/payment.png"/>
-                            </image>
-                        </ImageView>
-                        <Label layoutX="61.0" layoutY="4.0" prefHeight="51.0" prefWidth="169.0" text="Số khoản thu"
-                               textFill="WHITE">
-                            <font>
-                                <Font name="System Bold" size="26.0"/>
-                            </font>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="151.0" prefWidth="767.0" spacing="5.0">
+                     <children>
+                        <VBox alignment="CENTER" prefHeight="162.0" prefWidth="212.0">
+                           <children>
+                              <ImageView fitHeight="52.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../source/person.png"/>
+                                 </image>
+                              </ImageView>
+                              <Label fx:id="soNhanKhau" alignment="CENTER" contentDisplay="CENTER" prefHeight="45.0"
+                                     prefWidth="121.0" text="1" textAlignment="CENTER" textOverrun="CLIP">
+                                 <font>
+                                    <Font name="System Bold" size="30.0"/>
+                                 </font>
+                              </Label>
+                              <Label contentDisplay="CENTER" prefHeight="17.0" prefWidth="59.0" text="nhân khẩu"
+                                     textAlignment="CENTER" textOverrun="CLIP"/>
+                           </children>
+                        </VBox>
+                        <Line endX="-103.99507904052734" endY="189.97186279296875" opacity="0.25"
+                              startX="-103.9950942993164" startY="85.34564971923828"/>
+                        <VBox alignment="CENTER" prefHeight="162.0" prefWidth="212.0">
+                           <children>
+                              <ImageView fitHeight="52.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../source/person.png"/>
+                                 </image>
+                              </ImageView>
+                              <Label fx:id="soHoKhau" alignment="CENTER" contentDisplay="CENTER" prefHeight="45.0"
+                                     prefWidth="146.0" text="1" textAlignment="CENTER" textOverrun="CLIP">
+                                 <font>
+                                    <Font name="System Bold" size="30.0"/>
+                                 </font>
+                              </Label>
+                              <Label contentDisplay="CENTER" prefHeight="30.0" prefWidth="68.0" text="hộ gia đình"
+                                     textAlignment="CENTER" textOverrun="CLIP"/>
+                           </children>
+                        </VBox>
+                        <Line endX="-103.99507904052734" endY="189.97186279296875" opacity="0.25"
+                              startX="-103.9950942993164" startY="85.34564971923828"/>
+                        <VBox alignment="CENTER" prefHeight="162.0" prefWidth="212.0">
+                           <children>
+                              <Label fx:id="soPhong" alignment="CENTER" contentDisplay="CENTER" prefHeight="59.0"
+                                     prefWidth="139.0" text="1" textAlignment="CENTER" textOverrun="CLIP">
+                                 <font>
+                                    <Font name="System Bold" size="40.0"/>
+                                 </font>
+                              </Label>
+                              <Label contentDisplay="CENTER" prefHeight="17.0" prefWidth="86.0" text="phòng đã dùng"
+                                     textAlignment="CENTER" textOverrun="CLIP"/>
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <HBox alignment="CENTER" prefHeight="147.0" prefWidth="767.0" spacing="20.0">
+               <children>
+                  <VBox prefHeight="191.0" prefWidth="375.0"
+                        style="-fx-background-color: #EEF5FF; -fx-effect: dropshadow(two-pass-box, #AAAAAA, 5, 0, 0, 4); -fx-background-radius: 15;">
+                     <children>
+                        <Label contentDisplay="CENTER" prefHeight="33.0" prefWidth="237.0" text="Nhân khẩu theo độ tuổi"
+                               textAlignment="CENTER" textOverrun="CLIP">
+                           <font>
+                              <Font name="System Bold" size="14.0"/>
+                           </font>
+                           <VBox.margin>
+                              <Insets left="10.0" top="10.0"/>
+                           </VBox.margin>
                         </Label>
-                        <Label fx:id="lbSoKhoanThu" layoutX="230.0" layoutY="11.0" prefHeight="38.0" prefWidth="39.0"
-                               textFill="WHITE">
-                            <font>
-                                <Font name="System Bold" size="26.0"/>
-                            </font>
+                        <PieChart fx:id="pieDoTuoi" labelLineLength="5.0" legendSide="RIGHT" prefHeight="111.0"
+                                  prefWidth="243.0"/>
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="160.0" prefWidth="368.0"
+                        style="-fx-background-color: #EEF5FF; -fx-effect: dropshadow(two-pass-box, #AAAAAA, 5, 0, 0, 4); -fx-background-radius: 15;">
+                     <children>
+                        <Label contentDisplay="CENTER" prefHeight="33.0" prefWidth="251.0"
+                               text="Nhân khẩu theo giới tính" textAlignment="CENTER" textOverrun="CLIP">
+                           <font>
+                              <Font name="System Bold" size="14.0"/>
+                           </font>
+                           <VBox.margin>
+                              <Insets left="10.0" top="10.0"/>
+                           </VBox.margin>
                         </Label>
-                    </children>
-                    <effect>
-                        <DropShadow/>
-                    </effect>
-                </Pane>
-            </children>
-        </GridPane>
-        <Label layoutX="435.0" layoutY="559.0" text=""/>
+                        <PieChart fx:id="pieGioiTinh" labelLineLength="5.0" legendSide="RIGHT" prefHeight="121.0"
+                                  prefWidth="368.0"/>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
     </children>
 </AnchorPane>

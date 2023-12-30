@@ -67,6 +67,26 @@ public class PhongService {
         connection.close();
     }
 
+    public static String countSoPhong() throws ClassNotFoundException, SQLException {
+        Connection connection = MysqlConnection.getMysqlConnection();
+        int total = 0, used = 0;
+
+        String query = "SELECT COUNT(*) FROM phong";
+        PreparedStatement preparedStatement = connection.prepareStatement(query);
+        ResultSet rs = preparedStatement.executeQuery();
+        if (rs.next()) {
+            total = rs.getInt(1);
+        }
+
+        String query1 = "SELECT COUNT(DISTINCT sophong) FROM hokhau";
+        preparedStatement = connection.prepareStatement(query1);
+        rs = preparedStatement.executeQuery();
+        if (rs.next()) {
+            used = rs.getInt(1);
+        }
+        return used + "/" + total;
+    }
+
     public List<PhongModel> getListPhong() throws ClassNotFoundException, SQLException {
         List<PhongModel> list = new ArrayList<>();
 
