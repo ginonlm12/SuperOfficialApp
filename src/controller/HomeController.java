@@ -12,7 +12,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
 import javafx.scene.effect.ColorAdjust;
-import javafx.scene.effect.DropShadow;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
@@ -30,8 +29,6 @@ import java.util.ResourceBundle;
 public class HomeController implements Initializable {
     @FXML
     Pane middlePane;
-    @FXML
-    Pane pain;
     @FXML
     private VBox menuNhanKhau;
     @FXML
@@ -203,8 +200,6 @@ public class HomeController implements Initializable {
             Pane newContentPane = loader.load();
             // Replace the content of mainPane with the new content
             mainPane.getChildren().setAll(newContentPane);
-            DropShadow dropshadow = new DropShadow();
-            pain.setEffect(dropshadow);
         } catch (IOException e) {
             e.printStackTrace();
         }

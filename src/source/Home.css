@@ -11,7 +11,7 @@
 }
 
 .buttoninsubmenu{
-    -fx-background-color : #B4D4FF;
+    -fx-background-color : linear-gradient(to bottom right, #FFFFFF, #EEF5FF);
     -fx-text-fill: #000000;
     -fx-font-family: Monaco;
     -fx-font-size: 15px;
@@ -23,11 +23,11 @@
 
 /*Khi chuot di vao nut*/
 .buttoninmenu:hover {
-    -fx-background-color : #B4D4FF;
+    -fx-background-color : linear-gradient(to bottom right, #FFFFFF, #EEF5FF);
 }
 
 .buttoninsubmenu:hover {
-    -fx-background-color : #86B6F6;
+    -fx-background-color : #FFFFFF;
 }
 
 #logobtn {

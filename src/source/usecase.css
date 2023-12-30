@@ -1,0 +1,50 @@
+
+.button {
+    -fx-background-color: #1877F2;
+    -fx-background-radius: 5;
+    -fx-text-fill: #ffffff;
+    -fx-font-weight: bold;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 6,0,0,0);
+}
+.button:hover {
+    -fx-background-color : #B4D4FF ;
+    -fx-text-fill: #111111;
+}
+.button:pressed {
+    -fx-background-color : #1A77F2 ;
+    -fx-text-fill: #ffffff;
+
+}
+
+.text-field-rounded {
+    -fx-background-color: linear-gradient(to bottom right, #EEF5FF, #FFFFFF);
+    -fx-border-color: linear-gradient(to bottom right, #176B87, #1877F2); /* Màu viền */
+    -fx-border-width: 1; /* Độ rộng viền */
+    -fx-border-radius: 5; /* Độ bo tròn của viền */
+}
+
+.text-field-rounded:hover {
+    -fx-background-color: linear-gradient(to bottom right, #FFFFFF, #EEF5FF); /* Màu nền khi di chuột vào */
+}
+
+.text-field-rounded:focused {
+    -fx-background-color: #e0e0e0; /* Màu nền khi được focus */
+}
+
+.subpane{
+    -fx-background-color:  #EEF5FF;
+    -fx-border-color:  #B4D4FF;
+    -fx-effect: dropshadow(two-pass-box, rgba(0,0,0,0.5), 1,0,0,0);
+}
+
+.subpane: hover{
+    -fx-background-color:  #EEF6FF;
+    -fx-border-color:  #B4D4FF;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 1,0,0,0);
+}
+
+.subpane: focused {
+    -fx-background-color:  #EEF5FF;
+    -fx-border-color:  #B4D4FF;
+    -fx-effect: dropshadow(two-pass-box, rgba(0,0,0,0.5), 1,0,0,0);
+}

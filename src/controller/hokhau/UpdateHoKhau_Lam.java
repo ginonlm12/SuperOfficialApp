@@ -5,7 +5,6 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -111,7 +110,7 @@ public class UpdateHoKhau_Lam {
 				loader.setLocation(getClass().getResource("/views/hokhau/UpdateQHvsChuHo_Lam.fxml"));
 				Parent home = loader.load();
 				Stage stage = new Stage();
-				stage.setScene(new Scene(home, 500, 500));
+				stage.setScene(new Scene(home, 500, 470));
 				UpdateQHvsChuHo_Lam updateQHvsChuHo = loader.getController();
 
 				if (updateQHvsChuHo == null)

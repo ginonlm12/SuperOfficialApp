@@ -3,10 +3,11 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.*?>
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="300.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/21"
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="300.0" prefWidth="415.0"
+            stylesheets="@../../source/usecase.css" xmlns="http://javafx.com/javafx/21"
             fx:controller="controller.tamtrutamvang.UpdateTamVang">
     <children>
-        <Label fx:id="textKhaibao" layoutX="21.0" layoutY="9.0" text="Khai báo tạm vắng">
+        <Label fx:id="textKhaibao" layoutX="21.0" layoutY="8.0" text="Khai báo tạm vắng">
             <font>
                 <Font name="System Bold Italic" size="23.0"/>
             </font>
@@ -21,13 +22,12 @@
                 <Font size="14.0"/>
             </font>
         </Text>
-        <DatePicker fx:id="tfNgaybatdau" layoutX="21.0" layoutY="118.0" prefHeight="25.0" prefWidth="357.0"
-                    styleClass="text-field-rounded" stylesheets="@../../source/Main.css"/>
-        <TextField fx:id="tfHoTen" editable="false" layoutX="172.0" layoutY="43.0" prefHeight="39.0" prefWidth="206.0"
-                   promptText="Nhập vào Họ và tên" styleClass="text-field-rounded"
-                   stylesheets="@../../source/Main.css"/>
-        <DatePicker fx:id="tfNgayketthuc" layoutX="21.0" layoutY="176.0" prefHeight="28.0" prefWidth="357.0"
-                    styleClass="text-field-rounded" stylesheets="@../../source/Main.css"/>
+        <DatePicker fx:id="tfNgaybatdau" layoutX="21.0" layoutY="118.0" prefHeight="28.0" prefWidth="374.0"
+                    styleClass="text-field-rounded"/>
+        <TextField fx:id="tfHoTen" editable="false" layoutX="172.0" layoutY="43.0" prefHeight="39.0" prefWidth="223.0"
+                   styleClass="text-field-rounded"/>
+        <DatePicker fx:id="tfNgayketthuc" layoutX="21.0" layoutY="176.0" prefHeight="28.0" prefWidth="374.0"
+                    styleClass="text-field-rounded"/>
         <Text layoutX="21.0" layoutY="108.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ngày bắt đầu">
             <font>
                 <Font size="14.0"/>
@@ -38,10 +38,10 @@
                 <Font size="14.0"/>
             </font>
         </Text>
-        <Button layoutX="328.0" layoutY="260.0" mnemonicParsing="false" onAction="#updateTamVang" text="Thay đổi"/>
+        <Button layoutX="319.0" layoutY="260.0" mnemonicParsing="false" onAction="#updateTamVang" prefHeight="25.0"
+                prefWidth="77.0" text="Thay đổi"/>
         <TextField fx:id="tfIDNhanKhau" editable="false" layoutX="41.0" layoutY="43.0" prefHeight="39.0"
-                   prefWidth="53.0" promptText="Nhập vào Họ và tên" styleClass="text-field-rounded"
-                   stylesheets="@../../source/Main.css"/>
+                   prefWidth="53.0" styleClass="text-field-rounded"/>
         <Label fx:id="Error" layoutX="241.0" layoutY="162.0" text="Error" textFill="RED">
             <font>
                 <Font size="9.0"/>
@@ -53,6 +53,6 @@
             </font>
         </Text>
         <TextArea fx:id="tfLydo" layoutX="21.0" layoutY="233.0" prefHeight="54.0" prefWidth="296.0"
-                  styleClass="text-field-rounded" stylesheets="@../../source/Main.css"/>
+                  styleClass="text-field-rounded"/>
     </children>
 </AnchorPane>
