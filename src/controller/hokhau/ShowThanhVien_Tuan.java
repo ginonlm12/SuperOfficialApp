@@ -39,12 +39,11 @@ public class ShowThanhVien_Tuan {
             alert.setHeaderText(null);
             alert.showAndWait();
         } else {
-            // Lấy cái code ni đưa vào button Xem thông tin của Tuấn này
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/views/nhankhau/ShowChiTiet_Lam.fxml"));
             Parent home = loader.load();
             Stage stage = new Stage();
-            stage.setScene(new Scene(home, 800, 600));
+            stage.setScene(new Scene(home, 690, 400));
             ShowChiTiet_Lam showChiTiet = loader.getController();
 
             // bat loi truong hop khong hop le

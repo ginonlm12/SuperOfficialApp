@@ -3,25 +3,26 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="300.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/21"
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="300.0" prefWidth="450.0" styleClass="text-field-rounded"
+            stylesheets="@../../source/usecase.css" xmlns="http://javafx.com/javafx/21"
             fx:controller="controller.phong.AddPhong">
    <children>
       <Label layoutX="158.0" layoutY="14.0" text="THÊM PHÒNG">
          <font>
-            <Font name="System Bold Italic" size="20.0"/>
+             <Font name="System Bold Italic" size="20.0"/>
          </font>
       </Label>
-      <Label layoutX="13.0" layoutY="77.0" text="Số phòng"/>
-      <TextField fx:id="tfSoPhong" layoutX="102.0" layoutY="66.0" prefHeight="39.0" prefWidth="333.0"
-                 promptText="Nhập vào Số phòng mới" styleClass="text-field-rounded"
-                 stylesheets="@../../source/Main.css"/>
-      <Label layoutX="15.0" layoutY="134.0" text="Diện tích"/>
-      <TextField fx:id="tfDienTich" layoutX="102.0" layoutY="123.0" prefHeight="39.0" prefWidth="333.0"
-                 promptText="Nhập vào CCCD" styleClass="text-field-rounded" stylesheets="@../../source/Main.css"/>
-      <Label layoutX="15.0" layoutY="191.0" text="Loại phòng"/>
-      <ComboBox fx:id="tfLoaiPhong" layoutX="102.0" layoutY="180.0" prefHeight="39.0" prefWidth="333.0"
-                styleClass="text-field-rounded" stylesheets="@../../source/Main.css"/>
-      <Button layoutX="184.0" layoutY="246.0" mnemonicParsing="false" onAction="#addPhong" prefHeight="25.0"
-              prefWidth="81.0" text="Thêm"/>
+       <Label layoutX="13.0" layoutY="77.0" text="Số phòng"/>
+       <TextField fx:id="tfSoPhong" layoutX="102.0" layoutY="66.0" prefHeight="39.0" prefWidth="333.0"
+                  promptText="Nhập vào Số phòng mới" styleClass="text-field-rounded"
+                  stylesheets="@../../source/usecase.css"/>
+       <Label layoutX="15.0" layoutY="134.0" text="Diện tích"/>
+       <TextField fx:id="tfDienTich" layoutX="102.0" layoutY="123.0" prefHeight="39.0" prefWidth="333.0"
+                  promptText="Nhập vào CCCD" styleClass="text-field-rounded" stylesheets="@../../source/usecase.css"/>
+       <Label layoutX="15.0" layoutY="191.0" text="Loại phòng"/>
+       <ComboBox fx:id="tfLoaiPhong" layoutX="102.0" layoutY="180.0" prefHeight="39.0" prefWidth="333.0"
+                 styleClass="text-field-rounded" stylesheets="@../../source/usecase.css"/>
+       <Button layoutX="313.0" layoutY="237.0" mnemonicParsing="false" onAction="#addPhong" prefHeight="25.0"
+               prefWidth="121.0" text="Thêm"/>
    </children>
 </AnchorPane>
