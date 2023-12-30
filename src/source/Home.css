@@ -57,8 +57,62 @@
     -fx-border-width: 1px;
 }
 
+
 .top-form{
     -fx-background-color:#fff;
     -fx-border-color:#000;
     -fx-border-width:.4px .4px .2px .4px;
+}
+
+//tuan
+
+.split-pane{
+    -fx-background-color: #add8e6;
+    -fx-background-radius: 10;
+
+}
+.split-pane:backdrop {
+    -fx-background-color: transparent; /* Làm cho nền trong suốt */
+}
+
+.split-pane:backdrop > .split-pane-divider {
+    -fx-background-color: transparent; /* Làm cho đường chia trong suốt */
+}
+
+.split-pane:hover {
+    -fx-effect: innershadow(gaussian, rgba(0, 0, 0, 0.5), 10, 0, 0, 0);
+    -fx-background-color: #add8e6; /* Màu xanh dương nhạt khi hover */
+}
+.btn-plus-sub{
+    -fx-background-color: transparent;
+}
+
+.box-dashboard{
+    -fx-background-color: #B4D4FF;
+    -fx-background-radius: 15;
+    -fx-effect : dropshadow(two-pass-box, #aaaaaa, 5, 0, 0, 4);
+}
+
+.table-view{
+    -fx-background-color:transparent;
+    -fx-border-color:linear-gradient(to bottom right, #176B87, #3887BE);
+    -fx-border-radius:8px;
+    -fx-padding:0px;
+}
+.table-view .table-column{
+    -fx-alignment:CENTER;
+}
+
+.table-view .column-header-background{
+    -fx-background-color:linear-gradient(to bottom right, #176B87, #3887BE);
+    -fx-background-insets: 0 0 0 0;
+    -f-background-radius:8px 8px 0px 0px;
+}
+.table-view .column-header, .filter{
+    -fx-background-color: transparent;
+    -fx-size:40px;
+}
+.table-view .column-header .label{
+    -fx-text-fill:#fff;
+    -fx-font-family:"Arial";
 }

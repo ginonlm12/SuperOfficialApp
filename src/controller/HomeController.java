@@ -47,6 +47,7 @@ public class HomeController implements Initializable {
     @FXML
     private Button btnPhong;
 
+
     void createNewStage(String fxmlFilePath) throws IOException {
         Parent home = FXMLLoader.load(getClass().getResource(fxmlFilePath));
         Stage stage = new Stage();
