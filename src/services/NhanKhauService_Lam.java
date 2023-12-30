@@ -8,11 +8,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class NhanKhauService_Lam {
-
     public static NhanKhauModel_Lam loadDatafromID(int idNhanKhau) throws ClassNotFoundException, SQLException {
         NhanKhauModel_Lam nhanKhauModel = new NhanKhauModel_Lam();
         Connection connection = MysqlConnection.getMysqlConnection();
@@ -161,6 +161,33 @@ public class NhanKhauService_Lam {
         return Xa_List;
     }
 
+    public static String getChuHo(int IDHoKhau) throws SQLException, ClassNotFoundException {
+        String ChuHo = null;
+        Connection connection = MysqlConnection.getMysqlConnection();
+        String query = "SELECT HoTen FROM nhankhau WHERE IDHoKhau = ? AND QHvsChuHo = ?";
+        PreparedStatement preparedStatement = connection.prepareStatement(query);
+        preparedStatement.setInt(1, IDHoKhau);
+        preparedStatement.setString(2, "Chủ hộ");
+        ResultSet resultSet = preparedStatement.executeQuery();
+        while (resultSet.next()) {
+            ChuHo = resultSet.getString("HoTen");
+        }
+        return ChuHo;
+    }
+
+    public static String getHoTen(int IDNhanKhau) throws SQLException, ClassNotFoundException {
+        String HoTen = null;
+        Connection connection = MysqlConnection.getMysqlConnection();
+        String query = "SELECT HoTen FROM nhankhau WHERE IDNhanKhau = ?";
+        PreparedStatement preparedStatement = connection.prepareStatement(query);
+        preparedStatement.setInt(1, IDNhanKhau);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        while (resultSet.next()) {
+            HoTen = resultSet.getString("HoTen");
+        }
+        return HoTen;
+    }
+
     public static int getSoPhong(int IDHoKhau) throws ClassNotFoundException, SQLException {
         int SoPhong = 0;
         Connection connection = MysqlConnection.getMysqlConnection();
@@ -197,7 +224,7 @@ public class NhanKhauService_Lam {
     }
 
     // checked
-    public boolean del(int IDNhanKhau) throws ClassNotFoundException, SQLException {
+    public static boolean del(int IDNhanKhau) throws ClassNotFoundException, SQLException {
         Connection connection = MysqlConnection.getMysqlConnection();
 
         String query = "DELETE FROM nhankhau WHERE IDNhanKhau = ?";
@@ -235,5 +262,37 @@ public class NhanKhauService_Lam {
         preparedStatement.close();
         connection.close();
         return list;
+    }
+
+    public static String extractIdHoKhau(String comboBoxValue) {
+        Pattern pattern = Pattern.compile("\\d+");
+
+        Matcher matcher = pattern.matcher(comboBoxValue);
+
+        if (matcher.find()) {
+            return matcher.group();
+        }
+        return "";
+    }
+
+    public static void sortVectorByRoomNumber(Vector<String> house) {
+        Collections.sort(house, new Comparator<String>() {
+            @Override
+            public int compare(String house1, String house2) {
+                int roomNumber1 = extractRoomNumber(house1);
+                int roomNumber2 = extractRoomNumber(house2);
+
+                return Integer.compare(roomNumber1, roomNumber2);
+            }
+        });
+    }
+
+    private static int extractRoomNumber(String houseInfo) {
+        int roomIndex = houseInfo.indexOf("Phòng: ");
+        if (roomIndex != -1) {
+            String roomSubstring = houseInfo.substring(roomIndex + 7);
+            return Integer.parseInt(roomSubstring.split(" ")[0]);
+        }
+        return 0;
     }
 }

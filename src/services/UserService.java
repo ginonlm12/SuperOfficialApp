@@ -1,9 +1,11 @@
 package services;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import com.spire.xls.Workbook;
+import com.spire.xls.Worksheet;
+
+import java.sql.*;
+
+import static services.MysqlConnection.getMysqlConnection;
 
 public class UserService {
 
@@ -32,4 +34,54 @@ public class UserService {
 
         return rowsAffected > 0;
     }
+
+    // xuất file excel với đầu vào tương ứng là bảng trong databasse và tên file xuất ra tương ứng
+    public static void xuatfileexcel(String bang, String outputFile) throws SQLException, ClassNotFoundException{
+
+        Connection conn = getMysqlConnection();
+        Statement sta = conn.createStatement();
+
+        //Select all từ một bảng trong database
+        ResultSet resultSet = sta.executeQuery("select * from " + bang);
+        // Tạo Workbook và Worksheet
+        Workbook workbook = new Workbook();
+        Worksheet sheet = workbook.getWorksheets().get(0);
+
+        // Lấy metadata để lấy số cột trong bảng
+        int columnCount = resultSet.getMetaData().getColumnCount();
+
+        // In tên các cột trong bảng ra hàng đầu của sheet
+        for (int i = 1; i <= columnCount; i++) {
+
+            String columnName = resultSet.getMetaData().getColumnName(i);
+            System.out.print(columnName + '\t');
+            sheet.get(1, i).setText(columnName);
+
+        }
+        System.out.println();
+
+        // In lần lượt các hàng tiếp theo vào sheet
+        int row = 2;
+        while (resultSet.next()) {
+            for (int i = 1; i <= columnCount; i++) {
+                sheet.get(row, i).setValue(resultSet.getString(i));
+                // Định dạng cho cột CCCD
+                if (resultSet.getMetaData().getColumnName(i).equals("CCCD")) {
+                    sheet.get(row, i).setText(resultSet.getString(i));
+                }
+                System.out.print(resultSet.getString(i) + '\t');
+            }
+            System.out.println();
+            row++;
+        }
+
+        //Tự động fit độ rộng của cột
+        sheet.getAllocatedRange().autoFitColumns();
+
+        // Lưu workbook vào file
+        workbook.saveToFile(outputFile);
+        // Đóng workbook
+        workbook.dispose();
+    }
+
 }

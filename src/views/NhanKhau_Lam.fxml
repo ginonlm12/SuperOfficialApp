@@ -37,27 +37,31 @@
                 <URL value="@../source/nhankhau_va_hokhau.css"/>
             </stylesheets>
         </Button>
-        <Button focusTraversable="false" layoutX="100.0" layoutY="10.0" mnemonicParsing="false" onAction="#addNhanKhau"
+        <Button focusTraversable="false" layoutX="25.0" layoutY="14.0" mnemonicParsing="false" onAction="#addNhanKhau"
                 prefHeight="30.0" prefWidth="150.0" styleClass="buttonChucnang"
                 stylesheets="@../source/nhankhau_va_hokhau.css" text="Thêm nhân khẩu" textFill="#2e088d" wrapText="true"
-                AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="10.0"/>
-        <Button focusTraversable="false" layoutX="250.0" layoutY="10.0" mnemonicParsing="false" onAction="#delNhanKhau"
+                AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="14.0"/>
+        <Button focusTraversable="false" layoutX="175.0" layoutY="14.0" mnemonicParsing="false" onAction="#delNhanKhau"
                 prefHeight="30.0" prefWidth="150.0" styleClass="buttonChucnang"
                 stylesheets="@../source/nhankhau_va_hokhau.css" text="Xóa nhân khẩu" textFill="#2e088d" wrapText="true"
-                AnchorPane.leftAnchor="250.0" AnchorPane.topAnchor="10.0"/>
-        <Button focusTraversable="false" layoutX="400.0" layoutY="10.0" mnemonicParsing="false"
+                AnchorPane.leftAnchor="175.0" AnchorPane.topAnchor="14.0"/>
+        <Button focusTraversable="false" layoutX="324.0" layoutY="14.0" mnemonicParsing="false"
                 onAction="#updateNhanKhau" prefHeight="30.0" prefWidth="150.0" styleClass="buttonChucnang"
                 stylesheets="@../source/nhankhau_va_hokhau.css" text="Cập nhật nhân khẩu" textFill="#2e088d"
-                wrapText="true" AnchorPane.topAnchor="10.0"/>
-        <Button focusTraversable="false" layoutX="550.0" layoutY="10.0" mnemonicParsing="false" onAction="#showChiTiet"
+                wrapText="true" AnchorPane.topAnchor="14.0"/>
+        <Button focusTraversable="false" layoutX="474.0" layoutY="14.0" mnemonicParsing="false" onAction="#showChiTiet"
                 prefHeight="30.0" prefWidth="150.0" styleClass="buttonChucnang"
                 stylesheets="@../source/nhankhau_va_hokhau.css" text="Xem chi tiết" textFill="#2e088d" wrapText="true"
-                AnchorPane.topAnchor="10.0"/>
+                AnchorPane.topAnchor="14.0"/>
         <Text layoutX="128.0" layoutY="116.0" strokeType="OUTSIDE" strokeWidth="0.0"
               text="DANH SÁCH NHÂN KHẨU ĐANG CƯ TRÚ TẠI CHUNG CƯ BLUEMOON" textAlignment="CENTER">
             <font>
                 <Font name="System Bold Italic" size="17.0"/>
             </font>
         </Text>
+        <Button focusTraversable="false" layoutX="624.0" layoutY="14.0" mnemonicParsing="false" onAction="#addTamvang"
+                prefHeight="30.0" prefWidth="150.0" styleClass="buttonChucnang"
+                stylesheets="@../source/nhankhau_va_hokhau.css" text="Thêm tạm vắng" textFill="#2e088d"
+                wrapText="true"/>
     </children>
 </AnchorPane>
