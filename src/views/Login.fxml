@@ -11,9 +11,9 @@
         <AnchorPane blendMode="SRC_ATOP" prefHeight="650.0" prefWidth="800.0" styleClass="pane"
                     stylesheets="@../source/login.css">
             <children>
-                <ImageView fitHeight="300.0" fitWidth="400.0" layoutX="399.0" layoutY="128.0">
+                <ImageView fitHeight="251.0" fitWidth="283.0" layoutX="458.0" layoutY="144.0">
                     <image>
-                        <Image url="@../source/cityy.png"/>
+                        <Image url="@../source/cityyy.png"/>
                     </image>
                 </ImageView>
                 <ImageView fitHeight="85.0" fitWidth="84.0" layoutX="38.0" layoutY="199.0" opacity="0.38"

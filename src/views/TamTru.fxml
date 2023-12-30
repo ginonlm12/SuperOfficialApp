@@ -27,7 +27,7 @@
         <TextField fx:id="tfSearchTT" layoutX="15.0" layoutY="53.0" prefHeight="41.0" prefWidth="299.0"
                    styleClass="search" stylesheets="@../source/nhankhau_va_hokhau.css"/>
         <ComboBox id="choose" fx:id="cbChooseSearchTT" layoutX="295.0" layoutY="53.0" prefHeight="41.0"
-                  prefWidth="271.0" styleClass="boxluachon" stylesheets="@../source/nhankhau_va_hokhau.css"/>
+                  prefWidth="271.0" styleClass="btntimkiem" stylesheets="@../source/nhankhau_va_hokhau.css"/>
         <Button layoutX="532.0" layoutY="53.0" mnemonicParsing="false" onAction="#searchTamTru" prefHeight="41.0"
                 prefWidth="253.0" styleClass="btntimkiem" text="Tìm kiếm">
             <stylesheets>

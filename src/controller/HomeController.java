@@ -11,7 +11,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
-import javafx.scene.effect.BoxBlur;
+import javafx.scene.effect.ColorAdjust;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
@@ -29,6 +30,8 @@ import java.util.ResourceBundle;
 public class HomeController implements Initializable {
     @FXML
     Pane middlePane;
+    @FXML
+    Pane pain;
     @FXML
     private VBox menuNhanKhau;
     @FXML
@@ -62,17 +65,18 @@ public class HomeController implements Initializable {
         Pane newContentPane = loader.load();
         // Replace the content of mainPane with the new content
         mainPane.getChildren().setAll(newContentPane);
-        anim(menuNhanKhau, 330, 0, 0.5);
+        anim(menuNhanKhau, 330, 0, 0.2);
+        show = false;
     }
 
     public void setNhanKhau(MouseEvent event) {
         //changeMainPane("/views/NhanKhau_Lam.fxml");
         if (!show) {
             show = !show;
-            menuShow(menuNhanKhau, 430, 0, 0.5);
+            menuShow(menuNhanKhau, 430, 0, 0.2);
         } else {
             show = !show;
-            anim(menuNhanKhau, 330, 0, 0.6);
+            anim(menuNhanKhau, 330, 0, 0.2);
         }
     }
 
@@ -141,7 +145,8 @@ public class HomeController implements Initializable {
 
     void menuShow(VBox menu, int x, int y, double keysecond) {
         anim(menu, x, y, keysecond);
-        mainPane.setEffect(new BoxBlur(5, 5, 3));
+        mainPane.setEffect(new ColorAdjust(0, -0.5, -0.5, 0));
+        //phanconlai.setEffect(new BoxBlur(5, 5, 3));
         middlePane.setDisable(false);
     }
 
@@ -149,6 +154,7 @@ public class HomeController implements Initializable {
         anim(menu, 0, 0, 0.35);
         mainPane.setEffect(null);
         middlePane.setDisable(true);
+        show = false;
     }
 
     @FXML
@@ -197,6 +203,8 @@ public class HomeController implements Initializable {
             Pane newContentPane = loader.load();
             // Replace the content of mainPane with the new content
             mainPane.getChildren().setAll(newContentPane);
+            DropShadow dropshadow = new DropShadow();
+            pain.setEffect(dropshadow);
         } catch (IOException e) {
             e.printStackTrace();
         }

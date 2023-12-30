@@ -242,7 +242,18 @@ public class HoKhauService_Tuan {
         return "Chưa đuợc sử dụng";
     }
 
-    //cho quang
+    public static String countHoKhau() throws ClassNotFoundException, SQLException {
+        Connection connection = MysqlConnection.getMysqlConnection();
+        String query = "SELECT Count(IDHoKhau) FROM hokhau WHERE NgayDi = '0001-01-01'";
+
+        PreparedStatement preparedStatement = connection.prepareStatement(query);
+        ResultSet rs = preparedStatement.executeQuery();
+        if (rs.next()) {
+            int count = rs.getInt(1);
+            return String.valueOf(count);
+        }
+        return "0";
+
     public static String getTenChuHo(int id_hk) throws ClassNotFoundException, SQLException {
         int id_chuho = getIDChuHo(id_hk);
         NhanKhauModel_Lam nhanKhauModel_Lam = NhanKhauService_Lam.loadDatafromID(id_chuho);
