@@ -51,7 +51,7 @@
          </children>
        </VBox>
        <Pane fx:id="middlePane" disable="true" layoutX="165.0" onMouseClicked="#middlePaneClicked" prefHeight="650.0" prefWidth="635.0" />
-       <VBox id="menubar" fx:id="vbox" layoutX="-165.0" prefHeight="650.0" prefWidth="165.0">
+       <VBox id="menubar" fx:id="menu" layoutX="-165.0" prefHeight="650.0" prefWidth="165.0">
            <children>
                <Button id="logobtn" focusTraversable="false" mnemonicParsing="false" prefHeight="80.0" prefWidth="165.0" stylesheets="@../source/Home.css" text="SPM" textFill="#000000a8">
                    <font>
@@ -137,7 +137,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
                </Button>
-            <Button fx:id="btnGuiXe" mnemonicParsing="false" onAction="#setGuiXe" prefHeight="60.0" prefWidth="214.0.0" styleClass="buttoninmenu" stylesheets="@../source/Home.css" text="Gửi xe" textFill="WHITE">
+            <Button fx:id="btnGuiXe" mnemonicParsing="false" onAction="#setGuiXe" prefHeight="60.0" prefWidth="214.0" styleClass="buttoninmenu" stylesheets="@../source/Home.css" text="Gửi xe" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
@@ -145,14 +145,12 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-             <Button fx:id="btnPhong" mnemonicParsing="false" onAction="#setPhong" prefHeight="60.0"
-                        prefWidth="214.0" styleClass="buttoninmenu" stylesheets="@../source/Home.css" text="Phòng"
-                        textFill="WHITE">
+             <Button fx:id="btnPhong" mnemonicParsing="false" onAction="#setPhong" prefHeight="60.0" prefWidth="214.0" styleClass="buttoninmenu" stylesheets="@../source/Home.css" text="Phòng" textFill="WHITE">
                     <font>
-                        <Font name="System Bold" size="20.0"/>
+                        <Font name="System Bold" size="20.0" />
                     </font>
                     <cursor>
-                        <Cursor fx:constant="HAND"/>
+                        <Cursor fx:constant="HAND" />
                     </cursor>
                 </Button>
            </children>

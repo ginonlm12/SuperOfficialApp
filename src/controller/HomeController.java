@@ -42,6 +42,7 @@ public class HomeController implements Initializable {
     @FXML
     private Button btnPhong;
 
+
     void createNewStage(String fxmlFilePath) throws IOException {
         Parent home = FXMLLoader.load(getClass().getResource(fxmlFilePath));
         Stage stage = new Stage();
@@ -92,8 +93,8 @@ public class HomeController implements Initializable {
     }
 
 	public void anim(int x, int y) {
-        KeyValue keyValue = new KeyValue(vbox.translateXProperty(), x);
-        KeyValue keyValue1 = new KeyValue(vbox.translateXProperty(), y);
+        KeyValue keyValue = new KeyValue(menu.translateXProperty(), x);
+        KeyValue keyValue1 = new KeyValue(menu.translateXProperty(), y);
 
 
         KeyFrame keyFrame = new KeyFrame(Duration.seconds(0.35), keyValue);
