@@ -1,5 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.*?>
@@ -224,14 +222,12 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-             <Button fx:id="btnPhong" mnemonicParsing="false" onAction="#setPhong" prefHeight="60.0"
-                        prefWidth="214.0" styleClass="buttoninmenu" stylesheets="@../source/Home.css" text="Phòng"
-                        textFill="WHITE">
+             <Button fx:id="btnPhong" mnemonicParsing="false" onAction="#setPhong" prefHeight="60.0" prefWidth="214.0" styleClass="buttoninmenu" stylesheets="@../source/Home.css" text="Phòng" textFill="WHITE">
                     <font>
-                        <Font name="System Bold" size="20.0"/>
+                        <Font name="System Bold" size="20.0" />
                     </font>
                     <cursor>
-                        <Cursor fx:constant="HAND"/>
+                        <Cursor fx:constant="HAND" />
                     </cursor>
                 </Button>
            </children>
