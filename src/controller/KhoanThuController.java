@@ -31,12 +31,12 @@ public class KhoanThuController implements Initializable {
 	private TableColumn<KhoanThuModel, String> colTenKhoanThu;
 	@FXML
 	private TableColumn<KhoanThuModel, String> colLoai;
-	@FXML
-	private TableColumn<KhoanThuModel, Double> colTSDienTich;
-	@FXML
-	private TableColumn<KhoanThuModel, Double> colTSSoThanhVien;
-	@FXML
-	private TableColumn<KhoanThuModel, Double> colCongThem;
+	// @FXML
+	// private TableColumn<KhoanThuModel, Double> colTSDienTich;
+	// @FXML
+	// private TableColumn<KhoanThuModel, Double> colTSSoThanhVien;
+	// @FXML
+	// private TableColumn<KhoanThuModel, Double> colCongThem;
 	@FXML
 	private TableColumn<KhoanThuModel, String> colNgayBatDau;
 	@FXML
@@ -56,9 +56,9 @@ public class KhoanThuController implements Initializable {
 		colIDKhoanThu.setCellValueFactory(new PropertyValueFactory<KhoanThuModel, Integer>("IDKhoanThu"));
 		colTenKhoanThu.setCellValueFactory(new PropertyValueFactory<KhoanThuModel, String>("TenKT"));
 		colLoai.setCellValueFactory(new PropertyValueFactory<KhoanThuModel, String>("LoaiKhoanThu"));
-		colTSDienTich.setCellValueFactory(new PropertyValueFactory<KhoanThuModel, Double>("TrongSoDienTich"));
-		colTSSoThanhVien.setCellValueFactory(new PropertyValueFactory<KhoanThuModel, Double>("TrongSoSTV"));
-		colCongThem.setCellValueFactory(new PropertyValueFactory<KhoanThuModel, Double>("HangSo"));
+		// colTSDienTich.setCellValueFactory(new PropertyValueFactory<KhoanThuModel, Double>("TrongSoDienTich"));
+		// colTSSoThanhVien.setCellValueFactory(new PropertyValueFactory<KhoanThuModel, Double>("TrongSoSTV"));
+		// colCongThem.setCellValueFactory(new PropertyValueFactory<KhoanThuModel, Double>("HangSo"));
 		colNgayBatDau.setCellValueFactory(new PropertyValueFactory<KhoanThuModel, String>("NgayBatDau"));
 		colNgayKetThuc.setCellValueFactory(new PropertyValueFactory<KhoanThuModel, String>("NgayKetThuc"));
 

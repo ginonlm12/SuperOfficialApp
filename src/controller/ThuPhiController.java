@@ -174,7 +174,13 @@ public class ThuPhiController implements Initializable {
 	public void updateThuPhi() throws ClassNotFoundException, SQLException, IOException {
 		// lay ra thi phi can update
 		ThuPhiBean thuPhiBean = tvThuPhi.getSelectionModel().getSelectedItem();
-
+		
+		if (thuPhiBean == null) {
+			Alert alert = new Alert(AlertType.WARNING, "Chọn mục thu phí bạn muốn cập nhật!", ButtonType.OK);
+			alert.setHeaderText(null);
+			alert.showAndWait();
+		}
+		
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(getClass().getResource("/views/thuphi/UpdateThuPhi.fxml"));
 		Parent home = loader.load();

@@ -7,22 +7,22 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="600.0" prefWidth="625.0" styleClass="pane" stylesheets="@../source/Main.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ThuPhiController">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" styleClass="pane" stylesheets="@../source/Main.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ThuPhiController">
    <children>
       <TableView fx:id="tvThuPhi" layoutX="14.0" layoutY="103.0" prefHeight="503.0" prefWidth="471.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="100.0">
         <columns>
-          <TableColumn fx:id="colTenKhoanPhi" prefWidth="125.60000741481781" text="Tên khoản thu" />
-          <TableColumn fx:id="colTenChuHo" prefWidth="130.40001678466797" text="Tên chủ hộ" />
-          <TableColumn fx:id="colPhaiDong" prefWidth="136.0" text="Số tiền cần thu" />
-          <TableColumn fx:id="colDaDong" prefWidth="113.5999755859375" text="Số tiền đã thu" />
-            <TableColumn fx:id="colNgayThu" prefWidth="98.39999389648438" text="Ngày thu" />
+          <TableColumn fx:id="colTenKhoanPhi" prefWidth="191.20001828670502" text="Tên khoản thu" />
+          <TableColumn fx:id="colTenChuHo" prefWidth="185.5999755859375" text="Tên chủ hộ" />
+          <TableColumn fx:id="colPhaiDong" prefWidth="132.0" text="Số tiền cần thu" />
+          <TableColumn fx:id="colDaDong" prefWidth="128.80001831054688" text="Số tiền đã thu" />
+            <TableColumn fx:id="colNgayThu" prefWidth="143.20001220703125" text="Ngày thu" />
         </columns>
       </TableView>
-      <TextField fx:id="tfSearch" layoutX="10.0" layoutY="54.0" prefHeight="40.0" prefWidth="310.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="50.0" />
-      <Button layoutX="514.0" layoutY="54.0" mnemonicParsing="false" onAction="#searchThuPhi" prefHeight="40.0" prefWidth="110.0" styleClass="button3" stylesheets="@../source/Main.css" text="Tìm kiếm" AnchorPane.bottomAnchor="510.0" AnchorPane.leftAnchor="505.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="50.0" />
-      <Button layoutX="10.0" layoutY="3.0" mnemonicParsing="false" onAction="#addThuPhi" prefHeight="40.0" prefWidth="200.0" styleClass="button1" stylesheets="@../source/Main.css" text="Thêm thu phí" textFill="#2e088d" AnchorPane.bottomAnchor="555.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="415.0" AnchorPane.topAnchor="5.0" />
-      <Button layoutX="113.0" layoutY="5.0" mnemonicParsing="false" onAction="#delThuPhi" prefHeight="40.0" prefWidth="200.0" styleClass="button1" stylesheets="@../source/Main.css" text="Xóa thu phí" textFill="#2e088d" AnchorPane.bottomAnchor="555.0" AnchorPane.leftAnchor="215.0" AnchorPane.rightAnchor="215.0" AnchorPane.topAnchor="5.0" />
-      <Button layoutX="415.0" layoutY="5.0" mnemonicParsing="false" onAction="#updateThuPhi" prefHeight="40.0" prefWidth="200.0" styleClass="button1" stylesheets="@../source/Main.css" text="Cập nhật thu phí" textFill="#2e088d" />
-      <ComboBox fx:id="cbChooseSearch" layoutX="339.0" layoutY="54.0" prefHeight="40.0" prefWidth="170.0" AnchorPane.bottomAnchor="510.0" AnchorPane.leftAnchor="330.0" AnchorPane.rightAnchor="125.0" AnchorPane.topAnchor="50.0" />
+      <TextField fx:id="tfSearch" layoutX="10.0" layoutY="54.0" prefHeight="40.0" prefWidth="382.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="50.0" />
+      <Button layoutX="620.0" layoutY="54.0" mnemonicParsing="false" onAction="#searchThuPhi" prefHeight="39.0" prefWidth="170.0" styleClass="button3" stylesheets="@../source/Main.css" text="Tìm kiếm" AnchorPane.bottomAnchor="511.0" AnchorPane.leftAnchor="620.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="50.0" />
+      <Button layoutX="34.0" layoutY="5.0" mnemonicParsing="false" onAction="#addThuPhi" prefHeight="40.0" prefWidth="226.0" styleClass="button1" stylesheets="@../source/Main.css" text="Thêm thu phí" textFill="#2e088d" AnchorPane.bottomAnchor="555.0" AnchorPane.leftAnchor="34.0" AnchorPane.rightAnchor="540.4" AnchorPane.topAnchor="5.0" />
+      <Button layoutX="282.0" layoutY="5.0" mnemonicParsing="false" onAction="#delThuPhi" prefHeight="40.0" prefWidth="248.0" styleClass="button1" stylesheets="@../source/Main.css" text="Xóa thu phí" textFill="#2e088d" AnchorPane.bottomAnchor="555.0" AnchorPane.leftAnchor="282.0" AnchorPane.rightAnchor="270.79999999999995" AnchorPane.topAnchor="5.0" />
+      <Button layoutX="559.0" layoutY="5.0" mnemonicParsing="false" onAction="#updateThuPhi" prefHeight="40.0" prefWidth="201.0" styleClass="button1" stylesheets="@../source/Main.css" text="Cập nhật thu phí" textFill="#2e088d" />
+      <ComboBox fx:id="cbChooseSearch" layoutX="398.4" layoutY="51.2" prefHeight="38.0" prefWidth="217.0" AnchorPane.bottomAnchor="511.0" AnchorPane.leftAnchor="398.0" AnchorPane.rightAnchor="185.0" AnchorPane.topAnchor="51.0" />
    </children>
 </AnchorPane>

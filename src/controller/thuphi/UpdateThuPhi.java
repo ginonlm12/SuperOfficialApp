@@ -54,22 +54,40 @@ public class UpdateThuPhi {
     }
 
 	public void updateThuPhi(ActionEvent event) throws ClassNotFoundException, SQLException {
-		if (tfTenKhoanThu.getText().length() == 0 || tfTenChuHo.getText().length() == 0) {
-			Alert alert = new Alert(AlertType.WARNING, "Vui lòng nhập khoản nộp hợp lí!", ButtonType.OK);
+		// kiem tra so tien va so tien dong la so thuc
+		try {
+			Double.parseDouble(tfSoTienPhaiDong.getText());
+			Double.parseDouble(tfSoTienDong.getText());
+		} catch (NumberFormatException e) {
+			Alert alert = new Alert(AlertType.ERROR, "Số tiền phải đóng và số tiền đóng phải là số thực!", ButtonType.OK);
 			alert.setHeaderText(null);
 			alert.showAndWait();
-		} else {
-			ThuPhiModel thuPhiModel =thuPhiBean.getThuPhiModel();
-            ThuPhiService thuPhiService = new ThuPhiService();
-            thuPhiService.update(thuPhiModel);
-            
-            Alert alert = new Alert(AlertType.INFORMATION, "Cập nhật thành công!", ButtonType.OK);
-            alert.setHeaderText(null);
-            alert.showAndWait();
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setTitle("Cập nhật thu phí");
-            stage.setResizable(false);
-            stage.close();
+			return;
 		}
+		// kiem ngay dong dung dinh dang	
+		if (dpNgayDong.getValue() == null) {
+			Alert alert = new Alert(AlertType.ERROR, "Ngày đóng không được để trống!", ButtonType.OK);
+			alert.setHeaderText(null);
+			alert.showAndWait();
+			return;
+		}
+
+		ThuPhiModel thuPhiModel =thuPhiBean.getThuPhiModel();
+		// lay thong tin tu giao dien
+		thuPhiModel.setSoTien(Double.parseDouble(tfSoTienDong.getText()));
+		thuPhiModel.setSoTienPhaiDong(Double.parseDouble(tfSoTienPhaiDong.getText()));
+		thuPhiModel.setNgayDong(dpNgayDong.getValue().format(DateTimeFormatter.ISO_DATE));
+
+		ThuPhiService thuPhiService = new ThuPhiService();
+		thuPhiService.update(thuPhiModel);
+		
+		Alert alert = new Alert(AlertType.INFORMATION, "Cập nhật thành công!", ButtonType.OK);
+		alert.setHeaderText(null);
+		alert.showAndWait();
+		Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+		stage.setTitle("Cập nhật thu phí");
+		stage.setResizable(false);
+		stage.close();
+		
 	}
 }
