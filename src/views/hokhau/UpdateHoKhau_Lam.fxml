@@ -3,7 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="550.0" prefWidth="600.0" styleClass="text-field-rounded"
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="550.0" prefWidth="600.0" styleClass="background"
             stylesheets="@../../source/usecase.css" xmlns="http://javafx.com/javafx/21"
             fx:controller="controller.hokhau.UpdateHoKhau_Lam">
     <children>
@@ -30,14 +30,14 @@
                 <DatePicker fx:id="tfNgayDen" layoutX="130.0" layoutY="284.0" prefHeight="39.0" prefWidth="346.0"
                             styleClass="text-field-rounded" stylesheets="@../../source/usecase.css"/>
                 <ComboBox fx:id="tfIDNhanKhau" layoutX="130.0" layoutY="100.0" prefHeight="39.0" prefWidth="346.0"
-                          stylesheets="@../../source/usecase.css"/>
+                          styleClass="text-field-rounded" stylesheets="@../../source/usecase.css"/>
                 <ComboBox fx:id="tfSoPhong" layoutX="131.0" layoutY="221.0" prefHeight="39.0" prefWidth="346.0"
-                          stylesheets="@../../source/usecase.css"/>
+                          styleClass="text-field-rounded" stylesheets="@../../source/usecase.css"/>
             </children>
         </Pane>
         <Button layoutX="386.0" layoutY="512.0" mnemonicParsing="false" onAction="#updateHoKhau" prefHeight="25.0"
                 prefWidth="167.0" styleClass="button1" text="Cập Nhật" textFill="#2e00ff"/>
-        <Label layoutX="168.0" layoutY="14.0" text="Sửa thông tin hộ khẩu">
+        <Label layoutX="102.0" layoutY="14.0" text="CHỈNH SỬA THÔNG TIN HỘ KHẨU">
             <font>
                 <Font name="System Bold" size="25.0"/>
             </font>

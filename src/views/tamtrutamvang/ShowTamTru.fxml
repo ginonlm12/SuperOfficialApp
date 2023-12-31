@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import java.lang.String?>
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="480.0" prefWidth="650.0" styleClass="text-field-rounded"
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="480.0" prefWidth="650.0" styleClass="background"
             stylesheets="@../../source/usecase.css" xmlns="http://javafx.com/javafx/21"
             fx:controller="controller.tamtrutamvang.ShowTamTru">
     <children>
@@ -18,7 +18,7 @@
                    promptText="Nhập vào CCCD" styleClass="text-field-rounded" stylesheets="@../../source/usecase.css"/>
         <Label layoutX="190.0" layoutY="5.0" text="XEM CHI TIẾT VÀ CẬP NHẬT ">
             <font>
-                <Font name="System Bold Italic" size="20.0"/>
+                <Font name="System Bold" size="20.0"/>
             </font>
         </Label>
         <Label layoutX="447.0" layoutY="56.0" text="Giới tính"/>

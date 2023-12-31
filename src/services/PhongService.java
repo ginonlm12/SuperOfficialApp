@@ -78,7 +78,7 @@ public class PhongService {
             total = rs.getInt(1);
         }
 
-        String query1 = "SELECT COUNT(DISTINCT sophong) FROM hokhau";
+        String query1 = "SELECT COUNT(DISTINCT sophong) FROM hokhau WHERE NgayDi = '0001-01-01'";
         preparedStatement = connection.prepareStatement(query1);
         rs = preparedStatement.executeQuery();
         if (rs.next()) {

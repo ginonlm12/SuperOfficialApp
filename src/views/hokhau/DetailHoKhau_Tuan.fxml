@@ -6,16 +6,17 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.*?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-            prefHeight="540.0" prefWidth="680.0" styleClass="text-field-rounded"
+            prefHeight="540.0" prefWidth="680.0" styleClass="background"
             stylesheets="@../../source/usecase.css" xmlns="http://javafx.com/javafx/21"
             fx:controller="controller.hokhau.DetailHoKhau_Tuan">
     <children>
-        <Pane layoutX="47.0" layoutY="33.0" prefHeight="473.0" prefWidth="586.0" styleClass="subpane"
+        <Pane layoutX="47.0" layoutY="44.0" prefHeight="447.0" prefWidth="586.0" styleClass="subpane"
               stylesheets="@../../source/usecase.css">
             <children>
-                <Label fx:id="LbTitle" layoutX="187.0" layoutY="14.0" prefHeight="42.0" prefWidth="236.0" text="Thông tin hộ khẩu ">
+                <Label fx:id="LbTitle" alignment="CENTER" layoutX="177.0" layoutY="13.0" prefHeight="42.0"
+                       prefWidth="236.0" text="THÔNG TIN HỘ KHẨU">
                     <font>
-                        <Font name="System Bold Italic" size="22.0" />
+                        <Font name="System Bold" size="22.0"/>
                     </font>
                 </Label>
                 <Label layoutX="360.0" layoutY="83.0" prefHeight="30.0" prefWidth="113.0" text="ID hộ khẩu ">

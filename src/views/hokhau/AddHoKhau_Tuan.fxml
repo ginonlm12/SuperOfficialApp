@@ -4,7 +4,7 @@
 <?import javafx.scene.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="570.0" prefWidth="670.0" styleClass="text-field-rounded"
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="570.0" prefWidth="670.0" styleClass="background"
             stylesheets="@../../source/usecase.css" xmlns="http://javafx.com/javafx/21"
             fx:controller="controller.hokhau.AddHoKhau_Tuan">
    <children>
@@ -90,12 +90,12 @@
                <Cursor fx:constant="HAND"/>
            </cursor>
        </Button>
-       <Label layoutX="25.0" layoutY="14.0" stylesheets="@../../source/usecase.css" text="Thông tin hộ khẩu">
+       <Label layoutX="25.0" layoutY="14.0" stylesheets="@../../source/usecase.css" text="THÔNG TIN HỘ KHẨU">
          <font>
              <Font name="System Bold" size="20.0"/>
          </font>
       </Label>
-       <Label layoutX="20.0" layoutY="280.0" stylesheets="@../../source/usecase.css" text="Thông tin chủ hộ">
+       <Label layoutX="20.0" layoutY="280.0" stylesheets="@../../source/usecase.css" text="THÔNG TIN CHỦ HỘ">
          <font>
 
              <Font name="System Bold" size="20.0"/>
