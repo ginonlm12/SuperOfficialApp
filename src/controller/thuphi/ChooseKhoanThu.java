@@ -1,42 +1,38 @@
-package controller;
+package controller.thuphi;
 
-import controller.khoanthu.UpdateKhoanThu;
-import controller.khoanthu.XemKhoanThu;
+import java.net.URL;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.ResourceBundle;
+import java.util.regex.Pattern;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.Node;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.SingleSelectionModel;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import models.KhoanThuModel;
 import services.KhoanThuService;
 
-import java.io.IOException;
-import java.net.URL;
-import java.sql.SQLException;
-import java.util.*;
-import java.util.regex.Pattern;
-
-public class KhoanThuController implements Initializable {
+public class ChooseKhoanThu implements Initializable {
 	@FXML
 	private TableView<KhoanThuModel> tvKhoanThu;
 	@FXML
 	private TableColumn<KhoanThuModel, Integer> colIDKhoanThu;
 	@FXML
 	private TableColumn<KhoanThuModel, String> colTenKhoanThu;
-	@FXML
-	private TableColumn<KhoanThuModel, String> colLoai;
-	// @FXML
-	// private TableColumn<KhoanThuModel, Double> colTSDienTich;
-	// @FXML
-	// private TableColumn<KhoanThuModel, Double> colTSSoThanhVien;
-	// @FXML
-	// private TableColumn<KhoanThuModel, Double> colCongThem;
 	@FXML
 	private TableColumn<KhoanThuModel, String> colNgayBatDau;
 	@FXML
@@ -45,20 +41,25 @@ public class KhoanThuController implements Initializable {
 	private TextField tfSearch;
 	@FXML
 	private ComboBox<String> cbChooseSearch;
+
+	private KhoanThuModel khoanthuChoose;
 	private List<KhoanThuModel> listKhoanThu;
 	private ObservableList<KhoanThuModel> listValueTableView;
 
-	// viet phuong thuc hien cac khoan thu trong co so du lieu
+	public KhoanThuModel getKhoanThuChoose() {
+		return khoanthuChoose;
+	}
+
+	public void setKhoanthuChoose(KhoanThuModel khoanthuChoose) {
+		this.khoanthuChoose = khoanthuChoose;
+	}
+
 	public void hienKhoanThu() throws ClassNotFoundException, SQLException {
 		listKhoanThu = new KhoanThuService().getListKhoanThu();
 		listValueTableView = FXCollections.observableArrayList(listKhoanThu);
 
 		colIDKhoanThu.setCellValueFactory(new PropertyValueFactory<KhoanThuModel, Integer>("IDKhoanThu"));
 		colTenKhoanThu.setCellValueFactory(new PropertyValueFactory<KhoanThuModel, String>("TenKT"));
-		colLoai.setCellValueFactory(new PropertyValueFactory<KhoanThuModel, String>("LoaiKhoanThu"));
-		// colTSDienTich.setCellValueFactory(new PropertyValueFactory<KhoanThuModel, Double>("TrongSoDienTich"));
-		// colTSSoThanhVien.setCellValueFactory(new PropertyValueFactory<KhoanThuModel, Double>("TrongSoSTV"));
-		// colCongThem.setCellValueFactory(new PropertyValueFactory<KhoanThuModel, Double>("HangSo"));
 		colNgayBatDau.setCellValueFactory(new PropertyValueFactory<KhoanThuModel, String>("NgayBatDau"));
 		colNgayKetThuc.setCellValueFactory(new PropertyValueFactory<KhoanThuModel, String>("NgayKetThuc"));
 
@@ -149,89 +150,12 @@ public class KhoanThuController implements Initializable {
 		}
 	}
 
-	public void addKhoanThu() throws IOException, ClassNotFoundException, SQLException {
-		Parent home = FXMLLoader.load(getClass().getResource("/views/khoanthu/AddKhoanThu.fxml"));
-		Stage stage = new Stage();
-		stage.setScene(new Scene(home, 800, 600));
-		stage.setResizable(false);
-		stage.showAndWait();
-		hienKhoanThu();
-	}
+	public void xacnhan(ActionEvent event) {
+		khoanthuChoose = tvKhoanThu.getSelectionModel().getSelectedItem();
+		setKhoanthuChoose(khoanthuChoose);
 
-	public void delKhoanThu() throws ClassNotFoundException, SQLException {
-		KhoanThuModel khoanThuModel = tvKhoanThu.getSelectionModel().getSelectedItem();
-
-		if (khoanThuModel == null) {
-			Alert alert = new Alert(AlertType.WARNING, "Chọn khoản thu bạn muốn xóa!", ButtonType.OK);
-			alert.setHeaderText(null);
-			alert.showAndWait();
-		} else {
-			Alert alert = new Alert(AlertType.WARNING, "Bạn có chắc chắn muốn xóa khoản thu này!", ButtonType.YES,
-					ButtonType.NO);
-			alert.setHeaderText(null);
-			Optional<ButtonType> result = alert.showAndWait();
-
-			if (result.get() == ButtonType.NO) {
-				return;
-			} else {
-				new KhoanThuService().del(khoanThuModel.getIDKhoanThu());
-			}
-		}
-		hienKhoanThu();
-	}
-
-	public void updateKhoanThu() throws ClassNotFoundException, SQLException, IOException {
-		// lay ra nhan khau can update
-		KhoanThuModel khoanThuModel = tvKhoanThu.getSelectionModel().getSelectedItem();
-
-		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(getClass().getResource("/views/khoanthu/UpdateKhoanThu.fxml"));
-		Parent home = loader.load();
-		Stage stage = new Stage();
-		stage.setScene(new Scene(home, 800, 600));
-		UpdateKhoanThu updateKhoanThu = loader.getController();
-
-		// bat loi truong hop khong hop le
-		if (updateKhoanThu == null)
-			return;
-		if (khoanThuModel == null) {
-			Alert alert = new Alert(AlertType.WARNING, "Chọn khoản thu update !", ButtonType.OK);
-			alert.setHeaderText(null);
-			alert.showAndWait();
-			return;
-		}
-		updateKhoanThu.setKhoanThuModel(khoanThuModel);
-
-		stage.setResizable(false);
-		stage.showAndWait();
-		hienKhoanThu();
-	}
-
-	public void xemKhoanThu() throws ClassNotFoundException, SQLException, IOException {
-		// lay ra nhan khau can update
-		KhoanThuModel khoanThuModel = tvKhoanThu.getSelectionModel().getSelectedItem();
-
-		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(getClass().getResource("/views/khoanthu/XemKhoanThu.fxml"));
-		Parent home = loader.load();
-		Stage stage = new Stage();
-		stage.setScene(new Scene(home, 800, 600));
-		XemKhoanThu xemKhoanThu = loader.getController();
-
-		// bat loi truong hop khong hop le
-		if (xemKhoanThu == null)
-			return;
-		if (khoanThuModel == null) {
-			Alert alert = new Alert(AlertType.WARNING, "Chọn khoản thu update !", ButtonType.OK);
-			alert.setHeaderText(null);
-			alert.showAndWait();
-			return;
-		}
-		xemKhoanThu.setKhoanThuModel(khoanThuModel);
-
-		stage.setResizable(false);
-		stage.showAndWait();
-		hienKhoanThu();
+		Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+		stage.close();
 	}
 
 	@Override
@@ -243,5 +167,4 @@ public class KhoanThuController implements Initializable {
 			e.printStackTrace();
 		}
 	}
-
 }
