@@ -24,7 +24,7 @@ public class XeService_Tuan {
                 int XeDap = rs.getInt("XeDap");
                 int XeMay = rs.getInt("XeMay");
                 int Oto = rs.getInt("Oto");
-                String ChuHo = NhanKhauService_Lam.loadDatafromID(IDHoKhau).getHoTen();
+                String ChuHo = NhanKhauService_Lam.getChuHo(IDHoKhau);
                 XeModel_Tuan xe = new XeModel_Tuan(IDHoKhau, Oto, XeDap, XeMay, ChuHo);
                 list.add(xe);
             }
