@@ -3,7 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.*?>
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="400.0" prefWidth="690.0" styleClass="text-field-rounded"
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="400.0" prefWidth="690.0" styleClass="background"
             stylesheets="@../../source/usecase.css" xmlns="http://javafx.com/javafx/21"
             fx:controller="controller.nhankhau.ShowChiTiet_Lam">
    <children>

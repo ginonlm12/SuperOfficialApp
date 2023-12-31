@@ -3,13 +3,13 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.*?>
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="300.0" prefWidth="415.0"
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="300.0" prefWidth="415.0" styleClass="background"
             stylesheets="@../../source/usecase.css" xmlns="http://javafx.com/javafx/21"
             fx:controller="controller.tamtrutamvang.UpdateTamVang">
     <children>
-        <Label fx:id="textKhaibao" layoutX="21.0" layoutY="8.0" text="Khai báo tạm vắng">
+        <Label fx:id="textKhaibao" layoutX="21.0" layoutY="8.0" text="KHAI BÁO TẠM VẮNG">
             <font>
-                <Font name="System Bold Italic" size="23.0"/>
+                <Font name="System Bold" size="23.0"/>
             </font>
         </Label>
         <Text layoutX="21.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ID">

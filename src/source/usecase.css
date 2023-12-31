@@ -28,7 +28,7 @@
 }
 
 .text-field-rounded:focused {
-    -fx-background-color: #e0e0e0; /* Màu nền khi được focus */
+    -fx-background-color: #EEF1FF; /* Màu nền khi được focus */
 }
 
 .subpane{
@@ -47,4 +47,19 @@
     -fx-background-color:  #EEF5FF;
     -fx-border-color:  #B4D4FF;
     -fx-effect: dropshadow(two-pass-box, rgba(0,0,0,0.5), 1,0,0,0);
+}
+
+.background {
+    -fx-background-color: linear-gradient(to bottom right, #EEF5FF, #FFFFFF);
+    -fx-border-color: linear-gradient(to bottom right, #86B6F6, #B4D4FF); /* Màu viền */
+    -fx-border-width: 2; /* Độ rộng viền */
+    -fx-border-radius: 0; /* Độ bo tròn của viền */
+}
+
+.background:hover {
+    -fx-background-color: linear-gradient(to top left, #FFFFFF, #FFFFFF);
+}
+
+.background:focused {
+    -fx-background-color: linear-gradient(to bottom right, #EEF5FF, #FFFFFF);
 }

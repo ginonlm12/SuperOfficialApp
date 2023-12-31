@@ -7,9 +7,9 @@
             stylesheets="@../../source/usecase.css" xmlns="http://javafx.com/javafx/21"
             fx:controller="controller.phong.UpdatePhong">
    <children>
-      <Label layoutX="79.0" layoutY="20.0" text="THAY ĐỔI THÔNG TIN PHÒNG">
+       <Label layoutX="80.0" layoutY="23.0" text="THAY ĐỔI THÔNG TIN PHÒNG">
          <font>
-             <Font name="System Bold Italic" size="20.0"/>
+             <Font name="System Bold" size="20.0"/>
          </font>
       </Label>
        <Label layoutX="13.0" layoutY="77.0" text="Số phòng"/>

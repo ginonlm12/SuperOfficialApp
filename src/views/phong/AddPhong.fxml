@@ -3,7 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="300.0" prefWidth="450.0" styleClass="text-field-rounded"
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="300.0" prefWidth="450.0" styleClass="background"
             stylesheets="@../../source/usecase.css" xmlns="http://javafx.com/javafx/21"
             fx:controller="controller.phong.AddPhong">
    <children>
@@ -22,7 +22,7 @@
        <Label layoutX="15.0" layoutY="191.0" text="Loại phòng"/>
        <ComboBox fx:id="tfLoaiPhong" layoutX="102.0" layoutY="180.0" prefHeight="39.0" prefWidth="333.0"
                  styleClass="text-field-rounded" stylesheets="@../../source/usecase.css"/>
-       <Button layoutX="313.0" layoutY="237.0" mnemonicParsing="false" onAction="#addPhong" prefHeight="25.0"
-               prefWidth="121.0" text="Thêm"/>
+       <Button layoutX="300.0" layoutY="237.0" mnemonicParsing="false" onAction="#addPhong" prefHeight="25.0"
+               prefWidth="134.0" text="Thêm"/>
    </children>
 </AnchorPane>

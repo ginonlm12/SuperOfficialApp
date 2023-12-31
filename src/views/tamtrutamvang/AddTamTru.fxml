@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.*?>
 <?import java.lang.String?>
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="580.0" prefWidth="650.0" styleClass="text-field-rounded"
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="580.0" prefWidth="650.0" styleClass="background"
             stylesheets="@../../source/usecase.css" xmlns="http://javafx.com/javafx/21"
             fx:controller="controller.tamtrutamvang.AddTamTru">
     <children>
@@ -19,7 +19,7 @@
                 prefWidth="190.0" stylesheets="@../../source/usecase.css" text="Thêm"/>
         <Label layoutX="224.0" layoutY="9.0" text="KHAI BÁO TẠM TRÚ">
             <font>
-                <Font name="System Bold Italic" size="20.0"/>
+                <Font name="System Bold" size="20.0"/>
             </font>
         </Label>
         <Label layoutX="447.0" layoutY="56.0" text="Giới tính"/>

@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="400.0" prefWidth="500.0" style="-fx-background-color: #EEF5FF;"
-            styleClass="text-field-rounded" stylesheets="@../../source/usecase.css"
+            styleClass="background" stylesheets="@../../source/usecase.css"
             xmlns="http://javafx.com/javafx/21" fx:controller="controller.xe.UpdateXe_Tuan">
    <children>
        <Button layoutX="345.0" layoutY="340.0" mnemonicParsing="false" onAction="#XacNhan" prefHeight="29.0"
