@@ -46,6 +46,16 @@ public class PhongController implements Initializable {
         return tvPhong;
     }
 
+    // hien thi so luong tung loai phong
+    @FXML
+    private Label lbSoCC;
+
+    @FXML
+    private Label lbSoRe;
+
+    @FXML
+    private Label lbSoThg;
+
     public void setTvPhong(TableView<PhongModel> tvPhong) {
         this.tvPhong = tvPhong;
     }
@@ -68,6 +78,23 @@ public class PhongController implements Initializable {
         cbChooseSearch.setItems(listComboBox);
     }
 
+    public void showSoLuongPhong() throws ClassNotFoundException, SQLException {
+        int soCC = 0, soRe = 0, soThg = 0;
+        for (PhongModel phongModel : listPhong) {
+            if (phongModel.getLoaiPhong().equals("Cao cấp")) {
+                soCC++;
+            } else if (phongModel.getLoaiPhong().equals("Giá rẻ")) {
+                soRe++;
+            }
+            else if (phongModel.getLoaiPhong().equals("Thường")) {
+                soThg++;
+            }
+        }
+        lbSoCC.setText(String.valueOf(soCC));
+        lbSoRe.setText(String.valueOf(soRe));
+        lbSoThg.setText(String.valueOf(soThg));
+    }
+
     @FXML
     void addPhong(ActionEvent event) throws IOException, SQLException, ClassNotFoundException {
         Parent home = FXMLLoader.load(getClass().getResource("/views/phong/AddPhong.fxml"));
@@ -76,6 +103,7 @@ public class PhongController implements Initializable {
         stage.setResizable(false);
         stage.showAndWait();
         showPhong();
+        showSoLuongPhong();
     }
 
     @FXML
@@ -103,6 +131,7 @@ public class PhongController implements Initializable {
             }
         }
         showPhong();
+        showSoLuongPhong();
     }
 
     @FXML
@@ -251,19 +280,20 @@ public class PhongController implements Initializable {
         stage.setResizable(false);
         stage.showAndWait();
         showPhong();
+        showSoLuongPhong();
     }
 
     public void initialize(URL arg0, ResourceBundle arg1) {
         // TODO Auto-generated method stub
         try {
             showPhong();
+            showSoLuongPhong();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (SQLException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-
     }
 
 }

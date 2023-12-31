@@ -87,7 +87,7 @@ public class UpdateXe_Tuan {
 
     @FXML
     void sub_xe_may(MouseEvent event) {
-//        sub(tfSoXeMay);
+        sub(lbSoxemay);
     }
 
     public void plus(Label tf) {
