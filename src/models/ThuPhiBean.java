@@ -27,6 +27,9 @@ public class ThuPhiBean {
     public double getSoTienDong() {
         return thuPhiModel.getSoTien();
     }
+    public double getSoTienPhaiDong() {
+        return thuPhiModel.getSoTienPhaiDong();
+    }
     public String getNgayDong() {
         return thuPhiModel.getNgayDong();
     }

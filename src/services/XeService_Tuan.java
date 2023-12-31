@@ -41,4 +41,21 @@ public class XeService_Tuan {
         preparedStatement.setInt(4, xe.getIDHoKhau());
         preparedStatement.execute();
     }
+    // get XeModel by IDHoKhau
+    public static XeModel_Tuan getXeModel(int IDHoKhau) throws ClassNotFoundException, SQLException {
+        XeModel_Tuan xeModel = new XeModel_Tuan();
+
+        Connection connection = MysqlConnection.getMysqlConnection();
+        String query = "SELECT * FROM xe WHERE IDHoKhau = ?";
+        PreparedStatement preparedStatement = connection.prepareStatement(query);
+        preparedStatement.setInt(1, IDHoKhau);
+        ResultSet rs = preparedStatement.executeQuery();
+        while (rs.next()) {
+            xeModel.setIDHoKhau(rs.getInt("IDHoKhau"));
+            xeModel.setXeDap(rs.getInt("XeDap"));
+            xeModel.setXeMay(rs.getInt("XeMay"));
+            xeModel.setOTo(rs.getInt("Oto"));
+        }
+        return xeModel;
+    }
 }

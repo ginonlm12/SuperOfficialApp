@@ -18,9 +18,14 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import models.KhoanThuModel;
 import models.NhanKhauModel_Lam;
+import models.PhongModel;
 import models.ThuPhiBean;
 import models.ThuPhiModel;
+import models.XeModel_Tuan;
+import services.HoKhauService_Tuan;
+import services.PhongService;
 import services.ThuPhiService;
+import services.XeService_Tuan;
 
 public class AddThuPhi {
 	@FXML
@@ -37,7 +42,7 @@ public class AddThuPhi {
 	private KhoanThuModel khoanThuModel;
 	private NhanKhauModel_Lam nhanKhauModel;
 
-	public void chooseKhoanThu() throws IOException {
+	public void chooseKhoanThu() throws IOException, ClassNotFoundException, SQLException {
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(getClass().getResource("/views/ThuPhi/ChooseKhoanThu.fxml"));
 		Parent home = loader.load();
@@ -52,9 +57,12 @@ public class AddThuPhi {
 			return;
 
 		tfTenKhoanThu.setText(khoanThuModel.getTenKT());
+
+		if (nhanKhauModel != null)
+			tinhSoTienPhaiDong();
 	}
 
-	public void chooseChuHo() throws IOException {
+	public void chooseChuHo() throws IOException, ClassNotFoundException, SQLException {
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(getClass().getResource("/views/ThuPhi/ChooseChuHo.fxml"));
 		Parent home = loader.load();
@@ -69,6 +77,27 @@ public class AddThuPhi {
 		if (nhanKhauModel == null)
 			return;
 		tfTenChuHo.setText(nhanKhauModel.getHoTen());
+		if (khoanThuModel != null)
+			tinhSoTienPhaiDong();
+	}
+
+	private void tinhSoTienPhaiDong() throws ClassNotFoundException, SQLException {
+		String loai = khoanThuModel.getLoaiKhoanThu();
+		double tien = 0;
+		if (loai.equals(new String("Tiền quản lý"))) {
+			PhongModel phongModel = PhongService.getPhongModel(nhanKhauModel.getSoPhong());
+			tien = khoanThuModel.getTrongSoDienTich() * phongModel.getDienTich()
+			+ khoanThuModel.getTrongSoSTV() * HoKhauService_Tuan.getSoTV(nhanKhauModel.getIDHoKhau()) 
+			+ khoanThuModel.getHangSo();
+		}
+		else if (loai.equals(new String("Tiền giữ xe"))) {
+			XeModel_Tuan xeModel = XeService_Tuan.getXeModel(nhanKhauModel.getIDHoKhau());
+			tien = khoanThuModel.getTrongSoDienTich() * xeModel.getOTo()
+			+ khoanThuModel.getTrongSoSTV() * xeModel.getXeMay()
+			+ khoanThuModel.getHangSo() * xeModel.getXeDap();
+		}
+
+		tfSoTienPhaiDong.setText(String.valueOf(tien));
 	}
 
 	public void addThuPhi(ActionEvent event) throws ClassNotFoundException, SQLException {
@@ -88,15 +117,18 @@ public class AddThuPhi {
 				}
 			}
 
-			new ThuPhiService().add(new ThuPhiModel(
-					khoanThuModel.getIDKhoanThu(),
-					nhanKhauModel.getIDHoKhau(),
-					Double.parseDouble(tfSoTienDong.getText()),
-					dpNgayDong.getValue().toString()));
-		}
+		ThuPhiModel thuPhiModel = new ThuPhiModel();
+		thuPhiModel.setIDHoKhau(nhanKhauModel.getIDHoKhau());
+		thuPhiModel.setIDKhoanThu(khoanThuModel.getIDKhoanThu());
+		thuPhiModel.setSoTienPhaiDong(Double.parseDouble(tfSoTienPhaiDong.getText()));
+		thuPhiModel.setSoTien(Double.parseDouble(tfSoTienDong.getText()));
+		thuPhiModel.setNgayDong(dpNgayDong.getValue().toString());
+
+		new ThuPhiService().add(thuPhiModel);
 		Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		stage.setTitle("Thêm thu phí");
 		stage.setResizable(false);
 		stage.close();
+	    }
 	}
 }

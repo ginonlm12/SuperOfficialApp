@@ -11,13 +11,13 @@ public class ThuPhiService {
     public boolean add(ThuPhiModel ThuPhiModel) throws ClassNotFoundException, SQLException {
 		Connection connection = MysqlConnection.getMysqlConnection();
 		String query = "INSERT INTO thuphi(IDKhoanThu, IDHoKhau, SoTienPhaiDong, TienDaDong, NgayDong)"
-				+ " values (?, ?, ?, ?)";
+				+ " values (?, ?, ?, ?, ?)";
 		PreparedStatement preparedStatement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 		preparedStatement.setInt(1, ThuPhiModel.getIDKhoanThu());
 		preparedStatement.setInt(2, ThuPhiModel.getIDHoKhau());
 		preparedStatement.setDouble(3, ThuPhiModel.getSoTienPhaiDong());
-		preparedStatement.setDouble(3, ThuPhiModel.getSoTien());
-		preparedStatement.setString(4, ThuPhiModel.getNgayDong());
+		preparedStatement.setDouble(4, ThuPhiModel.getSoTien());
+		preparedStatement.setString(5, ThuPhiModel.getNgayDong());
 		
 		preparedStatement.executeUpdate();
 		preparedStatement.close();

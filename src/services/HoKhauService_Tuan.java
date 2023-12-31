@@ -224,7 +224,7 @@ public class HoKhauService_Tuan {
         return null;
     }
 
-    public int getSoTV(int id_hk) throws ClassNotFoundException, SQLException {
+    public static int getSoTV(int id_hk) throws ClassNotFoundException, SQLException {
         Connection connection = MysqlConnection.getMysqlConnection();
         String query = "SELECT COUNT(IDHoKhau) AS SoTV FROM nhankhau WHERE IDHoKhau = ?";
         PreparedStatement preparedStatement = connection.prepareStatement(query);
