@@ -35,25 +35,19 @@ public class ThuPhiService {
 	}
 
 	// modify the update method to match the thuphi table
-	public boolean update(int IDKhoanThu_old, int IDHoKhau_old, ThuPhiModel ThuPhiModel) throws ClassNotFoundException, SQLException {
+	public boolean update(ThuPhiModel ThuPhiModel) throws ClassNotFoundException, SQLException {
 		Connection connection = MysqlConnection.getMysqlConnection();
 		PreparedStatement preparedStatement;
 
-		String query = "UPDATE thuphi SET TienDaDong = ?, NgayDong = ? WHERE WHERE IDKhoanThu = '"+IDKhoanThu_old+"' AND IDHoKhau = '"+IDHoKhau_old+"'";
+		String query = "UPDATE thuphi SET TienDaDong = ?, NgayDong = ? WHERE WHERE IDKhoanThu = ? AND IDHoKhau = ?";
 		preparedStatement = connection.prepareStatement(query);
 		
-		preparedStatement.setDouble(3, ThuPhiModel.getSoTien());
-		preparedStatement.setString(4, ThuPhiModel.getNgayDong());
+		preparedStatement.setDouble(1, ThuPhiModel.getSoTien());
+		preparedStatement.setString(2, ThuPhiModel.getNgayDong());
+		preparedStatement.setInt(3, ThuPhiModel.getIDKhoanThu());
+		preparedStatement.setInt(4, ThuPhiModel.getIDHoKhau());
 		
 		preparedStatement.executeUpdate();
-
-		// String query2 = "UPDATE thuphi SET IDthuphi = ? WHERE IDthuphi = ?";
-		// preparedStatement = connection.prepareStatement(query2);
-		// preparedStatement.setInt(1, ThuPhiModel.getIDthuphi());
-		// preparedStatement.setInt(2, IDthuphi_old);
-		// preparedStatement.executeUpdate();
-		// preparedStatement.close();
-		// connection.close();
 		return true;
 	}
 

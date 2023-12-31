@@ -6,6 +6,9 @@ public class ThuPhiModel {
     private double SoTien;
     private String NgayDong;
 
+    public ThuPhiModel() {
+    }
+
     public ThuPhiModel(int IDKhoanThu, int IDHoKhau, double soTien, String ngayDong) {
         this.IDKhoanThu = IDKhoanThu;
         this.IDHoKhau = IDHoKhau;

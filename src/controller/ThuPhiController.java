@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
+
+import controller.thuphi.UpdateThuPhi;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -165,33 +167,32 @@ public class ThuPhiController implements Initializable {
 		}
 		hienThuPhi();
 	}
-	// public void updateThuPhi() throws ClassNotFoundException, SQLException,
-	// IOException {
-	// // lay ra nhan khau can update
-	// ThuPhiBean ThuPhiBean = tvThuPhi.getSelectionModel().getSelectedItem();
 
-	// FXMLLoader loader = new FXMLLoader();
-	// loader.setLocation(getClass().getResource("/views/khoanthu/UpdateKhoanThu.fxml"));
-	// Parent home = loader.load();
-	// Stage stage = new Stage();
-	// stage.setScene(new Scene(home, 800, 600));
-	// UpdateKhoanThu updateKhoanThu = loader.getController();
+	public void updateThuPhi() throws ClassNotFoundException, SQLException, IOException {
+		// lay ra thi phi can update
+		ThuPhiBean thuPhiBean = tvThuPhi.getSelectionModel().getSelectedItem();
 
-	// // bat loi truong hop khong hop le
-	// if (updateKhoanThu == null) return;
-	// if (ThuPhiBean == null) {
-	// Alert alert = new Alert(AlertType.WARNING, "Chọn khoản thu update !",
-	// ButtonType.OK);
-	// alert.setHeaderText(null);
-	// alert.showAndWait();
-	// return;
-	// }
-	// updateKhoanThu.setThuPhiBean(ThuPhiBean);
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(getClass().getResource("/views/thuphi/UpdateThuPhi.fxml"));
+		Parent home = loader.load();
+		Stage stage = new Stage();
+		stage.setScene(new Scene(home, 800, 600));
+		UpdateThuPhi updateThuPhi = loader.getController();
+		updateThuPhi.setThuPhiBean(thuPhiBean);
+		// bat loi truong hop khong hop le
+		if (updateThuPhi == null)
+			return;
+		if (thuPhiBean == null) {
+			Alert alert = new Alert(AlertType.WARNING, "Chọn khoản thu update !", ButtonType.OK);
+			alert.setHeaderText(null);
+			alert.showAndWait();
+			return;
+		}
 
-	// stage.setResizable(false);
-	// stage.showAndWait();
-	// hienThuPhi();
-	// }
+		stage.setResizable(false);
+		stage.showAndWait();
+		hienThuPhi();
+	}
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
