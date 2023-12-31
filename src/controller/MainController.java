@@ -35,6 +35,7 @@ public class MainController implements Initializable {
 		LocalDate current = LocalDate.now();
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMMM, yyyy", new Locale("vi", "VN"));
 		String formattedDate = current.format(formatter);
+		System.out.println(formattedDate);
 		currentDate.setText(formattedDate);
 
 		try {
