@@ -40,7 +40,7 @@ public class ThuPhiService {
 		Connection connection = MysqlConnection.getMysqlConnection();
 		PreparedStatement preparedStatement;
 
-		String query = "UPDATE thuphi SET TienDaDong = ?, SoTienPhaiDong = ?, NgayDong = ? WHERE WHERE IDKhoanThu = ? AND IDHoKhau = ?";
+		String query = "UPDATE thuphi SET TienDaDong = ?, SoTienPhaiDong = ?, NgayDong = ? WHERE IDKhoanThu = ? AND IDHoKhau = ?";
 		preparedStatement = connection.prepareStatement(query);
 		
 		preparedStatement.setDouble(1, ThuPhiModel.getSoTien());
