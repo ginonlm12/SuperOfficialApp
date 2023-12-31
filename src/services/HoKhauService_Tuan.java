@@ -62,13 +62,13 @@ public class HoKhauService_Tuan {
         return list;
     }
 
-    public static HoKhauModel_Tuan getHoKhau(String id_hk) throws ClassNotFoundException, SQLException {
+    public static HoKhauModel_Tuan getHoKhau(int i) throws ClassNotFoundException, SQLException {
         Connection connection = MysqlConnection.getMysqlConnection();
 
         String query = "SELECT * FROM hokhau WHERE IDHoKhau = ?";
 
         PreparedStatement preparedStatement = connection.prepareStatement(query);
-        preparedStatement.setString(1, id_hk);
+        preparedStatement.setString(1, i);
 
         ResultSet rs = preparedStatement.executeQuery();
         if (rs.next()) {
@@ -209,7 +209,7 @@ public class HoKhauService_Tuan {
         return true;
     }
 
-    public HoKhauBean_Tuan getHoKhauBean(int id_hk) throws ClassNotFoundException, SQLException {
+    public static HoKhauBean_Tuan getHoKhauBean(int id_hk) throws ClassNotFoundException, SQLException {
         Connection connection = MysqlConnection.getMysqlConnection();
         String query = "SELECT hk.IDHoKhau, COUNT(nk.IDHoKhau) AS SoTV FROM nhankhau AS nk, hokhau AS hk WHERE nk.IDHoKhau = hk.IDHoKhau AND nk.IDNhanKhau = ? GROUP BY hk.IDHoKhau";
         PreparedStatement preparedStatement = connection.prepareStatement(query);
