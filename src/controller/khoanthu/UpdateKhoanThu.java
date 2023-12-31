@@ -1,21 +1,18 @@
 package controller.khoanthu;
 
-import java.sql.SQLException;
-import java.time.LocalDate;
-import java.util.List;
-import java.util.regex.Pattern;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import models.KhoanThuModel;
 import services.KhoanThuService;
+
+import java.sql.SQLException;
+import java.time.LocalDate;
+import java.util.List;
+import java.util.regex.Pattern;
 
 public class UpdateKhoanThu {
 	@FXML
@@ -27,13 +24,21 @@ public class UpdateKhoanThu {
 	@FXML
 	private DatePicker dpNgayKetThuc;
 	@FXML
+	private ComboBox<String> cbLoaiKhoanThu;
+	@FXML
 	private TextField tfTrongSoDienTich;
 	@FXML
 	private TextField tfTrongSoSTV;
 	@FXML
 	private TextField tfHangSo;
+	@FXML
+	private TextField tfThanhPhan1;
+	@FXML
+	private TextField tfThanhPhan2;
+	@FXML
+	private TextField tfThanhPhan3;
 
-	private KhoanThuModel khoanThuModel;
+    private KhoanThuModel khoanThuModel;
 	private int IDKhoanThu_old;
 
 	public void setKhoanThuModel(KhoanThuModel khoanThuModel) {
@@ -49,15 +54,80 @@ public class UpdateKhoanThu {
 		
 		// Convert the string value to a LocalDate object
 		dpNgayKetThuc.setValue(LocalDate.parse(khoanThuModel.getNgayKetThuc()));
-		
+
 		tfTrongSoDienTich.setText(String.valueOf(khoanThuModel.getTrongSoDienTich()));
 		tfTrongSoSTV.setText(String.valueOf(khoanThuModel.getTrongSoSTV()));
 		tfHangSo.setText(String.valueOf(khoanThuModel.getHangSo()));
+
+        cbLoaiKhoanThu.getItems().addAll("Tiền quản lý", "Tiền giữ xe", "Tiền điện", "Tiền nước", "Tiền khác");
+        // set cbLoaiKhoanThu theo khoanThuModel
+        cbLoaiKhoanThu.getSelectionModel().select(khoanThuModel.getLoaiKhoanThu());
+        // goi chonLoaiKhoanThu de hien thi cac thanh phan tuong ung voi loai khoan thu
+        ChonKhoanThu(null);
+	}
+	
+	public void ChonKhoanThu(ActionEvent event) {
+		if (cbLoaiKhoanThu.getSelectionModel().getSelectedItem().equals("Tiền điện")) {
+			tfThanhPhan1.setVisible(true);
+			tfThanhPhan2.setVisible(true);
+			tfThanhPhan3.setVisible(true);
+
+			tfTrongSoDienTich.setVisible(true);
+			tfTrongSoSTV.setVisible(true);
+			tfHangSo.setVisible(true);
+
+			tfThanhPhan1.setText("0 - 200 KW");
+			tfThanhPhan2.setText("200 - 400 KW");
+			tfThanhPhan3.setText(">= 400 KW");
+		} else if (cbLoaiKhoanThu.getSelectionModel().getSelectedItem().equals("Tiền nước")) {
+			tfThanhPhan1.setVisible(true);
+			tfThanhPhan2.setVisible(false);
+			tfThanhPhan3.setVisible(false);
+
+			tfTrongSoDienTich.setVisible(true);
+			tfTrongSoSTV.setVisible(false);
+			tfHangSo.setVisible(false);
+
+			tfThanhPhan1.setText("Giá 1m3 nước");
+		} else if (cbLoaiKhoanThu.getSelectionModel().getSelectedItem().equals("Tiền quản lý")) {
+			tfThanhPhan1.setVisible(true);
+			tfThanhPhan2.setVisible(true);
+			tfThanhPhan3.setVisible(true);
+
+			tfTrongSoDienTich.setVisible(true);
+			tfTrongSoSTV.setVisible(true);
+			tfHangSo.setVisible(true);
+
+			tfThanhPhan1.setText("Giá 1m2 Phòng thường");
+			tfThanhPhan2.setText("Giá 1m2 Phòng cao cấp");
+			tfThanhPhan3.setText("Cộng thêm");
+		} else if (cbLoaiKhoanThu.getSelectionModel().getSelectedItem().equals("Tiền giữ xe")) {
+			tfThanhPhan1.setVisible(true);
+			tfThanhPhan2.setVisible(true);
+			tfThanhPhan3.setVisible(true);
+
+			tfTrongSoDienTich.setVisible(true);
+			tfTrongSoSTV.setVisible(true);
+			tfHangSo.setVisible(true);
+
+			tfThanhPhan1.setText("Tiền một xe ô tô");
+			tfThanhPhan2.setText("Tiền một xe máy");
+			tfThanhPhan3.setText("Tiền một xe đạp");
+		} else { // khong lam gi ca
+			tfThanhPhan1.setVisible(false);
+			tfThanhPhan2.setVisible(false);
+			tfThanhPhan3.setVisible(false);
+
+			tfTrongSoDienTich.setVisible(false);
+			tfTrongSoSTV.setVisible(false);
+			tfHangSo.setVisible(false);
+		}
 	}
 
 	public void updateKhoanThu(ActionEvent event) throws ClassNotFoundException, SQLException {
 		Pattern pattern;
 		
+		// kiem tra maKhoanThu nhap vao
 		// maKhoanThu la day so tu 1 toi 11 chu so
 		pattern = Pattern.compile("\\d{1,11}");
 		if (!pattern.matcher(tfIDKhoanThu.getText()).matches()) {
@@ -140,6 +210,7 @@ public class UpdateKhoanThu {
 			alert.showAndWait();
 			return;
 		}
+
 		// gan gia tri cac truong cua khoan thu
 		khoanThuModel.setIDKhoanThu(Integer.parseInt(tfIDKhoanThu.getText()));
 		khoanThuModel.setTenKT(tfTenKhoanThu.getText());
@@ -148,10 +219,10 @@ public class UpdateKhoanThu {
 		khoanThuModel.setTrongSoDienTich(Double.parseDouble(tfTrongSoDienTich.getText()));
 		khoanThuModel.setTrongSoSTV(Double.parseDouble(tfTrongSoSTV.getText()));
 		khoanThuModel.setHangSo(Double.parseDouble(tfHangSo.getText()));
-		
-		// update khoan thu
+		khoanThuModel.setLoaiKhoanThu(cbLoaiKhoanThu.getSelectionModel().getSelectedItem());
+		// them khoan thu vao database
 		new KhoanThuService().update(IDKhoanThu_old, khoanThuModel);
-		Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
-        stage.close();
+		Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+		stage.close();
 	}
 }

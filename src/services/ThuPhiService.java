@@ -10,11 +10,12 @@ import models.ThuPhiModel;
 public class ThuPhiService {
     public boolean add(ThuPhiModel ThuPhiModel) throws ClassNotFoundException, SQLException {
 		Connection connection = MysqlConnection.getMysqlConnection();
-		String query = "INSERT INTO thuphi(IDKhoanThu, IDHoKhau, TienDaDong, NgayDong)"
+		String query = "INSERT INTO thuphi(IDKhoanThu, IDHoKhau, SoTienPhaiDong, TienDaDong, NgayDong)"
 				+ " values (?, ?, ?, ?)";
 		PreparedStatement preparedStatement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 		preparedStatement.setInt(1, ThuPhiModel.getIDKhoanThu());
 		preparedStatement.setInt(2, ThuPhiModel.getIDHoKhau());
+		preparedStatement.setDouble(3, ThuPhiModel.getSoTienPhaiDong());
 		preparedStatement.setDouble(3, ThuPhiModel.getSoTien());
 		preparedStatement.setString(4, ThuPhiModel.getNgayDong());
 		
@@ -39,13 +40,14 @@ public class ThuPhiService {
 		Connection connection = MysqlConnection.getMysqlConnection();
 		PreparedStatement preparedStatement;
 
-		String query = "UPDATE thuphi SET TienDaDong = ?, NgayDong = ? WHERE WHERE IDKhoanThu = ? AND IDHoKhau = ?";
+		String query = "UPDATE thuphi SET TienDaDong = ?, SoTienPhaiDong = ?, NgayDong = ? WHERE WHERE IDKhoanThu = ? AND IDHoKhau = ?";
 		preparedStatement = connection.prepareStatement(query);
 		
 		preparedStatement.setDouble(1, ThuPhiModel.getSoTien());
-		preparedStatement.setString(2, ThuPhiModel.getNgayDong());
-		preparedStatement.setInt(3, ThuPhiModel.getIDKhoanThu());
-		preparedStatement.setInt(4, ThuPhiModel.getIDHoKhau());
+		preparedStatement.setDouble(2, ThuPhiModel.getSoTienPhaiDong());
+		preparedStatement.setString(3, ThuPhiModel.getNgayDong());
+		preparedStatement.setInt(4, ThuPhiModel.getIDKhoanThu());
+		preparedStatement.setInt(5, ThuPhiModel.getIDHoKhau());
 		
 		preparedStatement.executeUpdate();
 		return true;
@@ -65,6 +67,7 @@ public class ThuPhiService {
 			ThuPhiModel thuPhiModel = new ThuPhiModel(
 				rs.getInt("IDKhoanThu"),
                 rs.getInt("IDHoKhau"),
+				rs.getDouble("SoTienPhaiDong"),
                 rs.getDouble("TienDaDong"),
                 rs.getString("NgayDong")
 			);

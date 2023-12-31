@@ -10,8 +10,8 @@ import java.util.List;
 public class KhoanThuService {
 	public boolean add(KhoanThuModel khoanThuModel) throws ClassNotFoundException, SQLException {
 		Connection connection = MysqlConnection.getMysqlConnection();
-		String query = "INSERT INTO khoanthu(IDKhoanThu, TenKT, NgayBatDau, NgayKetThuc, TrongSoDienTich, TrongSoSTV, hangSo)"
-				+ " values (?, ?, ?, ?, ?, ?, ?)";
+		String query = "INSERT INTO khoanthu(IDKhoanThu, TenKT, NgayBatDau, NgayKetThuc, TrongSoDienTich, TrongSoSTV, HangSo, LoaiKhoanThu)"
+				+ " values (?, ?, ?, ?, ?, ?, ?, ?)";
 		PreparedStatement preparedStatement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 		preparedStatement.setInt(1, khoanThuModel.getIDKhoanThu());
 		preparedStatement.setString(2, khoanThuModel.getTenKT());
@@ -20,6 +20,7 @@ public class KhoanThuService {
 		preparedStatement.setDouble(5, khoanThuModel.getTrongSoDienTich());
 		preparedStatement.setDouble(6, khoanThuModel.getTrongSoSTV());
 		preparedStatement.setDouble(7, khoanThuModel.getHangSo());
+		preparedStatement.setString(8, khoanThuModel.getLoaiKhoanThu());
 		preparedStatement.executeUpdate();
 		preparedStatement.close();
 		connection.close();
@@ -49,7 +50,7 @@ public class KhoanThuService {
 		Connection connection = MysqlConnection.getMysqlConnection();
 		PreparedStatement preparedStatement;
 
-		String query = "UPDATE khoanthu SET TenKT = ?, NgayBatDau = ?, NgayKetThuc = ?, TrongSoDienTich = ?, TrongSoSTV = ?, HangSo = ?, IDKhoanThu = ? WHERE IDKhoanThu = ?";
+		String query = "UPDATE khoanthu SET TenKT = ?, NgayBatDau = ?, NgayKetThuc = ?, TrongSoDienTich = ?, TrongSoSTV = ?, HangSo = ?, LoaiKhoanThu = ?, IDKhoanThu = ? WHERE IDKhoanThu = ?";
 		preparedStatement = connection.prepareStatement(query);
 		preparedStatement.setString(1, khoanThuModel.getTenKT());
 		preparedStatement.setString(2, khoanThuModel.getNgayBatDau());
@@ -57,8 +58,9 @@ public class KhoanThuService {
 		preparedStatement.setDouble(4, khoanThuModel.getTrongSoDienTich());
 		preparedStatement.setDouble(5, khoanThuModel.getTrongSoSTV());
 		preparedStatement.setDouble(6, khoanThuModel.getHangSo());
-		preparedStatement.setInt(7, khoanThuModel.getIDKhoanThu());
-		preparedStatement.setInt(8, IDKhoanThu_old);
+		preparedStatement.setString(7, khoanThuModel.getLoaiKhoanThu());
+		preparedStatement.setInt(8, khoanThuModel.getIDKhoanThu());
+		preparedStatement.setInt(9, IDKhoanThu_old);
 		preparedStatement.executeUpdate();
 
 		// String query2 = "UPDATE thuphi SET IDKhoanThu = ? WHERE IDKhoanThu = ?";
@@ -89,7 +91,8 @@ public class KhoanThuService {
 				rs.getString("NgayKetThuc"),
 				rs.getDouble("TrongSoDienTich"),
 				rs.getDouble("TrongSoSTV"),
-				rs.getDouble("HangSo")
+				rs.getDouble("HangSo"),
+				rs.getString("LoaiKhoanThu")
 			);
 
 	        list.add(khoanThuModel);
@@ -111,7 +114,8 @@ public class KhoanThuService {
 				rs.getString("NgayKetThuc"),
 				rs.getDouble("TrongSoDienTich"),
 				rs.getDouble("TrongSoSTV"),
-				rs.getDouble("HangSo")
+				rs.getDouble("HangSo"),
+				rs.getString("LoaiKhoanThu")
 			);
 
 	    connection.close();

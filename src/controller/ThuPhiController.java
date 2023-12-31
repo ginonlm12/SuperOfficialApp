@@ -37,6 +37,8 @@ public class ThuPhiController implements Initializable {
 	@FXML
 	TableColumn<ThuPhiBean, String> colTenChuHo;
 	@FXML
+	TableColumn<ThuPhiBean, String> colPhaiDong;
+	@FXML
 	TableColumn<ThuPhiBean, String> colDaDong;
 	@FXML
 	TableColumn<ThuPhiBean, String> colNgayThu;
@@ -56,6 +58,7 @@ public class ThuPhiController implements Initializable {
 		// Integer>("IDKhoanThu"));
 		colTenKhoanPhi.setCellValueFactory(new PropertyValueFactory<ThuPhiBean, String>("tenKhoanThu"));
 		colTenChuHo.setCellValueFactory(new PropertyValueFactory<ThuPhiBean, String>("tenChuHo"));
+		colPhaiDong.setCellValueFactory(new PropertyValueFactory<ThuPhiBean, String>("soTienPhaiDong"));
 		colDaDong.setCellValueFactory(new PropertyValueFactory<ThuPhiBean, String>("soTienDong"));
 		colNgayThu.setCellValueFactory(new PropertyValueFactory<ThuPhiBean, String>("ngayDong"));
 
@@ -179,9 +182,6 @@ public class ThuPhiController implements Initializable {
 		stage.setScene(new Scene(home, 800, 600));
 		UpdateThuPhi updateThuPhi = loader.getController();
 		updateThuPhi.setThuPhiBean(thuPhiBean);
-		// bat loi truong hop khong hop le
-		if (updateThuPhi == null)
-			return;
 		if (thuPhiBean == null) {
 			Alert alert = new Alert(AlertType.WARNING, "Chọn khoản thu update !", ButtonType.OK);
 			alert.setHeaderText(null);

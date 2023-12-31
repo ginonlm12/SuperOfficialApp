@@ -3,15 +3,17 @@ package models;
 public class ThuPhiModel {
     private int IDKhoanThu;
     private int IDHoKhau;
+    private double SoTienPhaiDong;
     private double SoTien;
     private String NgayDong;
 
     public ThuPhiModel() {
     }
 
-    public ThuPhiModel(int IDKhoanThu, int IDHoKhau, double soTien, String ngayDong) {
+    public ThuPhiModel(int IDKhoanThu, int IDHoKhau, double SoTienPhaiDong, double soTien, String ngayDong) {
         this.IDKhoanThu = IDKhoanThu;
         this.IDHoKhau = IDHoKhau;
+        this.SoTienPhaiDong = SoTienPhaiDong;
         SoTien = soTien;
         NgayDong = ngayDong;
     }
@@ -39,5 +41,11 @@ public class ThuPhiModel {
     }
     public void setNgayDong(String ngayDong) {
         NgayDong = ngayDong;
+    }
+    public double getSoTienPhaiDong() {
+        return SoTienPhaiDong;
+    }
+    public void setSoTienPhaiDong(double soTienPhaiDong) {
+        SoTienPhaiDong = soTienPhaiDong;
     }
 }

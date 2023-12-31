@@ -8,12 +8,13 @@ public class KhoanThuModel {
 	private double TrongSoDienTich;
 	private double TrongSoSTV;
 	private double HangSo;
+	private String LoaiKhoanThu;
 
 	public KhoanThuModel() {
 	}
 
 	public KhoanThuModel(int IDKhoanThu, String TenKT, String NgayBatDau, String NgayKetThuc, double TrongSoDienTich,
-			double TrongSoSTV, double HangSo) {
+			double TrongSoSTV, double HangSo, String LoaiKhoanThu) {
 		this.IDKhoanThu = IDKhoanThu;
 		this.TenKT = TenKT;
 		this.NgayBatDau = NgayBatDau;
@@ -21,6 +22,7 @@ public class KhoanThuModel {
 		this.TrongSoDienTich = TrongSoDienTich;
 		this.TrongSoSTV = TrongSoSTV;
 		this.HangSo = HangSo;
+		this.LoaiKhoanThu = LoaiKhoanThu;
 	}
 
 	public int getIDKhoanThu() {
@@ -77,5 +79,11 @@ public class KhoanThuModel {
 
 	public void setNgayBatDau(String NgayBatDau) {
 		this.NgayBatDau = NgayBatDau;
+	}
+	public String getLoaiKhoanThu() {
+		return LoaiKhoanThu;
+	}
+	public void setLoaiKhoanThu(String LoaiKhoanThu) {
+		this.LoaiKhoanThu = LoaiKhoanThu;
 	}
 }

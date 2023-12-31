@@ -11,10 +11,11 @@
    <children>
       <TableView fx:id="tvThuPhi" layoutX="14.0" layoutY="103.0" prefHeight="503.0" prefWidth="471.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="100.0">
         <columns>
-          <TableColumn fx:id="colTenKhoanPhi" prefWidth="179.2000516653061" text="Tên khoản thu" />
-          <TableColumn fx:id="colTenChuHo" prefWidth="183.19993591308594" text="Tên chủ hộ" />
-          <TableColumn fx:id="colDaDong" prefWidth="108.0" text="Số tiền đã thu" />
-          <TableColumn fx:id="colNgayThu" prefWidth="135.19998168945312" text="Ngày thu" />
+          <TableColumn fx:id="colTenKhoanPhi" prefWidth="125.60000741481781" text="Tên khoản thu" />
+          <TableColumn fx:id="colTenChuHo" prefWidth="130.40001678466797" text="Tên chủ hộ" />
+          <TableColumn fx:id="colPhaiDong" prefWidth="136.0" text="Số tiền cần thu" />
+          <TableColumn fx:id="colDaDong" prefWidth="113.5999755859375" text="Số tiền đã thu" />
+            <TableColumn fx:id="colNgayThu" prefWidth="98.39999389648438" text="Ngày thu" />
         </columns>
       </TableView>
       <TextField fx:id="tfSearch" layoutX="10.0" layoutY="54.0" prefHeight="40.0" prefWidth="310.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="50.0" />
