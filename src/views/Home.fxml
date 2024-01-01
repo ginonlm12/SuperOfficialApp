@@ -30,6 +30,9 @@
                                     </image>
                                 </ImageView>
                             </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                         </Button>
                         <MenuButton id="menubutton" focusTraversable="false" layoutX="93.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="115.0" text="Cài đặt" AnchorPane.rightAnchor="1.0">
                             <items>
@@ -46,6 +49,9 @@
                                     </image>
                                 </ImageView>
                             </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                         </MenuButton>
                     </children>
                 </AnchorPane>
@@ -235,6 +241,9 @@
                     </graphic>
                 </Button>
            </children>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
        </VBox>
    </children>
 </AnchorPane>

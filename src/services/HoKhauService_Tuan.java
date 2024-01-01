@@ -259,10 +259,6 @@ public class HoKhauService_Tuan {
         }
         return "0";
     }
-    public static String getTenChuHo(int id_hk) throws ClassNotFoundException, SQLException {
-        int id_chuho = getIDChuHo(id_hk);
-        NhanKhauModel_Lam nhanKhauModel_Lam = NhanKhauService_Lam.loadDatafromID(id_chuho);
-        return nhanKhauModel_Lam.getHoTen();
-    }
+
 }
 

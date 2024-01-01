@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th12 27, 2023 lúc 04:30 AM
--- Phiên bản máy phục vụ: 10.4.28-MariaDB
--- Phiên bản PHP: 8.0.28
+-- Host: 127.0.0.1
+-- Generation Time: Dec 31, 2023 at 12:21 PM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Cơ sở dữ liệu: `quanlychungcu`
+-- Database: `demo01`
 --
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `hokhau`
+-- Table structure for table `hokhau`
 --
 
 CREATE TABLE `hokhau` (
@@ -36,7 +36,7 @@ CREATE TABLE `hokhau` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `hokhau`
+-- Dumping data for table `hokhau`
 --
 
 INSERT INTO `hokhau` (`IDHoKhau`, `SoPhong`, `NgayDen`, `NgayDi`, `SDT`) VALUES
@@ -51,7 +51,7 @@ INSERT INTO `hokhau` (`IDHoKhau`, `SoPhong`, `NgayDen`, `NgayDi`, `SDT`) VALUES
 (9, 7, '2023-12-21', '2023-12-27', '0123456789');
 
 --
--- Bẫy `hokhau`
+-- Triggers `hokhau`
 --
 DELIMITER $$
 CREATE TRIGGER `tuan` AFTER INSERT ON `hokhau` FOR EACH ROW BEGIN
@@ -65,7 +65,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `khoanthu`
+-- Table structure for table `khoanthu`
 --
 
 CREATE TABLE `khoanthu` (
@@ -73,15 +73,24 @@ CREATE TABLE `khoanthu` (
   `TenKT` varchar(40) NOT NULL DEFAULT '(Chưa điền)',
   `NgayBatDau` date NOT NULL DEFAULT '0001-01-01',
   `NgayKetThuc` date NOT NULL DEFAULT '0001-01-01',
-  `TrongSoDienTich` int(11) NOT NULL DEFAULT 0,
-  `TrongSoSTV` int(11) NOT NULL DEFAULT 0,
-  `HangSo` int(11) NOT NULL DEFAULT 0
+  `TrongSoDienTich` float NOT NULL DEFAULT 0,
+  `TrongSoSTV` float NOT NULL DEFAULT 0,
+  `HangSo` float NOT NULL DEFAULT 0,
+  `LoaiKhoanThu` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `khoanthu`
+--
+
+INSERT INTO `khoanthu` (`IDKhoanThu`, `TenKT`, `NgayBatDau`, `NgayKetThuc`, `TrongSoDienTich`, `TrongSoSTV`, `HangSo`, `LoaiKhoanThu`) VALUES
+(1, 'gui xe thang 10', '2024-01-01', '2024-01-01', 1000, 500, 200, 'Tiền quản lý'),
+(100, 'Quan ly thang 1', '2024-01-01', '2024-01-01', 1000, 2000, 3000, 'Tiền quản lý');
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `nhankhau`
+-- Table structure for table `nhankhau`
 --
 
 CREATE TABLE `nhankhau` (
@@ -98,7 +107,7 @@ CREATE TABLE `nhankhau` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `nhankhau`
+-- Dumping data for table `nhankhau`
 --
 
 INSERT INTO `nhankhau` (`IDNhanKhau`, `IDHoKhau`, `QHvsChuHo`, `HoTen`, `NgaySinh`, `CCCD`, `NgheNghiep`, `GioiTinh`, `DanToc`, `QueQuan`) VALUES
@@ -124,7 +133,7 @@ INSERT INTO `nhankhau` (`IDNhanKhau`, `IDHoKhau`, `QHvsChuHo`, `HoTen`, `NgaySin
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `phong`
+-- Table structure for table `phong`
 --
 
 CREATE TABLE `phong` (
@@ -134,7 +143,7 @@ CREATE TABLE `phong` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `phong`
+-- Dumping data for table `phong`
 --
 
 INSERT INTO `phong` (`SoPhong`, `DienTich`, `LoaiPhong`) VALUES
@@ -150,7 +159,7 @@ INSERT INTO `phong` (`SoPhong`, `DienTich`, `LoaiPhong`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `tamtru`
+-- Table structure for table `tamtru`
 --
 
 CREATE TABLE `tamtru` (
@@ -167,7 +176,7 @@ CREATE TABLE `tamtru` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `tamtru`
+-- Dumping data for table `tamtru`
 --
 
 INSERT INTO `tamtru` (`IDTamTru`, `IDHoKhau`, `HoTen`, `ThuongTru`, `NgayBatDau`, `NgayKetThuc`, `LyDo`, `NgaySinh`, `CCCD`, `GioiTinh`) VALUES
@@ -177,7 +186,7 @@ INSERT INTO `tamtru` (`IDTamTru`, `IDHoKhau`, `HoTen`, `ThuongTru`, `NgayBatDau`
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `tamvang`
+-- Table structure for table `tamvang`
 --
 
 CREATE TABLE `tamvang` (
@@ -189,7 +198,7 @@ CREATE TABLE `tamvang` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `tamvang`
+-- Dumping data for table `tamvang`
 --
 
 INSERT INTO `tamvang` (`IDTamvang`, `IDNhanKhau`, `NgayBatDau`, `NgayKetThuc`, `LyDo`) VALUES
@@ -201,20 +210,21 @@ INSERT INTO `tamvang` (`IDTamvang`, `IDNhanKhau`, `NgayBatDau`, `NgayKetThuc`, `
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `thuphi`
+-- Table structure for table `thuphi`
 --
 
 CREATE TABLE `thuphi` (
   `IDKhoanThu` int(11) NOT NULL,
   `IDHoKhau` int(11) NOT NULL,
-  `TienDaDong` int(11) NOT NULL,
+  `SoTienPhaiDong` float NOT NULL,
+  `TienDaDong` float NOT NULL,
   `NgayDong` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
@@ -225,7 +235,7 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `users`
+-- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`username`, `password`, `SDT`, `Email`) VALUES
@@ -234,7 +244,7 @@ INSERT INTO `users` (`username`, `password`, `SDT`, `Email`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `xe`
+-- Table structure for table `xe`
 --
 
 CREATE TABLE `xe` (
@@ -245,7 +255,7 @@ CREATE TABLE `xe` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `xe`
+-- Dumping data for table `xe`
 --
 
 INSERT INTO `xe` (`IDHoKhau`, `XeDap`, `XeMay`, `Oto`) VALUES
@@ -260,122 +270,122 @@ INSERT INTO `xe` (`IDHoKhau`, `XeDap`, `XeMay`, `Oto`) VALUES
 (9, 0, 0, 0);
 
 --
--- Chỉ mục cho các bảng đã đổ
+-- Indexes for dumped tables
 --
 
 --
--- Chỉ mục cho bảng `hokhau`
+-- Indexes for table `hokhau`
 --
 ALTER TABLE `hokhau`
   ADD PRIMARY KEY (`IDHoKhau`),
   ADD KEY `fk_sophong` (`SoPhong`);
 
 --
--- Chỉ mục cho bảng `khoanthu`
+-- Indexes for table `khoanthu`
 --
 ALTER TABLE `khoanthu`
   ADD PRIMARY KEY (`IDKhoanThu`);
 
 --
--- Chỉ mục cho bảng `nhankhau`
+-- Indexes for table `nhankhau`
 --
 ALTER TABLE `nhankhau`
   ADD PRIMARY KEY (`IDNhanKhau`),
   ADD KEY `fk_idhk` (`IDHoKhau`);
 
 --
--- Chỉ mục cho bảng `phong`
+-- Indexes for table `phong`
 --
 ALTER TABLE `phong`
   ADD PRIMARY KEY (`SoPhong`);
 
 --
--- Chỉ mục cho bảng `tamtru`
+-- Indexes for table `tamtru`
 --
 ALTER TABLE `tamtru`
   ADD PRIMARY KEY (`IDTamTru`);
 
 --
--- Chỉ mục cho bảng `tamvang`
+-- Indexes for table `tamvang`
 --
 ALTER TABLE `tamvang`
   ADD PRIMARY KEY (`IDTamvang`),
   ADD KEY `fk_idnktv` (`IDNhanKhau`);
 
 --
--- Chỉ mục cho bảng `thuphi`
+-- Indexes for table `thuphi`
 --
 ALTER TABLE `thuphi`
   ADD PRIMARY KEY (`IDKhoanThu`,`IDHoKhau`),
   ADD KEY `fk_idnk` (`IDHoKhau`);
 
 --
--- Chỉ mục cho bảng `users`
+-- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`username`);
 
 --
--- Chỉ mục cho bảng `xe`
+-- Indexes for table `xe`
 --
 ALTER TABLE `xe`
   ADD KEY `fk_idnkxe` (`IDHoKhau`);
 
 --
--- AUTO_INCREMENT cho các bảng đã đổ
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT cho bảng `hokhau`
+-- AUTO_INCREMENT for table `hokhau`
 --
 ALTER TABLE `hokhau`
   MODIFY `IDHoKhau` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
--- AUTO_INCREMENT cho bảng `nhankhau`
+-- AUTO_INCREMENT for table `nhankhau`
 --
 ALTER TABLE `nhankhau`
   MODIFY `IDNhanKhau` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
--- AUTO_INCREMENT cho bảng `tamtru`
+-- AUTO_INCREMENT for table `tamtru`
 --
 ALTER TABLE `tamtru`
   MODIFY `IDTamTru` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT cho bảng `tamvang`
+-- AUTO_INCREMENT for table `tamvang`
 --
 ALTER TABLE `tamvang`
   MODIFY `IDTamvang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- Các ràng buộc cho các bảng đã đổ
+-- Constraints for dumped tables
 --
 
 --
--- Các ràng buộc cho bảng `hokhau`
+-- Constraints for table `hokhau`
 --
 ALTER TABLE `hokhau`
   ADD CONSTRAINT `fk_sophong` FOREIGN KEY (`SoPhong`) REFERENCES `phong` (`SoPhong`) ON DELETE NO ACTION ON UPDATE CASCADE;
 
 --
--- Các ràng buộc cho bảng `nhankhau`
+-- Constraints for table `nhankhau`
 --
 ALTER TABLE `nhankhau`
   ADD CONSTRAINT `fk_idhk` FOREIGN KEY (`IDHoKhau`) REFERENCES `hokhau` (`IDHoKhau`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Các ràng buộc cho bảng `tamvang`
+-- Constraints for table `tamvang`
 --
 ALTER TABLE `tamvang`
   ADD CONSTRAINT `fk_idnktv` FOREIGN KEY (`IDNhanKhau`) REFERENCES `nhankhau` (`IDNhanKhau`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Các ràng buộc cho bảng `thuphi`
+-- Constraints for table `thuphi`
 --
 ALTER TABLE `thuphi`
-  ADD CONSTRAINT `fk_idkt` FOREIGN KEY (`IDHoKhau`) REFERENCES `khoanthu` (`IDKhoanThu`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_idkt` FOREIGN KEY (`IDKhoanThu`) REFERENCES `khoanthu` (`IDKhoanThu`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_idnk` FOREIGN KEY (`IDHoKhau`) REFERENCES `hokhau` (`IDHoKhau`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 COMMIT;
 
