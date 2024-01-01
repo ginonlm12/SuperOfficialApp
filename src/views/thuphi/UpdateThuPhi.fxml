@@ -21,8 +21,8 @@
       <DatePicker fx:id="dpNgayDong" editable="false" layoutX="277.0" layoutY="366.0" prefHeight="39.0" prefWidth="395.0" />
       <Button layoutX="376.0" layoutY="433.0" mnemonicParsing="false" onAction="#updateThuPhi" text="Cập nhật" />
       <Label layoutX="67.0" layoutY="315.0" text="Số tiền đóng" />
-      <TextField fx:id="tfSoTienPhaiDong" layoutX="277.0" layoutY="304.0" prefHeight="39.0" prefWidth="395.0" />
+      <TextField fx:id="tfSoTienPhaiDong" layoutX="277.0" layoutY="240.0" prefHeight="39.0" prefWidth="395.0" />
       <Label layoutX="67.0" layoutY="251.0" text="Số tiền phải đóng" />
-      <TextField fx:id="tfSoTienDong" layoutX="277.0" layoutY="240.0" prefHeight="39.0" prefWidth="395.0" />
+      <TextField fx:id="tfSoTienDong" layoutX="277.0" layoutY="304.0" prefHeight="39.0" prefWidth="395.0" />
    </children>
 </AnchorPane>

@@ -126,12 +126,12 @@ public class UpdateKhoanThu {
 
 	public void updateKhoanThu(ActionEvent event) throws ClassNotFoundException, SQLException {
 		Pattern pattern;
-		
-		// kiem tra maKhoanThu nhap vao
-		// maKhoanThu la day so tu 1 toi 11 chu so
+
+		// IDKhoanThu la day so tu 1 toi 11 chu so
 		pattern = Pattern.compile("\\d{1,11}");
 		if (!pattern.matcher(tfIDKhoanThu.getText()).matches()) {
-			Alert alert = new Alert(AlertType.WARNING, "Hãy nhập vào mã khoản thu hợp lệ!", ButtonType.OK);
+			Alert alert = new Alert(AlertType.WARNING, "Hãy nhập vào mã khoản thu là số từ 1 đến 11 chữ số!",
+					ButtonType.OK);
 			alert.setHeaderText(null);
 			alert.showAndWait();
 			return;
@@ -139,9 +139,10 @@ public class UpdateKhoanThu {
 
 		// kiem tra ma khoan thu them moi co bi trung voi nhung ma khoan thu da ton tai
 		// hay khong
-		List<KhoanThuModel> listKhoanThuModels = new KhoanThuService().getListKhoanThu();
+		List<KhoanThuModel> listKhoanThuModels = KhoanThuService.getListKhoanThu();
 		for (KhoanThuModel khoanThuModel : listKhoanThuModels) {
-			if (khoanThuModel.getIDKhoanThu() == Integer.parseInt(tfIDKhoanThu.getText()) && khoanThuModel.getIDKhoanThu() != IDKhoanThu_old) {
+			if (khoanThuModel.getIDKhoanThu() == Integer.parseInt(tfIDKhoanThu.getText()) 
+			&& khoanThuModel.getIDKhoanThu() != IDKhoanThu_old) {
 				Alert alert = new Alert(AlertType.WARNING, "Mã khoản thu đã bị trùng!", ButtonType.OK);
 				alert.setHeaderText(null);
 				alert.showAndWait();
@@ -152,12 +153,27 @@ public class UpdateKhoanThu {
 		// kiem tra ten nhap vao
 		// ten nhap vao la chuoi tu 1 toi 50 ki tu
 		if (tfTenKhoanThu.getText().length() >= 50 || tfTenKhoanThu.getText().length() <= 1) {
-			Alert alert = new Alert(AlertType.WARNING, "Hãy nhập vào 1 tên khoản thu hợp lệ!", ButtonType.OK);
+			Alert alert = new Alert(AlertType.WARNING, "Hãy nhập vào tên khoản thu là chuỗi dưới 50 ký tự!",
+					ButtonType.OK);
 			alert.setHeaderText(null);
 			alert.showAndWait();
 			return;
 		}
 		// kiem tra ngay bat dau
+		// ngay bat dau va ket thuc khong duoc de trong
+		if (dpNgayBatDau.getValue() == null) {
+			Alert alert = new Alert(AlertType.WARNING, "Hãy nhập vào ngày bắt đầu!", ButtonType.OK);
+			alert.setHeaderText(null);
+			alert.showAndWait();
+			return;
+		}
+		// ngay bat dau va ket thuc khong duoc de trong
+		if (dpNgayKetThuc.getValue() == null) {
+			Alert alert = new Alert(AlertType.WARNING, "Hãy nhập vào ngày kết thúc!", ButtonType.OK);
+			alert.setHeaderText(null);
+			alert.showAndWait();
+			return;
+		}
 		// ngay bat dau phai nho hon ngay ket thuc
 		if (dpNgayBatDau.getValue().compareTo(dpNgayKetThuc.getValue()) > 0) {
 			Alert alert = new Alert(AlertType.WARNING, "Ngày bắt đầu phải nhỏ hơn ngày kết thúc!", ButtonType.OK);
@@ -215,13 +231,13 @@ public class UpdateKhoanThu {
 		khoanThuModel.setIDKhoanThu(Integer.parseInt(tfIDKhoanThu.getText()));
 		khoanThuModel.setTenKT(tfTenKhoanThu.getText());
 		khoanThuModel.setNgayBatDau(dpNgayBatDau.getValue().toString());
-		khoanThuModel.setNgayKetThuc(dpNgayBatDau.getValue().toString());
+		khoanThuModel.setNgayKetThuc(dpNgayKetThuc.getValue().toString());
 		khoanThuModel.setTrongSoDienTich(Double.parseDouble(tfTrongSoDienTich.getText()));
 		khoanThuModel.setTrongSoSTV(Double.parseDouble(tfTrongSoSTV.getText()));
 		khoanThuModel.setHangSo(Double.parseDouble(tfHangSo.getText()));
 		khoanThuModel.setLoaiKhoanThu(cbLoaiKhoanThu.getSelectionModel().getSelectedItem());
 		// them khoan thu vao database
-		new KhoanThuService().update(IDKhoanThu_old, khoanThuModel);
+		KhoanThuService.update(IDKhoanThu_old, khoanThuModel);
 		Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		stage.close();
 	}
