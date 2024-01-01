@@ -250,9 +250,9 @@ public class NhanKhauService_Lam {
                 mapAge[0]++;
             } else if (age >= 6 && age <= 18) {
                 mapAge[1]++;
-            } else if (age >= 19 && age <= 45) {
+            } else if (age >= 19 && age <= 44) {
                 mapAge[2]++;
-            } else if (age >= 46 && age <= 65) {
+            } else if (age >= 45 && age <= 64) {
                 mapAge[3]++;
             } else {
                 mapAge[4]++;
@@ -261,9 +261,9 @@ public class NhanKhauService_Lam {
 
         AgeD.add(new PieChart.Data("0-5", mapAge[0]));
         AgeD.add(new PieChart.Data("6-18", mapAge[1]));
-        AgeD.add(new PieChart.Data("19-45", mapAge[2]));
-        AgeD.add(new PieChart.Data("46-65", mapAge[3]));
-        AgeD.add(new PieChart.Data("66+", mapAge[4]));
+        AgeD.add(new PieChart.Data("19-44", mapAge[2]));
+        AgeD.add(new PieChart.Data("45-64", mapAge[3]));
+        AgeD.add(new PieChart.Data("65+", mapAge[4]));
 
         return AgeD;
     }

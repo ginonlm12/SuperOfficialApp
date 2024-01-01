@@ -3,6 +3,7 @@ package controller;
 import controller.nhankhau.ShowChiTiet_Lam;
 import controller.nhankhau.UpdateNhanKhau_Lam;
 import controller.tamtrutamvang.AddTamVang;
+import javafx.animation.RotateTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -14,7 +15,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import models.NhanKhauModel_Lam;
 import services.NhanKhauService_Lam;
 import services.TamVangService;
@@ -50,7 +54,6 @@ public class NhanKhauController_Lam implements Initializable {
 	private TextField tfSearch;
 	@FXML
 	private ComboBox<String> cbChooseSearch;
-
 	private ObservableList<NhanKhauModel_Lam> listValueTableView;
 	private List<NhanKhauModel_Lam> listNhanKhau;
 	private int ID_dexemchitiet;
@@ -344,4 +347,25 @@ public class NhanKhauController_Lam implements Initializable {
 
 	}
 
+	@FXML
+	private ImageView reloadimg;
+
+	@FXML
+	void Reload(MouseEvent event) throws IOException, SQLException, ClassNotFoundException {
+		RotateTransition rotateTransition = new RotateTransition(Duration.seconds(0.5), reloadimg);
+
+		rotateTransition.setByAngle(720);
+		rotateTransition.setOnFinished(eventt -> {
+			try {
+				showNhanKhau();
+				tfSearch.setText("");
+			} catch (ClassNotFoundException e) {
+				throw new RuntimeException(e);
+			} catch (SQLException e) {
+				throw new RuntimeException(e);
+			}
+		});
+
+		rotateTransition.play();
+	}
 }

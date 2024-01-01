@@ -20,7 +20,7 @@ public class XeService_Tuan {
         ResultSet rs = preparedStatement.executeQuery();
         while(rs.next()){
             int IDHoKhau = rs.getInt("IDHoKhau");
-            if(HoKhauService_Tuan.getHoKhau(String.valueOf(IDHoKhau)).getNgayDi().equals("0001-01-01") ){
+            if (HoKhauService_Tuan.getHoKhau(IDHoKhau).getNgayDi().equals("0001-01-01")) {
                 int XeDap = rs.getInt("XeDap");
                 int XeMay = rs.getInt("XeMay");
                 int Oto = rs.getInt("Oto");

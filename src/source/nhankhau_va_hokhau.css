@@ -1,6 +1,10 @@
 /* dieu chinh table view */
 .background {
-    -fx-background-color: linear-gradient(to bottom right, #FFFFFF, #EFFFFF);
+    -fx-background-color:  linear-gradient(to bottom right, #FFFFFF, #EEF5FF);
+}
+
+.background: hover {
+    -fx-background-color: linear-gradient(to bottom left, #FFFFFF, #EEF5FF);
 }
 
 .column-header {

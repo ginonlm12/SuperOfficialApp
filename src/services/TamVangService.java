@@ -93,4 +93,20 @@ public class TamVangService {
         int rowsAffected = preparedStatement.executeUpdate();
         return rowsAffected > 0;
     }
+
+    public static String countTamVang() throws ClassNotFoundException, SQLException {
+        LocalDate current = LocalDate.now();
+        Connection connection = MysqlConnection.getMysqlConnection();
+        String query = "SELECT Count(IDTamVang) FROM tamvang WHERE NgayBatDau <= ? AND NgayKetThuc >= ?";
+
+        PreparedStatement preparedStatement = connection.prepareStatement(query);
+        preparedStatement.setString(1, String.valueOf(current));
+        preparedStatement.setString(2, String.valueOf(current));
+        ResultSet rs = preparedStatement.executeQuery();
+        if (rs.next()) {
+            int count = rs.getInt(1);
+            return String.valueOf(count);
+        }
+        return "0";
+    }
 }

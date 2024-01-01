@@ -40,7 +40,7 @@ public class HomeController implements Initializable {
     @FXML
     private VBox menu = new VBox();
     @FXML
-    private Pane mainPane;
+    public Pane mainPane;
     @FXML
     private Button btnPhong;
 
