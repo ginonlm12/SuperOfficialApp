@@ -22,20 +22,20 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module-library">
+    <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/../../../../../Program File 2/mysql-connector-j-8.2.0/mysql-connector-j-8.2.0.jar!/" />
+          <root url="jar://$MODULE_DIR$/requirements/spire_xls/Spire.Xls.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="library" name="lib2" level="project" />
+    <orderEntry type="library" name="lib" level="project" />
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/requirements/spire_xls/Spire.Xls.jar!/" />
+          <root url="jar://$USER_HOME$/Downloads/mysql-connector-j-8.2.0/mysql-connector-j-8.2.0/mysql-connector-j-8.2.0.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />

@@ -45,11 +45,11 @@ public class HomeController implements Initializable {
     private Button btnPhong;
 
 
-    void createNewStage(String fxmlFilePath) throws IOException {
+    void createNewStage(String fxmlFilePath, int width, int height) throws IOException {
         Parent home = FXMLLoader.load(getClass().getResource(fxmlFilePath));
         Stage stage = new Stage();
         home.setFocusTraversable(true);
-        stage.setScene(new Scene(home, 600, 400));
+        stage.setScene(new Scene(home, width, height));
 
         stage.setResizable(false);
         stage.showAndWait();
@@ -110,7 +110,7 @@ public class HomeController implements Initializable {
     }
 
     public void setDongPhi(ActionEvent event) throws IOException {
-        changeMainPane("/views/NopTien.fxml");
+        changeMainPane("/views/ThuPhi.fxml");
     }
 
     public void setThongKe(ActionEvent event) throws IOException {
@@ -168,17 +168,17 @@ public class HomeController implements Initializable {
 
     @FXML
     void backupClicked(ActionEvent event) throws IOException {
-        createNewStage("/views/users/backupdata.fxml");
+        createNewStage("/views/users/backupdata.fxml", 680, 550);
     }
 
     @FXML
     void restoreClicked(ActionEvent event) throws IOException {
-        createNewStage("/views/users/restoredata.fxml");
+        createNewStage("/views/users/restoredata.fxml",600,600);
     }
 
     @FXML
     void changepassClicked(ActionEvent event) throws IOException {
-        createNewStage("/views/users/changepass.fxml");
+        createNewStage("/views/users/changepass.fxml",400,250);
     }
 
     @FXML

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.thuphi.ChooseKhoanThu">
+   <children>
+      <Button layoutX="628.0" layoutY="52.0" mnemonicParsing="false" onAction="#searchKhoanThu" prefHeight="39.0" prefWidth="147.0" text="Tìm kiếm" />
+      <ComboBox fx:id="cbChooseSearch" layoutX="450.0" layoutY="52.0" prefHeight="39.0" prefWidth="166.0" />
+      <TextField fx:id="tfSearch" layoutX="48.0" layoutY="52.0" prefHeight="39.0" prefWidth="390.0" />
+      <TableView fx:id="tvKhoanThu" layoutX="25.0" layoutY="98.0" prefHeight="447.0" prefWidth="750.0">
+         <columns>
+            <TableColumn fx:id="colIDKhoanThu" prefWidth="93.60003662109375" text="ID khoản thu" />
+            <TableColumn fx:id="colTenKhoanThu" prefWidth="273.5999755859375" text="Tên khoản thu" />
+            <TableColumn fx:id="colNgayBatDau" prefWidth="197.59991455078125" text="Ngày bắt đầu" />
+            <TableColumn fx:id="colNgayKetThuc" prefWidth="186.400146484375" text="Ngày kết thúc" />
+         </columns>
+      </TableView>
+      <Button layoutX="377.0" layoutY="553.0" mnemonicParsing="false" onAction="#xacnhan" text="Xác nhận" />
+      <Label layoutX="287.0" layoutY="14.0" text="CHỌN KHOẢN THU">
+         <font>
+            <Font name="Arial Bold" size="30.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

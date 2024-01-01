@@ -6,6 +6,8 @@ public class XeModel_Tuan {
     private int XeDap;
     private int XeMay;
     private String ChuHo;
+    public XeModel_Tuan() {
+    }
 
     public XeModel_Tuan(int IDHoKhau, int OTo, int xeDap, int xeMay) {
         this.IDHoKhau = IDHoKhau;

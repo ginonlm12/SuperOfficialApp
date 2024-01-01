@@ -9,6 +9,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class HoKhauService_Tuan {
+    public static String getTenChuHo(int id_hk) throws ClassNotFoundException, SQLException {
+        int id_chuho = getIDChuHo(id_hk);
+        NhanKhauModel_Lam nhanKhauModel_Lam = NhanKhauService_Lam.loadDatafromID(id_chuho);
+        return nhanKhauModel_Lam.getHoTen();
+    }
 
     public static List<HoKhauBean_Tuan> getListHoKhau() throws ClassNotFoundException, SQLException {
         List<HoKhauBean_Tuan> list = new ArrayList<>();
@@ -219,7 +224,7 @@ public class HoKhauService_Tuan {
         return null;
     }
 
-    public int getSoTV(int id_hk) throws ClassNotFoundException, SQLException {
+    public static int getSoTV(int id_hk) throws ClassNotFoundException, SQLException {
         Connection connection = MysqlConnection.getMysqlConnection();
         String query = "SELECT COUNT(IDHoKhau) AS SoTV FROM nhankhau WHERE IDHoKhau = ?";
         PreparedStatement preparedStatement = connection.prepareStatement(query);
@@ -254,10 +259,6 @@ public class HoKhauService_Tuan {
         }
         return "0";
     }
-    public static String getTenChuHo(int id_hk) throws ClassNotFoundException, SQLException {
-        int id_chuho = getIDChuHo(id_hk);
-        NhanKhauModel_Lam nhanKhauModel_Lam = NhanKhauService_Lam.loadDatafromID(id_chuho);
-        return nhanKhauModel_Lam.getHoTen();
-    }
+
 }
 
