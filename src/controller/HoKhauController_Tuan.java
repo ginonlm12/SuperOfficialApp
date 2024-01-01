@@ -111,7 +111,7 @@ public class HoKhauController_Tuan implements Initializable {
 	public void addHoKhau(ActionEvent event) throws ClassNotFoundException, SQLException, IOException {
 		Parent home = FXMLLoader.load(getClass().getResource("/views/hokhau/AddHoKhau_Tuan.fxml"));
 		Stage stage = new Stage();
-		stage.setScene(new Scene(home, 800, 600));
+		stage.setScene(new Scene(home, 670, 570));
 		stage.setResizable(false);
 		stage.showAndWait();
 		listHoKhau = new HoKhauService_Tuan().getListHoKhau();
@@ -159,7 +159,7 @@ public class HoKhauController_Tuan implements Initializable {
 		loader.setLocation(getClass().getResource("/views/hokhau/DetailHoKhau_Tuan.fxml"));
 		Parent home = loader.load();
 		Stage stage = new Stage();
-		stage.setScene(new Scene(home, 700, 600));
+		stage.setScene(new Scene(home, 680, 540));
 		DetailHoKhau_Tuan detailHoKhau = loader.getController();
 
 		// bat loi truong hop khong hop le
@@ -244,7 +244,7 @@ public class HoKhauController_Tuan implements Initializable {
 		loader.setLocation(getClass().getResource("/views/hokhau/UpdateHoKhau_Lam.fxml"));
 		Parent home = loader.load();
 		Stage stage = new Stage();
-		stage.setScene(new Scene(home, 600, 600));
+		stage.setScene(new Scene(home, 600, 550));
 		UpdateHoKhau_Lam updateHoKhau = loader.getController();
 // bat loi truong hop khong hop le
 		if (updateHoKhau == null)

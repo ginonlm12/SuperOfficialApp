@@ -45,8 +45,8 @@ public class ThongKeController implements Initializable {
 		Map<Integer, Long> mapMaKhoanThuToSoLuong = new TreeMap<>();
 		for (KhoanThuModel khoanThuModel : listKhoanThu) {
 			long cntNopTien = listNopTien.stream()
-					.filter(noptien -> noptien.getMaKhoanThu() == khoanThuModel.getMaKhoanThu()).count();
-			mapMaKhoanThuToSoLuong.put(khoanThuModel.getMaKhoanThu(), cntNopTien);
+					.filter(noptien -> noptien.getIdNopTien() == khoanThuModel.getIDKhoanThu()).count();
+			mapMaKhoanThuToSoLuong.put(khoanThuModel.getIDKhoanThu(), cntNopTien);
 		}
 
 		// thiet lap cac cot cho tableviews
@@ -54,7 +54,7 @@ public class ThongKeController implements Initializable {
 		try {
 			colTongSoTien.setCellValueFactory(
 					(CellDataFeatures<KhoanThuModel, String> p) -> new ReadOnlyStringWrapper(Double.toString(
-							mapMaKhoanThuToSoLuong.get(p.getValue().getMaKhoanThu()) * p.getValue().getSoTien())));
+							mapMaKhoanThuToSoLuong.get(p.getValue().getIDKhoanThu()) * p.getValue().getHangSo())));
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
@@ -72,7 +72,7 @@ public class ThongKeController implements Initializable {
 		List<KhoanThuModel> listKhoanThuBatBuoc = new ArrayList<>();
 		List<KhoanThuModel> listKhoanThuTuNguyen = new ArrayList<>();
 		for (KhoanThuModel khoanThuModel : listKhoanThu) {
-			if (khoanThuModel.getLoaiKhoanThu() == 0) {
+			if (khoanThuModel.getLoaiKhoanThu() == "0") {
 				listKhoanThuTuNguyen.add(khoanThuModel);
 			} else {
 				listKhoanThuBatBuoc.add(khoanThuModel);

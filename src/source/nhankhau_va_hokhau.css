@@ -1,48 +1,82 @@
 /* dieu chinh table view */
 .background {
-    -fx-background-color: #FFFFDD   ;
+    -fx-background-color: linear-gradient(to bottom right, #FFFFFF, #EFFFFF);
 }
 
 .column-header {
-    -fx-background-color: #A2C579;
+    -fx-background-color: #86B6F6;
 }
 
 /* dieu chinh button */
 .buttonChucnang {
     -fx-background-radius: 2px;
-    -fx-text-fill: #fbffe8;
-    -fx-background-color: #61A3BA;
+    -fx-text-fill: #176B87;
+    -fx-background-color: #B4D4FF;
     -fx-font-weight: bold;
     -fx-min-height: 30px;
     -fx-max-height: 30px;
     -fx-min-width: 150px;
     -fx-max-width: 150px;
+
 }
 
 .buttonChucnang: hover {
-    -fx-background-color: #637E76;
+    -fx-text-fill: #EEF5FF;
+    -fx-background-color: linear-gradient(to bottom right, #176B87, #3887BE);
 }
 
 .btntimkiem {
     -fx-font-weight: bold;
-    -fx-background-color: #557C55;
-    -fx-text-fill: #D2DE32;
+    -fx-background-color: #B4D4FF;
+    -fx-text-fill: #176B87;
 }
 
 .btntimkiem: hover {
-    -fx-background-color: #858c1d;
+    -fx-text-fill: #EEF5FF;
+    -fx-background-color: linear-gradient(to bottom right, #176B87, #3887BE);
 }
 
 .boxluachon: hover{
-    -fx-background-color: #858c1d;
+    -fx-text-fill: #EEF5FF;
+    -fx-background-color: #176B87;
 }
 
 .boxluachon .list-cell:selected {
     -fx-font-weight: bold;
-    -fx-background-color: #557C55;
-    -fx-text-fill: #D2DE32;
+    -fx-background-color: #86B6F6;
+    -fx-text-fill: #176B87;
 }
 
 .boxluachon: hover .list-cell:selected {
-    -fx-background-color: #858c1d;
+    -fx-text-fill: #EEF5FF;
+    -fx-background-color: #176B87;
+}
+
+.white-bg{
+    -fx-background-color:#fff;
+    -fx-background-radius:8px;
+}
+
+.table-view{
+    -fx-background-color:transparent;
+    -fx-border-color:linear-gradient(to bottom right, #176B87, #3887BE);
+    -fx-border-radius:8px;
+    -fx-padding:0px;
+}
+.table-view .table-column{
+    -fx-alignment:CENTER;
+}
+
+.table-view .column-header-background{
+    -fx-background-color:linear-gradient(to bottom right, #176B87, #3887BE);
+    -fx-background-insets: 0 0 0 0;
+    -f-background-radius:8px 8px 0px 0px;
+}
+.table-view .column-header, .filter{
+    -fx-background-color: transparent;
+    -fx-size:40px;
+}
+.table-view .column-header .label{
+    -fx-text-fill:#fff;
+    -fx-font-family:"Arial";
 }

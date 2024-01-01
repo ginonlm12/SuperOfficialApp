@@ -2,12 +2,12 @@ package services;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.chart.PieChart;
 import models.NhanKhauModel_Lam;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -201,9 +201,80 @@ public class NhanKhauService_Lam {
         return SoPhong;
     }
 
+    public static String countNhanKhau() throws ClassNotFoundException, SQLException {
+        Connection connection = MysqlConnection.getMysqlConnection();
+        String query = "SELECT COUNT(*) FROM nhankhau WHERE IDHoKhau IN (SELECT IDHoKhau FROM hokhau WHERE NgayDi = '0001-01-01')";
+
+        PreparedStatement preparedStatement = connection.prepareStatement(query);
+        ResultSet rs = preparedStatement.executeQuery();
+        if (rs.next()) {
+            int count = rs.getInt(1);
+            return String.valueOf(count);
+        }
+        return "0";
+    }
+
+    public static ArrayList<PieChart.Data> GenderClassify() throws SQLException, ClassNotFoundException {
+        ArrayList<PieChart.Data> GenderD = new ArrayList<>();
+        Connection connection = MysqlConnection.getMysqlConnection();
+        Statement statement = connection.createStatement();
+
+        String query = "SELECT GioiTinh, COUNT(*) as Count FROM nhankhau GROUP BY GioiTinh";
+        ResultSet resultSet = statement.executeQuery(query);
+
+        while (resultSet.next()) {
+            String gender = resultSet.getString("GioiTinh");
+            int count = resultSet.getInt("Count");
+            if (gender.equals("(Chưa nhập)"))
+                GenderD.add(new PieChart.Data("Chưa điền", count));
+            else GenderD.add(new PieChart.Data(gender, count));
+        }
+        return GenderD;
+    }
+
+    public static ArrayList<PieChart.Data> AgeClassify() throws SQLException, ClassNotFoundException {
+        ArrayList<PieChart.Data> AgeD = new ArrayList<>();
+        int[] mapAge = new int[5];
+        Connection connection = MysqlConnection.getMysqlConnection();
+        Statement statement = connection.createStatement();
+
+        String query = "SELECT NgaySinh FROM nhankhau";
+        ResultSet resultSet = statement.executeQuery(query);
+
+        while (resultSet.next()) {
+            LocalDate ngaySinh = resultSet.getDate("NgaySinh").toLocalDate();
+            int age = calculateAge(ngaySinh);
+
+            // Phân loại độ tuổi và thêm vào danh sách
+            if (age >= 0 && age <= 5) {
+                mapAge[0]++;
+            } else if (age >= 6 && age <= 18) {
+                mapAge[1]++;
+            } else if (age >= 19 && age <= 45) {
+                mapAge[2]++;
+            } else if (age >= 46 && age <= 65) {
+                mapAge[3]++;
+            } else {
+                mapAge[4]++;
+            }
+        }
+
+        AgeD.add(new PieChart.Data("0-5", mapAge[0]));
+        AgeD.add(new PieChart.Data("6-18", mapAge[1]));
+        AgeD.add(new PieChart.Data("19-45", mapAge[2]));
+        AgeD.add(new PieChart.Data("46-65", mapAge[3]));
+        AgeD.add(new PieChart.Data("66+", mapAge[4]));
+
+        return AgeD;
+    }
+
+    private static int calculateAge(LocalDate ngaySinh) {
+        LocalDate currentDate = LocalDate.now();
+        Period period = Period.between(ngaySinh, currentDate);
+        return period.getYears();
+    }
     // checked
     public boolean add(NhanKhauModel_Lam nhanKhauModel) throws ClassNotFoundException, SQLException {
-
         Connection connection = MysqlConnection.getMysqlConnection();
         String query = "INSERT INTO nhankhau(IDNhanKhau, IDHoKhau, QHvsChuHo, HoTen, NgaySinh, CCCD, NgheNghiep, GioiTinh, DanToc, QueQuan)" + " values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         PreparedStatement preparedStatement = connection.prepareStatement(query);

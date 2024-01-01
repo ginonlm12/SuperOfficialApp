@@ -56,7 +56,7 @@ public class DetailHoKhau_Tuan {
         loader.setLocation(getClass().getResource("/views/hokhau/ShowThanhVien_Tuan.fxml"));
         Parent home = loader.load();
         Stage stage = new Stage();
-        stage.setScene(new Scene(home, 600, 500));
+        stage.setScene(new Scene(home, 600, 400));
         ShowThanhVien_Tuan showThanhVienTuan = loader.getController();
 
         showThanhVienTuan.setLbTitle("Danh sách thành viên hộ khẩu #" + hoKhauBean.getHoKhauModel_tuan().getIDHoKhau());

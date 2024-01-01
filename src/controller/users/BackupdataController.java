@@ -27,25 +27,49 @@ public class BackupdataController implements Initializable {
     private CheckBox hokhau;
 
     @FXML
+    private TextField hokhautf;
+
+    @FXML
     private CheckBox khoanthu;
+
+    @FXML
+    private TextField khoanthutf;
 
     @FXML
     private CheckBox nhankhau;
 
     @FXML
+    private TextField nhankhautf;
+
+    @FXML
     private CheckBox phong;
+
+    @FXML
+    private TextField phongtf;
+
+    @FXML
+    private CheckBox tamtru;
+
+    @FXML
+    private TextField tamtrutf;
+
+    @FXML
+    private CheckBox tamvang;
+
+    @FXML
+    private TextField tamvangtf;
 
     @FXML
     private CheckBox thuphi;
 
     @FXML
+    private TextField thuphitf;
+
+    @FXML
     private CheckBox xe;
 
     @FXML
-    private TextField nhankhautf;
-
-    @FXML
-    private TextField hokhautf;
+    private TextField xetf;
 
     @FXML
     void chontatca_clicked(ActionEvent event) {
@@ -53,9 +77,11 @@ public class BackupdataController implements Initializable {
         boolean isSelected = chontatca.isSelected();
 
         hokhau.setSelected(isSelected);
-        khoanthu.setSelected(isSelected);
         nhankhau.setSelected(isSelected);
+        tamtru.setSelected(isSelected);
+        tamvang.setSelected(isSelected);
         phong.setSelected(isSelected);
+        khoanthu.setSelected(isSelected);
         thuphi.setSelected(isSelected);
         xe.setSelected(isSelected);
     }
@@ -77,31 +103,120 @@ public class BackupdataController implements Initializable {
     }
 
     @FXML
+    void tamtru_clicked(ActionEvent event) {
+        // nếu nút còn lại click false thì nút chọn tất cả false
+        if (!tamtru.isSelected()) {
+            chontatca.setSelected(false);
+        }
+    }
+
+    @FXML
+    void tamvang_clicked(ActionEvent event) {
+        // nếu nút còn lại click false thì nút chọn tất cả false
+        if (!tamvang.isSelected()) {
+            chontatca.setSelected(false);
+        }
+    }
+
+    @FXML
+    void phong_clicked(ActionEvent event) {
+        // nếu nút còn lại click false thì nút chọn tất cả false
+        if (!phong.isSelected()) {
+            chontatca.setSelected(false);
+        }
+    }
+
+    @FXML
+    void khoanthu_clicked(ActionEvent event) {
+        // nếu nút còn lại click false thì nút chọn tất cả false
+        if (!khoanthu.isSelected()) {
+            chontatca.setSelected(false);
+        }
+    }
+
+    @FXML
+    void thuphi_clicked(ActionEvent event) {
+        // nếu nút còn lại click false thì nút chọn tất cả false
+        if (!thuphi.isSelected()) {
+            chontatca.setSelected(false);
+        }
+    }
+
+    @FXML
+    void xe_clicked(ActionEvent event) {
+        // nếu nút còn lại click false thì nút chọn tất cả false
+        if (!xe.isSelected()) {
+            chontatca.setSelected(false);
+        }
+    }
+
+    @FXML
     void hokhau_pick_address(ActionEvent event) {
         // nếu click vào chọn địa chỉ
-        openFileChooser(hokhautf.getText());
+        openFileChooser(hokhautf);
     }
 
     @FXML
     void nhankhau_pick_address(ActionEvent event) {
         // nếu click vào chọn địa chỉ
-        openFileChooser(nhankhautf.getText());
+        openFileChooser(nhankhautf);
+    }
+
+    @FXML
+    void tamtru_pick_address(ActionEvent event) {
+        // nếu click vào chọn địa chỉ
+        openFileChooser(tamtrutf);
+    }
+
+    @FXML
+    void tamvang_pick_address(ActionEvent event) {
+        // nếu click vào chọn địa chỉ
+        openFileChooser(tamvangtf);
+    }
+
+    @FXML
+    void phong_pick_address(ActionEvent event) {
+        // nếu click vào chọn địa chỉ
+        openFileChooser(phongtf);
+    }
+
+    @FXML
+    void khoanthu_pick_address(ActionEvent event) {
+        // nếu click vào chọn địa chỉ
+        openFileChooser(khoanthutf);
+    }
+
+    @FXML
+    void thuphi_pick_address(ActionEvent event) {
+        // nếu click vào chọn địa chỉ
+        openFileChooser(thuphitf);
+    }
+
+    @FXML
+    void xe_pick_address(ActionEvent event) {
+        // nếu click vào chọn địa chỉ
+        openFileChooser(xetf);
     }
 
     public void confirmClicked(ActionEvent event) throws SQLException, ClassNotFoundException {
         // xuất file tương ứng với các nút đã được check
         if (hokhau.isSelected()) xuatfileexcel("hokhau", hokhautf.getText());
         if (nhankhau.isSelected()) xuatfileexcel("nhankhau", nhankhautf.getText());
+        if (tamtru.isSelected()) xuatfileexcel("tamtru", tamtrutf.getText());
+        if (tamvang.isSelected()) xuatfileexcel("tamvang", tamvangtf.getText());
+        if (phong.isSelected()) xuatfileexcel("phong", phongtf.getText());
+        if (khoanthu.isSelected()) xuatfileexcel("khoanthu", khoanthutf.getText());
+        if (thuphi.isSelected()) xuatfileexcel("thuphi", thuphitf.getText());
+        if (xe.isSelected()) xuatfileexcel("xe", xetf.getText());
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION, "Đã xuất file thành công!!!", ButtonType.OK);
         alert.setHeaderText(null);
         alert.showAndWait();
     }
 
-
-    private String openFileChooser(String filepath) {
+    private void openFileChooser(TextField tf) {
         // Lấy parendiretorey của file path này
-        File currentFile = new File(filepath);
+        File currentFile = new File(tf.getText());
         File parentDirectory = currentFile.getParentFile();
 
         // tạo một FileChooser
@@ -117,16 +232,13 @@ public class BackupdataController implements Initializable {
         // tạo FileChooser dialog
         Stage stage = new Stage();
         File selectedFile = fileChooser.showSaveDialog(stage);
-
-        // Check if a file was selected
-        if (selectedFile != null) {
-            return selectedFile.getAbsolutePath();
-        } else {
-            // User canceled the operation
-            return null;
+//        System.out.println(selectedFile.);
+        try {
+            tf.setText(selectedFile.getAbsolutePath());}
+        catch (Exception e) {
+            System.out.println("Nút đóng filechosser được bấm.");
         }
     }
-
 
     void setDefaultFileForTextField(String filename, TextField tf) {
         // set text cho tf tương ứng
@@ -152,8 +264,15 @@ public class BackupdataController implements Initializable {
     }
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
-
         addListener_auto_get_path(nhankhau, "nhankhau.xlsx", nhankhautf);
         addListener_auto_get_path(hokhau, "hokhau.xlsx", hokhautf);
+        addListener_auto_get_path(tamtru, "tamtru.xlsx", tamtrutf);
+        addListener_auto_get_path(tamvang, "tamvang.xlsx", tamvangtf);
+        addListener_auto_get_path(phong, "phong.xlsx", phongtf);
+        addListener_auto_get_path(khoanthu, "khoanthu.xlsx", khoanthutf);
+        addListener_auto_get_path(thuphi, "thuphi.xlsx", thuphitf);
+        addListener_auto_get_path(xe, "xe.xlsx", xetf);
+
     }
 }
+

@@ -314,6 +314,7 @@ public class AddNhanKhau_Lam implements Initializable {
 		String QHvsChuHo = tfQHvsChuHo.getValue();
 		String HoTen = tfHoTen.getText();
 		String NgaySinh = String.valueOf(tfNgaySinh.getValue());
+
 		String CCCD;
 		if(tfCCCD.getText() == null || tfIDHoKhau.getValue().isEmpty())
 			CCCD = "Chưa cung cấp";
