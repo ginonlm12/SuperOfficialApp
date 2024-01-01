@@ -8,7 +8,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import models.NhanKhauModel_Lam;
+import models.NhanKhauModel;
 import models.TamVangModel;
 import services.TamVangService;
 import services.XuLyLoiService;
@@ -18,7 +18,7 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 
 public class UpdateTamVang {
-    private static NhanKhauModel_Lam nhanKhauModel;
+    private static NhanKhauModel nhanKhauModel;
     private static TamVangModel tamVangModel;
     @FXML
     private Label textKhaibao;
@@ -36,7 +36,7 @@ public class UpdateTamVang {
     private TextArea tfLydo;
     private int IDNhanKhau;
 
-    public static NhanKhauModel_Lam getNhanKhauModel() {
+    public static NhanKhauModel getNhanKhauModel() {
         return nhanKhauModel;
     }
 

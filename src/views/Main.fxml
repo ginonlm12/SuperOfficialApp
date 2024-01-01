@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.chart.PieChart?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.chart.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
@@ -144,25 +144,45 @@
                <children>
                    <VBox prefHeight="191.0" prefWidth="375.0"
                          style="-fx-background-color: linear-gradient(to bottom right, #B4D4FF, #EEF5FF); -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 6,0,0,0); -fx-background-radius: 15;">
-                     <children>
-                         <Label contentDisplay="CENTER" prefHeight="33.0" prefWidth="237.0"
-                                text="Nhân khẩu theo độ tuổi" textAlignment="CENTER" textOverrun="CLIP">
-                           <font>
-                               <Font name="System Bold" size="14.0"/>
-                           </font>
-                           <VBox.margin>
-                               <Insets left="10.0" top="10.0"/>
-                           </VBox.margin>
-                        </Label>
-                         <PieChart fx:id="pieDoTuoi" labelLineLength="5.0" legendSide="RIGHT" prefHeight="111.0"
-                                   prefWidth="243.0"/>
-                     </children>
-                  </VBox>
+                       <children>
+                           <Label contentDisplay="CENTER" prefHeight="33.0" prefWidth="237.0"
+                                  text="Nhân khẩu theo độ tuổi" textAlignment="CENTER" textOverrun="CLIP">
+                               <font>
+                                   <Font name="System Bold" size="14.0"/>
+                               </font>
+                               <VBox.margin>
+                                   <Insets left="10.0" top="10.0"/>
+                               </VBox.margin>
+                           </Label>
+                           <PieChart fx:id="pieDoTuoi" labelLineLength="5.0" legendSide="RIGHT" prefHeight="111.0"
+                                     prefWidth="243.0"/>
+                       </children>
+                   </VBox>
                    <VBox prefHeight="160.0" prefWidth="368.0"
                          style="-fx-background-color: linear-gradient(to bottom right, #B4D4FF, #EEF5FF); -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 6,0,0,0); -fx-background-radius: 15;">
+                       <children>
+                           <Label contentDisplay="CENTER" prefHeight="33.0" prefWidth="251.0"
+                                  text="Nhân khẩu theo giới tính" textAlignment="CENTER" textOverrun="CLIP">
+                               <font>
+                                   <Font name="System Bold" size="14.0"/>
+                               </font>
+                               <VBox.margin>
+                                   <Insets left="10.0" top="10.0"/>
+                               </VBox.margin>
+                           </Label>
+                           <PieChart fx:id="pieGioiTinh" labelLineLength="5.0" legendSide="RIGHT" prefHeight="121.0"
+                                     prefWidth="368.0"/>
+                       </children>
+                   </VBox>
+               </children>
+            </HBox>
+             <HBox alignment="CENTER" prefHeight="147.0" prefWidth="767.0" spacing="20.0">
+                 <children>
+                     <VBox prefHeight="191.0" prefWidth="375.0"
+                           style="-fx-background-color: linear-gradient(to bottom right, #B4D4FF, #EEF5FF); -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 6,0,0,0); -fx-background-radius: 15;">
                      <children>
-                         <Label contentDisplay="CENTER" prefHeight="33.0" prefWidth="251.0"
-                                text="Nhân khẩu theo giới tính" textAlignment="CENTER" textOverrun="CLIP">
+                         <Label contentDisplay="CENTER" prefHeight="33.0" prefWidth="237.0"
+                                text="Tiền thu được trong năm" textAlignment="CENTER" textOverrun="CLIP">
                            <font>
                                <Font name="System Bold" size="14.0"/>
                            </font>
@@ -170,8 +190,29 @@
                                <Insets left="10.0" top="10.0"/>
                            </VBox.margin>
                         </Label>
-                         <PieChart fx:id="pieGioiTinh" labelLineLength="5.0" legendSide="RIGHT" prefHeight="121.0"
-                                   prefWidth="368.0"/>
+                         <BarChart fx:id="barTienthuduoc" legendSide="RIGHT" legendVisible="false"
+                                   style="-fx-background-color: transparent;">
+                             <xAxis>
+                                 <CategoryAxis side="BOTTOM"/>
+                             </xAxis>
+                             <yAxis>
+                                 <NumberAxis side="LEFT"/>
+                             </yAxis>
+                         </BarChart>
+                     </children>
+                  </VBox>
+                     <VBox prefHeight="160.0" prefWidth="368.0"
+                           style="-fx-background-color: linear-gradient(to bottom right, #B4D4FF, #EEF5FF); -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 6,0,0,0); -fx-background-radius: 15;">
+                     <children>
+                         <Label contentDisplay="CENTER" prefHeight="33.0" prefWidth="251.0" textAlignment="CENTER"
+                                textOverrun="CLIP">
+                           <font>
+                               <Font name="System Bold" size="14.0"/>
+                           </font>
+                           <VBox.margin>
+                               <Insets left="10.0" top="10.0"/>
+                           </VBox.margin>
+                        </Label>
                      </children>
                   </VBox>
                </children>

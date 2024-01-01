@@ -1,6 +1,7 @@
 package controller;
 
 import controller.tamtrutamvang.ShowTamTru;
+import javafx.animation.RotateTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -11,7 +12,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import models.TamTruModel;
 import services.TamTruService;
 
@@ -200,5 +204,28 @@ public class TamTruController implements Initializable {
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    @FXML
+    private ImageView reloadimg;
+
+    @FXML
+    void Reload(MouseEvent event) throws IOException, SQLException, ClassNotFoundException {
+        RotateTransition rotateTransition = new RotateTransition(Duration.seconds(0.5), reloadimg);
+
+        rotateTransition.setByAngle(720);
+        rotateTransition.setOnFinished(eventt -> {
+            try {
+                showTamTru();
+                cbChooseSearchTT.setValue("Họ Tên");
+                tfSearchTT.setText("");
+            } catch (ClassNotFoundException e) {
+                throw new RuntimeException(e);
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        });
+
+        rotateTransition.play();
     }
 }

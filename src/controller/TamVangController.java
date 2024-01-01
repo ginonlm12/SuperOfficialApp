@@ -1,6 +1,7 @@
 package controller;
 
 import controller.tamtrutamvang.UpdateTamVang;
+import javafx.animation.RotateTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -11,7 +12,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import models.TamVangModel;
 import services.TamVangService;
 
@@ -122,10 +126,7 @@ public class TamVangController implements Initializable {
     }
 
     @FXML
-    void addTamvang(ActionEvent event) throws IOException {
-        //        HomeController homeController = new HomeController();
-//        homeController.setNhanKhau(event);
-    }
+    private ImageView reloadimg;
 
     @FXML
     void updateTamvang(ActionEvent event) throws IOException, SQLException, ClassNotFoundException {
@@ -200,5 +201,32 @@ public class TamVangController implements Initializable {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
+    }
+
+    @FXML
+    void addTamvang(ActionEvent event) throws IOException {
+        Alert alert = new Alert(Alert.AlertType.WARNING, "Khai báo tạm vắng ở giao diện Hiện trú!", ButtonType.OK);
+        alert.setHeaderText(null);
+        alert.showAndWait();
+    }
+
+    @FXML
+    void Reload(MouseEvent event) throws IOException, SQLException, ClassNotFoundException {
+        RotateTransition rotateTransition = new RotateTransition(Duration.seconds(0.5), reloadimg);
+
+        rotateTransition.setByAngle(720);
+        rotateTransition.setOnFinished(eventt -> {
+            try {
+                showTamVang();
+                cbChooseSearchTV.setValue("Họ Tên");
+                tfSearchTV.setText("");
+            } catch (ClassNotFoundException e) {
+                throw new RuntimeException(e);
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        });
+
+        rotateTransition.play();
     }
 }

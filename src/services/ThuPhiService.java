@@ -1,11 +1,12 @@
 package services;
 
+import javafx.scene.chart.XYChart;
+import models.ThuPhiBean;
+import models.ThuPhiModel;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-
-import models.ThuPhiBean;
-import models.ThuPhiModel;
 
 public class ThuPhiService {
 	public static boolean add(ThuPhiModel ThuPhiModel) throws ClassNotFoundException, SQLException {
@@ -73,7 +74,7 @@ public class ThuPhiService {
 			ThuPhiBean thuPhiBean = new ThuPhiBean();
 			thuPhiBean.setThuPhiModel(thuPhiModel);
 			thuPhiBean.setTenKhoanThu(KhoanThuService.getKhoanThu(thuPhiModel.getIDKhoanThu()).getTenKT());
-			thuPhiBean.setTenChuHo(HoKhauService_Tuan.getTenChuHo(thuPhiModel.getIDHoKhau()));
+			thuPhiBean.setTenChuHo(HoKhauService.getTenChuHo(thuPhiModel.getIDHoKhau()));
 
 			list.add(thuPhiBean);
 		}
@@ -109,4 +110,29 @@ public class ThuPhiService {
 		connection.close();
 		return sum;
 	}
+
+	public static XYChart.Series<String, Number> PaymentSatistic() throws SQLException, ClassNotFoundException {
+		Connection connection = MysqlConnection.getMysqlConnection();
+		String query = "SELECT MONTH(tp.NgayDong) AS Thang, SUM(tp.TienDaDong) AS TongTien FROM thuphi tp INNER JOIN khoanthu kt ON tp.IDKhoanThu = kt.IDKhoanThu GROUP BY MONTH(tp.NgayDong) ORDER BY Thang";
+
+		PreparedStatement preparedStatement = connection.prepareStatement(query);
+		ResultSet resultSet = preparedStatement.executeQuery();
+
+		XYChart.Series<String, Number> series = new XYChart.Series<>();
+
+		for (int i = 1; i <= 12; i++) {
+			series.getData().add(new XYChart.Data<>(String.valueOf(i), 0));
+		}
+
+		while (resultSet.next()) {
+			int month = resultSet.getInt("Thang");
+			String Smonth = String.valueOf(month);
+			int totalIncome = resultSet.getInt("TongTien");
+
+			series.getData().add(new XYChart.Data<>(Smonth, totalIncome));
+		}
+
+		return series;
+	}
+
 }
