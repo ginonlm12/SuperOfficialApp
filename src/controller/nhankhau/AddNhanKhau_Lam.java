@@ -313,7 +313,7 @@ public class AddNhanKhau_Lam implements Initializable {
 		int IDHoKhau = Integer.parseInt(NhanKhauService_Lam.extractIdHoKhau(tfIDHoKhau.getValue()));
 		String QHvsChuHo = tfQHvsChuHo.getValue();
 		String HoTen = tfHoTen.getText();
-		String NgaySinh = String.valueOf(tfNgaySinh.getValue());
+		String NgaySinh = tfNgaySinh.getValue().toString();
 		String CCCD;
 		if(tfCCCD.getText() == null || tfIDHoKhau.getValue().isEmpty())
 			CCCD = "Chưa cung cấp";

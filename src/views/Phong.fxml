@@ -1,37 +1,94 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="600.0" prefWidth="800.0" stylesheets="@../source/Main.css"
-            xmlns="http://javafx.com/javafx/21" fx:controller="controller.PhongController">
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" styleClass="background" stylesheets="@../source/nhankhau_va_hokhau.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PhongController">
     <children>
-        <TableView fx:id="tvPhong" layoutX="12.0" layoutY="99.0" prefHeight="500.0" prefWidth="625.0"
-                   AnchorPane.bottomAnchor="14.333333333333258" AnchorPane.leftAnchor="12.0"
-                   AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="99.0">
+        <TableView fx:id="tvPhong" layoutX="32.0" layoutY="135.0" prefHeight="426.0" prefWidth="542.0" AnchorPane.bottomAnchor="39.0" AnchorPane.leftAnchor="32.0" AnchorPane.rightAnchor="226.0" AnchorPane.topAnchor="135.0">
             <columns>
-                <TableColumn fx:id="colSoPhong" prefWidth="123.3333410024643" text="Số phòng"/>
-                <TableColumn fx:id="colDienTich" prefWidth="194.66670989990234" text="Diện tích"/>
-                <TableColumn fx:id="colLoaiPhong" prefWidth="192.666748046875" text="Loại phòng"/>
-                <TableColumn fx:id="colTrangThai" prefWidth="262.0" text="Trạng thái"/>
+                <TableColumn fx:id="colSoPhong" prefWidth="75.20001220703125" text="Số phòng" />
+                <TableColumn fx:id="colDienTich" prefWidth="121.60003662109375" text="Diện tích" />
+                <TableColumn fx:id="colLoaiPhong" prefWidth="141.60003662109375" text="Loại phòng" />
+                <TableColumn fx:id="colTrangThai" prefWidth="200.00002441406252" text="Trạng thái" />
             </columns>
         </TableView>
-        <TextField fx:id="tfSearch" layoutX="7.0" layoutY="49.0" prefHeight="40.0" prefWidth="310.0"
-                   AnchorPane.bottomAnchor="510.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="300.0"
-                   AnchorPane.topAnchor="50.0"/>
-        <ComboBox fx:id="cbChooseSearch" layoutX="343.3333333333333" layoutY="49.0" prefHeight="40.0" prefWidth="181.0"
-                  AnchorPane.bottomAnchor="510.0" AnchorPane.leftAnchor="343.0" AnchorPane.rightAnchor="125.0"
-                  AnchorPane.topAnchor="50.0"/>
-        <Button layoutX="507.3333333333333" layoutY="50.0" mnemonicParsing="false" onAction="#searchPhong"
-                prefHeight="40.0" prefWidth="129.0" text="Tìm kiếm" AnchorPane.bottomAnchor="510.0"
-                AnchorPane.leftAnchor="507.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="50.0"/>
-        <Button layoutX="100.0" layoutY="9.0" mnemonicParsing="false" onAction="#addPhong" prefHeight="33.0"
-                prefWidth="150.0" styleClass="button1" stylesheets="@../source/Main.css" text="Thêm phòng"
-                textFill="#2e088d" wrapText="true"/>
-        <Button layoutX="250.0" layoutY="8.0" mnemonicParsing="false" onAction="#delPhong" prefHeight="36.0"
-                prefWidth="150.0" styleClass="button1" stylesheets="@../source/Main.css" text="Xóa phòng"
-                textFill="#2e088d" wrapText="true"/>
-        <Button layoutX="400.0" layoutY="10.0" mnemonicParsing="false" onAction="#updatePhong" prefHeight="33.0"
-                prefWidth="150.0" styleClass="button1" stylesheets="@../source/Main.css" text="Cập nhật phòng"
-                textFill="#2e088d" wrapText="true"/>
+        <TextField fx:id="tfSearch" layoutX="7.0" layoutY="49.0" prefHeight="40.0" prefWidth="310.0" AnchorPane.bottomAnchor="510.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="300.0" AnchorPane.topAnchor="50.0" />
+        <ComboBox fx:id="cbChooseSearch" layoutX="343.3333333333333" layoutY="49.0" prefHeight="40.0" prefWidth="181.0" styleClass="btntimkiem" stylesheets="@../source/nhankhau_va_hokhau.css" AnchorPane.bottomAnchor="510.0" AnchorPane.leftAnchor="343.0" AnchorPane.rightAnchor="125.0" AnchorPane.topAnchor="50.0" />
+        <Button layoutX="507.3333333333333" layoutY="50.0" mnemonicParsing="false" onAction="#searchPhong" prefHeight="40.0" prefWidth="129.0" styleClass="btntimkiem" stylesheets="@../source/nhankhau_va_hokhau.css" text="Tìm kiếm" AnchorPane.bottomAnchor="510.0" AnchorPane.leftAnchor="507.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="50.0" />
+        <Button layoutX="176.0" layoutY="8.0" mnemonicParsing="false" onAction="#addPhong" prefHeight="33.0" prefWidth="150.0" styleClass="buttonChucnang" stylesheets="@../source/nhankhau_va_hokhau.css" text="Thêm phòng" textFill="#2e088d" wrapText="true" />
+        <Button layoutX="325.0" layoutY="8.0" mnemonicParsing="false" onAction="#delPhong" prefHeight="36.0" prefWidth="150.0" styleClass="buttonChucnang" stylesheets="@../source/nhankhau_va_hokhau.css" text="Xóa phòng" textFill="#2e088d" wrapText="true" />
+        <Button layoutX="474.0" layoutY="8.0" mnemonicParsing="false" onAction="#updatePhong" prefHeight="33.0" prefWidth="150.0" styleClass="buttonChucnang" stylesheets="@../source/nhankhau_va_hokhau.css" text="Cập nhật phòng" textFill="#2e088d" wrapText="true" />
+      <VBox layoutX="624.0" layoutY="129.0" prefHeight="438.0" prefWidth="128.0" spacing="10.0">
+         <children>
+            <Pane prefHeight="136.0" prefWidth="168.0" styleClass="box-dashboard" stylesheets="@../source/Home.css">
+               <children>
+                  <ImageView fitHeight="70.0" fitWidth="77.0" layoutX="29.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../source/icons8-luxury-96.png" />
+                     </image>
+                  </ImageView>
+                  <Label alignment="CENTER" layoutX="2.0" layoutY="65.0" prefHeight="30.0" prefWidth="128.0" text="Cao Cấp">
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lbSoCC" alignment="CENTER" layoutX="4.0" layoutY="95.0" prefHeight="30.0" prefWidth="121.0" text="số p1">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane prefHeight="136.0" prefWidth="168.0" styleClass="box-dashboard" stylesheets="@../source/Home.css">
+               <children>
+                  <ImageView fitHeight="70.0" fitWidth="93.0" layoutX="29.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../source/icons8-house-96.png" />
+                     </image>
+                  </ImageView>
+                  <Label alignment="CENTER" layoutX="2.0" layoutY="68.0" prefHeight="30.0" prefWidth="128.0" text="Thường">
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lbSoThg" alignment="CENTER" layoutX="4.0" layoutY="98.0" prefHeight="30.0" prefWidth="121.0" text="số p2">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane prefHeight="136.0" prefWidth="168.0" styleClass="box-dashboard" stylesheets="@../source/Home.css">
+               <children>
+                  <ImageView fitHeight="70.0" fitWidth="93.0" layoutX="29.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../source/icons8-phong_thuong-64.png" />
+                     </image>
+                  </ImageView>
+                  <Label alignment="CENTER" layoutX="2.0" layoutY="68.0" prefHeight="30.0" prefWidth="122.0" text="Giá rẻ">
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lbSoRe" alignment="CENTER" layoutX="4.0" layoutY="98.0" prefHeight="30.0" prefWidth="121.0" text="số p3">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+         </children>
+      </VBox>
     </children>
 </AnchorPane>

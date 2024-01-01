@@ -1,132 +1,85 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.String?>
-<?import java.net.URL?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
-
-<AnchorPane prefHeight="600.0" prefWidth="800.0" styleClass="text-field-rounded" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.nhankhau.ShowChiTiet_Lam">
+<?import javafx.scene.text.*?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="400.0" prefWidth="690.0" styleClass="background"
+            stylesheets="@../../source/usecase.css" xmlns="http://javafx.com/javafx/21"
+            fx:controller="controller.nhankhau.ShowChiTiet_Lam">
    <children>
-      <Label layoutX="552.0" layoutY="73.0" text="ID">
+       <Label layoutX="473.0" layoutY="49.0" text="ID">
          <font>
             <Font size="20.0" />
          </font></Label>
-      <Label layoutX="100.0" layoutY="73.0" text="Tên nhân khẩu">
+       <Label layoutX="21.0" layoutY="49.0" text="Tên nhân khẩu">
          <font>
             <Font size="20.0" />
          </font></Label>
-      <Label layoutX="102.0" layoutY="189.0" text="Ngày sinh">
+       <Label layoutX="23.0" layoutY="143.0" text="Ngày sinh">
          <font>
             <Font size="20.0" />
          </font></Label>
-      <Label layoutX="103.0" layoutY="130.0" text="Số CCCD">
+       <Label layoutX="24.0" layoutY="95.0" text="Số CCCD">
          <font>
             <Font size="20.0" />
          </font></Label>
-      <Label layoutX="102.0" layoutY="345.0" prefHeight="100.0" prefWidth="101.0" text="Quan hệ với chủ hộ" textAlignment="CENTER" wrapText="true">
+       <Label layoutX="18.0" layoutY="260.0" prefHeight="100.0" prefWidth="101.0" text="Quan hệ với chủ hộ"
+              textAlignment="CENTER" wrapText="true">
          <font>
-            <Font size="20.0" />
+             <Font size="15.0"/>
          </font></Label>
-      <Label layoutX="307.0" layoutY="14.0" text="XEM CHI TIẾT NHÂN KHẨU">
+       <Label layoutX="217.0" layoutY="6.0" text="XEM CHI TIẾT NHÂN KHẨU">
          <font>
             <Font name="System Bold Italic" size="20.0" />
          </font></Label>
-      <Label layoutX="552.0" layoutY="130.0" text="Giới tính">
+       <Label layoutX="473.0" layoutY="95.0" text="Giới tính">
          <font>
             <Font size="20.0" />
          </font></Label>
-      <Label layoutX="100.0" layoutY="305.0" text="Nghề nghiệp">
+       <Label layoutX="24.0" layoutY="244.0" text="Nghề nghiệp">
          <font>
             <Font size="20.0" />
          </font></Label>
-      <Label layoutX="100.0" layoutY="246.0" text="ID Hộ Khẩu">
+       <Label layoutX="24.0" layoutY="193.0" text="ID Hộ Khẩu">
          <font>
             <Font size="20.0" />
          </font></Label>
-      <Label layoutX="552.0" layoutY="178.0" prefHeight="53.0" prefWidth="69.0" text="Dân tộc" textAlignment="CENTER" wrapText="true">
+       <Label layoutX="473.0" layoutY="132.0" prefHeight="53.0" prefWidth="69.0" text="Dân tộc" textAlignment="CENTER"
+              wrapText="true">
          <font>
             <Font size="20.0" />
          </font></Label>
-      <Label layoutX="104.0" layoutY="443.0" text="Quê quán">
+       <Label layoutX="25.0" layoutY="347.0" text="Quê quán">
          <font>
             <Font size="20.0" />
          </font></Label>
-      <TextField fx:id="tfCCCD1" editable="false" layoutX="238.0" layoutY="125.0" prefHeight="39.0" prefWidth="306.0" stylesheets="@../../source/Main.css">
-         <styleClass>
-            <String fx:value="text-field-transparent" />
-            <String fx:value="text-field-rounded" />
-         </styleClass>
-      </TextField>
-      <TextField fx:id="tfNgaySinh1" editable="false" layoutX="238.0" layoutY="184.0" prefHeight="39.0" prefWidth="306.0" stylesheets="@../../source/Main.css">
-         <styleClass>
-            <String fx:value="text-field-transparent" />
-            <String fx:value="text-field-rounded" />
-         </styleClass>
-      </TextField>
-      <TextField fx:id="tfNgheNghiep1" editable="false" layoutX="236.0" layoutY="300.0" prefHeight="39.0" prefWidth="306.0" stylesheets="@../../source/Main.css">
-         <styleClass>
-            <String fx:value="text-field-transparent" />
-            <String fx:value="text-field-rounded" />
-         </styleClass>
-      </TextField>
-      <TextField fx:id="tfIDHoKhau1" editable="false" layoutX="235.0" layoutY="241.0" prefHeight="39.0" prefWidth="306.0" stylesheets="@../../source/Main.css">
-         <styleClass>
-            <String fx:value="text-field-transparent" />
-            <String fx:value="text-field-rounded" />
-         </styleClass>
-      </TextField>
-      <TextField fx:id="tfQHvsChuHo1" editable="false" layoutX="238.0" layoutY="375.0" prefHeight="39.0" prefWidth="306.0" stylesheets="@../../source/Main.css">
-         <styleClass>
-            <String fx:value="text-field-transparent" />
-            <String fx:value="text-field-rounded" />
-         </styleClass>
-      </TextField>
-      <TextField fx:id="tfQueQuan1" editable="false" layoutX="238.0" layoutY="438.0" prefHeight="39.0" prefWidth="306.0" stylesheets="@../../source/Main.css">
-         <styleClass>
-            <String fx:value="text-field-transparent" />
-            <String fx:value="text-field-rounded" />
-         </styleClass>
-      </TextField>
-      <TextField fx:id="tfIDNhanKhau1" editable="false" layoutX="641.0" layoutY="68.0" prefHeight="39.0" prefWidth="101.0" stylesheets="@../../source/Main.css">
-         <styleClass>
-            <String fx:value="text-field-transparent" />
-            <String fx:value="text-field-rounded" />
-         </styleClass>
-      </TextField>
-      <TextField fx:id="tfGioiTinh1" editable="false" layoutX="641.0" layoutY="125.0" prefHeight="39.0" prefWidth="101.0" stylesheets="@../../source/Main.css">
-         <styleClass>
-            <String fx:value="text-field-transparent" />
-            <String fx:value="text-field-rounded" />
-         </styleClass>
-      </TextField>
-      <TextField fx:id="tfHoTen1" editable="false" layoutX="238.0" layoutY="68.0" prefHeight="39.0" prefWidth="306.0" stylesheets="@../../source/Main.css">
-         <styleClass>
-            <String fx:value="text-field-transparent" />
-            <String fx:value="text-field-rounded" />
-         </styleClass>
-      </TextField>
-      <TextField fx:id="tfDanToc1" editable="false" layoutX="641.0" layoutY="184.0" prefHeight="39.0" prefWidth="101.0" stylesheets="@../../source/Main.css">
-         <styleClass>
-            <String fx:value="text-field-transparent" />
-            <String fx:value="text-field-rounded" />
-         </styleClass>
-      </TextField>
-      <TextField fx:id="tfSoPhong" editable="false" layoutX="641.0" layoutY="241.0" prefHeight="39.0" prefWidth="101.0" stylesheets="@../../source/Main.css">
-         <styleClass>
-            <String fx:value="text-field-transparent" />
-            <String fx:value="text-field-rounded" />
-         </styleClass>
-      </TextField>
-      <Label layoutX="552.0" layoutY="234.0" prefHeight="53.0" prefWidth="69.0" text="Phòng" textAlignment="CENTER" wrapText="true">
+       <TextField fx:id="tfCCCD1" editable="false" layoutX="159.0" layoutY="90.0" prefHeight="39.0" prefWidth="306.0"
+                  styleClass="text-field-rounded" stylesheets="@../../source/usecase.css"/>
+       <TextField fx:id="tfNgaySinh1" editable="false" layoutX="159.0" layoutY="138.0" prefHeight="39.0"
+                  prefWidth="306.0" styleClass="text-field-rounded" stylesheets="@../../source/usecase.css"/>
+       <TextField fx:id="tfNgheNghiep1" editable="false" layoutX="160.0" layoutY="239.0" prefHeight="39.0"
+                  prefWidth="504.0" styleClass="text-field-rounded" stylesheets="@../../source/usecase.css"/>
+       <TextField fx:id="tfIDHoKhau1" editable="false" layoutX="159.0" layoutY="188.0" prefHeight="39.0"
+                  prefWidth="306.0" styleClass="text-field-rounded" stylesheets="@../../source/usecase.css"/>
+       <TextField fx:id="tfQHvsChuHo1" editable="false" layoutX="160.0" layoutY="290.0" prefHeight="39.0"
+                  prefWidth="504.0" styleClass="text-field-rounded" stylesheets="@../../source/usecase.css"/>
+       <TextField fx:id="tfQueQuan1" editable="false" layoutX="159.0" layoutY="342.0" prefHeight="39.0"
+                  prefWidth="504.0" styleClass="text-field-rounded" stylesheets="@../../source/usecase.css"/>
+       <TextField fx:id="tfIDNhanKhau1" editable="false" layoutX="562.0" layoutY="44.0" prefHeight="39.0"
+                  prefWidth="101.0" styleClass="text-field-rounded" stylesheets="@../../source/usecase.css"/>
+       <TextField fx:id="tfGioiTinh1" editable="false" layoutX="562.0" layoutY="90.0" prefHeight="39.0"
+                  prefWidth="101.0" styleClass="text-field-rounded" stylesheets="@../../source/usecase.css"/>
+       <TextField fx:id="tfHoTen1" editable="false" layoutX="159.0" layoutY="44.0" prefHeight="39.0" prefWidth="306.0"
+                  styleClass="text-field-rounded" stylesheets="@../../source/usecase.css"/>
+       <TextField fx:id="tfDanToc1" editable="false" layoutX="562.0" layoutY="138.0" prefHeight="39.0" prefWidth="101.0"
+                  styleClass="text-field-rounded" stylesheets="@../../source/usecase.css"/>
+       <TextField fx:id="tfSoPhong" editable="false" layoutX="565.0" layoutY="188.0" prefHeight="39.0" prefWidth="101.0"
+                  styleClass="text-field-rounded" stylesheets="@../../source/usecase.css"/>
+       <Label layoutX="476.0" layoutY="181.0" prefHeight="53.0" prefWidth="69.0" text="Phòng" textAlignment="CENTER"
+              wrapText="true">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
    </children>
-   <stylesheets>
-      <URL value="@../../source/change.css" />
-      <URL value="@../../source/Main.css" />
-   </stylesheets>
 </AnchorPane>

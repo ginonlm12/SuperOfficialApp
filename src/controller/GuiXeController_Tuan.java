@@ -35,8 +35,6 @@ public class GuiXeController_Tuan implements Initializable {
     @FXML
     private TableColumn<XeModel_Tuan, Integer> colXeMay;
 
-    @FXML
-    private TableColumn<XeModel_Tuan, Integer> colTotal;
 
     @FXML
     private TableColumn<XeModel_Tuan, String> colChuHo;
@@ -50,6 +48,15 @@ public class GuiXeController_Tuan implements Initializable {
     @FXML
     private Label noti;
 
+    // thong ke
+    @FXML
+    private Label lbSoXeDap;
+
+    @FXML
+    private Label lbSoXeMay;
+
+    @FXML
+    private Label lbSoOto;
     ObservableList<XeModel_Tuan> listValueTableView;
     private List<XeModel_Tuan>  listXe = null;
 
@@ -58,7 +65,7 @@ public class GuiXeController_Tuan implements Initializable {
 
     public void initialize(URL arg0, ResourceBundle arg1) {
         try {
-            showTableXe();
+            showTableXe_and_statistic();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } catch (ClassNotFoundException e) {
@@ -66,18 +73,34 @@ public class GuiXeController_Tuan implements Initializable {
         }
     }
 
-    public void showTableXe() throws SQLException, ClassNotFoundException {
+    public void showTableXe_and_statistic() throws SQLException, ClassNotFoundException {
         listXe = XeService_Tuan.getAllXe();
         listValueTableView = FXCollections.observableArrayList(listXe);
         colMaHoKhau.setCellValueFactory(new PropertyValueFactory<XeModel_Tuan, Integer>("IDHoKhau"));
         colOTo.setCellValueFactory(new PropertyValueFactory<XeModel_Tuan, Integer>("OTo"));
         colXeDap.setCellValueFactory(new PropertyValueFactory<XeModel_Tuan, Integer>("XeDap"));
         colXeMay.setCellValueFactory(new PropertyValueFactory<XeModel_Tuan, Integer>("XeMay"));
-        colTotal.setCellValueFactory(new PropertyValueFactory<XeModel_Tuan, Integer>("TongSoXe"));
+
         colChuHo.setCellValueFactory(new PropertyValueFactory<XeModel_Tuan, String>("ChuHo"));
 
         tbGuiXe.setItems(listValueTableView);
+
+        // thong ke
+        int soXeDap = 0;
+        int soXeMay = 0;
+        int soOto = 0;
+        for (XeModel_Tuan xe : listXe) {
+            soXeDap += xe.getXeDap();
+            soXeMay += xe.getXeMay();
+            soOto += xe.getOTo();
+        }
+        lbSoXeDap.setText(String.valueOf(soXeDap));
+        lbSoXeMay.setText(String.valueOf(soXeMay));
+        lbSoOto.setText(String.valueOf(soOto));
     }
+
+
+    public
     @FXML
     void CapNhatSoXe(ActionEvent event) throws IOException, SQLException, ClassNotFoundException {
         XeModel_Tuan xe = tbGuiXe.getSelectionModel().getSelectedItem();
@@ -99,7 +122,7 @@ public class GuiXeController_Tuan implements Initializable {
             stg.showAndWait();
         }
 
-        showTableXe();
+        showTableXe_and_statistic();
     }
 
     @FXML
@@ -107,11 +130,15 @@ public class GuiXeController_Tuan implements Initializable {
         ObservableList<XeModel_Tuan> listSearch = FXCollections.observableArrayList();
         String id = tfSearch.getText();
         if(id.equals("")){
-            showTableXe();
+            noti.setText("");
+            tfSearch.setStyle("");
+            showTableXe_and_statistic();
         }
         else{
             for (XeModel_Tuan xe : listXe) {
                 if (String.valueOf(xe.getIDHoKhau()).equals(id)) {
+                    noti.setText("");
+                    tfSearch.setStyle("");
                     listSearch.add(xe);
                 }
             }

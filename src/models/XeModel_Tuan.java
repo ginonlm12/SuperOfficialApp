@@ -5,9 +5,6 @@ public class XeModel_Tuan {
     private int OTo;
     private int XeDap;
     private int XeMay;
-
-    private int TongSoXe;
-
     private String ChuHo;
     public XeModel_Tuan() {
     }
@@ -19,12 +16,11 @@ public class XeModel_Tuan {
         XeMay = xeMay;
     }
 
-    public XeModel_Tuan(int IDHoKhau, int OTo, int xeDap, int xeMay, int tongSoXe, String chuHo) {
+    public XeModel_Tuan(int IDHoKhau, int OTo, int xeDap, int xeMay, String chuHo) {
         this.IDHoKhau = IDHoKhau;
         this.OTo = OTo;
         XeDap = xeDap;
         XeMay = xeMay;
-        TongSoXe = tongSoXe;
         ChuHo = chuHo;
     }
 
@@ -60,9 +56,6 @@ public class XeModel_Tuan {
         XeMay = xeMay;
     }
 
-    public int getTongSoXe() {
-        return TongSoXe;
-    }
 
     public String getChuHo() {
         return ChuHo;

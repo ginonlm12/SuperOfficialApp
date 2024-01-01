@@ -201,7 +201,7 @@ public class NhanKhauController_Lam implements Initializable {
 	public void addNhanKhau(ActionEvent event) throws IOException, ClassNotFoundException, SQLException {
 		Parent home = FXMLLoader.load(getClass().getResource("/views/nhankhau/AddNhanKhau_Lam.fxml"));
 		Stage stage = new Stage();
-		stage.setScene(new Scene(home, 800, 600));
+		stage.setScene(new Scene(home, 670, 570));
 		stage.setResizable(false);
 		stage.showAndWait();
 		showNhanKhau();
@@ -248,7 +248,7 @@ public class NhanKhauController_Lam implements Initializable {
 		loader.setLocation(getClass().getResource("/views/nhankhau/UpdateNhanKhau_Lam.fxml"));
 		Parent home = loader.load();
 		Stage stage = new Stage();
-		stage.setScene(new Scene(home, 800, 600));
+		stage.setScene(new Scene(home, 670, 600));
 		UpdateNhanKhau_Lam updateNhanKhau = loader.getController();
 
 		// bat loi truong hop khong hop le
@@ -283,7 +283,7 @@ public class NhanKhauController_Lam implements Initializable {
 		loader.setLocation(getClass().getResource("/views/nhankhau/ShowChiTiet_Lam.fxml"));
 		Parent home = loader.load();
 		Stage stage = new Stage();
-		stage.setScene(new Scene(home, 800, 600));
+		stage.setScene(new Scene(home, 690, 400));
 		ShowChiTiet_Lam showChiTiet = loader.getController();
 
 		// bat loi truong hop khong hop le

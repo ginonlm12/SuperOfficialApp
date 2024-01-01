@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="lib2">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/../../../../../Program File 2/javafx-sdk-21.0.1/lib" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+    <jarDirectory url="file://$PROJECT_DIR$/../../../../../Program File 2/javafx-sdk-21.0.1/lib" recursive="false" />
+  </library>
+</component>

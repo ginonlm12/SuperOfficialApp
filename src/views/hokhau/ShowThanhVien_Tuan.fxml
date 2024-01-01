@@ -4,15 +4,16 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 <Pane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-      prefHeight="400.0" prefWidth="600.0" styleClass="pane" xmlns="http://javafx.com/javafx/21"
-      fx:controller="controller.hokhau.ShowThanhVien_Tuan">
+      prefHeight="400.0" prefWidth="600.0" styleClass="subpane" stylesheets="@../../source/usecase.css"
+      xmlns="http://javafx.com/javafx/21" fx:controller="controller.hokhau.ShowThanhVien_Tuan">
     <children>
-        <Label fx:id="lbTitle" layoutX="170.0" layoutY="25.0" text="Các thành viên của hộ khẩu">
+        <Label fx:id="lbTitle" alignment="CENTER" layoutX="143.0" layoutY="25.0" text="CÁC THÀNH VIÊN CỦA HỘ KHẨU">
             <font>
-                <Font name="System Bold Italic" size="20.0"/>
+                <Font name="System Bold" size="20.0"/>
             </font>
         </Label>
-        <TableView fx:id="tvHoKhau" layoutX="4.0" layoutY="102.0" prefHeight="273.0" prefWidth="592.0">
+        <TableView fx:id="tvHoKhau" layoutX="13.0" layoutY="102.0" prefHeight="273.0" prefWidth="578.0"
+                   stylesheets="@../../source/Home.css">
             <columns>
                 <TableColumn fx:id="colIDThanhVien" prefWidth="122.40002286434174" text="ID "/>
                 <TableColumn fx:id="colTenThanhVien" prefWidth="251.19995880126953" text="Tên thành viên"/>
@@ -20,7 +21,8 @@
                              text="Quan hệ với chủ hộ"/>
             </columns>
         </TableView>
-        <Button layoutX="462.0" layoutY="67.0" mnemonicParsing="false" onAction="#XemThongTin" styleClass="button5"
-                stylesheets="@../../source/Main.css" text="Xem thông tin"/>
+        <Button layoutX="469.0" layoutY="64.0" mnemonicParsing="false" onAction="#XemThongTin" prefHeight="25.0"
+                prefWidth="117.0" styleClass="buttonChucnang" stylesheets="@../../source/Main.css"
+                text="Xem thông tin"/>
     </children>
 </Pane>
