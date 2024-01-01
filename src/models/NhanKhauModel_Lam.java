@@ -11,8 +11,8 @@ public class NhanKhauModel_Lam {
 	private String GioiTinh = "(Chưa nhập)";
 	private String DanToc = "(Chưa nhập)";
 	private String QueQuan = "(Chưa nhập)";
-
 	private int SoPhong;
+	
 	public int getSoPhong() {
 		return SoPhong;
 	}
