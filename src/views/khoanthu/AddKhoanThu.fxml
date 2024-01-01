@@ -29,8 +29,8 @@
       <DatePicker fx:id="dpNgayKetThuc" layoutX="260.0" layoutY="244.0" prefHeight="39.0" prefWidth="354.0" promptText="MM/DD/YYYY" />
       <ComboBox fx:id="cbLoaiKhoanThu" layoutX="261.0" layoutY="300.0" onAction="#ChonKhoanThu" prefHeight="39.0" prefWidth="150.0" />
       <Label layoutX="139.0" layoutY="311.0" text="Loại khoản thu" />
-      <TextField fx:id="tfThanhPhan1" layoutX="261.0" layoutY="359.0" prefHeight="39.0" prefWidth="240.0" promptText="Thành phần số 1" />
-      <TextField fx:id="tfThanhPhan2" layoutX="261.0" layoutY="407.0" prefHeight="39.0" prefWidth="240.0" promptText="Thành phần số 2" />
-      <TextField fx:id="tfThanhPhan3" layoutX="261.0" layoutY="455.0" prefHeight="39.0" prefWidth="240.0" promptText="Thành phần số 3" />
+      <TextField fx:id="tfThanhPhan1" editable="false" layoutX="261.0" layoutY="359.0" prefHeight="39.0" prefWidth="240.0" promptText="Thành phần số 1" />
+      <TextField fx:id="tfThanhPhan2" editable="false" layoutX="261.0" layoutY="407.0" prefHeight="39.0" prefWidth="240.0" promptText="Thành phần số 2" />
+      <TextField fx:id="tfThanhPhan3" editable="false" layoutX="261.0" layoutY="455.0" prefHeight="39.0" prefWidth="240.0" promptText="Thành phần số 3" />
    </children>
 </AnchorPane>
