@@ -392,4 +392,31 @@ public class NhanKhauService_Lam {
         connection.close();
         return list;
     }
+
+    public static List<NhanKhauModel_Lam> getListChuHoChuaDongDu(int IDKhoanThu) throws ClassNotFoundException, SQLException {
+        List<NhanKhauModel_Lam> list = new ArrayList<>();
+
+        Connection connection = MysqlConnection.getMysqlConnection();
+        String query = "SELECT * FROM nhankhau WHERE QHvsChuHo = 'Chủ hộ' AND IDHoKhau NOT IN (SELECT IDHoKhau FROM thuphi WHERE IDKhoanThu = ? AND TienDaDong >= SoTienPhaiDong)";
+        PreparedStatement preparedStatement = connection.prepareStatement(query);
+        preparedStatement.setInt(1, IDKhoanThu);
+        ResultSet rs = preparedStatement.executeQuery();
+        while (rs.next()) {
+            NhanKhauModel_Lam nhanKhauModel = new NhanKhauModel_Lam();
+            nhanKhauModel.setIDNhanKhau(rs.getInt("IDNhanKhau"));
+            nhanKhauModel.setIDHoKhau(rs.getInt("IDHoKhau"));
+            nhanKhauModel.setQHvsChuHo(rs.getString("QHvsChuHo"));
+            nhanKhauModel.setHoTen(rs.getString("HoTen"));
+            nhanKhauModel.setNgaySinh(rs.getString("NgaySinh"));
+            nhanKhauModel.setCCCD(rs.getString("CCCD"));
+            nhanKhauModel.setNgheNghiep(rs.getString("NgheNghiep"));
+            nhanKhauModel.setGioiTinh(rs.getString("GioiTinh"));
+            nhanKhauModel.setDanToc(rs.getString("DanToc"));
+            nhanKhauModel.setQueQuan(rs.getString("QueQuan"));
+            list.add(nhanKhauModel);
+        }
+        preparedStatement.close();
+        connection.close();
+        return list;
+    }
 }

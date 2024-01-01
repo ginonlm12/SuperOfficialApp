@@ -25,7 +25,7 @@ public class ThuPhiService {
 		return true;
 	}
 
-	public boolean del(ThuPhiModel thuPhiModel) throws ClassNotFoundException, SQLException {
+	public static boolean del(ThuPhiModel thuPhiModel) throws ClassNotFoundException, SQLException {
 		Connection connection = MysqlConnection.getMysqlConnection();
 		String query = "DELETE FROM thuphi WHERE IDKhoanThu = ? AND IDHoKhau = ?";
 		PreparedStatement preparedStatement = connection.prepareStatement(query);
@@ -39,7 +39,7 @@ public class ThuPhiService {
 	}
 
 	// modify the update method to match the thuphi table
-	public boolean update(ThuPhiModel ThuPhiModel) throws ClassNotFoundException, SQLException {
+	public static boolean update(ThuPhiModel ThuPhiModel) throws ClassNotFoundException, SQLException {
 		Connection connection = MysqlConnection.getMysqlConnection();
 		PreparedStatement preparedStatement;
 
@@ -56,7 +56,7 @@ public class ThuPhiService {
 		return true;
 	}
 
-	public List<ThuPhiBean> getListThuPhi() throws ClassNotFoundException, SQLException {
+	public static List<ThuPhiBean> getListThuPhi() throws ClassNotFoundException, SQLException {
 		List<ThuPhiBean> list = new ArrayList<>();
 
 		Connection connection = MysqlConnection.getMysqlConnection();
@@ -80,5 +80,33 @@ public class ThuPhiService {
 		preparedStatement.close();
 		connection.close();
 		return list;
+	}
+	public static int getSoHoDaThu(int IDKhoanThu) throws ClassNotFoundException, SQLException {
+		Connection connection = MysqlConnection.getMysqlConnection();
+		String query = "SELECT COUNT(*) FROM thuphi WHERE IDKhoanThu = ? AND TienDaDong >= SoTienPhaiDong";
+		PreparedStatement preparedStatement = connection.prepareStatement(query);
+		preparedStatement.setInt(1, IDKhoanThu);
+		ResultSet rs = preparedStatement.executeQuery();
+		rs.next();
+		int count = rs.getInt(1);
+		preparedStatement.close();
+		connection.close();
+		// System.out.println(IDKhoanThu);
+		// System.out.println(count);
+		// System.out.println("\n");
+		return count;
+	}
+
+	public static Double getTongSoTien(int IDKhoanThu) throws ClassNotFoundException, SQLException {
+		Connection connection = MysqlConnection.getMysqlConnection();
+		String query = "SELECT SUM(TienDaDong) FROM thuphi WHERE IDKhoanThu = ?";
+		PreparedStatement preparedStatement = connection.prepareStatement(query);
+		preparedStatement.setInt(1, IDKhoanThu);
+		ResultSet rs = preparedStatement.executeQuery();
+		rs.next();
+		Double sum = rs.getDouble(1);
+		preparedStatement.close();
+		connection.close();
+		return sum;
 	}
 }

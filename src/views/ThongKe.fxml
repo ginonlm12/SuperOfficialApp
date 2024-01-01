@@ -1,19 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import java.lang.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="600.0" prefWidth="625.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ThongKeController">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ThongKeController">
    <children>
       <TableView fx:id="tvThongKe" layoutX="13.0" layoutY="178.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="100.0">
         <columns>
-            <TableColumn fx:id="colTenPhi" prefWidth="280.0" text="Tên phí" />
-            <TableColumn fx:id="colTongSoTien" prefWidth="324.0" text="Tổng số tiền " />
+            <TableColumn fx:id="colIDKhoanThu" prefWidth="88.79998624324799" text="ID Khoản thu" />
+            <TableColumn fx:id="colTenKhoanThu" prefWidth="287.19995880126953" text="Tên khoản thu" />
+            <TableColumn fx:id="colLoai" prefWidth="96.800048828125" text="Loại" />
+            <TableColumn fx:id="colTinhTrang" prefWidth="99.19998168945312" text="Tình trạng" />
+            <TableColumn fx:id="colSoHoDaThu" prefWidth="97.5999755859375" text="Số hộ đã thu" />
+            <TableColumn fx:id="colTongSoTien" prefWidth="112.79998779296875" text="Tổng số tiền " />
         </columns>
       </TableView>
-      <ComboBox fx:id="cbChooseSearch" layoutX="10.0" layoutY="42.0" prefHeight="39.0" prefWidth="224.0" />
-      <Button layoutX="258.0" layoutY="42.0" mnemonicParsing="false" onAction="#loc" text="Lọc" />
+      <Button layoutX="682.0" layoutY="44.0" mnemonicParsing="false" onAction="#timKiem" prefHeight="39.0" prefWidth="107.0" text="Tìm kiếm" />
+      <TextField fx:id="tfTimKiem" layoutX="344.0" layoutY="44.0" prefHeight="39.0" prefWidth="200.0" />
+      <ComboBox fx:id="cbLoai" layoutX="548.0" layoutY="44.0" prefHeight="39.0" prefWidth="128.0" />
+      <ComboBox fx:id="cbTinhTrang" layoutX="10.0" layoutY="44.0" onAction="#hienThongKe" prefHeight="39.0" prefWidth="121.0" />
+      <Button layoutX="142.0" layoutY="44.0" mnemonicParsing="false" onAction="#dsHoChuaNopDu" prefHeight="39.0" prefWidth="122.0" text="Các hộ chưa nộp đủ" />
    </children>
 </AnchorPane>
