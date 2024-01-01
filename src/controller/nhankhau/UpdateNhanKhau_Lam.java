@@ -1,6 +1,7 @@
 package controller.nhankhau;
 
 import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -143,6 +144,9 @@ public class UpdateNhanKhau_Lam {
 			IDHoKhau_List.add(String.valueOf(nhanKhauModel.getIDHoKhau()));
 			tfIDHoKhau.setItems(IDHoKhau_List);
 			tfIDHoKhau.setValue(String.valueOf(nhanKhauModel.getIDHoKhau()));
+			tfQHvsChuHo.setItems(FXCollections.observableArrayList("Chủ hộ"));
+		} else {
+			tfQHvsChuHo.setItems(relationshipList);
 		}
 //		if(!nhanKhauModel.getQHvsChuHo().equals("Chủ hộ")){
 //			IDHoKhau_List.clear();
@@ -171,7 +175,7 @@ public class UpdateNhanKhau_Lam {
 
 		tfXacNhanQQ.selectedProperty().addListener(new ChangeListener<Boolean>() {
 			@Override
-			public void changed(javafx.beans.value.ObservableValue<? extends Boolean> observable, Boolean oldValue,
+			public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue,
 								Boolean newValue) {
 				if (tfXacNhanQQ.isSelected() || newValue) {
 					tfQuequanmoi_text.setVisible(true);

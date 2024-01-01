@@ -19,7 +19,10 @@ import services.KhoanThuService;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.ResourceBundle;
 
 public class KhoanThuController implements Initializable {
 	@FXML
@@ -147,7 +150,7 @@ public class KhoanThuController implements Initializable {
 	public void addKhoanThu() throws IOException, ClassNotFoundException, SQLException {
 		Parent home = FXMLLoader.load(getClass().getResource("/views/khoanthu/AddKhoanThu.fxml"));
 		Stage stage = new Stage();
-		stage.setScene(new Scene(home, 800, 600));
+		stage.setScene(new Scene(home, 570, 530));
 		stage.setResizable(false);
 		stage.showAndWait();
 		hienKhoanThu();
@@ -184,13 +187,12 @@ public class KhoanThuController implements Initializable {
 			Alert alert = new Alert(AlertType.WARNING, "Chọn khoản thu cần cập nhật!", ButtonType.OK);
 			alert.setHeaderText(null);
 			alert.showAndWait();
-			return;
-		} else {
+        } else {
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(getClass().getResource("/views/khoanthu/UpdateKhoanThu.fxml"));
 			Parent home = loader.load();
 			Stage stage = new Stage();
-			stage.setScene(new Scene(home, 800, 600));
+			stage.setScene(new Scene(home, 570, 530));
 			UpdateKhoanThu updateKhoanThu = loader.getController();
 
 			updateKhoanThu.setKhoanThuModel(khoanThuModel);
@@ -215,7 +217,7 @@ public class KhoanThuController implements Initializable {
 		loader.setLocation(getClass().getResource("/views/khoanthu/XemKhoanThu.fxml"));
 		Parent home = loader.load();
 		Stage stage = new Stage();
-		stage.setScene(new Scene(home, 800, 600));
+		stage.setScene(new Scene(home, 570, 530));
 		XemKhoanThu xemKhoanThu = loader.getController();
 
 		xemKhoanThu.setKhoanThuModel(khoanThuModel);

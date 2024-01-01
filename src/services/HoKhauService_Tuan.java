@@ -27,7 +27,7 @@ public class HoKhauService_Tuan {
             int sotv = rs.getInt("SoTV");
             List<NhanKhauModel_Lam> nhanKhauList;
             nhanKhauList = NhanKhauService_Lam.getListNhanKhau(Integer.parseInt(id_hk));
-            HoKhauModel_Tuan hoKhauModel_tuan = getHoKhau(id_hk);
+            HoKhauModel_Tuan hoKhauModel_tuan = getHoKhau(Integer.parseInt(id_hk));
             HoKhauBean_Tuan hoKhauBean_tuan = new HoKhauBean_Tuan(hoKhauModel_tuan, nhanKhauList, sotv);
             list.add(hoKhauBean_tuan);
         }
@@ -55,7 +55,7 @@ public class HoKhauService_Tuan {
             int sotv = rs.getInt("SoTV");
             List<NhanKhauModel_Lam> nhanKhauList;
             nhanKhauList = NhanKhauService_Lam.getListNhanKhau(Integer.parseInt(id_hk));
-            HoKhauModel_Tuan hoKhauModel_tuan = getHoKhau(id_hk);
+            HoKhauModel_Tuan hoKhauModel_tuan = getHoKhau(Integer.parseInt(id_hk));
             HoKhauBean_Tuan hoKhauBean_tuan = new HoKhauBean_Tuan(hoKhauModel_tuan, nhanKhauList, sotv);
             list.add(hoKhauBean_tuan);
         }
@@ -68,7 +68,7 @@ public class HoKhauService_Tuan {
         String query = "SELECT * FROM hokhau WHERE IDHoKhau = ?";
 
         PreparedStatement preparedStatement = connection.prepareStatement(query);
-        preparedStatement.setString(1, i);
+        preparedStatement.setString(1, String.valueOf(i));
 
         ResultSet rs = preparedStatement.executeQuery();
         if (rs.next()) {
@@ -168,7 +168,7 @@ public class HoKhauService_Tuan {
             int sotv = rs.getInt("SoTV");
             List<NhanKhauModel_Lam> nhanKhauList;
             nhanKhauList = NhanKhauService_Lam.getListNhanKhau(Integer.parseInt(id_hk));
-            HoKhauModel_Tuan hoKhauModel_tuan = getHoKhau(id_hk);
+            HoKhauModel_Tuan hoKhauModel_tuan = getHoKhau(Integer.parseInt(id_hk));
             HoKhauBean_Tuan hoKhauBean_tuan = new HoKhauBean_Tuan(hoKhauModel_tuan, nhanKhauList, sotv);
             list.add(hoKhauBean_tuan);
         }
@@ -218,7 +218,7 @@ public class HoKhauService_Tuan {
         while (rs.next()) {
             String idhk = rs.getString("IDHoKhau");
             int sotv = rs.getInt("SoTV");
-            HoKhauModel_Tuan hoKhauModel_tuan = getHoKhau(idhk);
+            HoKhauModel_Tuan hoKhauModel_tuan = getHoKhau(Integer.parseInt(idhk));
             HoKhauBean_Tuan hoKhauBean_tuan = new HoKhauBean_Tuan(hoKhauModel_tuan, sotv);
         }
         return null;

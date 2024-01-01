@@ -6,9 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.Label;
-import services.HoKhauService_Tuan;
-import services.NhanKhauService_Lam;
-import services.PhongService;
+import services.*;
 
 import java.net.URL;
 import java.sql.SQLException;
@@ -30,18 +28,23 @@ public class MainController implements Initializable {
 	private Label soNhanKhau;
 	@FXML
 	private Label soPhong;
+	@FXML
+	private Label soTamTru;
+	@FXML
+	private Label soTamVang;
 
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		LocalDate current = LocalDate.now();
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMMM, yyyy", new Locale("vi", "VN"));
 		String formattedDate = current.format(formatter);
-		System.out.println(formattedDate);
 		currentDate.setText(formattedDate);
 
 		try {
 			soNhanKhau.setText(NhanKhauService_Lam.countNhanKhau());
 			soHoKhau.setText(HoKhauService_Tuan.countHoKhau());
 			soPhong.setText(PhongService.countSoPhong());
+			soTamTru.setText(TamTruService.countTamTru());
+			soTamVang.setText(TamVangService.countTamVang());
 			iniGenderChart();
 			iniAgeChart();
 		} catch (ClassNotFoundException e) {

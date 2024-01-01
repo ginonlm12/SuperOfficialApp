@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
-
-<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.thuphi.ChooseChuHo">
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="600.0" prefWidth="800.0" styleClass="background"
+            stylesheets="@../../source/usecase.css" xmlns="http://javafx.com/javafx/21"
+            fx:controller="controller.thuphi.ChooseChuHo">
    <children>
-      <Button layoutX="673.0" layoutY="59.0" mnemonicParsing="false" onAction="#searchNhanKhau" prefHeight="39.0" prefWidth="109.0" text="Tìm kiếm" />
-      <ComboBox fx:id="cbChooseSearch" layoutX="509.0" layoutY="59.0" prefHeight="39.0" prefWidth="150.0" />
+       <ComboBox fx:id="cbChooseSearch" layoutX="491.0" layoutY="59.0" prefHeight="39.0" prefWidth="181.0"
+                 styleClass="btntimkiem" stylesheets="@../../source/nhankhau_va_hokhau.css"/>
+       <Button layoutX="652.0" layoutY="59.0" mnemonicParsing="false" onAction="#searchNhanKhau" prefHeight="39.0"
+               prefWidth="129.0" text="Tìm kiếm"/>
       <TextField fx:id="tfSearch" layoutX="17.0" layoutY="59.0" prefHeight="39.0" prefWidth="476.0" />
-      <TableView fx:id="tvNhanKhau" layoutX="17.0" layoutY="104.0" prefHeight="440.0" prefWidth="765.0">
+       <TableView fx:id="tvNhanKhau" layoutX="17.0" layoutY="112.0" prefHeight="432.0" prefWidth="765.0"
+                  stylesheets="@../../source/nhankhau_va_hokhau.css">
          <columns>
             <TableColumn fx:id="colIDHoKhau" prefWidth="103.19998168945312" text="ID hộ khẩu" />
             <TableColumn fx:id="colTen" prefWidth="198.40005493164062" text="Họ và tên" />
@@ -23,10 +22,11 @@
             <TableColumn fx:id="colSDT" prefWidth="167.199951171875" text="SĐT" />
          </columns>
       </TableView>
-      <Button layoutX="346.0" layoutY="554.0" mnemonicParsing="false" onAction="#xacnhan" text="Xác nhận" />
-      <Label layoutX="301.0" layoutY="14.0" text="Chọn người nộp">
+       <Button layoutX="639.0" layoutY="560.0" mnemonicParsing="false" onAction="#xacnhan" prefHeight="25.0"
+               prefWidth="144.0" text="Xác nhận"/>
+       <Label layoutX="309.0" layoutY="15.0" text="CHỌN NGƯỜI NỘP">
          <font>
-            <Font name="Arial Bold" size="28.0" />
+             <Font name="System Bold" size="20.0"/>
          </font>
       </Label>
    </children>
