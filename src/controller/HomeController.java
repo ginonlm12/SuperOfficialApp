@@ -67,7 +67,7 @@ public class HomeController implements Initializable {
     }
 
     public void setNhanKhau(MouseEvent event) {
-        //changeMainPane("/views/NhanKhau_Lam.fxml");
+        //changeMainPane("/views/NhanKhau.fxml");
         if (!show) {
             show = !show;
             menuShow(menuNhanKhau, 430, 0, 0.2);
@@ -79,7 +79,7 @@ public class HomeController implements Initializable {
 
     @FXML
     public void setCuTru(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/NhanKhau_Lam.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/NhanKhau.fxml"));
         Pane newContentPane = loader.load();
         // Replace the content of mainPane with the new content
         mainPane.getChildren().setAll(newContentPane);
@@ -137,7 +137,7 @@ public class HomeController implements Initializable {
    }
 
     public void setGuiXe(ActionEvent event) throws IOException {
-        changeMainPane("/views/GuiXe_Tuan.fxml");
+        changeMainPane("/views/GuiXe.fxml");
     }
 
     void menuShow(VBox menu, int x, int y, double keysecond) {

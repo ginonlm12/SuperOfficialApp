@@ -13,7 +13,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import models.ThuPhiBean;
-import services.HoKhauService_Tuan;
+import services.HoKhauService;
 import services.ThuPhiService;
 
 import java.io.IOException;
@@ -161,7 +161,7 @@ public class ThuPhiController implements Initializable {
 
 				for (ThuPhiBean thuPhiBean : listThuPhi) {
 					// kiem tra xem so phong co chua keySearch hay khong
-					if (String.valueOf(HoKhauService_Tuan.getHoKhau(thuPhiBean.getThuPhiModel().getIDHoKhau()).getSoPhong()).contains(keySearch)) {
+					if (String.valueOf(HoKhauService.getHoKhau(thuPhiBean.getThuPhiModel().getIDHoKhau()).getSoPhong()).contains(keySearch)) {
 						listThuPhiBeansSearch.add(thuPhiBean);
 						index++;
 					}

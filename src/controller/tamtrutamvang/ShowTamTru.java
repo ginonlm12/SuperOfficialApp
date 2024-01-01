@@ -9,7 +9,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import models.TamTruModel;
-import services.NhanKhauService_Lam;
+import services.NhanKhauService;
 import services.TamTruService;
 import services.XuLyLoiService;
 
@@ -58,7 +58,7 @@ public class ShowTamTru {
         tfCCCD.setText(tamTruModel.getCCCD());
         tfNgaySinh.setValue(tamTruModel.getNgaySinh());
         tfIDHoKhau.setValue(String.valueOf(tamTruModel.getIDHoKhau()));
-        tfChuHo.setText(NhanKhauService_Lam.getChuHo(tamTruModel.getIDHoKhau()));
+        tfChuHo.setText(NhanKhauService.getChuHo(tamTruModel.getIDHoKhau()));
         tfNgayBatDau.setValue(tamTruModel.getNgayBatDau());
         tfNgayKetThuc.setValue(tamTruModel.getNgayKetThuc());
         tfLyDo.setText(tamTruModel.getLyDo());

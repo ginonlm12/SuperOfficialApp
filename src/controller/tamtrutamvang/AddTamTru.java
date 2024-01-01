@@ -8,9 +8,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
-import models.NhanKhauModel_Lam;
+import models.NhanKhauModel;
 import models.TamTruModel;
-import services.NhanKhauService_Lam;
+import services.NhanKhauService;
 import services.TamTruService;
 import services.XuLyLoiService;
 
@@ -63,22 +63,22 @@ public class AddTamTru implements Initializable {
     private ComboBox<String> tfWard;
     @FXML
     private Label tfXa;
-    private List<NhanKhauModel_Lam> listNhanKhau;
+    private List<NhanKhauModel> listNhanKhau;
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
         //Error.setVisible(false);
         //Error.setStyle("-fx-color: linear-gradient(to bottom right, #FF0000, #CC0000);");
         try {
-            listNhanKhau = new NhanKhauService_Lam().getListNhanKhau();
+            listNhanKhau = new NhanKhauService().getListNhanKhau();
             Vector<String> household = new Vector<>();
-            for (NhanKhauModel_Lam nhankhau : listNhanKhau) {
+            for (NhanKhauModel nhankhau : listNhanKhau) {
                 Integer data = nhankhau.getIDHoKhau();
                 if (!IDHoKhau_onlyID.contains(data)) {
                     IDHoKhau_onlyID.add(data);
-                    household.add(data + " - Phòng: " + NhanKhauService_Lam.getSoPhong(data));
+                    household.add(data + " - Phòng: " + NhanKhauService.getSoPhong(data));
                 }
             }
-            NhanKhauService_Lam.sortVectorByRoomNumber(household);
+            NhanKhauService.sortVectorByRoomNumber(household);
             for (String hold : household) {
                 IDHoKhau_List.add(hold);
             }
@@ -94,9 +94,9 @@ public class AddTamTru implements Initializable {
         tfCountry.setItems(QueQuanList);
 
         tfIDHoKhau.getSelectionModel().selectedItemProperty().addListener((observableee, oldValueee, newValueee) -> {
-            int IDHoKhau = Integer.parseInt(NhanKhauService_Lam.extractIdHoKhau(tfIDHoKhau.getValue()));
+            int IDHoKhau = Integer.parseInt(NhanKhauService.extractIdHoKhau(tfIDHoKhau.getValue()));
             try {
-                tfChuHo.setText(NhanKhauService_Lam.getChuHo(IDHoKhau));
+                tfChuHo.setText(NhanKhauService.getChuHo(IDHoKhau));
             } catch (ClassNotFoundException e) {
                 throw new RuntimeException(e);
             } catch (SQLException e) {
@@ -128,7 +128,7 @@ public class AddTamTru implements Initializable {
                 tfDistrict.setVisible(true);
                 tfWard.setVisible(true);
                 try {
-                    Tinh_List = NhanKhauService_Lam.getProvince();
+                    Tinh_List = NhanKhauService.getProvince();
                     tfProvince.setItems(Tinh_List);
 
                     tfProvince.getSelectionModel().selectedItemProperty().addListener((observablee, oldValuee, newValuee) -> {
@@ -136,7 +136,7 @@ public class AddTamTru implements Initializable {
                             String selectedProvince = tfProvince.getValue();
 
                             if (selectedProvince != null && !selectedProvince.isEmpty()) {
-                                Huyen_List = NhanKhauService_Lam.GetDistrict(selectedProvince);
+                                Huyen_List = NhanKhauService.GetDistrict(selectedProvince);
                                 tfDistrict.setItems(Huyen_List);
 
                                 tfDistrict.getSelectionModel().selectedItemProperty().addListener((observableee, oldValueee, newValueee) -> {
@@ -144,7 +144,7 @@ public class AddTamTru implements Initializable {
                                         String selectedDistrict = tfDistrict.getValue();
 
                                         if (selectedDistrict != null && !selectedDistrict.isEmpty()) {
-                                            Xa_List = NhanKhauService_Lam.GetWard(selectedDistrict, selectedProvince);
+                                            Xa_List = NhanKhauService.GetWard(selectedDistrict, selectedProvince);
                                             tfWard.setItems(Xa_List);
                                         }
                                     } catch (SQLException | ClassNotFoundException e) {
@@ -266,7 +266,7 @@ public class AddTamTru implements Initializable {
 
         // Ghi nhan gia tri ghi tat ca deu da hop le
 
-        int IDHoKhau = Integer.parseInt(NhanKhauService_Lam.extractIdHoKhau(tfIDHoKhau.getValue()));
+        int IDHoKhau = Integer.parseInt(NhanKhauService.extractIdHoKhau(tfIDHoKhau.getValue()));
         String HoTen = tfHoTen.getText();
         String CCCD;
         if (tfCCCD.getText() == null || tfIDHoKhau.getValue().isEmpty())

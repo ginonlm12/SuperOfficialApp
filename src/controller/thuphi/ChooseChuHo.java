@@ -1,5 +1,18 @@
 package controller.thuphi;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.control.*;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
+import models.NhanKhauModel;
+import services.NhanKhauService;
+
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -7,46 +20,27 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.regex.Pattern;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.SingleSelectionModel;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
-import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.stage.Stage;
-import models.NhanKhauModel_Lam;
-import services.NhanKhauService_Lam;
-
 public class ChooseChuHo implements Initializable {
 	@FXML
-	private TableView<NhanKhauModel_Lam> tvNhanKhau;
+	private TableView<NhanKhauModel> tvNhanKhau;
 	@FXML
-	private TableColumn<NhanKhauModel_Lam, String> colIDHoKhau;
+	private TableColumn<NhanKhauModel, String> colIDHoKhau;
 	@FXML
-	private TableColumn<NhanKhauModel_Lam, String> colTen;
+	private TableColumn<NhanKhauModel, String> colTen;
 	@FXML
-	private TableColumn<NhanKhauModel_Lam, String> colPhong;
+	private TableColumn<NhanKhauModel, String> colPhong;
 	@FXML
-	private TableColumn<NhanKhauModel_Lam, String> colCCCD;
+	private TableColumn<NhanKhauModel, String> colCCCD;
 	@FXML
-	private TableColumn<NhanKhauModel_Lam, String> colSDT;
+	private TableColumn<NhanKhauModel, String> colSDT;
 	@FXML
 	private TextField tfSearch;
 	@FXML
 	private ComboBox<String> cbChooseSearch;
 
-	private NhanKhauModel_Lam nhanKhauChoose;
-	private ObservableList<NhanKhauModel_Lam> listValueTableView;
-	private List<NhanKhauModel_Lam> listNhanKhau;
+	private NhanKhauModel nhanKhauChoose;
+	private ObservableList<NhanKhauModel> listValueTableView;
+	private List<NhanKhauModel> listNhanKhau;
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -61,34 +55,34 @@ public class ChooseChuHo implements Initializable {
 		}
 	}
 
-	public NhanKhauModel_Lam getNhanKhauChoose() {
+	public NhanKhauModel getNhanKhauChoose() {
 		return nhanKhauChoose;
 	}
 
-	public void setNhanKhauChoose(NhanKhauModel_Lam nhanKhauChoose) {
+	public void setNhanKhauChoose(NhanKhauModel nhanKhauChoose) {
 		this.nhanKhauChoose = nhanKhauChoose;
 	}
 
 	public void showNhanKhau() throws ClassNotFoundException, SQLException {
-		listNhanKhau = NhanKhauService_Lam.getListChuHo();
+		listNhanKhau = NhanKhauService.getListChuHo();
 		listValueTableView = FXCollections.observableArrayList(listNhanKhau);
-		for (NhanKhauModel_Lam nhankhau : listNhanKhau) {
-			nhankhau.setSoPhong(NhanKhauService_Lam.getSoPhong(nhankhau.getIDHoKhau()));
+		for (NhanKhauModel nhankhau : listNhanKhau) {
+			nhankhau.setSoPhong(NhanKhauService.getSoPhong(nhankhau.getIDHoKhau()));
 		}
 
 		// thiet lap cac cot cho tableviews
-		colIDHoKhau.setCellValueFactory(new PropertyValueFactory<NhanKhauModel_Lam, String>("IDHoKhau"));
-		colTen.setCellValueFactory(new PropertyValueFactory<NhanKhauModel_Lam, String>("HoTen"));
-		colPhong.setCellValueFactory(new PropertyValueFactory<NhanKhauModel_Lam, String>("SoPhong"));
-		colCCCD.setCellValueFactory(new PropertyValueFactory<NhanKhauModel_Lam, String>("CCCD"));
-		colSDT.setCellValueFactory(new PropertyValueFactory<NhanKhauModel_Lam, String>("NgheNghiep"));
+		colIDHoKhau.setCellValueFactory(new PropertyValueFactory<NhanKhauModel, String>("IDHoKhau"));
+		colTen.setCellValueFactory(new PropertyValueFactory<NhanKhauModel, String>("HoTen"));
+		colPhong.setCellValueFactory(new PropertyValueFactory<NhanKhauModel, String>("SoPhong"));
+		colCCCD.setCellValueFactory(new PropertyValueFactory<NhanKhauModel, String>("CCCD"));
+		colSDT.setCellValueFactory(new PropertyValueFactory<NhanKhauModel, String>("NgheNghiep"));
 
 		tvNhanKhau.setItems(listValueTableView);
 	}
 
 	public void searchNhanKhau() {
-		ObservableList<NhanKhauModel_Lam> listValueTableView_tmp;
-		List<NhanKhauModel_Lam> listNhanhKhauModelsSearch = new ArrayList<>();
+		ObservableList<NhanKhauModel> listValueTableView_tmp;
+		List<NhanKhauModel> listNhanhKhauModelsSearch = new ArrayList<>();
 		String keySearch = tfSearch.getText();
 
 		// lay lua chon tim kiem cua khach hang
@@ -108,9 +102,9 @@ public class ChooseChuHo implements Initializable {
 
 		switch (typeSearchString) {
 			case "Họ tên": {
-				for (NhanKhauModel_Lam NhanKhauModel_Lam : listNhanKhau) {
-					if (NhanKhauModel_Lam.getHoTen().contains(keySearch)) {
-						listNhanhKhauModelsSearch.add(NhanKhauModel_Lam);
+				for (NhanKhauModel NhanKhauModel : listNhanKhau) {
+					if (NhanKhauModel.getHoTen().contains(keySearch)) {
+						listNhanhKhauModelsSearch.add(NhanKhauModel);
 						index++;
 					}
 				}
@@ -125,10 +119,10 @@ public class ChooseChuHo implements Initializable {
 					alert.showAndWait();
 				}
 
-				for (NhanKhauModel_Lam NhanKhauModel_Lam : listNhanKhau) {
+				for (NhanKhauModel NhanKhauModel : listNhanKhau) {
 					// kiem tra xem id ho khau co chua keySearch hay khong
-					if (String.valueOf(NhanKhauModel_Lam.getIDHoKhau()).contains(keySearch)) {
-						listNhanhKhauModelsSearch.add(NhanKhauModel_Lam);
+					if (String.valueOf(NhanKhauModel.getIDHoKhau()).contains(keySearch)) {
+						listNhanhKhauModelsSearch.add(NhanKhauModel);
 						index++;
 					}
 				}
@@ -143,10 +137,10 @@ public class ChooseChuHo implements Initializable {
 					alert.showAndWait();
 				}
 
-				for (NhanKhauModel_Lam nhanKhauModel_Lam : listNhanKhau) {
+				for (NhanKhauModel nhanKhauModel : listNhanKhau) {
 					// kiem tra xem so phong co chua keySearch hay khong
-					if (String.valueOf(nhanKhauModel_Lam.getSoPhong()).contains(keySearch)) {
-						listNhanhKhauModelsSearch.add(nhanKhauModel_Lam);
+					if (String.valueOf(nhanKhauModel.getSoPhong()).contains(keySearch)) {
+						listNhanhKhauModelsSearch.add(nhanKhauModel);
 						index++;
 					}
 				}

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.*?>
+<?import java.lang.String?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="570.0" prefWidth="670.0" styleClass="background"
+            stylesheets="@../../source/usecase.css" xmlns="http://javafx.com/javafx/21"
+            fx:controller="controller.nhankhau.AddNhanKhau">
+    <children>
+        <Label layoutX="473.0" layoutY="58.0" text="ID"/>
+        <Label layoutX="24.0" layoutY="58.0" text="Tên nhân khẩu"/>
+        <Label layoutX="23.0" layoutY="160.0" text="Ngày sinh"/>
+        <Label layoutX="24.0" layoutY="108.0" text="Số CCCD"/>
+        <TextField fx:id="tfIDNhanKhau" editable="false" layoutX="540.0" layoutY="48.0" prefHeight="39.0"
+                   prefWidth="89.0" styleClass="text-field-rounded" stylesheets="@../../source/usecase.css"/>
+        <TextField fx:id="tfHoTen" layoutX="114.0" layoutY="48.0" prefHeight="39.0" prefWidth="333.0"
+                   styleClass="text-field-rounded" stylesheets="@../../source/usecase.css"/>
+        <TextField fx:id="tfCCCD" layoutX="114.0" layoutY="99.0" prefHeight="39.0" prefWidth="350.0"
+                   styleClass="text-field-rounded" stylesheets="@../../source/usecase.css"/>
+        <TextField fx:id="tfNgheNghiep" layoutX="114.0" layoutY="202.0" prefHeight="39.0" prefWidth="515.0"
+                   styleClass="text-field-rounded" stylesheets="@../../source/usecase.css"/>
+        <Button layoutX="433.0" layoutY="526.0" mnemonicParsing="false" onAction="#addNhanKhau" prefHeight="25.0"
+                prefWidth="197.0" stylesheets="@../../source/usecase.css" text="Thêm" textFill="WHITE">
+            <font>
+                <Font name="System Bold" size="12.0"/>
+            </font>
+        </Button>
+        <Label layoutX="22.0" layoutY="299.0" prefHeight="53.0" prefWidth="61.0" text="Quan hệ với chủ hộ"
+               textAlignment="CENTER" wrapText="true"/>
+        <Label layoutX="247.0" layoutY="14.0" text="THÊM NHÂN KHẨU">
+            <font>
+                <Font name="System Bold" size="20.0"/>
+            </font>
+        </Label>
+        <Label layoutX="472.0" layoutY="108.0" text="Giới tính"/>
+        <DatePicker fx:id="tfNgaySinh" layoutX="114.0" layoutY="150.0" prefHeight="39.0" prefWidth="515.0"
+                    promptText="MM/DD/YYYY" styleClass="text-field-rounded" stylesheets="@../../source/usecase.css"/>
+        <Label layoutX="23.0" layoutY="211.0" text="Nghề nghiệp"/>
+        <Label layoutX="24.0" layoutY="266.0" text="Hộ Khẩu"/>
+        <Label layoutX="343.0" layoutY="299.0" prefHeight="53.0" prefWidth="69.0" text="Dân tộc" textAlignment="CENTER"
+               wrapText="true"/>
+
+        <TextField fx:id="tfQueQuan" layoutX="280.0" layoutY="358.0" prefHeight="39.0" prefWidth="350.0"
+                   styleClass="text-field-rounded" stylesheets="@../../source/usecase.css" visible="false"/>
+        <Label layoutX="24.0" layoutY="369.0" text="Quê quán"/>
+        <Text fill="RED" layoutX="451.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="(*)"/>
+        <Text fill="RED" layoutX="636.0" layoutY="123.0" strokeType="OUTSIDE" strokeWidth="0.0" text="(*)"/>
+        <Text fill="RED" layoutX="633.0" layoutY="173.0" strokeType="OUTSIDE" strokeWidth="0.0" text="(*)"/>
+        <Text fill="RED" layoutX="368.0" layoutY="279.0" strokeType="OUTSIDE" strokeWidth="0.0" text="(*)"/>
+        <Text fill="RED" layoutX="322.0" layoutY="330.0" strokeType="OUTSIDE" strokeWidth="0.0" text="(*)"/>
+        <Text fill="RED" layoutX="636.0" layoutY="330.0" strokeType="OUTSIDE" strokeWidth="0.0" text="(*)"/>
+        <Label fx:id="tfTinh" layoutX="24.0" layoutY="415.0" text="Tỉnh" visible="false"/>
+        <Label fx:id="tfHuyen" layoutX="24.0" layoutY="447.0" text="Huyện" visible="false"/>
+        <Label fx:id="tfXa" layoutX="24.0" layoutY="480.0" text="Xã" visible="false"/>
+        <CheckBox fx:id="tfXacNhan" layoutX="54.0" layoutY="530.0" mnemonicParsing="false"
+                  text="Cam đoan những thông tin cung cấp trên là chuẩn xác"/>
+        <TextField fx:id="tfSoPhong" editable="false" layoutX="368.0" layoutY="260.0" prefHeight="39.0" prefWidth="89.0"
+                   stylesheets="@../../source/usecase.css" visible="false">
+            <styleClass>
+                <String fx:value="text-field-transparent"/>
+                <String fx:value="text-field-rounded"/>
+            </styleClass>
+        </TextField>
+        <Label layoutX="326.0" layoutY="253.0" prefHeight="53.0" prefWidth="45.0" text="Phòng" textAlignment="CENTER"
+               visible="false" wrapText="true"/>
+        <ComboBox fx:id="tfGioiTinh" layoutX="540.0" layoutY="99.0" prefHeight="39.0" prefWidth="89.0"
+                  styleClass="text-field-rounded" stylesheets="@../../source/usecase.css"/>
+        <ComboBox fx:id="tfIDHoKhau" layoutX="114.0" layoutY="254.0" prefHeight="39.0" prefWidth="250.0"
+                  styleClass="text-field-rounded" stylesheets="@../../source/usecase.css"/>
+        <ComboBox fx:id="tfDanToc" layoutX="390.0" layoutY="306.0" prefHeight="39.0" prefWidth="239.0"
+                  styleClass="text-field-rounded" stylesheets="@../../source/usecase.css"/>
+        <ComboBox fx:id="tfCountry" layoutX="114.0" layoutY="358.0" prefHeight="39.0" prefWidth="160.0"
+                  styleClass="text-field-rounded" stylesheets="@../../source/usecase.css"/>
+        <ComboBox fx:id="tfProvince" layoutX="114.0" layoutY="407.0" prefHeight="28.0" prefWidth="515.0"
+                  styleClass="text-field-rounded" stylesheets="@../../source/usecase.css" visible="false"/>
+        <ComboBox fx:id="tfDistrict" layoutX="114.0" layoutY="442.0" prefHeight="28.0" prefWidth="515.0"
+                  styleClass="text-field-rounded" stylesheets="@../../source/usecase.css" visible="false"/>
+        <ComboBox fx:id="tfWard" layoutX="114.0" layoutY="475.0" prefHeight="28.0" prefWidth="515.0"
+                  styleClass="text-field-rounded" stylesheets="@../../source/usecase.css" visible="false"/>
+        <ComboBox fx:id="tfQHvsChuHo" layoutX="114.0" layoutY="306.0" prefHeight="39.0" prefWidth="205.0"
+                  styleClass="text-field-rounded" stylesheets="@../../source/usecase.css"/>
+        <TextField fx:id="tfChuHo" editable="false" layoutX="432.0" layoutY="255.0" prefHeight="39.0" prefWidth="197.0"
+                   stylesheets="@../../source/usecase.css">
+            <styleClass>
+                <String fx:value="text-field-transparent"/>
+                <String fx:value="text-field-rounded"/>
+            </styleClass>
+        </TextField>
+        <Label layoutX="387.0" layoutY="248.0" prefHeight="53.0" prefWidth="45.0" text="Chủ hộ" textAlignment="CENTER"
+               wrapText="true"/>
+        <Label fx:id="Error" layoutX="114.0" layoutY="38.0" text="Label" textFill="RED">
+            <font>
+                <Font name="System Bold Italic" size="6.0"/>
+            </font>
+        </Label>
+    </children>
+</AnchorPane>

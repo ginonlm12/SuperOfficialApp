@@ -5,7 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
-import models.NhanKhauModel_Lam;
+import models.NhanKhauModel;
 import models.TamVangModel;
 import services.TamVangService;
 import services.XuLyLoiService;
@@ -16,7 +16,7 @@ import java.time.LocalDate;
 import java.util.Optional;
 
 public class AddTamVang {
-    private static NhanKhauModel_Lam nhanKhauModel;
+    private static NhanKhauModel nhanKhauModel;
     private static TamVangModel tamVangModel;
     @FXML
     private Label textKhaibao;
@@ -36,11 +36,11 @@ public class AddTamVang {
     private TextArea tfLydo;
     private int IDNhanKhau;
 
-    public static NhanKhauModel_Lam getNhanKhauModel() {
+    public static NhanKhauModel getNhanKhauModel() {
         return nhanKhauModel;
     }
 
-    public void setNhanKhauModel(NhanKhauModel_Lam nhanKhauModel) throws ClassNotFoundException, SQLException {
+    public void setNhanKhauModel(NhanKhauModel nhanKhauModel) throws ClassNotFoundException, SQLException {
         AddTamVang.nhanKhauModel = nhanKhauModel;
         IDNhanKhau = nhanKhauModel.getIDNhanKhau();
         tamVangModel = TamVangService.checkCurrent(IDNhanKhau);

@@ -55,7 +55,7 @@ public class TamVangService {
             TamVangModel tamVangModel = new TamVangModel();
             tamVangModel.setIDTamVang(resultSet.getInt("IDTamVang"));
             tamVangModel.setIDNhanKhau(resultSet.getInt("IDNhanKhau"));
-            tamVangModel.setHoTen(NhanKhauService_Lam.getHoTen(tamVangModel.getIDNhanKhau()));
+            tamVangModel.setHoTen(NhanKhauService.getHoTen(tamVangModel.getIDNhanKhau()));
             tamVangModel.setNgayBatDau(resultSet.getDate("NgayBatDau").toLocalDate());
             tamVangModel.setNgayKetThuc(resultSet.getDate("NgayKetThuc").toLocalDate());
             tamVangModel.setLyDo(resultSet.getString("LyDo"));

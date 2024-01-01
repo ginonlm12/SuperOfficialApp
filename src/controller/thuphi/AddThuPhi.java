@@ -1,9 +1,5 @@
 package controller.thuphi;
 
-import java.io.IOException;
-import java.sql.SQLException;
-import java.util.List;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,20 +8,19 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
-import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
-import models.KhoanThuModel;
-import models.NhanKhauModel_Lam;
-import models.PhongModel;
-import models.ThuPhiBean;
-import models.ThuPhiModel;
-import models.XeModel_Tuan;
+import models.*;
 import services.PhongService;
 import services.ThuPhiService;
-import services.XeService_Tuan;
+import services.XeService;
+
+import java.io.IOException;
+import java.sql.SQLException;
+import java.util.List;
 
 public class AddThuPhi implements Initializable {
 	@FXML
@@ -40,7 +35,7 @@ public class AddThuPhi implements Initializable {
 	private DatePicker dpNgayDong;
 
 	private KhoanThuModel khoanThuModel;
-	private NhanKhauModel_Lam nhanKhauModel;
+	private NhanKhauModel nhanKhauModel;
 
 	@Override
 	public void initialize(java.net.URL arg0, java.util.ResourceBundle arg1) {
@@ -90,9 +85,9 @@ public class AddThuPhi implements Initializable {
 	private void tinhSoTienPhaiDong() throws ClassNotFoundException, SQLException {
 		String loai = khoanThuModel.getLoaiKhoanThu();
 		double tien = 0;
-		if (loai.equals(new String("Tiền quản lý"))) {
+		if (loai.equals("Tiền quản lý")) {
 			PhongModel phongModel = PhongService.getPhongModel(nhanKhauModel.getSoPhong());
-			if (phongModel.getLoaiPhong().equals(new String("Cao cấp"))) {
+			if (phongModel.getLoaiPhong().equals("Cao cấp")) {
 				tien = khoanThuModel.getTrongSoDienTich() * phongModel.getDienTich()			
 				+ khoanThuModel.getHangSo();
 			}
@@ -101,8 +96,8 @@ public class AddThuPhi implements Initializable {
 				+ khoanThuModel.getHangSo();
 			}
 		}
-		else if (loai.equals(new String("Tiền giữ xe"))) {
-			XeModel_Tuan xeModel = XeService_Tuan.getXeModel(nhanKhauModel.getIDHoKhau());
+		else if (loai.equals("Tiền giữ xe")) {
+			XeModel xeModel = XeService.getXeModel(nhanKhauModel.getIDHoKhau());
 			tien = khoanThuModel.getTrongSoDienTich() * xeModel.getOTo()
 			+ khoanThuModel.getTrongSoSTV() * xeModel.getXeMay()
 			+ khoanThuModel.getHangSo() * xeModel.getXeDap();
