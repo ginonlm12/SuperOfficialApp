@@ -141,7 +141,8 @@ public class UpdateKhoanThu {
 		// hay khong
 		List<KhoanThuModel> listKhoanThuModels = KhoanThuService.getListKhoanThu();
 		for (KhoanThuModel khoanThuModel : listKhoanThuModels) {
-			if (khoanThuModel.getIDKhoanThu() == Integer.parseInt(tfIDKhoanThu.getText())) {
+			if (khoanThuModel.getIDKhoanThu() == Integer.parseInt(tfIDKhoanThu.getText()) 
+			&& khoanThuModel.getIDKhoanThu() != IDKhoanThu_old) {
 				Alert alert = new Alert(AlertType.WARNING, "Mã khoản thu đã bị trùng!", ButtonType.OK);
 				alert.setHeaderText(null);
 				alert.showAndWait();
@@ -230,7 +231,7 @@ public class UpdateKhoanThu {
 		khoanThuModel.setIDKhoanThu(Integer.parseInt(tfIDKhoanThu.getText()));
 		khoanThuModel.setTenKT(tfTenKhoanThu.getText());
 		khoanThuModel.setNgayBatDau(dpNgayBatDau.getValue().toString());
-		khoanThuModel.setNgayKetThuc(dpNgayBatDau.getValue().toString());
+		khoanThuModel.setNgayKetThuc(dpNgayKetThuc.getValue().toString());
 		khoanThuModel.setTrongSoDienTich(Double.parseDouble(tfTrongSoDienTich.getText()));
 		khoanThuModel.setTrongSoSTV(Double.parseDouble(tfTrongSoSTV.getText()));
 		khoanThuModel.setHangSo(Double.parseDouble(tfHangSo.getText()));

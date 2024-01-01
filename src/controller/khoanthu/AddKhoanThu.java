@@ -220,7 +220,7 @@ public class AddKhoanThu implements Initializable {
 		khoanThuModel.setIDKhoanThu(Integer.parseInt(tfIDKhoanThu.getText()));
 		khoanThuModel.setTenKT(tfTenKhoanThu.getText());
 		khoanThuModel.setNgayBatDau(dpNgayBatDau.getValue().toString());
-		khoanThuModel.setNgayKetThuc(dpNgayBatDau.getValue().toString());
+		khoanThuModel.setNgayKetThuc(dpNgayKetThuc.getValue().toString());
 		khoanThuModel.setTrongSoDienTich(Double.parseDouble(tfTrongSoDienTich.getText()));
 		khoanThuModel.setTrongSoSTV(Double.parseDouble(tfTrongSoSTV.getText()));
 		khoanThuModel.setHangSo(Double.parseDouble(tfHangSo.getText()));
