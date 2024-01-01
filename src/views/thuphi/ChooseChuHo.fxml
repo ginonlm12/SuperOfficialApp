@@ -12,14 +12,14 @@
 <AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.thuphi.ChooseChuHo">
    <children>
       <Button layoutX="673.0" layoutY="59.0" mnemonicParsing="false" onAction="#searchNhanKhau" prefHeight="39.0" prefWidth="109.0" text="Tìm kiếm" />
-      <ComboBox fx:id="cbChooseSearch" layoutX="509.0" layoutY="59.0" prefHeight="39.0" prefWidth="150.0" />
+      <ComboBox fx:id="cbChooseSearch" layoutX="509.0" layoutY="59.0" prefWidth="150.0" />
       <TextField fx:id="tfSearch" layoutX="17.0" layoutY="59.0" prefHeight="39.0" prefWidth="476.0" />
       <TableView fx:id="tvNhanKhau" layoutX="17.0" layoutY="104.0" prefHeight="440.0" prefWidth="765.0">
          <columns>
-            <TableColumn fx:id="colIDHoKhau" prefWidth="103.19998168945312" text="ID hộ khẩu" />
-            <TableColumn fx:id="colTen" prefWidth="198.40005493164062" text="Họ và tên" />
-            <TableColumn fx:id="colPhong" prefWidth="118.4000244140625" text="Phòng" />
-            <TableColumn fx:id="colCCCD" prefWidth="184.7999267578125" text="CCCD" />
+            <TableColumn fx:id="colIDHoKhau" prefWidth="68.79998779296875" text="ID hộ khẩu" />
+            <TableColumn fx:id="colTen" prefWidth="183.20004272460938" text="Họ và tên" />
+            <TableColumn fx:id="colNgaySinh" prefWidth="144.79998779296875" text="Ngày sinh" />
+            <TableColumn fx:id="colCCCD" prefWidth="204.0" text="CCCD" />
             <TableColumn fx:id="colSDT" prefWidth="167.199951171875" text="SĐT" />
          </columns>
       </TableView>

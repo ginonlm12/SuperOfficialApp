@@ -1,123 +1,85 @@
 package services;
 
-import models.KhoanThuModel;
-
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class KhoanThuService {
-	public boolean add(KhoanThuModel khoanThuModel) throws ClassNotFoundException, SQLException {
+import models.ThuPhiBean;
+import models.ThuPhiModel;
+
+public class ThuPhiService {
+    public boolean add(ThuPhiModel ThuPhiModel) throws ClassNotFoundException, SQLException {
 		Connection connection = MysqlConnection.getMysqlConnection();
-		String query = "INSERT INTO khoanthu(IDKhoanThu, TenKT, NgayBatDau, NgayKetThuc, TrongSoDienTich, TrongSoSTV, HangSo, LoaiKhoanThu)"
-				+ " values (?, ?, ?, ?, ?, ?, ?, ?)";
+		String query = "INSERT INTO thuphi(IDKhoanThu, IDHoKhau, SoTienPhaiDong, TienDaDong, NgayDong)"
+				+ " values (?, ?, ?, ?, ?)";
 		PreparedStatement preparedStatement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
-		preparedStatement.setInt(1, khoanThuModel.getIDKhoanThu());
-		preparedStatement.setString(2, khoanThuModel.getTenKT());
-		preparedStatement.setString(3, khoanThuModel.getNgayBatDau());
-		preparedStatement.setString(4, khoanThuModel.getNgayKetThuc());
-		preparedStatement.setDouble(5, khoanThuModel.getTrongSoDienTich());
-		preparedStatement.setDouble(6, khoanThuModel.getTrongSoSTV());
-		preparedStatement.setDouble(7, khoanThuModel.getHangSo());
-		preparedStatement.setString(8, khoanThuModel.getLoaiKhoanThu());
+		preparedStatement.setInt(1, ThuPhiModel.getIDKhoanThu());
+		preparedStatement.setInt(2, ThuPhiModel.getIDHoKhau());
+		preparedStatement.setDouble(3, ThuPhiModel.getSoTienPhaiDong());
+		preparedStatement.setDouble(4, ThuPhiModel.getSoTien());
+		preparedStatement.setString(5, ThuPhiModel.getNgayDong());
+		
 		preparedStatement.executeUpdate();
 		preparedStatement.close();
 		connection.close();
 		return true;
 	}
 
-	public boolean del(int IDKhoanThu) throws ClassNotFoundException, SQLException {
+	public boolean del(ThuPhiModel thuPhiModel) throws ClassNotFoundException, SQLException {
 		Connection connection = MysqlConnection.getMysqlConnection();
-		// String query = "SELECT * FROM thutien WHERE IDKhoanThu='"+IDKhoanThu+"';";
-		// PreparedStatement preparedStatement = connection.prepareStatement(query);
-		// ResultSet rs = preparedStatement.executeQuery();
-		// while (rs.next()){
-		// 	query="DELETE FROM thuphi WHERE IDKhoanThu='"+IDKhoanThu+"'";
-		// 	preparedStatement = connection.prepareStatement(query);
-		// 	preparedStatement.executeUpdate();
-		// }
-		String query ="DELETE FROM khoanthu WHERE IDKhoanThu = '"+IDKhoanThu+"'";
-		PreparedStatement preparedStatement = connection.prepareStatement(query);
+	    String query ="DELETE FROM thuphi WHERE IDKhoanThu = '"+thuPhiModel.getIDKhoanThu()+"' AND IDHoKhau = '"+thuPhiModel.getIDHoKhau()+"'";
+	    PreparedStatement preparedStatement = connection.prepareStatement(query);
 		preparedStatement.executeUpdate();
 		preparedStatement.close();
 		connection.close();
 		return true;
 	}
 
-	// modify the update method to match the khoanthu table
-	public boolean update(int IDKhoanThu_old, KhoanThuModel khoanThuModel) throws ClassNotFoundException, SQLException {
+	// modify the update method to match the thuphi table
+	public boolean update(ThuPhiModel ThuPhiModel) throws ClassNotFoundException, SQLException {
 		Connection connection = MysqlConnection.getMysqlConnection();
 		PreparedStatement preparedStatement;
 
-		String query = "UPDATE khoanthu SET TenKT = ?, NgayBatDau = ?, NgayKetThuc = ?, TrongSoDienTich = ?, TrongSoSTV = ?, HangSo = ?, LoaiKhoanThu = ?, IDKhoanThu = ? WHERE IDKhoanThu = ?";
+		String query = "UPDATE thuphi SET TienDaDong = ?, SoTienPhaiDong = ?, NgayDong = ? WHERE IDKhoanThu = ? AND IDHoKhau = ?";
 		preparedStatement = connection.prepareStatement(query);
-		preparedStatement.setString(1, khoanThuModel.getTenKT());
-		preparedStatement.setString(2, khoanThuModel.getNgayBatDau());
-		preparedStatement.setString(3, khoanThuModel.getNgayKetThuc());
-		preparedStatement.setDouble(4, khoanThuModel.getTrongSoDienTich());
-		preparedStatement.setDouble(5, khoanThuModel.getTrongSoSTV());
-		preparedStatement.setDouble(6, khoanThuModel.getHangSo());
-		preparedStatement.setString(7, khoanThuModel.getLoaiKhoanThu());
-		preparedStatement.setInt(8, khoanThuModel.getIDKhoanThu());
-		preparedStatement.setInt(9, IDKhoanThu_old);
+		
+		preparedStatement.setDouble(1, ThuPhiModel.getSoTien());
+		preparedStatement.setDouble(2, ThuPhiModel.getSoTienPhaiDong());
+		preparedStatement.setString(3, ThuPhiModel.getNgayDong());
+		preparedStatement.setInt(4, ThuPhiModel.getIDKhoanThu());
+		preparedStatement.setInt(5, ThuPhiModel.getIDHoKhau());
+		
 		preparedStatement.executeUpdate();
-
-		// String query2 = "UPDATE thuphi SET IDKhoanThu = ? WHERE IDKhoanThu = ?";
-		// preparedStatement = connection.prepareStatement(query2);
-		// preparedStatement.setInt(1, khoanThuModel.getIDKhoanThu());
-		// preparedStatement.setInt(2, IDKhoanThu_old);
-		// preparedStatement.executeUpdate();
-		// preparedStatement.close();
-		// connection.close();
 		return true;
 	}
 
-	public List<KhoanThuModel> getListKhoanThu() throws ClassNotFoundException, SQLException {
-		List<KhoanThuModel> list = new ArrayList<>();
+	public List<ThuPhiBean> getListThuPhi() throws ClassNotFoundException, SQLException {
+		List<ThuPhiBean> list = new ArrayList<>();
 
 		Connection connection = MysqlConnection.getMysqlConnection();
-		String query = "SELECT * FROM khoanthu";
-		PreparedStatement preparedStatement = connection.prepareStatement(query);
-		ResultSet rs = preparedStatement.executeQuery();
-		while (rs.next()){
-			// KhoanThuModel khoanThuModel = new KhoanThuModel(rs.getInt("MaKhoanThu"),rs.getString("TenKhoanThu"),
-			// 		rs.getDouble("SoTien"),rs.getInt("LoaiKhoanThu"));
-			// create a new KhoanThuModel object with attributes from the database
-			KhoanThuModel khoanThuModel = new KhoanThuModel(
-					rs.getInt("IDKhoanThu"),
-					rs.getString("TenKT"),
-					rs.getString("NgayBatDau"),
-					rs.getString("NgayKetThuc"),
-					rs.getDouble("TrongSoDienTich"),
-					rs.getDouble("TrongSoSTV"),
-					rs.getDouble("HangSo"),
-					rs.getString("LoaiKhoanThu")
-			);
-
-			list.add(khoanThuModel);
-		}
-		preparedStatement.close();
-		connection.close();
-		return list;
-	}
-	public KhoanThuModel getKhoanThu(int IDKhoanThu) throws ClassNotFoundException, SQLException {
-		Connection connection = MysqlConnection.getMysqlConnection();
-		String query = "SELECT * FROM khoanthu WHERE IDKhoanThu = '"+IDKhoanThu+"'";
-		PreparedStatement preparedStatement = connection.prepareStatement(query);
-		ResultSet rs = preparedStatement.executeQuery();
-		rs.next();
-		KhoanThuModel khoanThuModel = new KhoanThuModel(
+	    String query = "SELECT * FROM thuphi";
+	    PreparedStatement preparedStatement = connection.prepareStatement(query);
+	    ResultSet rs = preparedStatement.executeQuery();
+	    while (rs.next()){
+	        // ThuPhiModel ThuPhiModel = new ThuPhiModel(rs.getInt("Mathuphi"),rs.getString("Tenthuphi"),
+	        // 		rs.getDouble("SoTien"),rs.getInt("Loaithuphi"));
+			// create a new ThuPhiModel object with attributes from the database
+			ThuPhiModel thuPhiModel = new ThuPhiModel(
 				rs.getInt("IDKhoanThu"),
-				rs.getString("TenKT"),
-				rs.getString("NgayBatDau"),
-				rs.getString("NgayKetThuc"),
-				rs.getDouble("TrongSoDienTich"),
-				rs.getDouble("TrongSoSTV"),
-				rs.getDouble("HangSo"),
-				rs.getString("LoaiKhoanThu")
-		);
+                rs.getInt("IDHoKhau"),
+				rs.getDouble("SoTienPhaiDong"),
+                rs.getDouble("TienDaDong"),
+                rs.getString("NgayDong")
+			);
+			ThuPhiBean thuPhiBean = new ThuPhiBean();
+			thuPhiBean.setThuPhiModel(thuPhiModel);
+			thuPhiBean.setTenKhoanThu(new KhoanThuService().getKhoanThu(thuPhiModel.getIDKhoanThu()).getTenKT());
+			thuPhiBean.setTenChuHo(HoKhauService_Tuan.getTenChuHo(thuPhiModel.getIDHoKhau()));
 
-		connection.close();
-		return khoanThuModel;
+	        list.add(thuPhiBean);
+	   }
+	    preparedStatement.close();
+	    connection.close();
+		return list;
 	}
 }

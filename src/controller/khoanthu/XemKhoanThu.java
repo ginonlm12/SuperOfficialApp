@@ -3,6 +3,7 @@ package controller.khoanthu;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import models.KhoanThuModel;
+import java.time.LocalDate;
 
 public class XemKhoanThu {
 	@FXML
@@ -10,11 +11,11 @@ public class XemKhoanThu {
 	@FXML
 	private TextField tfTenKhoanThu;
 	@FXML
-	private TextField dpNgayBatDau;
+	private DatePicker dpNgayBatDau;
 	@FXML
-	private TextField dpNgayKetThuc;
+	private DatePicker dpNgayKetThuc;
 	@FXML
-	private TextField cbLoaiKhoanThu;
+	private ComboBox<String> cbLoaiKhoanThu;
 	@FXML
 	private TextField tfTrongSoDienTich;
 	@FXML
@@ -35,24 +36,26 @@ public class XemKhoanThu {
 		tfIDKhoanThu.setText(String.valueOf(khoanThuModel.getIDKhoanThu()));
 		tfTenKhoanThu.setText(khoanThuModel.getTenKT());
 		
-		// hien thi ngay bat dau
-		dpNgayBatDau.setText(khoanThuModel.getNgayBatDau());
+		// Convert the string value to a LocalDate object
+		dpNgayBatDau.setValue(LocalDate.parse(khoanThuModel.getNgayBatDau()));
 		
-		// hien thi ngay ket thuc
-		dpNgayKetThuc.setText(khoanThuModel.getNgayKetThuc());
+		// Convert the string value to a LocalDate object
+		dpNgayKetThuc.setValue(LocalDate.parse(khoanThuModel.getNgayKetThuc()));
 
 		tfTrongSoDienTich.setText(String.valueOf(khoanThuModel.getTrongSoDienTich()));
 		tfTrongSoSTV.setText(String.valueOf(khoanThuModel.getTrongSoSTV()));
 		tfHangSo.setText(String.valueOf(khoanThuModel.getHangSo()));
 
-        cbLoaiKhoanThu.setText(khoanThuModel.getLoaiKhoanThu());
+        cbLoaiKhoanThu.getItems().addAll(khoanThuModel.getLoaiKhoanThu());
+        // set selected item for cbLoaiKhoanThu
+		cbLoaiKhoanThu.getSelectionModel().select(khoanThuModel.getLoaiKhoanThu());
         
         // goi chonLoaiKhoanThu de hien thi cac thanh phan tuong ung voi loai khoan thu
         ChonKhoanThu();
 	}
 	
 	public void ChonKhoanThu() {
-		if (cbLoaiKhoanThu.getText().equals(new String("Tiền điện"))) {
+		if (cbLoaiKhoanThu.getSelectionModel().getSelectedItem().equals("Tiền điện")) {
 			tfThanhPhan1.setVisible(true);
 			tfThanhPhan2.setVisible(true);
 			tfThanhPhan3.setVisible(true);
@@ -64,7 +67,7 @@ public class XemKhoanThu {
 			tfThanhPhan1.setText("0 - 200 KW");
 			tfThanhPhan2.setText("200 - 400 KW");
 			tfThanhPhan3.setText(">= 400 KW");
-		} else if (cbLoaiKhoanThu.getText().equals("Tiền nước")) {
+		} else if (cbLoaiKhoanThu.getSelectionModel().getSelectedItem().equals("Tiền nước")) {
 			tfThanhPhan1.setVisible(true);
 			tfThanhPhan2.setVisible(false);
 			tfThanhPhan3.setVisible(false);
@@ -74,7 +77,7 @@ public class XemKhoanThu {
 			tfHangSo.setVisible(false);
 
 			tfThanhPhan1.setText("Giá 1m3 nước");
-		} else if (cbLoaiKhoanThu.getText().equals(new String("Tiền quản lý"))) {
+		} else if (cbLoaiKhoanThu.getSelectionModel().getSelectedItem().equals("Tiền quản lý")) {
 			tfThanhPhan1.setVisible(true);
 			tfThanhPhan2.setVisible(true);
 			tfThanhPhan3.setVisible(true);
@@ -86,7 +89,7 @@ public class XemKhoanThu {
 			tfThanhPhan1.setText("Giá 1m2 Phòng thường");
 			tfThanhPhan2.setText("Giá 1m2 Phòng cao cấp");
 			tfThanhPhan3.setText("Cộng thêm");
-		} else if (cbLoaiKhoanThu.getText().equals(new String("Tiền giữ xe"))) {
+		} else if (cbLoaiKhoanThu.getSelectionModel().getSelectedItem().equals("Tiền giữ xe")) {
 			tfThanhPhan1.setVisible(true);
 			tfThanhPhan2.setVisible(true);
 			tfThanhPhan3.setVisible(true);
@@ -113,7 +116,6 @@ public class XemKhoanThu {
         tfTenKhoanThu.setEditable(false);
         dpNgayBatDau.setEditable(false);
         dpNgayKetThuc.setEditable(false);
-		cbLoaiKhoanThu.setEditable(false);
         tfTrongSoDienTich.setEditable(false);
         tfTrongSoSTV.setEditable(false);
         tfHangSo.setEditable(false);

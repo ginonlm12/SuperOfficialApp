@@ -14,7 +14,7 @@ public class KhoanThuModel {
 	}
 
 	public KhoanThuModel(int IDKhoanThu, String TenKT, String NgayBatDau, String NgayKetThuc, double TrongSoDienTich,
-						 double TrongSoSTV, double HangSo, String LoaiKhoanThu) {
+			double TrongSoSTV, double HangSo, String LoaiKhoanThu) {
 		this.IDKhoanThu = IDKhoanThu;
 		this.TenKT = TenKT;
 		this.NgayBatDau = NgayBatDau;
@@ -28,27 +28,27 @@ public class KhoanThuModel {
 	public int getIDKhoanThu() {
 		return IDKhoanThu;
 	}
-
+	
 	public String getTenKT() {
 		return TenKT;
 	}
-
+	
 	public String getNgayKetThuc() {
 		return NgayKetThuc;
 	}
-
+	
 	public double getTrongSoDienTich() {
 		return TrongSoDienTich;
 	}
-
+	
 	public double getTrongSoSTV() {
 		return TrongSoSTV;
 	}
-
+	
 	public double getHangSo() {
 		return HangSo;
 	}
-
+	
 	public String getNgayBatDau() {
 		return NgayBatDau;
 	}
@@ -68,7 +68,7 @@ public class KhoanThuModel {
 	public void setTrongSoDienTich(double TrongSoDienTich) {
 		this.TrongSoDienTich = TrongSoDienTich;
 	}
-
+	
 	public void setTrongSoSTV(double TrongSoSTV) {
 		this.TrongSoSTV = TrongSoSTV;
 	}
