@@ -1,31 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="600.0" prefWidth="800.0" styleClass="background"
-            stylesheets="@../source/nhankhau_va_hokhau.css" xmlns="http://javafx.com/javafx/21"
-            fx:controller="controller.ThongKeController">
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" styleClass="background" stylesheets="@../source/nhankhau_va_hokhau.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ThongKeController">
    <children>
       <TableView fx:id="tvThongKe" layoutX="13.0" layoutY="178.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="100.0">
         <columns>
             <TableColumn fx:id="colIDKhoanThu" prefWidth="88.79998624324799" text="ID Khoản thu" />
-            <TableColumn fx:id="colTenKhoanThu" prefWidth="287.19995880126953" text="Tên khoản thu" />
-            <TableColumn fx:id="colLoai" prefWidth="96.800048828125" text="Loại" />
-            <TableColumn fx:id="colTinhTrang" prefWidth="99.19998168945312" text="Tình trạng" />
+            <TableColumn fx:id="colTenKhoanThu" prefWidth="271.2000198364258" text="Tên khoản thu" />
+            <TableColumn fx:id="colLoai" prefWidth="94.39996337890625" text="Loại" />
+            <TableColumn fx:id="colTinhTrang" prefWidth="120.00003051757812" text="Ngày kết thúc" />
             <TableColumn fx:id="colSoHoDaThu" prefWidth="97.5999755859375" text="Số hộ đã thu" />
             <TableColumn fx:id="colTongSoTien" prefWidth="112.79998779296875" text="Tổng số tiền " />
         </columns>
       </TableView>
-       <TextField fx:id="tfTimKiem" layoutX="14.0" layoutY="44.0" prefHeight="39.0" prefWidth="412.0"/>
-       <ComboBox fx:id="cbTinhTrang" layoutX="337.0" layoutY="44.0" onAction="#hienThongKe" prefHeight="39.0"
-                 prefWidth="227.0" styleClass="btntimkiem" stylesheets="@../source/nhankhau_va_hokhau.css"/>
-       <ComboBox fx:id="cbLoai" layoutX="547.0" layoutY="44.0" prefHeight="39.0" prefWidth="150.0"
-                 styleClass="btntimkiem" stylesheets="@../source/nhankhau_va_hokhau.css"/>
-       <Button layoutX="14.0" layoutY="8.0" maxWidth="185.0" mnemonicParsing="false" onAction="#dsHoChuaNopDu"
-               prefHeight="30.0" prefWidth="185.0" styleClass="buttonChucnang"
-               stylesheets="@../source/nhankhau_va_hokhau.css" text="Các hộ chưa nộp đủ"/>
-       <Button layoutX="682.0" layoutY="44.0" mnemonicParsing="false" onAction="#timKiem" prefHeight="39.0"
-               prefWidth="107.0" styleClass="btntimkiem" stylesheets="@../source/nhankhau_va_hokhau.css"
-               text="Tìm kiếm"/>
+       <TextField fx:id="tfTimKiem" layoutX="384.0" layoutY="44.0" prefHeight="39.0" prefWidth="164.0" />
+       <ComboBox fx:id="cbTinhTrang" layoutX="14.0" layoutY="44.0" onAction="#hienThongKe" prefHeight="39.0" prefWidth="118.0" styleClass="btntimkiem" stylesheets="@../source/nhankhau_va_hokhau.css" />
+       <ComboBox fx:id="cbLoai" layoutX="556.0" layoutY="44.0" prefHeight="39.0" prefWidth="118.0" styleClass="btntimkiem" stylesheets="@../source/nhankhau_va_hokhau.css" />
+       <Button layoutX="682.0" layoutY="44.0" mnemonicParsing="false" onAction="#timKiem" prefHeight="39.0" prefWidth="107.0" styleClass="btntimkiem" stylesheets="@../source/nhankhau_va_hokhau.css" text="Tìm kiếm" />
+      <Button layoutX="141.0" layoutY="44.0" mnemonicParsing="false" onAction="#dsHoChuaNopDu" prefHeight="39.0" prefWidth="162.0" styleClass="btntimkiem" stylesheets="@../source/nhankhau_va_hokhau.css" text="Xem các hộ chưa nộp đủ" />
    </children>
 </AnchorPane>

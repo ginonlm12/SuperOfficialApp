@@ -1,53 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-            prefHeight="600.0" prefWidth="800.0" styleClass="background"
-            stylesheets="@../source/nhankhau_va_hokhau.css" xmlns="http://javafx.com/javafx/21"
-            fx:controller="controller.KhoanThuController">
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="background" stylesheets="@../source/nhankhau_va_hokhau.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.KhoanThuController">
     <children>
         <VBox layoutX="10.0" layoutY="10.0" prefHeight="600.0" prefWidth="800.0">
             <children>
-                <HBox alignment="CENTER" prefHeight="45.0" prefWidth="800.0">
+                <HBox alignment="CENTER" prefHeight="45.0" prefWidth="800.0" spacing="5.0">
                     <children>
-                        <Button mnemonicParsing="false" onAction="#addKhoanThu" prefHeight="40.0" prefWidth="186.0"
-                                styleClass="buttonChucnang" stylesheets="@../source/nhankhau_va_hokhau.css"
-                                text="Thêm khoản thu" textFill="#2e088d"/>
-                        <Button mnemonicParsing="false" onAction="#delKhoanThu" prefHeight="40.0" prefWidth="187.0"
-                                styleClass="buttonChucnang" stylesheets="@../source/nhankhau_va_hokhau.css"
-                                text="Xóa khoản thu" textFill="#2e088d"/>
-                        <Button mnemonicParsing="false" onAction="#updateKhoanThu" prefHeight="40.0" prefWidth="180.0"
-                                styleClass="buttonChucnang" stylesheets="@../source/nhankhau_va_hokhau.css"
-                                text="Sửa khoản thu" textFill="#2e088d"/>
-                        <Button mnemonicParsing="false" onAction="#xemKhoanThu" prefHeight="40.0" prefWidth="158.0"
-                                styleClass="buttonChucnang" stylesheets="@../source/nhankhau_va_hokhau.css"
-                                text="Xem khoản thu" textFill="#2e088d"/>
+                        <Button mnemonicParsing="false" onAction="#addKhoanThu" prefHeight="40.0" prefWidth="186.0" styleClass="buttonChucnang" stylesheets="@../source/nhankhau_va_hokhau.css" text="Thêm khoản thu" textFill="#2e088d" />
+                        <Button minWidth="144.0" mnemonicParsing="false" onAction="#delKhoanThu" prefHeight="30.0" prefWidth="144.0" styleClass="buttonChucnang" stylesheets="@../source/nhankhau_va_hokhau.css" text="Xóa khoản thu" textFill="#2e088d" />
+                        <Button mnemonicParsing="false" onAction="#updateKhoanThu" prefHeight="40.0" prefWidth="180.0" styleClass="buttonChucnang" stylesheets="@../source/nhankhau_va_hokhau.css" text="Sửa khoản thu" textFill="#2e088d" />
+                        <Button mnemonicParsing="false" onAction="#xemKhoanThu" prefHeight="40.0" prefWidth="158.0" styleClass="buttonChucnang" stylesheets="@../source/nhankhau_va_hokhau.css" text="Xem khoản thu" textFill="#2e088d" />
                     </children>
                 </HBox>
-                <HBox alignment="CENTER" prefHeight="52.0" prefWidth="800.0">
+                <HBox alignment="CENTER" prefHeight="52.0" prefWidth="800.0" spacing="5.0">
                     <children>
-                        <HBox alignment="CENTER" prefHeight="52.0" prefWidth="473.0">
+                        <HBox alignment="CENTER" prefHeight="52.0" prefWidth="490.0" spacing="5.0">
                             <children>
-                                <TextField fx:id="tfSearch" prefHeight="41.0" prefWidth="316.0" styleClass="search"
-                                           stylesheets="@../source/nhankhau_va_hokhau.css"/>
-                                <ComboBox fx:id="cbChooseSearch" prefHeight="41.0" prefWidth="201.0"
-                                          styleClass="btntimkiem" stylesheets="@../source/nhankhau_va_hokhau.css"/>
+                                <TextField fx:id="tfSearch" prefHeight="42.0" prefWidth="286.0" styleClass="search" stylesheets="@../source/nhankhau_va_hokhau.css" />
+                                <ComboBox fx:id="cbChooseSearch" prefHeight="42.0" prefWidth="199.0" styleClass="btntimkiem" stylesheets="@../source/nhankhau_va_hokhau.css" />
                             </children>
                         </HBox>
-                        <Button mnemonicParsing="false" onAction="#searchKhoanThu" prefHeight="41.0" prefWidth="250.0"
-                                styleClass="btntimkiem" stylesheets="@../source/nhankhau_va_hokhau.css"
-                                text="Tìm kiếm"/>
+                        <Button mnemonicParsing="false" onAction="#searchKhoanThu" prefHeight="42.0" prefWidth="121.0" styleClass="btntimkiem" stylesheets="@../source/nhankhau_va_hokhau.css" text="Tìm kiếm" />
                     </children>
                 </HBox>
                 <HBox alignment="CENTER" prefHeight="41.0" prefWidth="800.0">
                     <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0"
-                              text="DANH SÁCH CÁC KHOẢN THU TẠI CHUNG CƯ BLUEMOON" textAlignment="CENTER">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="DANH SÁCH CÁC KHOẢN THU TẠI CHUNG CƯ BLUEMOON" textAlignment="CENTER">
                             <font>
-                                <Font name="System Bold" size="17.0"/>
+                                <Font name="System Bold" size="17.0" />
                             </font>
                         </Text>
                     </children>
@@ -56,15 +47,14 @@
                     <children>
                         <TableView fx:id="tvKhoanThu" prefHeight="446.0" prefWidth="767.0">
                             <columns>
-                                <TableColumn fx:id="colIDKhoanThu" prefWidth="96.79998624324799" text="ID"/>
-                                <TableColumn fx:id="colTenKhoanThu" prefWidth="228.79999542236328"
-                                             text="Tên khoản thu"/>
-                                <TableColumn fx:id="colLoai" prefWidth="157.5999755859375" text="Loại "/>
+                                <TableColumn fx:id="colIDKhoanThu" prefWidth="96.79998624324799" text="ID" />
+                                <TableColumn fx:id="colTenKhoanThu" prefWidth="228.79999542236328" text="Tên khoản thu" />
+                                <TableColumn fx:id="colLoai" prefWidth="157.5999755859375" text="Loại " />
                                 <!-- <TableColumn fx:id="colTSDienTich" prefWidth="88.0" text="Thành phần 1" />
                                 <TableColumn fx:id="colTSSoThanhVien" prefWidth="89.60003662109375" text="Thành phần 2" />
                                 <TableColumn fx:id="colCongThem" prefWidth="88.79995727539062" text="Thành Phần 3" /> -->
-                                <TableColumn fx:id="colNgayBatDau" prefWidth="151.19998168945312" text="Bắt Đầu"/>
-                                <TableColumn fx:id="colNgayKetThuc" prefWidth="150.39996337890625" text="Kết Thúc"/>
+                                <TableColumn fx:id="colNgayBatDau" prefWidth="151.19998168945312" text="Bắt Đầu" />
+                                <TableColumn fx:id="colNgayKetThuc" prefWidth="150.39996337890625" text="Kết Thúc" />
                             </columns>
                         </TableView>
                     </children>

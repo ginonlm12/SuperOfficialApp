@@ -50,7 +50,7 @@ public class ThuPhiController implements Initializable {
 		try {
 			hienThuPhi();
 			// thiet lap gia tri cho combobox
-			ObservableList<String> listComboBox = FXCollections.observableArrayList("Tên khoản thu", "ID khoản thu", "Tên chủ hộ", "Số phòng", "ID hộ khẩu");
+			ObservableList<String> listComboBox = FXCollections.observableArrayList("Tên khoản thu", "Tên chủ hộ");
 			cbChooseSearch.setValue("Tên khoản thu");
 			cbChooseSearch.setItems(listComboBox);
 		} catch (ClassNotFoundException | SQLException e) {
