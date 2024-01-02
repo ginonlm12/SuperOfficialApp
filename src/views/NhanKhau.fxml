@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -12,14 +13,8 @@
     <children>
         <VBox prefHeight="600.0" prefWidth="800.0">
             <children>
-                <HBox alignment="CENTER" prefHeight="45.0" prefWidth="800.0">
+                <HBox alignment="CENTER" prefHeight="45.0" prefWidth="800.0" spacing="2.0">
                     <children>
-                        <ImageView fx:id="reloadimg" fitHeight="32.0" fitWidth="32.0" onMouseClicked="#Reload"
-                                   pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@../source/icons8-reload-96.png"/>
-                            </image>
-                        </ImageView>
                         <Button focusTraversable="false" mnemonicParsing="false" onAction="#addNhanKhau"
                                 prefHeight="30.0" prefWidth="150.0" styleClass="buttonChucnang"
                                 stylesheets="@../css/nhankhau_va_hokhau.css" text="Thêm nhân khẩu" textFill="#2e088d"
@@ -40,6 +35,12 @@
                                 prefHeight="30.0" prefWidth="150.0" styleClass="buttonChucnang"
                                 stylesheets="@../css/nhankhau_va_hokhau.css" text="Thêm tạm vắng" textFill="#2e088d"
                                 wrapText="true"/>
+                        <ImageView fx:id="reloadimg" fitHeight="32.0" fitWidth="32.0" onMouseClicked="#Reload"
+                                   pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../source/icons8-reload-96.png"/>
+                            </image>
+                        </ImageView>
                     </children>
                 </HBox>
                 <HBox alignment="CENTER" prefHeight="52.0" prefWidth="800.0">
@@ -53,20 +54,19 @@
                             </children>
                         </HBox>
                         <Button mnemonicParsing="false" onAction="#searchNhanKhau" prefHeight="41.0" prefWidth="250.0"
-                                styleClass="btntimkiem" stylesheets="@../css/nhankhau_va_hokhau.css"
-                                text="Tìm kiếm"/>
+                                styleClass="btntimkiem" stylesheets="@../css/nhankhau_va_hokhau.css" text="Tìm kiếm"/>
                     </children>
                 </HBox>
-                <HBox alignment="CENTER" prefHeight="41.0" prefWidth="800.0">
-                    <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0"
-                              text="DANH SÁCH NHÂN KHẨU ĐANG CƯ TRÚ TẠI CHUNG CƯ BLUEMOON" textAlignment="CENTER">
-                            <font>
-                                <Font name="System Bold" size="17.0"/>
-                            </font>
-                        </Text>
-                    </children>
-                </HBox>
+                <Text strokeType="OUTSIDE" strokeWidth="0.0"
+                      text="DANH SÁCH NHÂN KHẨU ĐANG CƯ TRÚ TẠI CHUNG CƯ BLUEMOON" textAlignment="CENTER"
+                      wrappingWidth="804.7893676757812">
+                    <font>
+                        <Font name="System Bold" size="17.0"/>
+                    </font>
+                    <VBox.margin>
+                        <Insets left="10.0"/>
+                    </VBox.margin>
+                </Text>
                 <HBox alignment="CENTER" prefHeight="446.0" prefWidth="800.0">
                     <children>
                         <TableView id="table-view" fx:id="tvNhanKhau" prefHeight="446.0" prefWidth="767.0"
@@ -87,6 +87,9 @@
                                 <TableColumn fx:id="colQHvsChuHo" prefWidth="199.0" styleClass="btnchan"
                                              text="Quan hệ với chủ hộ"/>
                             </columns>
+                            <padding>
+                                <Insets left="10.0"/>
+                            </padding>
                         </TableView>
                     </children>
                 </HBox>

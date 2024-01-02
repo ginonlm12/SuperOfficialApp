@@ -13,14 +13,8 @@
     <children>
         <VBox prefHeight="610.0" prefWidth="810.0">
             <children>
-                <HBox alignment="CENTER" prefHeight="45.0" prefWidth="800.0">
+                <HBox alignment="CENTER" prefHeight="45.0" prefWidth="800.0" spacing="6.0">
                     <children>
-                        <ImageView fx:id="reloadimg" fitHeight="32.0" fitWidth="32.0" onMouseClicked="#Reload"
-                                   pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@../source/icons8-reload-96.png"/>
-                            </image>
-                        </ImageView>
                         <Button focusTraversable="false" mnemonicParsing="false" onAction="#updateTamvang"
                                 prefHeight="30.0" prefWidth="150.0" styleClass="buttonChucnang"
                                 stylesheets="@../css/nhankhau_va_hokhau.css" text="Sửa tạm vắng" textFill="#2e088d"
@@ -31,8 +25,14 @@
                                 wrapText="true"/>
                         <Button focusTraversable="false" mnemonicParsing="false" onAction="#addTamvang"
                                 prefHeight="30.0" prefWidth="150.0" styleClass="buttonChucnang"
-                                stylesheets="@../css/nhankhau_va_hokhau.css" text="Khai báo tạm vắng"
-                                textFill="#2e088d" wrapText="true"/>
+                                stylesheets="@../css/nhankhau_va_hokhau.css" text="Khai báo tạm vắng" textFill="#2e088d"
+                                wrapText="true"/>
+                        <ImageView fx:id="reloadimg" fitHeight="32.0" fitWidth="32.0" onMouseClicked="#Reload"
+                                   pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../source/icons8-reload-96.png"/>
+                            </image>
+                        </ImageView>
                     </children>
                 </HBox>
                 <HBox alignment="CENTER" prefHeight="52.0" prefWidth="800.0">
