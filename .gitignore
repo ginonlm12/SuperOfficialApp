@@ -3,3 +3,5 @@
 /.vscode/
 # file *.drawio
 *.drawio
+/src/services/MysqlConnection.java
+```

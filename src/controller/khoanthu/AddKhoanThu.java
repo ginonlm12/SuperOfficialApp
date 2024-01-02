@@ -18,8 +18,6 @@ import java.util.regex.Pattern;
 
 public class AddKhoanThu implements Initializable {
 	@FXML
-	private TextField tfIDKhoanThu;
-	@FXML
 	private TextField tfTenKhoanThu;
 	@FXML
 	private DatePicker dpNgayBatDau;
@@ -115,29 +113,6 @@ public class AddKhoanThu implements Initializable {
 
 	public void addKhoanThu(ActionEvent event) throws ClassNotFoundException, SQLException {
 		Pattern pattern;
-
-		// IDKhoanThu la day so tu 1 toi 11 chu so
-		pattern = Pattern.compile("\\d{1,11}");
-		if (!pattern.matcher(tfIDKhoanThu.getText()).matches()) {
-			Alert alert = new Alert(AlertType.WARNING, "Hãy nhập vào mã khoản thu là số từ 1 đến 11 chữ số!",
-					ButtonType.OK);
-			alert.setHeaderText(null);
-			alert.showAndWait();
-			return;
-		}
-
-		// kiem tra ma khoan thu them moi co bi trung voi nhung ma khoan thu da ton tai
-		// hay khong
-		List<KhoanThuModel> listKhoanThuModels = KhoanThuService.getListKhoanThu();
-		for (KhoanThuModel khoanThuModel : listKhoanThuModels) {
-			if (khoanThuModel.getIDKhoanThu() == Integer.parseInt(tfIDKhoanThu.getText())) {
-				Alert alert = new Alert(AlertType.WARNING, "Mã khoản thu đã bị trùng!", ButtonType.OK);
-				alert.setHeaderText(null);
-				alert.showAndWait();
-				return;
-			}
-		}
-
 		// kiem tra ten nhap vao
 		// ten nhap vao la chuoi tu 1 toi 50 ki tu
 		if (tfTenKhoanThu.getText().length() >= 50 || tfTenKhoanThu.getText().length() <= 1) {
@@ -217,7 +192,6 @@ public class AddKhoanThu implements Initializable {
 
 		// gan gia tri cac truong cua khoan thu
 		KhoanThuModel khoanThuModel = new KhoanThuModel();
-		khoanThuModel.setIDKhoanThu(Integer.parseInt(tfIDKhoanThu.getText()));
 		khoanThuModel.setTenKT(tfTenKhoanThu.getText());
 		khoanThuModel.setNgayBatDau(dpNgayBatDau.getValue().toString());
 		khoanThuModel.setNgayKetThuc(dpNgayKetThuc.getValue().toString());

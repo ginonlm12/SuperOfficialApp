@@ -9,18 +9,16 @@ import java.util.List;
 public class KhoanThuService {
 	public static boolean add(KhoanThuModel khoanThuModel) throws ClassNotFoundException, SQLException {
 		Connection connection = MysqlConnection.getMysqlConnection();
-		String query = "INSERT INTO khoanthu(IDKhoanThu, TenKT, NgayBatDau, NgayKetThuc, TrongSoDienTich, TrongSoSTV, HangSo, LoaiKhoanThu)"
-				+ " values (?, ?, ?, ?, ?, ?, ?, ?)";
+		String query = "INSERT INTO khoanthu(TenKT, NgayBatDau, NgayKetThuc, TrongSoDienTich, TrongSoSTV, HangSo, LoaiKhoanThu)"
+				+ " values (?, ?, ?, ?, ?, ?, ?)";
 		PreparedStatement preparedStatement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
-
-		preparedStatement.setInt(1, khoanThuModel.getIDKhoanThu());
-		preparedStatement.setString(2, khoanThuModel.getTenKT());
-		preparedStatement.setString(3, khoanThuModel.getNgayBatDau());
-		preparedStatement.setString(4, khoanThuModel.getNgayKetThuc());
-		preparedStatement.setDouble(5, khoanThuModel.getTrongSoDienTich());
-		preparedStatement.setDouble(6, khoanThuModel.getTrongSoSTV());
-		preparedStatement.setDouble(7, khoanThuModel.getHangSo());
-		preparedStatement.setString(8, khoanThuModel.getLoaiKhoanThu());
+		preparedStatement.setString(1, khoanThuModel.getTenKT());
+		preparedStatement.setString(2, khoanThuModel.getNgayBatDau());
+		preparedStatement.setString(3, khoanThuModel.getNgayKetThuc());
+		preparedStatement.setDouble(4, khoanThuModel.getTrongSoDienTich());
+		preparedStatement.setDouble(5, khoanThuModel.getTrongSoSTV());
+		preparedStatement.setDouble(6, khoanThuModel.getHangSo());
+		preparedStatement.setString(7, khoanThuModel.getLoaiKhoanThu());
 		preparedStatement.executeUpdate();
 		preparedStatement.close();
 		connection.close();
