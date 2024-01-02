@@ -27,8 +27,11 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                         </Button>
-                        <MenuButton id="menubutton" focusTraversable="false" layoutX="93.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="115.0" text="Cài đặt" AnchorPane.rightAnchor="1.0">
+                        <MenuButton id="menubutton" focusTraversable="false" layoutX="93.0" mnemonicParsing="false"
+                                    prefHeight="50.0" prefWidth="111.0" text="Cài đặt" AnchorPane.rightAnchor="9.0">
                             <items>
+                                <MenuItem fx:id="tfTen" mnemonicParsing="false" text="Tên người dùng"/>
+                                <SeparatorMenuItem mnemonicParsing="false"/>
                                 <MenuItem mnemonicParsing="false" onAction="#changepassClicked" text="Thay đổi mật khẩu" />
                                 <MenuItem mnemonicParsing="false" onAction="#logoutClicked" text="Đăng xuất" />
                                 <SeparatorMenuItem mnemonicParsing="false" />

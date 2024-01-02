@@ -2,6 +2,7 @@ package services;
 
 import com.spire.xls.Workbook;
 import com.spire.xls.Worksheet;
+import models.UserModel;
 
 import java.sql.*;
 
@@ -9,7 +10,9 @@ import static services.MysqlConnection.getMysqlConnection;
 
 public class UserService {
 
-    public static boolean checkUser(String username, String password) throws ClassNotFoundException, SQLException {
+    public static UserModel checkUser(String username, String password) throws ClassNotFoundException, SQLException {
+        UserModel user = new UserModel();
+
         Connection connection = MysqlConnection.getMysqlConnection();
         String sql = "SELECT * FROM users WHERE username = ? AND password = ?";
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
@@ -18,8 +21,13 @@ public class UserService {
 
         ResultSet resultSet = preparedStatement.executeQuery();
         boolean have_first_row = resultSet.next();
-
-        return have_first_row;
+        if (have_first_row) {
+            user.setPasswd(resultSet.getString("password"));
+            user.setUsername(resultSet.getString("username"));
+            user.setName(resultSet.getString("Email"));
+            return user;
+        }
+        return null;
     }
 
     public static boolean changPassword(String username, String password) throws ClassNotFoundException, SQLException {

@@ -1,5 +1,6 @@
 package controller;
 
+import application.Main;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
@@ -43,6 +44,8 @@ public class HomeController implements Initializable {
     public Pane mainPane;
     @FXML
     private Button btnPhong;
+    @FXML
+    private MenuItem tfTen;
 
 
     void createNewStage(String fxmlFilePath, int width, int height) throws IOException {
@@ -195,6 +198,8 @@ public class HomeController implements Initializable {
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
+        Main m = new Main();
+        tfTen.setText(Main.user.getName());
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/Main.fxml"));
             Pane newContentPane = loader.load();
