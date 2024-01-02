@@ -6,13 +6,13 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class KhoanThuService {
-	public boolean add(KhoanThuModel khoanThuModel) throws ClassNotFoundException, SQLException {
+	public static boolean add(KhoanThuModel khoanThuModel) throws ClassNotFoundException, SQLException {
 		Connection connection = MysqlConnection.getMysqlConnection();
 		String query = "INSERT INTO khoanthu(IDKhoanThu, TenKT, NgayBatDau, NgayKetThuc, TrongSoDienTich, TrongSoSTV, HangSo, LoaiKhoanThu)"
 				+ " values (?, ?, ?, ?, ?, ?, ?, ?)";
 		PreparedStatement preparedStatement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+
 		preparedStatement.setInt(1, khoanThuModel.getIDKhoanThu());
 		preparedStatement.setString(2, khoanThuModel.getTenKT());
 		preparedStatement.setString(3, khoanThuModel.getNgayBatDau());
@@ -27,30 +27,24 @@ public class KhoanThuService {
 		return true;
 	}
 
-	public boolean del(int IDKhoanThu) throws ClassNotFoundException, SQLException {
+	public static boolean del(int IDKhoanThu) throws ClassNotFoundException, SQLException {
 		Connection connection = MysqlConnection.getMysqlConnection();
-		// String query = "SELECT * FROM thutien WHERE IDKhoanThu='"+IDKhoanThu+"';";
-	    // PreparedStatement preparedStatement = connection.prepareStatement(query);
-	    // ResultSet rs = preparedStatement.executeQuery();
-	    // while (rs.next()){
-	    // 	query="DELETE FROM thuphi WHERE IDKhoanThu='"+IDKhoanThu+"'";
-	    // 	preparedStatement = connection.prepareStatement(query);
-	    // 	preparedStatement.executeUpdate();
-	    // }
-	    String query ="DELETE FROM khoanthu WHERE IDKhoanThu = '"+IDKhoanThu+"'";
-	    PreparedStatement preparedStatement = connection.prepareStatement(query);
+		String query = "DELETE FROM khoanthu WHERE IDKhoanThu = ?";
+		PreparedStatement preparedStatement = connection.prepareStatement(query);
+
+		preparedStatement.setInt(1, IDKhoanThu);
 		preparedStatement.executeUpdate();
 		preparedStatement.close();
 		connection.close();
 		return true;
 	}
 
-	// modify the update method to match the khoanthu table
-	public boolean update(int IDKhoanThu_old, KhoanThuModel khoanThuModel) throws ClassNotFoundException, SQLException {
+	public static boolean update(int IDKhoanThu_old, KhoanThuModel khoanThuModel)
+			throws ClassNotFoundException, SQLException {
 		Connection connection = MysqlConnection.getMysqlConnection();
+		String query = "UPDATE khoanthu SET TenKT = ?, NgayBatDau = ?, NgayKetThuc = ?, TrongSoDienTich = ?, TrongSoSTV = ?, HangSo = ?, LoaiKhoanThu = ?, IDKhoanThu = ? WHERE IDKhoanThu = ?";
 		PreparedStatement preparedStatement;
 
-		String query = "UPDATE khoanthu SET TenKT = ?, NgayBatDau = ?, NgayKetThuc = ?, TrongSoDienTich = ?, TrongSoSTV = ?, HangSo = ?, LoaiKhoanThu = ?, IDKhoanThu = ? WHERE IDKhoanThu = ?";
 		preparedStatement = connection.prepareStatement(query);
 		preparedStatement.setString(1, khoanThuModel.getTenKT());
 		preparedStatement.setString(2, khoanThuModel.getNgayBatDau());
@@ -62,63 +56,53 @@ public class KhoanThuService {
 		preparedStatement.setInt(8, khoanThuModel.getIDKhoanThu());
 		preparedStatement.setInt(9, IDKhoanThu_old);
 		preparedStatement.executeUpdate();
-
-		// String query2 = "UPDATE thuphi SET IDKhoanThu = ? WHERE IDKhoanThu = ?";
-		// preparedStatement = connection.prepareStatement(query2);
-		// preparedStatement.setInt(1, khoanThuModel.getIDKhoanThu());
-		// preparedStatement.setInt(2, IDKhoanThu_old);
-		// preparedStatement.executeUpdate();
-		// preparedStatement.close();
-		// connection.close();
 		return true;
 	}
 
-	public List<KhoanThuModel> getListKhoanThu() throws ClassNotFoundException, SQLException {
+	public static List<KhoanThuModel> getListKhoanThu() throws ClassNotFoundException, SQLException {
 		List<KhoanThuModel> list = new ArrayList<>();
 
 		Connection connection = MysqlConnection.getMysqlConnection();
-	    String query = "SELECT * FROM khoanthu";
-	    PreparedStatement preparedStatement = connection.prepareStatement(query);
-	    ResultSet rs = preparedStatement.executeQuery();
-	    while (rs.next()){
-	        // KhoanThuModel khoanThuModel = new KhoanThuModel(rs.getInt("MaKhoanThu"),rs.getString("TenKhoanThu"),
-	        // 		rs.getDouble("SoTien"),rs.getInt("LoaiKhoanThu"));
-			// create a new KhoanThuModel object with attributes from the database
+		String query = "SELECT * FROM khoanthu";
+		PreparedStatement preparedStatement = connection.prepareStatement(query);
+		ResultSet rs = preparedStatement.executeQuery();
+		while (rs.next()) {
 			KhoanThuModel khoanThuModel = new KhoanThuModel(
-				rs.getInt("IDKhoanThu"), 
-				rs.getString("TenKT"),	
-				rs.getString("NgayBatDau"),	
-				rs.getString("NgayKetThuc"),
-				rs.getDouble("TrongSoDienTich"),
-				rs.getDouble("TrongSoSTV"),
-				rs.getDouble("HangSo"),
-				rs.getString("LoaiKhoanThu")
-			);
+					rs.getInt("IDKhoanThu"),
+					rs.getString("TenKT"),
+					rs.getString("NgayBatDau"),
+					rs.getString("NgayKetThuc"),
+					rs.getDouble("TrongSoDienTich"),
+					rs.getDouble("TrongSoSTV"),
+					rs.getDouble("HangSo"),
+					rs.getString("LoaiKhoanThu"));
 
-	        list.add(khoanThuModel);
-	   }
-	    preparedStatement.close();
-	    connection.close();
+			list.add(khoanThuModel);
+		}
+		preparedStatement.close();
+		connection.close();
 		return list;
 	}
-	public KhoanThuModel getKhoanThu(int IDKhoanThu) throws ClassNotFoundException, SQLException {
+
+	public static KhoanThuModel getKhoanThu(int IDKhoanThu) throws ClassNotFoundException, SQLException {
 		Connection connection = MysqlConnection.getMysqlConnection();
-	    String query = "SELECT * FROM khoanthu WHERE IDKhoanThu = '"+IDKhoanThu+"'";
-	    PreparedStatement preparedStatement = connection.prepareStatement(query);
-	    ResultSet rs = preparedStatement.executeQuery();
-	    rs.next();
+		String query = "SELECT * FROM khoanthu WHERE IDKhoanThu = ?";
+		PreparedStatement preparedStatement = connection.prepareStatement(query);
+		preparedStatement.setInt(1, IDKhoanThu);
+
+		ResultSet rs = preparedStatement.executeQuery();
+		rs.next();
 		KhoanThuModel khoanThuModel = new KhoanThuModel(
-				rs.getInt("IDKhoanThu"), 
-				rs.getString("TenKT"),	
-				rs.getString("NgayBatDau"),	
+				rs.getInt("IDKhoanThu"),
+				rs.getString("TenKT"),
+				rs.getString("NgayBatDau"),
 				rs.getString("NgayKetThuc"),
 				rs.getDouble("TrongSoDienTich"),
 				rs.getDouble("TrongSoSTV"),
 				rs.getDouble("HangSo"),
-				rs.getString("LoaiKhoanThu")
-			);
+				rs.getString("LoaiKhoanThu"));
 
-	    connection.close();
+		connection.close();
 		return khoanThuModel;
 	}
 }

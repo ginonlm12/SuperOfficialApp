@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="600.0" prefWidth="800.0" styleClass="background"
             stylesheets="@../source/nhankhau_va_hokhau.css" xmlns="http://javafx.com/javafx/21"
-            fx:controller="controller.HoKhauController_Tuan">
+            fx:controller="controller.HoKhauController">
    <children>
        <TableView id="table-view" fx:id="tvHoKhau" layoutX="11.2" layoutY="128.8" prefHeight="461.0" prefWidth="603.0"
                   stylesheets="@../source/nhankhau_va_hokhau.css" AnchorPane.bottomAnchor="10.0"

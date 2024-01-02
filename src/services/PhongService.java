@@ -87,26 +87,6 @@ public class PhongService {
         return used + "/" + total;
     }
 
-    public List<PhongModel> getListPhong() throws ClassNotFoundException, SQLException {
-        List<PhongModel> list = new ArrayList<>();
-
-        Connection connection = MysqlConnection.getMysqlConnection();
-        String query = "SELECT * FROM phong";
-        PreparedStatement preparedStatement = connection.prepareStatement(query);
-        ResultSet rs = preparedStatement.executeQuery();
-        while (rs.next()) {
-            PhongModel phongModel = new PhongModel();
-            phongModel.setSoPhong(rs.getInt("SoPhong"));
-            phongModel.setDienTich(rs.getDouble("DienTich"));
-            phongModel.setLoaiPhong(rs.getString("LoaiPhong"));
-            phongModel.setTrangThai(HoKhauService_Tuan.checkSuDung(phongModel.getSoPhong()));
-            list.add(phongModel);
-        }
-        preparedStatement.close();
-        connection.close();
-        return list;
-    }
-
     public static PhongModel getPhongModel(int soPhong) throws ClassNotFoundException, SQLException {
         PhongModel phongModel = new PhongModel();
 
@@ -119,10 +99,30 @@ public class PhongService {
             phongModel.setSoPhong(rs.getInt("SoPhong"));
             phongModel.setDienTich(rs.getDouble("DienTich"));
             phongModel.setLoaiPhong(rs.getString("LoaiPhong"));
-            phongModel.setTrangThai(HoKhauService_Tuan.checkSuDung(phongModel.getSoPhong()));
+            phongModel.setTrangThai(HoKhauService.checkSuDung(phongModel.getSoPhong()));
         }
         preparedStatement.close();
         connection.close();
         return phongModel;
+    }
+
+    public List<PhongModel> getListPhong() throws ClassNotFoundException, SQLException {
+        List<PhongModel> list = new ArrayList<>();
+
+        Connection connection = MysqlConnection.getMysqlConnection();
+        String query = "SELECT * FROM phong";
+        PreparedStatement preparedStatement = connection.prepareStatement(query);
+        ResultSet rs = preparedStatement.executeQuery();
+        while (rs.next()) {
+            PhongModel phongModel = new PhongModel();
+            phongModel.setSoPhong(rs.getInt("SoPhong"));
+            phongModel.setDienTich(rs.getDouble("DienTich"));
+            phongModel.setLoaiPhong(rs.getString("LoaiPhong"));
+            phongModel.setTrangThai(HoKhauService.checkSuDung(phongModel.getSoPhong()));
+            list.add(phongModel);
+        }
+        preparedStatement.close();
+        connection.close();
+        return list;
     }
 }
