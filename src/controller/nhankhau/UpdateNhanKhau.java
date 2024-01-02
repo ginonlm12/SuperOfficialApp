@@ -328,23 +328,6 @@ public class UpdateNhanKhau {
 			return;
 		}
 
-		List<NhanKhauModel> listNhanKhauModels = new NhanKhauService().getListNhanKhau();
-		boolean checkExistedHoKhau = false;
-		for (NhanKhauModel nhankhau : listNhanKhauModels) {
-			//System.out.print("haha + false");
-			if (nhankhau.getIDNhanKhau() == Integer.parseInt(tfIDHoKhau.getValue())) {
-				//System.out.print("haha + true");
-				checkExistedHoKhau = true;
-				break;
-			}
-		}
-		if (!checkExistedHoKhau) {
-			Alert alert = new Alert(AlertType.WARNING, "Hãy nhập vào ID hộ khẩu đã tồn tại!", ButtonType.OK);
-			alert.setHeaderText(null);
-			alert.showAndWait();
-			return;
-		}
-
 		if (tfQHvsChuHo.getValue() == null) {
 			Alert alert = new Alert(AlertType.WARNING, "Vui lòng chọn quan hệ với chủ hộ", ButtonType.OK);
 			alert.setHeaderText(null);
@@ -415,18 +398,8 @@ public class UpdateNhanKhau {
 		}
 		String GioiTinh = tfGioiTinh.getValue();
 		String DanToc = tfDanToc.getValue();
-//		if(tfQueQuan.getText() == null || tfQueQuan.getText().isEmpty())
-//			QueQuan = "Chưa cung cấp";
-//		else{
-//			QueQuan = tfQueQuan.getText();
-//		}
-//
-		System.out.print(QueQuan);
-		NhanKhauService nhanKhauService = new NhanKhauService();
-//		QuanHeService quanHeService = new QuanHeService();
-//
+
 		newNhanKhauModel = new NhanKhauModel(IDNhanKhau, IDHoKhau, QHvsChuHo, HoTen, NgaySinh, CCCD, NgheNghiep, GioiTinh, DanToc, QueQuan);
-//		QuanHeModel quanHeModel = new QuanHeModel(mahokhauInt, idInt, quanheString);
 		if (NhanKhauModel.compareNhanKhauModels(newNhanKhauModel, nhanKhauModel)) {
 			Alert alert = new Alert(AlertType.WARNING, "Thông tin không thay đổi", ButtonType.OK);
 			alert.setHeaderText(null);
