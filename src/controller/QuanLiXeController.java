@@ -21,7 +21,9 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class GuiXeController implements Initializable {
+
+public class QuanLiXeController implements Initializable {
+
 
     ObservableList<XeModel> listValueTableView;
     @FXML
@@ -54,7 +56,9 @@ public class GuiXeController implements Initializable {
     private TableView<XeModel> tbGuiXe;
     private List<XeModel> listXe = null;
 
-    public GuiXeController() throws SQLException, ClassNotFoundException {
+
+    public QuanLiXeController() throws SQLException, ClassNotFoundException {
+
     }
 
     public void initialize(URL arg0, ResourceBundle arg1) {

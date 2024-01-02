@@ -140,7 +140,7 @@ public class HomeController implements Initializable {
    }
 
     public void setGuiXe(ActionEvent event) throws IOException {
-        changeMainPane("/views/GuiXe.fxml");
+        changeMainPane("/views/QuanLiXe.fxml");
     }
 
     void menuShow(VBox menu, int x, int y, double keysecond) {
