@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.*?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="400.0" prefWidth="690.0" styleClass="background"
-            stylesheets="@../../source/usecase.css" xmlns="http://javafx.com/javafx/21"
+            stylesheets="@../../css/usecase.css" xmlns="http://javafx.com/javafx/21"
             fx:controller="controller.nhankhau.ShowChiTiet">
    <children>
        <Label layoutX="473.0" layoutY="49.0" text="ID">
@@ -54,27 +54,27 @@
             <Font size="20.0" />
          </font></Label>
        <TextField fx:id="tfCCCD1" editable="false" layoutX="159.0" layoutY="90.0" prefHeight="39.0" prefWidth="306.0"
-                  styleClass="text-field-rounded" stylesheets="@../../source/usecase.css"/>
+                  styleClass="text-field-rounded" stylesheets="@../../css/usecase.css"/>
        <TextField fx:id="tfNgaySinh1" editable="false" layoutX="159.0" layoutY="138.0" prefHeight="39.0"
-                  prefWidth="306.0" styleClass="text-field-rounded" stylesheets="@../../source/usecase.css"/>
+                  prefWidth="306.0" styleClass="text-field-rounded" stylesheets="@../../css/usecase.css"/>
        <TextField fx:id="tfNgheNghiep1" editable="false" layoutX="160.0" layoutY="239.0" prefHeight="39.0"
-                  prefWidth="504.0" styleClass="text-field-rounded" stylesheets="@../../source/usecase.css"/>
+                  prefWidth="504.0" styleClass="text-field-rounded" stylesheets="@../../css/usecase.css"/>
        <TextField fx:id="tfIDHoKhau1" editable="false" layoutX="159.0" layoutY="188.0" prefHeight="39.0"
-                  prefWidth="306.0" styleClass="text-field-rounded" stylesheets="@../../source/usecase.css"/>
+                  prefWidth="306.0" styleClass="text-field-rounded" stylesheets="@../../css/usecase.css"/>
        <TextField fx:id="tfQHvsChuHo1" editable="false" layoutX="160.0" layoutY="290.0" prefHeight="39.0"
-                  prefWidth="504.0" styleClass="text-field-rounded" stylesheets="@../../source/usecase.css"/>
+                  prefWidth="504.0" styleClass="text-field-rounded" stylesheets="@../../css/usecase.css"/>
        <TextField fx:id="tfQueQuan1" editable="false" layoutX="159.0" layoutY="342.0" prefHeight="39.0"
-                  prefWidth="504.0" styleClass="text-field-rounded" stylesheets="@../../source/usecase.css"/>
+                  prefWidth="504.0" styleClass="text-field-rounded" stylesheets="@../../css/usecase.css"/>
        <TextField fx:id="tfIDNhanKhau1" editable="false" layoutX="562.0" layoutY="44.0" prefHeight="39.0"
-                  prefWidth="101.0" styleClass="text-field-rounded" stylesheets="@../../source/usecase.css"/>
+                  prefWidth="101.0" styleClass="text-field-rounded" stylesheets="@../../css/usecase.css"/>
        <TextField fx:id="tfGioiTinh1" editable="false" layoutX="562.0" layoutY="90.0" prefHeight="39.0"
-                  prefWidth="101.0" styleClass="text-field-rounded" stylesheets="@../../source/usecase.css"/>
+                  prefWidth="101.0" styleClass="text-field-rounded" stylesheets="@../../css/usecase.css"/>
        <TextField fx:id="tfHoTen1" editable="false" layoutX="159.0" layoutY="44.0" prefHeight="39.0" prefWidth="306.0"
-                  styleClass="text-field-rounded" stylesheets="@../../source/usecase.css"/>
+                  styleClass="text-field-rounded" stylesheets="@../../css/usecase.css"/>
        <TextField fx:id="tfDanToc1" editable="false" layoutX="562.0" layoutY="138.0" prefHeight="39.0" prefWidth="101.0"
-                  styleClass="text-field-rounded" stylesheets="@../../source/usecase.css"/>
+                  styleClass="text-field-rounded" stylesheets="@../../css/usecase.css"/>
        <TextField fx:id="tfSoPhong" editable="false" layoutX="565.0" layoutY="188.0" prefHeight="39.0" prefWidth="101.0"
-                  styleClass="text-field-rounded" stylesheets="@../../source/usecase.css"/>
+                  styleClass="text-field-rounded" stylesheets="@../../css/usecase.css"/>
        <Label layoutX="476.0" layoutY="181.0" prefHeight="53.0" prefWidth="69.0" text="Phòng" textAlignment="CENTER"
               wrapText="true">
          <font>

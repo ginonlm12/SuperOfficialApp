@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="400.0" prefWidth="500.0" style="-fx-background-color: #EEF5FF;"
-            styleClass="background" stylesheets="@../../source/usecase.css"
+            styleClass="background" stylesheets="@../../css/usecase.css"
             xmlns="http://javafx.com/javafx/21" fx:controller="controller.xe.UpdateXe">
    <children>
        <Button layoutX="345.0" layoutY="340.0" mnemonicParsing="false" onAction="#XacNhan" prefHeight="29.0"
@@ -22,7 +22,7 @@
       </Label>
       <HBox alignment="CENTER" layoutX="1.0" layoutY="147.0" prefHeight="144.0" prefWidth="494.0" spacing="20.0">
          <children>
-            <Pane prefHeight="144.0" prefWidth="147.0" styleClass="box-dashboard" stylesheets="@../../source/Home.css">
+             <Pane prefHeight="144.0" prefWidth="147.0" styleClass="box-dashboard" stylesheets="@../../css/Home.css">
                <children>
                   <ImageView fitHeight="80.0" fitWidth="90.0" layoutX="34.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -55,7 +55,7 @@
                   </HBox>
                </children>
             </Pane>
-            <Pane prefHeight="144.0" prefWidth="147.0" styleClass="box-dashboard" stylesheets="@../../source/Home.css">
+             <Pane prefHeight="144.0" prefWidth="147.0" styleClass="box-dashboard" stylesheets="@../../css/Home.css">
                <children>
                   <ImageView fitHeight="80.0" fitWidth="90.0" layoutX="34.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -88,7 +88,7 @@
                   </HBox>
                </children>
             </Pane>
-            <Pane prefHeight="144.0" prefWidth="147.0" styleClass="box-dashboard" stylesheets="@../../source/Home.css">
+             <Pane prefHeight="144.0" prefWidth="147.0" styleClass="box-dashboard" stylesheets="@../../css/Home.css">
                <children>
                   <ImageView fitHeight="80.0" fitWidth="90.0" layoutX="34.0" pickOnBounds="true" preserveRatio="true">
                      <image>

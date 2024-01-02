@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.*?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="470.0" prefWidth="500.0" styleClass="text-field-rounded"
-            stylesheets="@../../source/usecase.css" xmlns="http://javafx.com/javafx/21"
+            stylesheets="@../../css/usecase.css" xmlns="http://javafx.com/javafx/21"
             fx:controller="controller.hokhau.UpdateQHvsChuHo">
     <children>
         <Pane layoutX="45.0" layoutY="58.0" prefHeight="344.0" prefWidth="412.0" styleClass="subpane"
@@ -23,9 +23,9 @@
                     </font>
                 </Text>
                 <TextField fx:id="tfIDhoKhau" editable="false" layoutX="168.0" layoutY="14.0" prefHeight="43.0"
-                           prefWidth="231.0" styleClass="text-field-rounded" stylesheets="@../../source/usecase.css"/>
+                           prefWidth="231.0" styleClass="text-field-rounded" stylesheets="@../../css/usecase.css"/>
                 <TextField fx:id="tfHoTen" layoutX="169.0" layoutY="208.0" prefHeight="43.0" prefWidth="231.0"
-                           styleClass="text-field-rounded" stylesheets="@../../source/usecase.css"/>
+                           styleClass="text-field-rounded" stylesheets="@../../css/usecase.css"/>
                 <Text layoutX="16.0" layoutY="239.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Họ tên"
                       wrappingWidth="120.13671875">
                     <font>
@@ -44,11 +44,11 @@
                     </font>
                 </Text>
                 <TextField fx:id="tfChuHo" editable="false" layoutX="169.0" layoutY="78.0" prefHeight="43.0"
-                           prefWidth="231.0" styleClass="text-field-rounded" stylesheets="@../../source/usecase.css"/>
+                           prefWidth="231.0" styleClass="text-field-rounded" stylesheets="@../../css/usecase.css"/>
                 <ComboBox fx:id="tfIDNhanKhau" layoutX="168.0" layoutY="141.0" prefHeight="43.0" prefWidth="231.0"
-                          styleClass="text-field-rounded" stylesheets="@../../source/usecase.css"/>
+                          styleClass="text-field-rounded" stylesheets="@../../css/usecase.css"/>
                 <ComboBox fx:id="tfQHvsChuHo" layoutX="168.0" layoutY="272.0" prefHeight="43.0" prefWidth="231.0"
-                          styleClass="text-field-rounded" stylesheets="@../../source/usecase.css"/>
+                          styleClass="text-field-rounded" stylesheets="@../../css/usecase.css"/>
             </children>
         </Pane>
 

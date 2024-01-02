@@ -7,7 +7,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="600.0" prefWidth="800.0" styleClass="background"
-            stylesheets="@../source/nhankhau_va_hokhau.css" xmlns="http://javafx.com/javafx/21"
+            stylesheets="@../css/nhankhau_va_hokhau.css" xmlns="http://javafx.com/javafx/21"
             fx:controller="controller.NhanKhauController">
     <children>
         <VBox prefHeight="600.0" prefWidth="800.0">
@@ -22,23 +22,23 @@
                         </ImageView>
                         <Button focusTraversable="false" mnemonicParsing="false" onAction="#addNhanKhau"
                                 prefHeight="30.0" prefWidth="150.0" styleClass="buttonChucnang"
-                                stylesheets="@../source/nhankhau_va_hokhau.css" text="Thêm nhân khẩu" textFill="#2e088d"
+                                stylesheets="@../css/nhankhau_va_hokhau.css" text="Thêm nhân khẩu" textFill="#2e088d"
                                 wrapText="true"/>
                         <Button focusTraversable="false" mnemonicParsing="false" onAction="#updateNhanKhau"
                                 prefHeight="30.0" prefWidth="150.0" styleClass="buttonChucnang"
-                                stylesheets="@../source/nhankhau_va_hokhau.css" text="Cập nhật nhân khẩu"
+                                stylesheets="@../css/nhankhau_va_hokhau.css" text="Cập nhật nhân khẩu"
                                 textFill="#2e088d" wrapText="true"/>
                         <Button focusTraversable="false" mnemonicParsing="false" onAction="#showChiTiet"
                                 prefHeight="30.0" prefWidth="150.0" styleClass="buttonChucnang"
-                                stylesheets="@../source/nhankhau_va_hokhau.css" text="Xem chi tiết" textFill="#2e088d"
+                                stylesheets="@../css/nhankhau_va_hokhau.css" text="Xem chi tiết" textFill="#2e088d"
                                 wrapText="true"/>
                         <Button focusTraversable="false" mnemonicParsing="false" onAction="#delNhanKhau"
                                 prefHeight="30.0" prefWidth="150.0" styleClass="buttonChucnang"
-                                stylesheets="@../source/nhankhau_va_hokhau.css" text="Xóa nhân khẩu" textFill="#2e088d"
+                                stylesheets="@../css/nhankhau_va_hokhau.css" text="Xóa nhân khẩu" textFill="#2e088d"
                                 wrapText="true"/>
                         <Button focusTraversable="false" mnemonicParsing="false" onAction="#addTamvang"
                                 prefHeight="30.0" prefWidth="150.0" styleClass="buttonChucnang"
-                                stylesheets="@../source/nhankhau_va_hokhau.css" text="Thêm tạm vắng" textFill="#2e088d"
+                                stylesheets="@../css/nhankhau_va_hokhau.css" text="Thêm tạm vắng" textFill="#2e088d"
                                 wrapText="true"/>
                     </children>
                 </HBox>
@@ -47,13 +47,13 @@
                         <HBox alignment="CENTER" prefHeight="52.0" prefWidth="473.0">
                             <children>
                                 <TextField fx:id="tfSearch" prefHeight="41.0" prefWidth="316.0" styleClass="search"
-                                           stylesheets="@../source/nhankhau_va_hokhau.css"/>
+                                           stylesheets="@../css/nhankhau_va_hokhau.css"/>
                                 <ComboBox fx:id="cbChooseSearch" prefHeight="41.0" prefWidth="201.0"
-                                          styleClass="btntimkiem" stylesheets="@../source/nhankhau_va_hokhau.css"/>
+                                          styleClass="btntimkiem" stylesheets="@../css/nhankhau_va_hokhau.css"/>
                             </children>
                         </HBox>
                         <Button mnemonicParsing="false" onAction="#searchNhanKhau" prefHeight="41.0" prefWidth="250.0"
-                                styleClass="btntimkiem" stylesheets="@../source/nhankhau_va_hokhau.css"
+                                styleClass="btntimkiem" stylesheets="@../css/nhankhau_va_hokhau.css"
                                 text="Tìm kiếm"/>
                     </children>
                 </HBox>
@@ -70,7 +70,7 @@
                 <HBox alignment="CENTER" prefHeight="446.0" prefWidth="800.0">
                     <children>
                         <TableView id="table-view" fx:id="tvNhanKhau" prefHeight="446.0" prefWidth="767.0"
-                                   stylesheets="@../source/nhankhau_va_hokhau.css">
+                                   stylesheets="@../css/nhankhau_va_hokhau.css">
                             <columns>
                                 <TableColumn id="clmID" fx:id="colMaNhanKhau" prefWidth="38.0000022649765"
                                              styleClass="btnchan" text="ID"/>

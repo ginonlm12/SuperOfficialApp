@@ -8,11 +8,11 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.*?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="600.0" prefWidth="800.0" styleClass="main-bg"
-            stylesheets="@../source/Main.css" xmlns="http://javafx.com/javafx/21"
+            stylesheets="@../css/Main.css" xmlns="http://javafx.com/javafx/21"
             fx:controller="controller.MainController">
    <children>
        <VBox layoutX="16.0" layoutY="20.0" prefHeight="559.0" prefWidth="767.0" spacing="15.0" styleClass="background"
-             stylesheets="@../source/nhankhau_va_hokhau.css">
+             stylesheets="@../css/nhankhau_va_hokhau.css">
          <children>
              <VBox prefHeight="160.0" prefWidth="703.0" spacing="1.0"
                    style="-fx-background-color: linear-gradient(to bottom right, #B4D4FF, #EEF5FF); -fx-background-radius: 15; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 6,0,0,0);">

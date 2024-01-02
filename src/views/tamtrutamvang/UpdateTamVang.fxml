@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.*?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="300.0" prefWidth="415.0" styleClass="background"
-            stylesheets="@../../source/usecase.css" xmlns="http://javafx.com/javafx/21"
+            stylesheets="@../../css/usecase.css" xmlns="http://javafx.com/javafx/21"
             fx:controller="controller.tamtrutamvang.UpdateTamVang">
     <children>
         <Label fx:id="textKhaibao" layoutX="21.0" layoutY="8.0" text="KHAI BÁO TẠM VẮNG">

@@ -4,17 +4,17 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="530.0" prefWidth="570.0" styleClass="background"
-            stylesheets="@../../source/usecase.css" xmlns="http://javafx.com/javafx/21"
+            stylesheets="@../../css/usecase.css" xmlns="http://javafx.com/javafx/21"
             fx:controller="controller.khoanthu.UpdateKhoanThu">
    <children>
        <Label layoutX="47.0" layoutY="75.0" text="Tên khoản thu"/>
        <TextField fx:id="tfTenKhoanThu" layoutX="168.0" layoutY="64.0" prefHeight="39.0" prefWidth="354.0"
                   promptText="Nhập tên khoản thu" styleClass="text-field-rounded"
-                  stylesheets="@../../source/usecase.css"/>
+                  stylesheets="@../../css/usecase.css"/>
        <Label layoutX="47.0" layoutY="126.0" text="ID"/>
        <TextField fx:id="tfIDKhoanThu" layoutX="168.0" layoutY="115.0" prefHeight="39.0" prefWidth="354.0"
                   promptText="Nhập mã khoản thu" styleClass="text-field-rounded"
-                  stylesheets="@../../source/usecase.css"/>
+                  stylesheets="@../../css/usecase.css"/>
        <Label layoutX="47.0" layoutY="169.0" text="Ngày bắt đầu"/>
        <Button layoutX="422.0" layoutY="482.0" mnemonicParsing="false" onAction="#updateKhoanThu" prefHeight="25.0"
                prefWidth="102.0" text="Cập nhật"/>
@@ -25,26 +25,26 @@
       </Label>
        <Label layoutX="47.0" layoutY="226.0" text="Ngày kết thúc"/>
        <TextField fx:id="tfTrongSoDienTich" layoutX="422.0" layoutY="330.0" prefHeight="39.0" prefWidth="102.0"
-                  styleClass="text-field-rounded" stylesheets="@../../source/usecase.css" text="0"/>
+                  styleClass="text-field-rounded" stylesheets="@../../css/usecase.css" text="0"/>
        <TextField fx:id="tfTrongSoSTV" layoutX="422.0" layoutY="378.0" prefHeight="39.0" prefWidth="102.0"
-                  styleClass="text-field-rounded" stylesheets="@../../source/usecase.css" text="0"/>
+                  styleClass="text-field-rounded" stylesheets="@../../css/usecase.css" text="0"/>
        <TextField fx:id="tfHangSo" layoutX="422.0" layoutY="426.0" prefHeight="39.0" prefWidth="102.0"
-                  styleClass="text-field-rounded" stylesheets="@../../source/usecase.css" text="0"/>
+                  styleClass="text-field-rounded" stylesheets="@../../css/usecase.css" text="0"/>
        <DatePicker fx:id="dpNgayBatDau" layoutX="167.0" layoutY="165.0" prefHeight="39.0" prefWidth="354.0"
-                   promptText="MM/DD/YYYY" styleClass="text-field-rounded" stylesheets="@../../source/usecase.css"/>
+                   promptText="MM/DD/YYYY" styleClass="text-field-rounded" stylesheets="@../../css/usecase.css"/>
        <DatePicker fx:id="dpNgayKetThuc" layoutX="168.0" layoutY="215.0" prefHeight="39.0" prefWidth="354.0"
-                   promptText="MM/DD/YYYY" styleClass="text-field-rounded" stylesheets="@../../source/usecase.css"/>
+                   promptText="MM/DD/YYYY" styleClass="text-field-rounded" stylesheets="@../../css/usecase.css"/>
        <ComboBox fx:id="cbLoaiKhoanThu" layoutX="169.0" layoutY="271.0" onAction="#ChonKhoanThu" prefHeight="39.0"
-                 prefWidth="354.0" styleClass="text-field-rounded" stylesheets="@../../source/usecase.css"/>
+                 prefWidth="354.0" styleClass="text-field-rounded" stylesheets="@../../css/usecase.css"/>
        <Label layoutX="47.0" layoutY="282.0" text="Loại khoản thu"/>
        <TextField fx:id="tfThanhPhan1" editable="false" layoutX="169.0" layoutY="330.0" prefHeight="39.0"
                   prefWidth="240.0" promptText="Thành phần số 1" styleClass="text-field-rounded"
-                  stylesheets="@../../source/usecase.css"/>
+                  stylesheets="@../../css/usecase.css"/>
        <TextField fx:id="tfThanhPhan2" editable="false" layoutX="169.0" layoutY="378.0" prefHeight="39.0"
                   prefWidth="240.0" promptText="Thành phần số 2" styleClass="text-field-rounded"
-                  stylesheets="@../../source/usecase.css"/>
+                  stylesheets="@../../css/usecase.css"/>
        <TextField fx:id="tfThanhPhan3" editable="false" layoutX="169.0" layoutY="426.0" prefHeight="39.0"
                   prefWidth="240.0" promptText="Thành phần số 3" styleClass="text-field-rounded"
-                  stylesheets="@../../source/usecase.css"/>
+                  stylesheets="@../../css/usecase.css"/>
    </children>
 </AnchorPane>

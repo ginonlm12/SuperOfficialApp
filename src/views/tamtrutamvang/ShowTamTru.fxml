@@ -5,7 +5,7 @@
 <?import javafx.scene.text.Font?>
 <?import java.lang.String?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="480.0" prefWidth="650.0" styleClass="background"
-            stylesheets="@../../source/usecase.css" xmlns="http://javafx.com/javafx/21"
+            stylesheets="@../../css/usecase.css" xmlns="http://javafx.com/javafx/21"
             fx:controller="controller.tamtrutamvang.ShowTamTru">
     <children>
         <Label layoutX="15.0" layoutY="56.0" text="Họ và tên"/>
@@ -13,9 +13,9 @@
         <Label layoutX="15.0" layoutY="105.0" text="Số CCCD"/>
         <TextField fx:id="tfHoTen" editable="false" layoutX="77.0" layoutY="45.0" prefHeight="39.0" prefWidth="333.0"
                    promptText="Nhập vào Họ và tên" styleClass="text-field-rounded"
-                   stylesheets="@../../source/usecase.css"/>
+                   stylesheets="@../../css/usecase.css"/>
         <TextField fx:id="tfCCCD" editable="false" layoutX="77.0" layoutY="94.0" prefHeight="39.0" prefWidth="333.0"
-                   promptText="Nhập vào CCCD" styleClass="text-field-rounded" stylesheets="@../../source/usecase.css"/>
+                   promptText="Nhập vào CCCD" styleClass="text-field-rounded" stylesheets="@../../css/usecase.css"/>
         <Label layoutX="190.0" layoutY="5.0" text="XEM CHI TIẾT VÀ CẬP NHẬT ">
             <font>
                 <Font name="System Bold" size="20.0"/>
@@ -24,18 +24,18 @@
         <Label layoutX="447.0" layoutY="56.0" text="Giới tính"/>
         <DatePicker fx:id="tfNgaySinh" editable="false" layoutX="482.0" layoutY="94.0" prefHeight="39.0"
                     prefWidth="121.0" promptText="MM/DD/YYYY" styleClass="text-field-rounded"
-                    stylesheets="@../../source/usecase.css"/>
+                    stylesheets="@../../css/usecase.css"/>
         <Label layoutX="16.0" layoutY="155.0" text="Hộ Khẩu"/>
 
         <TextField fx:id="tfQueQuan" editable="false" layoutX="18.0" layoutY="373.0" prefHeight="39.0" prefWidth="617.0"
-                   styleClass="text-field-rounded" stylesheets="@../../source/usecase.css"/>
+                   styleClass="text-field-rounded" stylesheets="@../../css/usecase.css"/>
         <Label layoutX="20.0" layoutY="354.0" text="Nơi thường trú"/>
         <ComboBox fx:id="tfGioiTinh" layoutX="515.0" layoutY="47.0" prefHeight="39.0" prefWidth="89.0"
-                  styleClass="text-field-rounded" stylesheets="@../../source/usecase.css"/>
+                  styleClass="text-field-rounded" stylesheets="@../../css/usecase.css"/>
         <ComboBox fx:id="tfIDHoKhau" layoutX="76.0" layoutY="144.0" prefHeight="39.0" prefWidth="133.0"
-                  styleClass="text-field-rounded" stylesheets="@../../source/usecase.css"/>
+                  styleClass="text-field-rounded" stylesheets="@../../css/usecase.css"/>
         <TextField fx:id="tfChuHo" editable="false" layoutX="271.0" layoutY="143.0" prefHeight="39.0" prefWidth="365.0"
-                   stylesheets="@../../source/usecase.css">
+                   stylesheets="@../../css/usecase.css">
             <styleClass>
                 <String fx:value="text-field-transparent"/>
                 <String fx:value="text-field-rounded"/>
@@ -45,15 +45,15 @@
                wrapText="true"/>
         <DatePicker fx:id="tfNgayBatDau" editable="false" layoutX="17.0" layoutY="212.0" prefHeight="39.0"
                     prefWidth="273.0" promptText="MM/DD/YYYY" styleClass="text-field-rounded"
-                    stylesheets="@../../source/usecase.css"/>
+                    stylesheets="@../../css/usecase.css"/>
         <Label layoutX="18.0" layoutY="194.0" text="Từ ngày"/>
         <DatePicker fx:id="tfNgayKetThuc" layoutX="320.0" layoutY="212.0" prefHeight="39.0" prefWidth="315.0"
-                    promptText="MM/DD/YYYY" styleClass="text-field-rounded" stylesheets="@../../source/usecase.css"/>
+                    promptText="MM/DD/YYYY" styleClass="text-field-rounded" stylesheets="@../../css/usecase.css"/>
         <Label layoutX="319.0" layoutY="194.0" text="Đến ngày (dự kiến)"/>
         <TextArea fx:id="tfLyDo" editable="false" layoutX="17.0" layoutY="281.0" prefHeight="65.0" prefWidth="617.0"
-                  styleClass="text-field-rounded" stylesheets="@../../source/usecase.css"/>
+                  styleClass="text-field-rounded" stylesheets="@../../css/usecase.css"/>
         <Label layoutX="18.0" layoutY="260.0" text="Mục đích"/>
         <Button layoutX="501.0" layoutY="438.0" mnemonicParsing="false" onAction="#setCapNhat" prefHeight="28.0"
-                prefWidth="133.0" stylesheets="@../../source/Main.css" text="Cập nhật"/>
+                prefWidth="133.0" stylesheets="@../../css/Main.css" text="Cập nhật"/>
     </children>
 </AnchorPane>

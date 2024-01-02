@@ -7,11 +7,11 @@
 <?import javafx.scene.text.*?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
             prefHeight="540.0" prefWidth="680.0" styleClass="background"
-            stylesheets="@../../source/usecase.css" xmlns="http://javafx.com/javafx/21"
+            stylesheets="@../../css/usecase.css" xmlns="http://javafx.com/javafx/21"
             fx:controller="controller.hokhau.DetailHoKhau">
     <children>
         <Pane layoutX="47.0" layoutY="44.0" prefHeight="447.0" prefWidth="586.0" styleClass="subpane"
-              stylesheets="@../../source/usecase.css">
+              stylesheets="@../../css/usecase.css">
             <children>
                 <Label fx:id="LbTitle" alignment="CENTER" layoutX="177.0" layoutY="13.0" prefHeight="42.0"
                        prefWidth="236.0" text="THÔNG TIN HỘ KHẨU">
@@ -25,7 +25,7 @@
                     </font>
                 </Label>
                 <TextField fx:id="tfSoPhong" editable="false" layoutX="183.0" layoutY="77.0" prefHeight="39.0"
-                           prefWidth="92.0" styleClass="text-field-rounded" stylesheets="@../../source/usecase.css">
+                           prefWidth="92.0" styleClass="text-field-rounded" stylesheets="@../../css/usecase.css">
                     <font>
                         <Font size="14.0" />
                     </font>
@@ -40,7 +40,7 @@
                     </font>
                 </Label>
                 <TextField fx:id="tfIDHoKhau" editable="false" layoutX="486.0" layoutY="78.0" prefHeight="39.0"
-                           prefWidth="68.0" styleClass="text-field-rounded" stylesheets="@../../source/usecase.css">
+                           prefWidth="68.0" styleClass="text-field-rounded" stylesheets="@../../css/usecase.css">
                     <font>
                         <Font size="14.0" />
                     </font>
@@ -55,7 +55,7 @@
                     </font>
                 </Label>
                 <TextField fx:id="tfTenChuHo" editable="false" layoutX="184.0" layoutY="138.0" prefHeight="39.0"
-                           prefWidth="245.0" styleClass="text-field-rounded" stylesheets="@../../source/usecase.css">
+                           prefWidth="245.0" styleClass="text-field-rounded" stylesheets="@../../css/usecase.css">
                     <font>
                         <Font size="14.0" />
                     </font>
@@ -65,7 +65,7 @@
                     </cursor>
                 </TextField>
                 <TextField fx:id="tfIDChuHo" editable="false" layoutX="486.0" layoutY="135.0" prefHeight="39.0"
-                           prefWidth="68.0" styleClass="text-field-rounded" stylesheets="@../../source/usecase.css">
+                           prefWidth="68.0" styleClass="text-field-rounded" stylesheets="@../../css/usecase.css">
                     <font>
                         <Font size="14.0" />
                     </font>
@@ -84,7 +84,7 @@
                     </font>
                 </Label>
                 <TextField fx:id="tfNgayDen" editable="false" layoutX="185.0" layoutY="191.0" prefHeight="39.0"
-                           prefWidth="175.0" styleClass="text-field-rounded" stylesheets="@../../source/usecase.css">
+                           prefWidth="175.0" styleClass="text-field-rounded" stylesheets="@../../css/usecase.css">
                     <font>
                         <Font size="14.0" />
                     </font>
@@ -98,7 +98,7 @@
                     </font>
                 </Label>
                 <TextField fx:id="tfNgayDi" editable="false" layoutX="185.0" layoutY="250.0" prefHeight="39.0"
-                           prefWidth="175.0" styleClass="text-field-rounded" stylesheets="@../../source/usecase.css">
+                           prefWidth="175.0" styleClass="text-field-rounded" stylesheets="@../../css/usecase.css">
                     <font>
                         <Font size="14.0" />
                     </font>
@@ -113,7 +113,7 @@
                 </Label>
                 <TextField fx:id="tfSDTLienHe" editable="false" layoutX="185.0" layoutY="306.0" prefHeight="39.0"
                            prefWidth="175.0" promptText="(Chưa điền)" styleClass="text-field-rounded"
-                           stylesheets="@../../source/usecase.css">
+                           stylesheets="@../../css/usecase.css">
                     <font>
                         <Font size="14.0" />
                     </font>
@@ -128,7 +128,7 @@
                     </font>
                 </Label>
                 <TextField fx:id="tfSoTV" editable="false" layoutX="187.0" layoutY="368.0" prefHeight="39.0"
-                           prefWidth="92.0" styleClass="text-field-rounded" stylesheets="@../../source/usecase.css">
+                           prefWidth="92.0" styleClass="text-field-rounded" stylesheets="@../../css/usecase.css">
                     <cursor>
                         <Cursor fx:constant="TEXT"/>
                     </cursor>
