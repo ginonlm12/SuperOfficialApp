@@ -1,3 +1,5 @@
 # Project exclude paths
 /bin/
 /.vscode/
+# file *.drawio
+*.drawio
