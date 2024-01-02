@@ -31,8 +31,8 @@
                                 wrapText="true"/>
                         <Button focusTraversable="false" mnemonicParsing="false" onAction="#addTamvang"
                                 prefHeight="30.0" prefWidth="150.0" styleClass="buttonChucnang"
-                                stylesheets="@../source/nhankhau_va_hokhau.css" text="Thêm tạm vắng" textFill="#2e088d"
-                                wrapText="true"/>
+                                stylesheets="@../source/nhankhau_va_hokhau.css" text="Khai báo tạm vắng"
+                                textFill="#2e088d" wrapText="true"/>
                     </children>
                 </HBox>
                 <HBox alignment="CENTER" prefHeight="52.0" prefWidth="800.0">
@@ -70,10 +70,9 @@
                             <columns>
                                 <TableColumn fx:id="colID" prefWidth="21.33331048488617" text="ID"/>
                                 <TableColumn fx:id="colHoTenTV" prefWidth="250.66668128967285" text="Họ và tên"/>
-                                <TableColumn fx:id="colNgayBatDauTV" prefWidth="176.00003051757812"
-                                             text="Ngày bắt đầu"/>
+                                <TableColumn fx:id="colNgayBatDauTV" prefWidth="176.00003051757812" text="Từ ngày"/>
                                 <TableColumn fx:id="colNgayKetThucTV" prefWidth="147.33328247070312"
-                                             text="Ngày kết thúc (dự kiến)"/>
+                                             text="Đến ngày (dự kiến)"/>
                                 <TableColumn fx:id="colLyDoTV" prefWidth="184.6666259765625" text="Lý do"/>
                             </columns>
                         </TableView>

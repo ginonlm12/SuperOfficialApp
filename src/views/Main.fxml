@@ -180,18 +180,28 @@
                  <children>
                      <VBox prefHeight="191.0" prefWidth="375.0"
                            style="-fx-background-color: linear-gradient(to bottom right, #B4D4FF, #EEF5FF); -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 6,0,0,0); -fx-background-radius: 15;">
-                     <children>
-                         <Label contentDisplay="CENTER" prefHeight="33.0" prefWidth="237.0"
-                                text="Tiền thu được trong năm" textAlignment="CENTER" textOverrun="CLIP">
-                           <font>
-                               <Font name="System Bold" size="14.0"/>
-                           </font>
-                           <VBox.margin>
-                               <Insets left="10.0" top="10.0"/>
-                           </VBox.margin>
-                        </Label>
-                         <BarChart fx:id="barTienthuduoc" legendSide="RIGHT" legendVisible="false"
-                                   style="-fx-background-color: transparent;">
+                         <children>
+                             <HBox prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                     <Label contentDisplay="CENTER" prefHeight="20.0" prefWidth="251.0"
+                                            text="Tiền thu được trong năm" textAlignment="CENTER" textOverrun="CLIP">
+                                         <font>
+                                             <Font name="System Bold" size="14.0"/>
+                                         </font>
+                                         <HBox.margin>
+                                             <Insets left="10.0" top="10.0"/>
+                                         </HBox.margin>
+                                     </Label>
+                                     <ComboBox fx:id="CbYear" prefHeight="25.0" prefWidth="82.0"
+                                               style="-fx-background-color: linear-gradient(to bottom right, #B4D4FF, #94D4FF);">
+                                         <HBox.margin>
+                                             <Insets left="10.0" top="10.0"/>
+                                         </HBox.margin>
+                                     </ComboBox>
+                                 </children>
+                             </HBox>
+                             <BarChart fx:id="barTienthuduoc" legendSide="RIGHT" legendVisible="false"
+                                       style="-fx-background-color: transparent;">
                              <xAxis>
                                  <CategoryAxis side="BOTTOM"/>
                              </xAxis>

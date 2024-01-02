@@ -60,12 +60,12 @@
                wrapText="true"/>
         <DatePicker fx:id="tfNgayBatDau" layoutX="17.0" layoutY="212.0" prefHeight="39.0" prefWidth="273.0"
                     promptText="MM/DD/YYYY" styleClass="text-field-rounded"/>
-        <Label layoutX="18.0" layoutY="191.0" text="Ngày bắt đầu"/>
+        <Label layoutX="18.0" layoutY="191.0" text="Từ ngày"/>
         <DatePicker fx:id="tfNgayKetThuc" layoutX="320.0" layoutY="212.0" prefHeight="39.0" prefWidth="315.0"
                     promptText="MM/DD/YYYY" styleClass="text-field-rounded"/>
-        <Label layoutX="319.0" layoutY="191.0" text="Ngày dự kiến kết thúc"/>
-        <Text fill="RED" layoutX="94.0" layoutY="204.0" strokeType="OUTSIDE" strokeWidth="0.0" text="(*)"/>
-        <Text fill="RED" layoutX="440.0" layoutY="201.0" strokeType="OUTSIDE" strokeWidth="0.0" text="(*)"/>
+        <Label layoutX="319.0" layoutY="191.0" text="Đến ngày (dự kiến)"/>
+        <Text fill="RED" layoutX="64.0" layoutY="204.0" strokeType="OUTSIDE" strokeWidth="0.0" text="(*)"/>
+        <Text fill="RED" layoutX="421.0" layoutY="204.0" strokeType="OUTSIDE" strokeWidth="0.0" text="(*)"/>
         <TextArea fx:id="tfLyDo" layoutX="17.0" layoutY="281.0" prefHeight="65.0" prefWidth="617.0"
                   styleClass="text-field-rounded"/>
         <Label layoutX="18.0" layoutY="260.0" text="Mục đích"/>

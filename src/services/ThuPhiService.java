@@ -111,11 +111,12 @@ public class ThuPhiService {
 		return sum;
 	}
 
-	public static XYChart.Series<String, Number> PaymentSatistic() throws SQLException, ClassNotFoundException {
+    public static XYChart.Series<String, Number> PaymentSatistic(Integer Year) throws SQLException, ClassNotFoundException {
 		Connection connection = MysqlConnection.getMysqlConnection();
-		String query = "SELECT MONTH(tp.NgayDong) AS Thang, SUM(tp.TienDaDong) AS TongTien FROM thuphi tp INNER JOIN khoanthu kt ON tp.IDKhoanThu = kt.IDKhoanThu GROUP BY MONTH(tp.NgayDong) ORDER BY Thang";
+        String query = "SELECT MONTH(tp.NgayDong) AS Thang, SUM(tp.TienDaDong) AS TongTien FROM thuphi tp INNER JOIN khoanthu kt ON tp.IDKhoanThu = kt.IDKhoanThu WHERE Year(tp.NgayDong) = ? GROUP BY MONTH(tp.NgayDong) ORDER BY Thang";
 
 		PreparedStatement preparedStatement = connection.prepareStatement(query);
+        preparedStatement.setInt(1, Year);
 		ResultSet resultSet = preparedStatement.executeQuery();
 
 		XYChart.Series<String, Number> series = new XYChart.Series<>();

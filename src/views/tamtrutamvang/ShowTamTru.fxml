@@ -46,10 +46,10 @@
         <DatePicker fx:id="tfNgayBatDau" editable="false" layoutX="17.0" layoutY="212.0" prefHeight="39.0"
                     prefWidth="273.0" promptText="MM/DD/YYYY" styleClass="text-field-rounded"
                     stylesheets="@../../source/usecase.css"/>
-        <Label layoutX="18.0" layoutY="191.0" text="Ngày bắt đầu"/>
+        <Label layoutX="18.0" layoutY="194.0" text="Từ ngày"/>
         <DatePicker fx:id="tfNgayKetThuc" layoutX="320.0" layoutY="212.0" prefHeight="39.0" prefWidth="315.0"
                     promptText="MM/DD/YYYY" styleClass="text-field-rounded" stylesheets="@../../source/usecase.css"/>
-        <Label layoutX="319.0" layoutY="191.0" text="Ngày dự kiến kết thúc"/>
+        <Label layoutX="319.0" layoutY="194.0" text="Đến ngày (dự kiến)"/>
         <TextArea fx:id="tfLyDo" editable="false" layoutX="17.0" layoutY="281.0" prefHeight="65.0" prefWidth="617.0"
                   styleClass="text-field-rounded" stylesheets="@../../source/usecase.css"/>
         <Label layoutX="18.0" layoutY="260.0" text="Mục đích"/>
