@@ -28,12 +28,12 @@
                   styleClass="text-field-rounded" stylesheets="@../../source/usecase.css"/>
        <DatePicker fx:id="tfNgayketthuc" layoutX="21.0" layoutY="176.0" prefHeight="28.0" prefWidth="357.0"
                    styleClass="text-field-rounded" stylesheets="@../../source/usecase.css"/>
-      <Text layoutX="21.0" layoutY="108.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ngày bắt đầu">
+       <Text layoutX="21.0" layoutY="114.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Từ ngày">
          <font>
              <Font size="14.0"/>
          </font>
       </Text>
-      <Text layoutX="21.0" layoutY="165.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ngày dự kiến kết thúc">
+       <Text layoutX="21.0" layoutY="172.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Đến ngày (dự kiến)">
          <font>
              <Font size="14.0"/>
          </font>
