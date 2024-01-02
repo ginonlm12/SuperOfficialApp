@@ -6,7 +6,7 @@
 <?import javafx.scene.text.*?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="600" prefWidth="800" styleClass="background"
             stylesheets="@../source/nhankhau_va_hokhau.css" xmlns="http://javafx.com/javafx/21"
-            fx:controller="controller.GuiXeController_Tuan">
+            fx:controller="controller.QuanLiXeController_Tuan">
    <children>
 
       <TableView fx:id="tbGuiXe" layoutX="59.0" layoutY="131.0" prefHeight="438.0" prefWidth="501.0">
