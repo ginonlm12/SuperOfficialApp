@@ -1,5 +1,6 @@
 package controller.thuphi;
 
+import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -10,7 +11,9 @@ import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import models.HoKhauBean;
 import models.NhanKhauModel;
+import services.HoKhauService;
 import services.NhanKhauService;
 
 import java.net.URL;
@@ -75,7 +78,18 @@ public class ChooseChuHo implements Initializable {
 		colTen.setCellValueFactory(new PropertyValueFactory<NhanKhauModel, String>("HoTen"));
 		colPhong.setCellValueFactory(new PropertyValueFactory<NhanKhauModel, String>("SoPhong"));
 		colCCCD.setCellValueFactory(new PropertyValueFactory<NhanKhauModel, String>("CCCD"));
-		colSDT.setCellValueFactory(new PropertyValueFactory<NhanKhauModel, String>("NgheNghiep"));
+		colSDT.setCellValueFactory(
+				(TableColumn.CellDataFeatures< NhanKhauModel, String> p) ->
+		{
+			try {
+				return new ReadOnlyStringWrapper(HoKhauService.getHoKhau(NhanKhauService.getIDHoKhau(p.getValue().getIDNhanKhau())).getSDT());
+			} catch (ClassNotFoundException e) {
+				throw new RuntimeException(e);
+			} catch (SQLException e) {
+				throw new RuntimeException(e);
+			}
+		}
+		);
 
 		tvNhanKhau.setItems(listValueTableView);
 	}

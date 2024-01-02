@@ -90,5 +90,10 @@
             </Pane>
          </children>
       </VBox>
+      <Label alignment="CENTER" layoutX="28.0" layoutY="100.0" prefHeight="18.0" prefWidth="542.0" text="DANH SÁCH CÁC PHÒNG CỦA CHUNG CƯ BLUEMOON">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </Label>
     </children>
 </AnchorPane>
