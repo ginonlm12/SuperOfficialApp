@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="600.0" prefWidth="800.0" styleClass="background"
+            stylesheets="@../source/nhankhau_va_hokhau.css" xmlns="http://javafx.com/javafx/21"
+            fx:controller="controller.ThuPhiController">
+    <children>
+        <VBox layoutX="10.0" layoutY="10.0" prefHeight="600.0" prefWidth="800.0">
+            <children>
+                <HBox alignment="CENTER" prefHeight="45.0" prefWidth="800.0">
+                    <children>
+                        <Button mnemonicParsing="false" onAction="#addThuPhi" prefHeight="40.0" prefWidth="226.0"
+                                styleClass="buttonChucnang" stylesheets="@../source/nhankhau_va_hokhau.css"
+                                text="Thêm thu phí" textFill="#2e088d"/>
+                        <Button mnemonicParsing="false" onAction="#delThuPhi" prefHeight="40.0" prefWidth="248.0"
+                                styleClass="buttonChucnang" stylesheets="@../source/nhankhau_va_hokhau.css"
+                                text="Xóa thu phí" textFill="#2e088d"/>
+                        <Button mnemonicParsing="false" onAction="#updateThuPhi" prefHeight="40.0" prefWidth="201.0"
+                                styleClass="buttonChucnang" stylesheets="@../source/nhankhau_va_hokhau.css"
+                                text="Cập nhật thu phí" textFill="#2e088d"/>
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER" prefHeight="52.0" prefWidth="800.0">
+                    <children>
+                        <HBox alignment="CENTER" prefHeight="52.0" prefWidth="473.0">
+                            <children>
+                                <TextField fx:id="tfSearch" prefHeight="41.0" prefWidth="316.0"/>
+                                <ComboBox fx:id="cbChooseSearch" prefHeight="41.0" prefWidth="201.0"
+                                          styleClass="btntimkiem" stylesheets="@../source/nhankhau_va_hokhau.css"/>
+                            </children>
+                        </HBox>
+                        <Button mnemonicParsing="false" onAction="#searchThuPhi" prefHeight="41.0" prefWidth="250.0"
+                                styleClass="btntimkiem" stylesheets="@../source/nhankhau_va_hokhau.css"
+                                text="Tìm kiếm"/>
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER" prefHeight="41.0" prefWidth="800.0">
+                    <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="DANH SÁCH PHÍ ĐÃ THU TẠI CHUNG CƯ BLUEMOON"
+                              textAlignment="CENTER">
+                            <font>
+                                <Font name="System Bold" size="17.0"/>
+                            </font>
+                        </Text>
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER" prefHeight="446.0" prefWidth="800.0">
+                    <children>
+                        <TableView fx:id="tvThuPhi" prefHeight="446.0" prefWidth="767.0">
+                            <columns>
+                                <TableColumn fx:id="colTenKhoanPhi" prefWidth="191.20001828670502"
+                                             text="Tên khoản thu"/>
+                                <TableColumn fx:id="colTenChuHo" prefWidth="185.5999755859375" text="Tên chủ hộ"/>
+                                <TableColumn fx:id="colPhaiDong" prefWidth="132.0" text="Số tiền cần thu"/>
+                                <TableColumn fx:id="colDaDong" prefWidth="128.80001831054688" text="Số tiền đã thu"/>
+                                <TableColumn fx:id="colNgayThu" prefWidth="143.20001220703125" text="Ngày thu"/>
+                            </columns>
+                        </TableView>
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+   </children>
+</AnchorPane>

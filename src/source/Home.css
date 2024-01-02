@@ -1,74 +1,118 @@
-/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
-
-.pane {
-	-fx-background-color : #5809d6;
+/* Cac button trong view nay */
+#menubutton {
+    -fx-background-color: #ffffff;
 }
 
-  
-.button1
-{
--fx-background-color : #393351;
--fx-background-radius :  30 0 0 30;
-}
-.button1:hover
-{
--fx-background-color : #524A7B ;
--fx-background-radius :  30 0 0 30;
-}
-.button1:pressed
-{
--fx-background-color : #2F2B43 ;
--fx-background-radius :  30 0 0 30;
+.buttoninmenu{
+    -fx-background-color : #FFFFFF;
+    -fx-text-fill: #000000;
+    -fx-font-family: Monaco;
+    -fx-font-size: 18px;
 }
 
-.button2
-{
--fx-background-color :  #4227b8;
--fx-background-radius :  20;
-}
-.button2:hover
-{
--fx-background-color : #524A7B ;
--fx-background-radius :  20;
-}
-.button2:pressed
-{
--fx-background-color : #2F2B43 ;
--fx-background-radius :  20;
+.buttoninsubmenu{
+    -fx-background-color : linear-gradient(to bottom right, #FFFFFF, #EEF5FF);
+    -fx-text-fill: #000000;
+    -fx-font-family: Monaco;
+    -fx-font-size: 15px;
 }
 
-.button3
-{
-    -fx-background-color :  linear-gradient(to top right, #385487, #73b2ba);
-    -fx-background-radius :  0 0 0 0;
-}
-.button3:hover
-{
-    /* -fx-background-color : #524A7B ; */
-    -fx-opacity: 0.7;
-    -fx-cursor: HAND;
-    
-}
-.button3:pressed
-{
-    -fx-background-color : #2F2B43 ;
+.buttoninmenu .image-view {
+    -fx-opacity: 0.5;
 }
 
-.button4
-{
-    -fx-background-color :linear-gradient(to top left, #41951C, #D4CEE3);
-    -fx-background-radius :  30 30 30 30;
+/*Khi chuot di vao nut*/
+.buttoninmenu:hover {
+    -fx-background-color : linear-gradient(to bottom right, #FFFFFF, #EEF5FF);
 }
-.button4:hover
-{
-    -fx-background-color :linear-gradient(to top left, #D4CEE3, #41951C);
-    -fx-background-radius :  30 30 30 30;
+
+.buttoninsubmenu:hover {
+    -fx-background-color : #FFFFFF;
 }
-.button4:pressed
-{
-    -fx-background-color :linear-gradient(to top left, #41951C, #D4CEE3);
-    -fx-background-radius :  30 30 30 30;
+
+#logobtn {
+    -fx-background-color : #ffffff;
+    -fx-text-fill: #616161;
+    -fx-font-family: Lucida Console;
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-font-color: #ffffff;
+}
+
+#logobtn: hover {
+    -fx-text-fill: linear-gradient(to bottom right, #ff0000, #ff0000 0.67%, #ff0000 20.19%, #ccff00 38.05%, #00ff33 60.25%, #01ffbf 76.84%, #ff0000 97.87%, #ff0000 100%);
 }
 
 
+/* Cac bar */
+#topbar {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #f0f4f7;
+    -fx-border-width: 1px;
+}
 
+#menubar {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #f0f4f7;
+    -fx-border-width: 1px;
+}
+
+
+.top-form{
+    -fx-background-color:#fff;
+    -fx-border-color:#000;
+    -fx-border-width:.4px .4px .2px .4px;
+}
+
+//tuan
+
+.split-pane{
+    -fx-background-color: #add8e6;
+    -fx-background-radius: 10;
+
+}
+.split-pane:backdrop {
+    -fx-background-color: transparent; /* Làm cho nền trong suốt */
+}
+
+.split-pane:backdrop > .split-pane-divider {
+    -fx-background-color: transparent; /* Làm cho đường chia trong suốt */
+}
+
+.split-pane:hover {
+    -fx-effect: innershadow(gaussian, rgba(0, 0, 0, 0.5), 10, 0, 0, 0);
+    -fx-background-color: #add8e6; /* Màu xanh dương nhạt khi hover */
+}
+.btn-plus-sub{
+    -fx-background-color: transparent;
+}
+
+.box-dashboard{
+    -fx-background-color: #B4D4FF;
+    -fx-background-radius: 15;
+    -fx-effect : dropshadow(two-pass-box, #aaaaaa, 5, 0, 0, 4);
+}
+
+.table-view{
+    -fx-background-color:transparent;
+    -fx-border-color:linear-gradient(to bottom right, #176B87, #3887BE);
+    -fx-border-radius:8px;
+    -fx-padding:0px;
+}
+.table-view .table-column{
+    -fx-alignment:CENTER;
+}
+
+.table-view .column-header-background{
+    -fx-background-color:linear-gradient(to bottom right, #176B87, #3887BE);
+    -fx-background-insets: 0 0 0 0;
+    -f-background-radius:8px 8px 0px 0px;
+}
+.table-view .column-header, .filter{
+    -fx-background-color: transparent;
+    -fx-size:40px;
+}
+.table-view .column-header .label{
+    -fx-text-fill:#fff;
+    -fx-font-family:"Arial";
+}

@@ -1,68 +1,141 @@
 package models;
 
 public class NhanKhauModel {
-	int id;
-	String cmnd;
-	String ten;
-	int tuoi;
-	String sdt;
+	private int IDNhanKhau;
+	private int IDHoKhau;
+	private String QHvsChuHo = "(Chưa nhập)";
+	private String HoTen = "(chưa nhập)";
+	private String NgaySinh = "0001-01-01";
+	private String CCCD = "(Chưa nhập)";
+	private String NgheNghiep = "(Chưa nhập)";
+	private String GioiTinh = "(Chưa nhập)";
+	private String DanToc = "(Chưa nhập)";
+	private String QueQuan = "(Chưa nhập)";
+	private int SoPhong;
 	
-	public NhanKhauModel() {}
-	
-	public NhanKhauModel(String cmnd, String ten, int tuoi , String sdt) {
-		this.cmnd = cmnd;
-		this.ten=ten;
-		this.tuoi=tuoi;
-		this.sdt = sdt;
-	}
-	
-	public NhanKhauModel(int id,String cmnd, String ten, int tuoi , String sdt) {
-		this.id=id;
-		this.cmnd = cmnd;
-		this.ten=ten;
-		this.tuoi=tuoi;
-		this.sdt = sdt;
+	public int getSoPhong() {
+		return SoPhong;
 	}
 
-	public int getId() {
-		return id;
+	public void setSoPhong(int soPhong) {
+		SoPhong = soPhong;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public NhanKhauModel() {
 	}
 
-	public String getCmnd() {
-		return cmnd;
+	public NhanKhauModel(int maChuHo, int maHo, String qh, String hoten, String cccdChuHo, String gioiTinh) {
+		this.IDNhanKhau = maChuHo;
+		this.IDHoKhau = maHo;
+		this.QHvsChuHo = qh;
+		HoTen = hoten;
+		this.CCCD = cccdChuHo;
+		GioiTinh = gioiTinh;
 	}
 
-	public void setCmnd(String cmnd) {
-		this.cmnd = cmnd;
+	public NhanKhauModel(int IDNhanKhau, int IDHoKhau, String QHvsChuHo, String hoTen, String ngaySinh, String CCCD, String ngheNghiep, String gioiTinh, String dantoc, String queQuan) {
+		this.IDNhanKhau = IDNhanKhau;
+		this.IDHoKhau = IDHoKhau;
+		this.QHvsChuHo = QHvsChuHo;
+		HoTen = hoTen;
+		NgaySinh = ngaySinh;
+		this.CCCD = CCCD;
+		NgheNghiep = ngheNghiep;
+		GioiTinh = gioiTinh;
+		DanToc = dantoc;
+		QueQuan = queQuan;
 	}
 
-	public String getTen() {
-		return ten;
+	public void setIDNhanKhau(int IDNhanKhau) {
+		this.IDNhanKhau = IDNhanKhau;
 	}
 
-	public void setTen(String ten) {
-		this.ten = ten;
+	public void setIDHoKhau(int IDHoKhau) {
+		this.IDHoKhau = IDHoKhau;
 	}
 
-	public int getTuoi() {
-		return tuoi;
+	public void setQHvsChuHo(String QHvsChuHo) {
+		this.QHvsChuHo = QHvsChuHo;
 	}
 
-	public void setTuoi(int tuoi) {
-		this.tuoi = tuoi;
+	public void setHoTen(String hoTen) {
+		HoTen = hoTen;
 	}
 
-	public String getSdt() {
-		return sdt;
+	public void setNgaySinh(String ngaySinh) {
+		NgaySinh = ngaySinh;
 	}
 
-	public void setSdt(String sdt) {
-		this.sdt = sdt;
+	public void setCCCD(String CCCD) {
+		this.CCCD = CCCD;
 	}
-	
-	
+
+	public void setNgheNghiep(String ngheNghiep) {
+		NgheNghiep = ngheNghiep;
+	}
+
+	public void setGioiTinh(String gioiTinh) {
+		GioiTinh = gioiTinh;
+	}
+
+	public void setDanToc(String dantoc) {
+		DanToc = dantoc;
+	}
+
+	public void setQueQuan(String queQuan) {
+		QueQuan = queQuan;
+	}
+
+	public int getIDNhanKhau() {
+		return IDNhanKhau;
+	}
+
+	public int getIDHoKhau() {
+		return IDHoKhau;
+	}
+
+	public String getQHvsChuHo() {
+		return QHvsChuHo;
+	}
+
+	public String getHoTen() {
+		return HoTen;
+	}
+
+	public String getNgaySinh() {
+		return NgaySinh;
+	}
+
+	public String getCCCD() {
+		return CCCD;
+	}
+
+	public String getNgheNghiep() {
+		return NgheNghiep;
+	}
+
+	public String getGioiTinh() {
+		return GioiTinh;
+	}
+
+	public String getDanToc() {
+		return DanToc;
+	}
+
+	public String getQueQuan() {
+		return QueQuan;
+	}
+
+	public static boolean compareNhanKhauModels(NhanKhauModel nhanKhau1, NhanKhauModel nhanKhau2) {
+		return nhanKhau1.getIDNhanKhau() == nhanKhau2.getIDNhanKhau() &&
+				nhanKhau1.getIDHoKhau() == nhanKhau2.getIDHoKhau() &&
+				nhanKhau1.getQHvsChuHo().equals(nhanKhau2.getQHvsChuHo()) &&
+				nhanKhau1.getHoTen().equals(nhanKhau2.getHoTen()) &&
+				nhanKhau1.getNgaySinh().equals(nhanKhau2.getNgaySinh()) &&
+				nhanKhau1.getCCCD().equals(nhanKhau2.getCCCD()) &&
+				nhanKhau1.getNgheNghiep().equals(nhanKhau2.getNgheNghiep()) &&
+				nhanKhau1.getGioiTinh().equals(nhanKhau2.getGioiTinh()) &&
+				nhanKhau1.getDanToc().equals(nhanKhau2.getDanToc()) &&
+				nhanKhau1.getQueQuan().equals(nhanKhau2.getQueQuan());
+	}
 }

@@ -1,152 +1,347 @@
 package controller.nhankhau;
 
-import java.sql.SQLException;
-import java.util.List;
-import java.util.regex.Pattern;
-
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.TextField;
+import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
-import javafx.scene.Node;
-import models.HoKhauModel;
 import models.NhanKhauModel;
-import models.QuanHeModel;
-import services.HoKhauService;
 import services.NhanKhauService;
-import services.QuanHeService;
+import services.XuLyLoiService;
 
-public class AddNhanKhau {
-	@FXML
-	private TextField tfId;
-	@FXML
-	private TextField tfTen;
-	@FXML
-	private TextField tfTuoi;
-	@FXML
-	private TextField tfCmnd;
-	@FXML
-	private TextField tfSdt;
-	@FXML
-	private TextField tfMaHoKhau;
-	@FXML
-	private TextField tfQuanHe;
+import java.io.File;
+import java.net.URL;
+import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.Period;
+import java.util.List;
+import java.util.ResourceBundle;
+import java.util.Scanner;
+import java.util.Vector;
+import java.util.regex.Pattern;
 
-	public void addNhanKhau(ActionEvent event) throws ClassNotFoundException, SQLException {
-		// khai bao mot mau de so sanh
-		Pattern pattern;
+public class AddNhanKhau implements Initializable {
+	ObservableList<String> ethnicityList = FXCollections.observableArrayList("Không");
+	@FXML
+	private TextField tfCCCD;
+	ObservableList<Integer> IDHoKhau_onlyID = FXCollections.observableArrayList();
+	@FXML
+	private ComboBox<String> tfDanToc;
+	@FXML
+	private TextField tfHoTen;
+	@FXML
+	private Label Error;
+	@FXML
+	private TextField tfIDNhanKhau;
+	@FXML
+	private DatePicker tfNgaySinh;
+	@FXML
+	private TextField tfNgheNghiep;
+	@FXML
+	private ComboBox<String> tfGioiTinh;
+	@FXML
+	private TextField tfQueQuan;
+	@FXML
+	private ComboBox<String> tfQHvsChuHo;
+	@FXML
+	private ComboBox<String> tfCountry;
+	@FXML
+	private ComboBox<String> tfProvince;
+	@FXML
+	private ComboBox<String> tfDistrict;
+	@FXML
+	private ComboBox<String> tfWard;
+	@FXML
+	private CheckBox tfXacNhan;
+	@FXML
+	private Label tfTinh;
+	@FXML
+	private Label tfHuyen;
+	@FXML
+	private Label tfXa;
+	@FXML
+	private TextField tfSoPhong;
+	private List<NhanKhauModel> listNhanKhau;
+	ObservableList<String> genderList = FXCollections.observableArrayList("Nam", "Nữ");
+	ObservableList<String> relationshipList = FXCollections.observableArrayList("Vợ/Chồng", "Con cái", "Bố mẹ", "Ông bà", "Cháu chắt", "Khác");
+	@FXML
+	private ComboBox<String> tfIDHoKhau;
+	ObservableList<String> QueQuanList = FXCollections.observableArrayList("Việt Nam", "Khác");
+	ObservableList<String> Tinh_List = FXCollections.observableArrayList();
+	ObservableList<String> Huyen_List = FXCollections.observableArrayList();
+	ObservableList<String> Xa_List = FXCollections.observableArrayList();
+	ObservableList<String> IDHoKhau_List = FXCollections.observableArrayList();
+	@FXML
+	private TextField tfChuHo;
 
-		// kiem tra id nhap vao
-		// id la day so tu 1 toi 11 chu so
-		pattern = Pattern.compile("\\d{1,11}");
-		if (!pattern.matcher(tfId.getText()).matches()) {
-			Alert alert = new Alert(AlertType.WARNING, "Hãy nhập vào mã nhân khẩu hợp lệ!", ButtonType.OK);
-			alert.setHeaderText(null);
-			alert.showAndWait();
-			return;
+	public void initialize(URL url, ResourceBundle resourceBundle) {
+		Error.setVisible(false);
+		Error.setStyle("-fx-color: linear-gradient(to bottom right, #FF0000, #CC0000);");
+		try {
+			listNhanKhau = new NhanKhauService().getListNhanKhau();
+			Vector<String> household = new Vector<>();
+			for (NhanKhauModel nhankhau : listNhanKhau) {
+				Integer data = nhankhau.getIDHoKhau();
+				if (!IDHoKhau_onlyID.contains(data)) {
+					IDHoKhau_onlyID.add(data);
+					household.add(data + " - Phòng: " + NhanKhauService.getSoPhong(data));
+				}
+			}
+			NhanKhauService.sortVectorByRoomNumber(household);
+			for (String hold : household) {
+				IDHoKhau_List.add(hold);
+			}
+			tfIDHoKhau.setItems(IDHoKhau_List);
+		} catch (ClassNotFoundException e) {
+			throw new RuntimeException(e);
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
 		}
-		// kiem tra ID them moi co bi trung voi nhung ID da ton tai hay khong
-		List<NhanKhauModel> listNhanKhauModels = new NhanKhauService().getListNhanKhau();
-		for (NhanKhauModel nhankhau : listNhanKhauModels) {
-			if (nhankhau.getId() == Integer.parseInt(tfId.getText())) {
-				Alert alert = new Alert(AlertType.WARNING, "ID bị trùng với một người khác!", ButtonType.OK);
-				alert.setHeaderText(null);
-				alert.showAndWait();
+
+		int IDnewNhanKhau = 0;
+		try {
+			IDnewNhanKhau = NhanKhauService.getNewIDNhanKhau();
+		} catch (ClassNotFoundException e) {
+			throw new RuntimeException(e);
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+		tfIDNhanKhau.setText(String.valueOf(IDnewNhanKhau));
+		tfGioiTinh.setItems(genderList);
+		tfQHvsChuHo.setItems(relationshipList);
+		tfCountry.setItems(QueQuanList);
+
+		try (Scanner scanner = new Scanner(new File("database/DanToc.txt"))) {
+			while (scanner.hasNextLine()) {
+				ethnicityList.add(scanner.nextLine());
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		tfDanToc.setItems(ethnicityList);
+
+		tfIDHoKhau.getSelectionModel().selectedItemProperty().addListener((observableee, oldValueee, newValueee) -> {
+			int IDHoKhau = Integer.parseInt(NhanKhauService.extractIdHoKhau(tfIDHoKhau.getValue()));
+			try {
+				tfSoPhong.setText(String.valueOf(NhanKhauService.getSoPhong(IDHoKhau)));
+				tfChuHo.setText(NhanKhauService.getChuHo(IDHoKhau));
+			} catch (ClassNotFoundException e) {
+				throw new RuntimeException(e);
+			} catch (SQLException e) {
+				throw new RuntimeException(e);
+			}
+		});
+
+		tfCountry.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+			String selectedCountry = tfCountry.getValue();
+			if (selectedCountry.equals("Khác")) {
+				tfQueQuan.setVisible(true);
+				tfTinh.setVisible(false);
+				tfHuyen.setVisible(false);
+				tfXa.setVisible(false);
+				tfProvince.setVisible(false);
+				tfDistrict.setVisible(false);
+				tfWard.setVisible(false);
+			}
+			if (selectedCountry.equals("Việt Nam")) {
+				tfQueQuan.setVisible(false);
+				tfTinh.setVisible(true);
+				tfHuyen.setVisible(true);
+				tfXa.setVisible(true);
+				tfProvince.setVisible(true);
+				tfDistrict.setVisible(true);
+				tfWard.setVisible(true);
+				try {
+					Tinh_List = NhanKhauService.getProvince();
+					tfProvince.setItems(Tinh_List);
+
+					tfProvince.getSelectionModel().selectedItemProperty().addListener((observablee, oldValuee, newValuee) -> {
+						try {
+							String selectedProvince = tfProvince.getValue();
+
+							if (selectedProvince != null && !selectedProvince.isEmpty()) {
+								Huyen_List = NhanKhauService.GetDistrict(selectedProvince);
+								tfDistrict.setItems(Huyen_List);
+
+								tfDistrict.getSelectionModel().selectedItemProperty().addListener((observableee, oldValueee, newValueee) -> {
+									try {
+										String selectedDistrict = tfDistrict.getValue();
+
+										if (selectedDistrict != null && !selectedDistrict.isEmpty()) {
+											Xa_List = NhanKhauService.GetWard(selectedDistrict, selectedProvince);
+											tfWard.setItems(Xa_List);
+										}
+									} catch (SQLException | ClassNotFoundException e) {
+										e.printStackTrace();
+									}
+								});
+							}
+						} catch (SQLException | ClassNotFoundException e) {
+							e.printStackTrace();
+						}
+					});
+				} catch (ClassNotFoundException e) {
+					throw new RuntimeException(e);
+				} catch (SQLException e) {
+					throw new RuntimeException(e);
+				}
+			}
+		});
+
+	}
+	@FXML
+	void addNhanKhau(ActionEvent event) throws ClassNotFoundException, SQLException{
+
+		if (tfHoTen.getText().length() >= 50 || tfHoTen.getText().length() <= 1) {
+			XuLyLoiService.xuLyLoi(Error, tfHoTen, "Hãy nhập vào 1 tên hợp lệ!", 0, -10);
+			return;
+		} else {
+			XuLyLoiService.xoaLoi(Error, tfHoTen);
+		}
+
+		if (tfGioiTinh.getValue() == null || tfGioiTinh.getValue().isEmpty()) {
+			XuLyLoiService.xuLyLoi(Error, tfGioiTinh, "Hãy chọn giới tính!", 0, -10);
+			return;
+		} else {
+			XuLyLoiService.xoaLoi(Error, tfGioiTinh);
+		}
+
+		if (tfNgaySinh.getValue() == null /*|| tfNgaySinh.getValue().isEmpty()*/) {
+			XuLyLoiService.xuLyLoi(Error, tfNgaySinh, "Vui lòng chọn ngày sinh", 0, -10);
+			return;
+		} else {
+			XuLyLoiService.xoaLoi(Error, tfNgaySinh);
+		}
+
+		LocalDate selectedDate = tfNgaySinh.getValue();
+		LocalDate currentDate = LocalDate.now();
+
+		if (selectedDate.isAfter(currentDate)) {
+			XuLyLoiService.xuLyLoi(Error, tfNgaySinh, "Vui lòng chọn ngày sinh hợp lệ!", 0, -10);
+			return;
+		} else {
+			XuLyLoiService.xoaLoi(Error, tfNgaySinh);
+		}
+
+		if (tfIDHoKhau.getValue() == null) {
+			XuLyLoiService.xuLyLoi(Error, tfIDHoKhau, "Vui lòng chọn hộ khẩu!", 0, -10);
+			return;
+		} else {
+			XuLyLoiService.xoaLoi(Error, tfIDHoKhau);
+		}
+
+		if (tfQHvsChuHo.getValue() == null) {
+			XuLyLoiService.xuLyLoi(Error, tfQHvsChuHo, "Vui lòng chọn quan hệ với chủ hộ!", 0, -10);
+			return;
+		} else {
+			XuLyLoiService.xoaLoi(Error, tfQHvsChuHo);
+		}
+
+		if (tfDanToc.getValue() == null) {
+			XuLyLoiService.xuLyLoi(Error, tfDanToc, "Vui lòng chọn dân tộc!", 0, -10);
+			return;
+		} else {
+			XuLyLoiService.xoaLoi(Error, tfDanToc);
+		}
+
+		if (Period.between(selectedDate, currentDate).getYears() >= 18 && !tfDanToc.equals("Không")) {
+			Pattern pattern;
+			pattern = Pattern.compile("\\d{1,12}");
+			if (tfCCCD.getText().isEmpty() || tfCCCD.getText() == null) {
+				XuLyLoiService.xuLyLoi(Error, tfCCCD, "Vui lòng điền CCCD hoặc CMND!", 0, -8);
 				return;
+			} else if (!pattern.matcher(tfCCCD.getText()).matches()) {
+				XuLyLoiService.xuLyLoi(Error, tfCCCD, "CCCD phải đúng định dạng!", 0, -8);
+				return;
+			} else {
+				XuLyLoiService.xoaLoi(Error, tfCCCD);
 			}
 		}
 
-		// kiem tra ten nhap vao
-		// ten nhap vao la chuoi tu 1 toi 50 ki tu
-		if (tfTen.getText().length() >= 50 || tfTen.getText().length() <= 1) {
-			Alert alert = new Alert(AlertType.WARNING, "Hãy nhập vào 1 tên hợp lệ!", ButtonType.OK);
-			alert.setHeaderText(null);
-			alert.showAndWait();
+		if(tfCountry.getValue() == null){
+			XuLyLoiService.xuLyLoi(Error, tfCountry, "Vui lòng điền quê quán!", 0, -10);
 			return;
+		} else {
+			XuLyLoiService.xoaLoi(Error, tfCountry);
+		}
+		String QueQuan = "(Chưa nhập)";
+		if(tfCountry.getValue().equals("Khác")){
+			if(tfQueQuan.getText() == null || tfQueQuan.getText().isEmpty()){
+				XuLyLoiService.xuLyLoi(Error, tfQueQuan, "Vui lòng điền đầy đủ quê quán nước ngoài!", 0, -10);
+				return;
+			} else {
+				XuLyLoiService.xoaLoi(Error, tfQueQuan);
+			}
+			QueQuan = tfQueQuan.getText();
+		}
+		if(tfCountry.getValue().equals("Việt Nam")){
+			if(tfWard.getValue() == null){
+				if (tfDistrict.getValue() == null) {
+					XuLyLoiService.xuLyLoi(Error, tfDistrict, "Vui lòng điền đầy đủ quê quán trong nước!", 0, 30);
+				} else {
+					XuLyLoiService.xoaLoi(Error, tfProvince);
+				}
+				if (tfProvince.getValue() == null) {
+					XuLyLoiService.xuLyLoi(Error, tfProvince, "Vui lòng điền đầy đủ quê quán trong nước!", 0, 30);
+				} else {
+					XuLyLoiService.xoaLoi(Error, tfDistrict);
+				}
+				XuLyLoiService.xuLyLoi(Error, tfWard, "Vui lòng điền đầy đủ quê quán trong nước!", 0, 30);
+				return;
+			} else {
+				XuLyLoiService.xoaLoi(Error, tfWard);
+			}
+			QueQuan = tfWard.getValue() + ", " + tfDistrict.getValue() + ", " + tfProvince.getValue() + ", Việt Nam";
 		}
 
-		// kiem tra tuoi nhap vao
-		// tuoi nhap vao nhieu nhat la 1 so co 3 chu so
-		pattern = Pattern.compile("\\d{1,3}");
-		if (!pattern.matcher(tfTuoi.getText()).matches()) {
-			Alert alert = new Alert(AlertType.WARNING, "Hãy nhập vào tuổi hợp lệ!", ButtonType.OK);
-			alert.setHeaderText(null);
-			alert.showAndWait();
+		if(!tfXacNhan.isSelected()){
+			Error.setVisible(true);
+			Error.setLayoutX(tfXacNhan.getLayoutX());
+			Error.setLayoutY(tfXacNhan.getLayoutY() - 10);
+			Error.setText("Vui lòng xác nhận!");
 			return;
+		} else {
+			Error.setVisible(false);
 		}
 
-		// kiem tra cmnd nhap vao
-		// cmnd nhap vao phai la mot day so tu 1 toi 20 so
-		pattern = Pattern.compile("\\d{1,20}");
-		if (!pattern.matcher(tfCmnd.getText()).matches()) {
-			Alert alert = new Alert(AlertType.WARNING, "Hãy nhập vào CMND hợp lệ!", ButtonType.OK);
-			alert.setHeaderText(null);
-			alert.showAndWait();
-			return;
-		}
+		// Ghi nhan gia tri ghi tat ca deu da hop le
+		int IDNhanKhau = Integer.parseInt(tfIDNhanKhau.getText());
+		int IDHoKhau = Integer.parseInt(NhanKhauService.extractIdHoKhau(tfIDHoKhau.getValue()));
+		String QHvsChuHo = tfQHvsChuHo.getValue();
+		String HoTen = tfHoTen.getText();
+		String NgaySinh = String.valueOf(tfNgaySinh.getValue());
 
-		// kiem tra sdt nhap vao
-		// SDT nhap vao phai khong chua chu cai va nho hon 15 chu so
-		pattern = Pattern.compile("\\d{1,15}");
-		if (!pattern.matcher(tfSdt.getText()).matches()) {
-			Alert alert = new Alert(AlertType.WARNING, "Hãy nhập vào SĐT hợp lệ!", ButtonType.OK);
-			alert.setHeaderText(null);
-			alert.showAndWait();
-			return;
+		String CCCD;
+		if(tfCCCD.getText() == null || tfIDHoKhau.getValue().isEmpty())
+			CCCD = "Chưa cung cấp";
+		else{
+			CCCD = tfCCCD.getText();
 		}
-
-		// kiem tra maHo nhap vao
-		// ma ho nhap vao phai khong chua chu cai va nho hon 11 chu so
-		pattern = Pattern.compile("\\d{1,11}");
-		if (!pattern.matcher(tfMaHoKhau.getText()).matches()) {
-			Alert alert = new Alert(AlertType.WARNING, "Hãy nhập vào mã hộ hợp lệ!", ButtonType.OK);
-			alert.setHeaderText(null);
-			alert.showAndWait();
-			return;
+		String NgheNghiep;
+		if(tfNgheNghiep.getText() == null || tfNgheNghiep.getText().isEmpty())
+			NgheNghiep = "Chưa cung cấp";
+		else{
+			NgheNghiep = tfNgheNghiep.getText();
 		}
-
-		// kiem tra ma ho nhap vao da ton tai hay chua
-		List<HoKhauModel> listHoKhauModels = new HoKhauService().getListHoKhau();
-		long check = listHoKhauModels.stream()
-				.filter(hokhau -> hokhau.getMaHo() == Integer.parseInt(tfMaHoKhau.getText())).count();
-		if (check <= 0) {
-			Alert alert = new Alert(AlertType.WARNING, "Không có hộ khẩu này!", ButtonType.OK);
-			alert.setHeaderText(null);
-			alert.showAndWait();
-			return;
-		}
-
-		// Kiem tra Quan he nhap vao
-		if (tfQuanHe.getText().length() >= 30 || tfQuanHe.getText().length() <= 1) {
-			Alert alert = new Alert(AlertType.WARNING, "Hãy nhập vào 1 quan hệ hợp lệ!", ButtonType.OK);
-			alert.setHeaderText(null);
-			alert.showAndWait();
-			return;
-		}
-
-		// ghi nhan gia tri ghi tat ca deu da hop le
-		int idInt = Integer.parseInt(tfId.getText());
-		String tenString = tfTen.getText();
-		int tuoiInt = Integer.parseInt(tfTuoi.getText());
-		String cmndString = tfCmnd.getText();
-		String sdtString = tfSdt.getText();
-		int mahokhauInt = Integer.parseInt(tfMaHoKhau.getText());
-		String quanheString = tfQuanHe.getText();
+		String GioiTinh = tfGioiTinh.getValue();
+		String DanToc = tfDanToc.getValue();
 
 		NhanKhauService nhanKhauService = new NhanKhauService();
-		QuanHeService quanHeService = new QuanHeService();
 
-		NhanKhauModel nhanKhauModel = new NhanKhauModel(idInt, cmndString, tenString, tuoiInt, sdtString);
-		QuanHeModel quanHeModel = new QuanHeModel(mahokhauInt, idInt, quanheString);
+		NhanKhauModel nhanKhauModel = new NhanKhauModel(IDNhanKhau, IDHoKhau, QHvsChuHo, HoTen, NgaySinh, CCCD, NgheNghiep, GioiTinh, DanToc, QueQuan);
 
-		nhanKhauService.add(nhanKhauModel);
-		quanHeService.add(quanHeModel);
-
-		Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-		stage.close();
+		if(!nhanKhauService.add(nhanKhauModel)){
+			Alert alert = new Alert(AlertType.WARNING, "Hãy nhập vào ID hộ khẩu đã tồn tại!", ButtonType.OK);
+			alert.setHeaderText(null);
+			alert.showAndWait();
+		}
+		else{
+			Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+			stage.close();
+		}
 	}
 }

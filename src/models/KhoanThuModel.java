@@ -1,56 +1,91 @@
 package models;
 
 public class KhoanThuModel {
-	private int maKhoanThu;
-	private String tenKhoanThu;
-	private double soTien;
-	private int loaiKhoanThu;// tự nguyện là 1 bắt buộc là 0
-	
-	public KhoanThuModel() {}
-	
-	public KhoanThuModel(String tenKhoanThu, double soTien, int loaiKhoanThu ) {
-		this.tenKhoanThu=tenKhoanThu;
-		this.soTien = soTien;
-		this.loaiKhoanThu = loaiKhoanThu;
-	}
-	
-	public KhoanThuModel(int maKhoanThu ,String tenKhoanThu, double soTien, int loaiKhoanThu ) {
-		this.maKhoanThu = maKhoanThu;
-		this.tenKhoanThu=tenKhoanThu;
-		this.soTien = soTien;
-		this.loaiKhoanThu = loaiKhoanThu;
+	private int IDKhoanThu;
+	private String TenKT;
+	private String NgayBatDau;
+	private String NgayKetThuc;
+	private double TrongSoDienTich;
+	private double TrongSoSTV;
+	private double HangSo;
+	private String LoaiKhoanThu;
+
+	public KhoanThuModel() {
 	}
 
-	public int getMaKhoanThu() {
-		return maKhoanThu;
+	public KhoanThuModel(int IDKhoanThu, String TenKT, String NgayBatDau, String NgayKetThuc,
+			double TrongSoDienTich, double TrongSoSTV, double HangSo, String LoaiKhoanThu) {
+		this.IDKhoanThu = IDKhoanThu;
+		this.TenKT = TenKT;
+		this.NgayBatDau = NgayBatDau;
+		this.NgayKetThuc = NgayKetThuc;
+		this.TrongSoDienTich = TrongSoDienTich;
+		this.TrongSoSTV = TrongSoSTV;
+		this.HangSo = HangSo;
+		this.LoaiKhoanThu = LoaiKhoanThu;
 	}
 
-	public void setMaKhoanThu(int maKhoanThu) {
-		this.maKhoanThu = maKhoanThu;
+	public int getIDKhoanThu() {
+		return IDKhoanThu;
 	}
 
-	public String getTenKhoanThu() {
-		return tenKhoanThu;
+	public String getTenKT() {
+		return TenKT;
 	}
 
-	public void setTenKhoanThu(String tenKhoanThu) {
-		this.tenKhoanThu = tenKhoanThu;
+	public String getNgayKetThuc() {
+		return NgayKetThuc;
 	}
 
-	public double getSoTien() {
-		return soTien;
+	public double getTrongSoDienTich() {
+		return TrongSoDienTich;
 	}
 
-	public void setSoTien(double soTien) {
-		this.soTien = soTien;
+	public double getTrongSoSTV() {
+		return TrongSoSTV;
 	}
 
-	public int getLoaiKhoanThu() {
-		return loaiKhoanThu;
+	public double getHangSo() {
+		return HangSo;
 	}
 
-	public void setLoaiKhoanThu(int loaiKhoanThu) {
-		this.loaiKhoanThu = loaiKhoanThu;
+	public String getNgayBatDau() {
+		return NgayBatDau;
 	}
-	
+
+	public void setTenKT(String TenKT) {
+		this.TenKT = TenKT;
+	}
+
+	public void setIDKhoanThu(int IDKhoanThu) {
+		this.IDKhoanThu = IDKhoanThu;
+	}
+
+	public void setNgayKetThuc(String NgayKetThuc) {
+		this.NgayKetThuc = NgayKetThuc;
+	}
+
+	public void setTrongSoDienTich(double TrongSoDienTich) {
+		this.TrongSoDienTich = TrongSoDienTich;
+	}
+
+	public void setTrongSoSTV(double TrongSoSTV) {
+		this.TrongSoSTV = TrongSoSTV;
+	}
+
+	public void setHangSo(double HangSo) {
+		this.HangSo = HangSo;
+	}
+
+	public void setNgayBatDau(String NgayBatDau) {
+		this.NgayBatDau = NgayBatDau;
+	}
+
+	public String getLoaiKhoanThu() {
+		return LoaiKhoanThu;
+	}
+
+	public void setLoaiKhoanThu(String LoaiKhoanThu) {
+		this.LoaiKhoanThu = LoaiKhoanThu;
+	}
 }

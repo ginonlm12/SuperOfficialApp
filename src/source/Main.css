@@ -5,14 +5,14 @@
 }
 
 .main-bg {
-    -fx-background-image: url('file:/D:/workspace/quan-ly-thu-tien/src/views/milk.jpeg');
+
     -fx-background-size: cover;
 }
   
 .button1
 {
 -fx-background-color : #e8e3f3;
--fx-background-radius :  15 0 0 15;
+-fx-background-radius :  20;
 }
 .button1:hover
 {
@@ -67,6 +67,22 @@
 .button4:pressed
 {
     -fx-background-color :linear-gradient(to top left, #41951C, #D4CEE3);
+    -fx-background-radius :  30 30 30 30;
+}
+
+.button5
+{
+    -fx-border-color:linear-gradient(to bottom right, #272b3f, #256b51);
+
+}
+.button5:hover
+{
+    -fx-background-color :linear-gradient(to top left, #256b51, #272b3f);
+    -fx-background-radius :  30 30 30 30;
+}
+.button5:pressed
+{
+    -fx-background-color :linear-gradient(to top left, #272b3f, #256b51);
     -fx-background-radius :  30 30 30 30;
 }
 
@@ -135,5 +151,48 @@
     -fx-alignment:CENTER
 }
 
+.text-field-basic {
+    -fx-background-color: #ffffff; /* Màu nền */
+    -fx-border-color: #000000; /* Màu viền */
+    -fx-border-width: 1; /* Độ rộng viền */
+}
 
+.text-field-basic:hover {
+    -fx-background-color: #f0f0f0; /* Màu nền khi di chuột vào */
+}
+
+.text-field-basic:focused {
+    -fx-background-color: #e0e0e0; /* Màu nền khi được focus */
+}
+
+/* Kiểu TextField với độ bo tròn */
+.text-field-rounded {
+    -fx-background-color: #ffffff; /* Màu nền */
+    -fx-border-color: linear-gradient(to bottom right, #272b3f, #256b51); /* Màu viền */
+    -fx-border-width: 1; /* Độ rộng viền */
+    -fx-border-radius: 10; /* Độ bo tròn của viền */
+}
+
+.text-field-rounded:hover {
+    -fx-background-color: #f0f0f0; /* Màu nền khi di chuột vào */
+}
+
+.text-field-rounded:focused {
+    -fx-background-color: #e0e0e0; /* Màu nền khi được focus */
+}
+
+/* Kiểu TextField có độ trong suốt */
+.text-field-transparent {
+    -fx-background-color: transparent; /* Nền trong suốt */
+    -fx-border-color: #000000; /* Màu viền */
+    -fx-border-width: 1; /* Độ rộng viền */
+}
+
+.text-field-transparent:hover {
+    -fx-background-color: #f0f0f0; /* Màu nền khi di chuột vào */
+}
+
+.text-field-transparent:focused {
+    -fx-background-color: #e0e0e0; /* Màu nền khi được focus */
+}
 

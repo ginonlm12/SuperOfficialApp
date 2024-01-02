@@ -1,25 +1,75 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
-<?import java.lang.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.layout.AnchorPane?>
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="625.0" styleClass="pane" stylesheets="@../source/Main.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.KhoanThuController">
-   <children>
-      <TableView fx:id="tvKhoanPhi" layoutX="9.0" layoutY="91.0" prefHeight="493.0" prefWidth="500.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="100.0">
-        <columns>
-          <TableColumn fx:id="colMaKhoanPhi" prefWidth="93.0" text="Mã khoản thu" />
-          <TableColumn fx:id="colTenKhoanThu" prefWidth="194.0" text="Tên khoản thu" />
-            <TableColumn fx:id="colSoTien" prefWidth="186.0" text="Số tiền" />
-            <TableColumn fx:id="colLoaiKhoanThu" prefWidth="131.0" text="Loại khoản thu" />
-        </columns>
-      </TableView>
-      <TextField fx:id="tfSearch" layoutX="9.0" layoutY="44.0" prefHeight="40.0" prefWidth="310.0" AnchorPane.bottomAnchor="510.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="305.0" AnchorPane.topAnchor="50.0" />
-      <ComboBox fx:id="cbChooseSearch" layoutX="343.0" layoutY="44.0" prefHeight="40.0" prefWidth="170.0" AnchorPane.bottomAnchor="510.0" AnchorPane.leftAnchor="330.0" AnchorPane.rightAnchor="125.0" AnchorPane.topAnchor="50.0" />
-      <Button layoutX="518.0" layoutY="44.0" mnemonicParsing="false" onAction="#searchKhoanThu" prefHeight="40.0" prefWidth="110.0" styleClass="button3" stylesheets="@../source/Main.css" text="Tìm kiếm" AnchorPane.bottomAnchor="510.0" AnchorPane.leftAnchor="505.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="50.0" />
-      <Button layoutX="9.0" layoutY="5.0" mnemonicParsing="false" onAction="#addKhoanThu" prefHeight="40.0" prefWidth="200.0" styleClass="button1" stylesheets="@../source/Main.css" text="Thêm khoản thu" textFill="#2e088d" AnchorPane.bottomAnchor="555.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="415.0" AnchorPane.topAnchor="5.0" />
-      <Button layoutX="115.0" layoutY="5.0" mnemonicParsing="false" onAction="#delKhoanThu" prefHeight="40.0" prefWidth="195.0" styleClass="button1" stylesheets="@../source/Main.css" text="Xóa khoản thu" textFill="#2e088d" AnchorPane.bottomAnchor="555.0" AnchorPane.leftAnchor="215.0" AnchorPane.rightAnchor="215.0" AnchorPane.topAnchor="5.0" />
-      <Button layoutX="224.0" layoutY="5.0" mnemonicParsing="false" onAction="#updateKhoanThu" prefHeight="40.0" prefWidth="200.0" styleClass="button1" stylesheets="@../source/Main.css" text="Sửa khoản thu" textFill="#2e088d" AnchorPane.bottomAnchor="555.0" AnchorPane.leftAnchor="415.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="5.0" />
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+            prefHeight="600.0" prefWidth="800.0" styleClass="background"
+            stylesheets="@../source/nhankhau_va_hokhau.css" xmlns="http://javafx.com/javafx/21"
+            fx:controller="controller.KhoanThuController">
+    <children>
+        <VBox layoutX="10.0" layoutY="10.0" prefHeight="600.0" prefWidth="800.0">
+            <children>
+                <HBox alignment="CENTER" prefHeight="45.0" prefWidth="800.0">
+                    <children>
+                        <Button mnemonicParsing="false" onAction="#addKhoanThu" prefHeight="40.0" prefWidth="186.0"
+                                styleClass="buttonChucnang" stylesheets="@../source/nhankhau_va_hokhau.css"
+                                text="Thêm khoản thu" textFill="#2e088d"/>
+                        <Button mnemonicParsing="false" onAction="#delKhoanThu" prefHeight="40.0" prefWidth="187.0"
+                                styleClass="buttonChucnang" stylesheets="@../source/nhankhau_va_hokhau.css"
+                                text="Xóa khoản thu" textFill="#2e088d"/>
+                        <Button mnemonicParsing="false" onAction="#updateKhoanThu" prefHeight="40.0" prefWidth="180.0"
+                                styleClass="buttonChucnang" stylesheets="@../source/nhankhau_va_hokhau.css"
+                                text="Sửa khoản thu" textFill="#2e088d"/>
+                        <Button mnemonicParsing="false" onAction="#xemKhoanThu" prefHeight="40.0" prefWidth="158.0"
+                                styleClass="buttonChucnang" stylesheets="@../source/nhankhau_va_hokhau.css"
+                                text="Xem khoản thu" textFill="#2e088d"/>
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER" prefHeight="52.0" prefWidth="800.0">
+                    <children>
+                        <HBox alignment="CENTER" prefHeight="52.0" prefWidth="473.0">
+                            <children>
+                                <TextField fx:id="tfSearch" prefHeight="41.0" prefWidth="316.0" styleClass="search"
+                                           stylesheets="@../source/nhankhau_va_hokhau.css"/>
+                                <ComboBox fx:id="cbChooseSearch" prefHeight="41.0" prefWidth="201.0"
+                                          styleClass="btntimkiem" stylesheets="@../source/nhankhau_va_hokhau.css"/>
+                            </children>
+                        </HBox>
+                        <Button mnemonicParsing="false" onAction="#searchKhoanThu" prefHeight="41.0" prefWidth="250.0"
+                                styleClass="btntimkiem" stylesheets="@../source/nhankhau_va_hokhau.css"
+                                text="Tìm kiếm"/>
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER" prefHeight="41.0" prefWidth="800.0">
+                    <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0"
+                              text="DANH SÁCH CÁC KHOẢN THU TẠI CHUNG CƯ BLUEMOON" textAlignment="CENTER">
+                            <font>
+                                <Font name="System Bold" size="17.0"/>
+                            </font>
+                        </Text>
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER" prefHeight="446.0" prefWidth="800.0">
+                    <children>
+                        <TableView fx:id="tvKhoanThu" prefHeight="446.0" prefWidth="767.0">
+                            <columns>
+                                <TableColumn fx:id="colIDKhoanThu" prefWidth="96.79998624324799" text="ID"/>
+                                <TableColumn fx:id="colTenKhoanThu" prefWidth="228.79999542236328"
+                                             text="Tên khoản thu"/>
+                                <TableColumn fx:id="colLoai" prefWidth="157.5999755859375" text="Loại "/>
+                                <!-- <TableColumn fx:id="colTSDienTich" prefWidth="88.0" text="Thành phần 1" />
+                                <TableColumn fx:id="colTSSoThanhVien" prefWidth="89.60003662109375" text="Thành phần 2" />
+                                <TableColumn fx:id="colCongThem" prefWidth="88.79995727539062" text="Thành Phần 3" /> -->
+                                <TableColumn fx:id="colNgayBatDau" prefWidth="151.19998168945312" text="Bắt Đầu"/>
+                                <TableColumn fx:id="colNgayKetThuc" prefWidth="150.39996337890625" text="Kết Thúc"/>
+                            </columns>
+                        </TableView>
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
    </children>
 </AnchorPane>

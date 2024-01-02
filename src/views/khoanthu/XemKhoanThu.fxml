@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="530.0" prefWidth="570.0" styleClass="background"
+            stylesheets="@../../source/usecase.css" xmlns="http://javafx.com/javafx/21"
+            fx:controller="controller.khoanthu.XemKhoanThu">
+   <children>
+       <Label layoutX="47.0" layoutY="98.0" text="Tên khoản thu"/>
+       <TextField fx:id="tfTenKhoanThu" layoutX="168.0" layoutY="87.0" prefHeight="39.0" prefWidth="354.0"
+                  promptText="Nhập tên khoản thu" styleClass="text-field-rounded"
+                  stylesheets="@../../source/usecase.css"/>
+       <Label layoutX="47.0" layoutY="149.0" text="ID"/>
+       <TextField fx:id="tfIDKhoanThu" layoutX="168.0" layoutY="138.0" prefHeight="39.0" prefWidth="354.0"
+                  promptText="Nhập mã khoản thu" styleClass="text-field-rounded"
+                  stylesheets="@../../source/usecase.css"/>
+       <Label layoutX="47.0" layoutY="192.0" text="Ngày bắt đầu"/>
+       <Label layoutX="204.0" layoutY="41.0" text="XEM KHOẢN THU">
+         <font>
+             <Font name="System Bold" size="20.0"/>
+         </font>
+      </Label>
+       <Label layoutX="47.0" layoutY="249.0" text="Ngày kết thúc"/>
+       <TextField fx:id="tfTrongSoDienTich" layoutX="422.0" layoutY="353.0" prefHeight="39.0" prefWidth="102.0"
+                  styleClass="text-field-rounded" stylesheets="@../../source/usecase.css" text="0"/>
+       <TextField fx:id="tfTrongSoSTV" layoutX="422.0" layoutY="401.0" prefHeight="39.0" prefWidth="102.0"
+                  styleClass="text-field-rounded" stylesheets="@../../source/usecase.css" text="0"/>
+       <TextField fx:id="tfHangSo" layoutX="422.0" layoutY="449.0" prefHeight="39.0" prefWidth="102.0"
+                  styleClass="text-field-rounded" stylesheets="@../../source/usecase.css" text="0"/>
+       <Label layoutX="47.0" layoutY="305.0" text="Loại khoản thu"/>
+       <TextField fx:id="tfThanhPhan1" layoutX="169.0" layoutY="353.0" prefHeight="39.0" prefWidth="240.0"
+                  promptText="Thành phần số 1" styleClass="text-field-rounded" stylesheets="@../../source/usecase.css"/>
+       <TextField fx:id="tfThanhPhan2" layoutX="169.0" layoutY="401.0" prefHeight="39.0" prefWidth="240.0"
+                  promptText="Thành phần số 2" styleClass="text-field-rounded" stylesheets="@../../source/usecase.css"/>
+       <TextField fx:id="tfThanhPhan3" layoutX="169.0" layoutY="449.0" prefHeight="39.0" prefWidth="240.0"
+                  promptText="Thành phần số 3" styleClass="text-field-rounded" stylesheets="@../../source/usecase.css"/>
+       <TextField fx:id="dpNgayBatDau" layoutX="168.0" layoutY="190.0" prefHeight="39.0" prefWidth="354.0"
+                  styleClass="text-field-rounded" stylesheets="@../../source/usecase.css"/>
+       <TextField fx:id="dpNgayKetThuc" layoutX="168.0" layoutY="238.0" prefHeight="39.0" prefWidth="354.0"
+                  styleClass="text-field-rounded" stylesheets="@../../source/usecase.css"/>
+       <TextField fx:id="cbLoaiKhoanThu" layoutX="169.0" layoutY="294.0" prefHeight="39.0" prefWidth="354.0"
+                  styleClass="text-field-rounded" stylesheets="@../../source/usecase.css"/>
+   </children>
+</AnchorPane>

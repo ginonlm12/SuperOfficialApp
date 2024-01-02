@@ -1,85 +1,108 @@
 package services;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import models.KhoanThuModel;
+
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import models.KhoanThuModel;
-
-
 public class KhoanThuService {
-	
-	// ckecked
-	public  boolean add(KhoanThuModel khoanThuModel) throws ClassNotFoundException, SQLException {
+	public static boolean add(KhoanThuModel khoanThuModel) throws ClassNotFoundException, SQLException {
 		Connection connection = MysqlConnection.getMysqlConnection();
-        String query = "INSERT INTO khoan_thu(MaKhoanThu, TenKhoanThu, SoTien, LoaiKhoanThu)" 
-                    + " values (?, ?, ?, ?)";
-        PreparedStatement preparedStatement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
-        preparedStatement.setInt(1,khoanThuModel.getMaKhoanThu());
-        preparedStatement.setString(2, khoanThuModel.getTenKhoanThu());
-        preparedStatement.setDouble(3, khoanThuModel.getSoTien());
-        preparedStatement.setInt(4, khoanThuModel.getLoaiKhoanThu());
-        preparedStatement.executeUpdate();
-        preparedStatement.close();
-        connection.close();
-		return true;
-	}
-	
-	// checked
-	public boolean del(int maKhoanThu) throws ClassNotFoundException, SQLException {
-		Connection connection = MysqlConnection.getMysqlConnection();
-		String query = "SELECT * FROM nop_tien WHERE MaKhoanThu='"+maKhoanThu+"';";
-	    PreparedStatement preparedStatement = (PreparedStatement)connection.prepareStatement(query);
-	    ResultSet rs = preparedStatement.executeQuery();
-	    while (rs.next()){
-	    	query="DELETE FROM nop_tien WHERE MaKhoanThu='"+maKhoanThu+"'";
-	    	preparedStatement = connection.prepareStatement(query);
-	    	preparedStatement.executeUpdate();
-	    }
-	    query ="DELETE FROM khoan_thu WHERE MaKhoanThu = '"+maKhoanThu+"'";
-	    preparedStatement = connection.prepareStatement(query);
-		preparedStatement.executeUpdate();
-		preparedStatement.close();
-	    connection.close();
-		return true;  
-	}
-	
-	public boolean update(int maKhoanThu, String tenKhoanThu, double soTien, int loaiKhoanThu) throws ClassNotFoundException, SQLException {
-		Connection connection = MysqlConnection.getMysqlConnection();
-		PreparedStatement preparedStatement;
+		String query = "INSERT INTO khoanthu(IDKhoanThu, TenKT, NgayBatDau, NgayKetThuc, TrongSoDienTich, TrongSoSTV, HangSo, LoaiKhoanThu)"
+				+ " values (?, ?, ?, ?, ?, ?, ?, ?)";
+		PreparedStatement preparedStatement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 
-		String query = "UPDATE khoan_thu " + "set TenKhoanThu =" + "'" + tenKhoanThu + "'," + "SoTien ="
-				+ soTien + "," + "LoaiKhoanThu =" + loaiKhoanThu + " where MaKhoanThu =" + maKhoanThu;
-		System.out.println(query);
-		preparedStatement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+		preparedStatement.setInt(1, khoanThuModel.getIDKhoanThu());
+		preparedStatement.setString(2, khoanThuModel.getTenKT());
+		preparedStatement.setString(3, khoanThuModel.getNgayBatDau());
+		preparedStatement.setString(4, khoanThuModel.getNgayKetThuc());
+		preparedStatement.setDouble(5, khoanThuModel.getTrongSoDienTich());
+		preparedStatement.setDouble(6, khoanThuModel.getTrongSoSTV());
+		preparedStatement.setDouble(7, khoanThuModel.getHangSo());
+		preparedStatement.setString(8, khoanThuModel.getLoaiKhoanThu());
 		preparedStatement.executeUpdate();
 		preparedStatement.close();
 		connection.close();
-		
-		
 		return true;
 	}
-	
-	// checked
-	public List<KhoanThuModel> getListKhoanThu() throws ClassNotFoundException, SQLException{
-		List<KhoanThuModel> list = new ArrayList<>();
-		
+
+	public static boolean del(int IDKhoanThu) throws ClassNotFoundException, SQLException {
 		Connection connection = MysqlConnection.getMysqlConnection();
-	    String query = "SELECT * FROM khoan_thu";
-	    PreparedStatement preparedStatement = (PreparedStatement)connection.prepareStatement(query);
-	    ResultSet rs = preparedStatement.executeQuery();
-	    while (rs.next()){
-	        KhoanThuModel khoanThuModel = new KhoanThuModel(rs.getInt("MaKhoanThu"),rs.getString("TenKhoanThu"),
-	        		rs.getDouble("SoTien"),rs.getInt("LoaiKhoanThu"));
-	        list.add(khoanThuModel);
-	   }
-	    preparedStatement.close();
-	    connection.close();
+		String query = "DELETE FROM khoanthu WHERE IDKhoanThu = ?";
+		PreparedStatement preparedStatement = connection.prepareStatement(query);
+
+		preparedStatement.setInt(1, IDKhoanThu);
+		preparedStatement.executeUpdate();
+		preparedStatement.close();
+		connection.close();
+		return true;
+	}
+
+	public static boolean update(int IDKhoanThu_old, KhoanThuModel khoanThuModel)
+			throws ClassNotFoundException, SQLException {
+		Connection connection = MysqlConnection.getMysqlConnection();
+		String query = "UPDATE khoanthu SET TenKT = ?, NgayBatDau = ?, NgayKetThuc = ?, TrongSoDienTich = ?, TrongSoSTV = ?, HangSo = ?, LoaiKhoanThu = ?, IDKhoanThu = ? WHERE IDKhoanThu = ?";
+		PreparedStatement preparedStatement;
+
+		preparedStatement = connection.prepareStatement(query);
+		preparedStatement.setString(1, khoanThuModel.getTenKT());
+		preparedStatement.setString(2, khoanThuModel.getNgayBatDau());
+		preparedStatement.setString(3, khoanThuModel.getNgayKetThuc());
+		preparedStatement.setDouble(4, khoanThuModel.getTrongSoDienTich());
+		preparedStatement.setDouble(5, khoanThuModel.getTrongSoSTV());
+		preparedStatement.setDouble(6, khoanThuModel.getHangSo());
+		preparedStatement.setString(7, khoanThuModel.getLoaiKhoanThu());
+		preparedStatement.setInt(8, khoanThuModel.getIDKhoanThu());
+		preparedStatement.setInt(9, IDKhoanThu_old);
+		preparedStatement.executeUpdate();
+		return true;
+	}
+
+	public static List<KhoanThuModel> getListKhoanThu() throws ClassNotFoundException, SQLException {
+		List<KhoanThuModel> list = new ArrayList<>();
+
+		Connection connection = MysqlConnection.getMysqlConnection();
+		String query = "SELECT * FROM khoanthu";
+		PreparedStatement preparedStatement = connection.prepareStatement(query);
+		ResultSet rs = preparedStatement.executeQuery();
+		while (rs.next()) {
+			KhoanThuModel khoanThuModel = new KhoanThuModel(
+					rs.getInt("IDKhoanThu"),
+					rs.getString("TenKT"),
+					rs.getString("NgayBatDau"),
+					rs.getString("NgayKetThuc"),
+					rs.getDouble("TrongSoDienTich"),
+					rs.getDouble("TrongSoSTV"),
+					rs.getDouble("HangSo"),
+					rs.getString("LoaiKhoanThu"));
+
+			list.add(khoanThuModel);
+		}
+		preparedStatement.close();
+		connection.close();
 		return list;
 	}
-	
+
+	public static KhoanThuModel getKhoanThu(int IDKhoanThu) throws ClassNotFoundException, SQLException {
+		Connection connection = MysqlConnection.getMysqlConnection();
+		String query = "SELECT * FROM khoanthu WHERE IDKhoanThu = ?";
+		PreparedStatement preparedStatement = connection.prepareStatement(query);
+		preparedStatement.setInt(1, IDKhoanThu);
+
+		ResultSet rs = preparedStatement.executeQuery();
+		rs.next();
+		KhoanThuModel khoanThuModel = new KhoanThuModel(
+				rs.getInt("IDKhoanThu"),
+				rs.getString("TenKT"),
+				rs.getString("NgayBatDau"),
+				rs.getString("NgayKetThuc"),
+				rs.getDouble("TrongSoDienTich"),
+				rs.getDouble("TrongSoSTV"),
+				rs.getDouble("HangSo"),
+				rs.getString("LoaiKhoanThu"));
+
+		connection.close();
+		return khoanThuModel;
+	}
 }

@@ -1,155 +1,201 @@
 package controller.hokhau;
 
-import java.sql.SQLException;
-import java.util.List;
-import java.util.regex.Pattern;
-
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.TextField;
-import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
-import models.ChuHoModel;
 import models.HoKhauModel;
 import models.NhanKhauModel;
-import models.QuanHeModel;
-import services.ChuHoService;
 import services.HoKhauService;
 import services.NhanKhauService;
-import services.QuanHeService;
+import services.PhongService;
+import services.XuLyLoiService;
 
-public class AddHoKhau {
+import java.net.URL;
+import java.sql.SQLException;
+import java.util.ResourceBundle;
+import java.util.regex.Pattern;
+
+
+public class AddHoKhau implements Initializable {
 	@FXML
-	private TextField tfMaHoKhau;
+	private ComboBox<String> GioiTinh;
+
 	@FXML
-	private TextField tfDiaChi;
+	private DatePicker NgayDen;
+
 	@FXML
-	private TextField tfMaChuHo;
+	private TextField tfCCCD;
+
 	@FXML
 	private TextField tfTenChuHo;
-	@FXML
-	private TextField tfTuoi;
-	@FXML
-	private TextField tfCMND;
-	@FXML
-	private TextField tfSoDienThoai;
 
 	@FXML
-	public void addHoKhau(ActionEvent event) throws ClassNotFoundException, SQLException {
-		// khai bao mot mau de so sanh
-		Pattern pattern;
+	private TextField tfMaChuHo;
 
-		// kiem tra maHo nhap vao
-		// maHo la day so tu 1 toi 11 chu so
-		pattern = Pattern.compile("\\d{1,11}");
-		if (!pattern.matcher(tfMaHoKhau.getText()).matches()) {
-			Alert alert = new Alert(AlertType.WARNING, "Hãy nhập vào mã hộ khẩu hợp lệ!", ButtonType.OK);
-			alert.setHeaderText(null);
-			alert.showAndWait();
-			return;
-		}
-		
-		// kiem tra maHo co bi trung voi maHo nao da ton tai truoc do hay khong
-		List<HoKhauModel> listHoKhauModels = new HoKhauService().getListHoKhau();
-		for(HoKhauModel hokhau : listHoKhauModels) {
-			if (hokhau.getMaHo() == Integer.parseInt(tfMaHoKhau.getText())) {
-				Alert alert = new Alert(AlertType.WARNING, "Mã hộ bị trùng với một hộ khác!", ButtonType.OK);
-				alert.setHeaderText(null);
-				alert.showAndWait();
-				return;
-			}
-		}
+	@FXML
+	private TextField tfMaHoKhau;
 
-		// kiem tra dia chi nhap vao
-		// dia chi nhap vao la 1 chuoi t 1 toi 30 ki tu
-		if (tfDiaChi.getText().length() >= 50 || tfDiaChi.getText().length() <= 1) {
-			Alert alert = new Alert(AlertType.WARNING, "Hãy nhập vào 1 địa chỉ hợp lệ!", ButtonType.OK);
-			alert.setHeaderText(null);
-			alert.showAndWait();
-			return;
-		}
+	@FXML
+	private TextField tfSdt;
 
-		// kiem tra id nhan khau nhap vao
-		// id la day so tu 1 toi 11 chu so
-		pattern = Pattern.compile("\\d{1,11}");
-		if (!pattern.matcher(tfMaChuHo.getText()).matches()) {
-			Alert alert = new Alert(AlertType.WARNING, "Hãy nhập vào mã nhân khẩu hợp lệ!", ButtonType.OK);
-			alert.setHeaderText(null);
-			alert.showAndWait();
-			return;
+	@FXML
+	private Label xuliloi1;
+	@FXML
+	private Label xuliloi2;
+	@FXML
+	private Label xuliloi3;
+
+	@FXML
+	private Button Xacnhan;
+
+    ObservableList<String> listGioiTinh = FXCollections.observableArrayList("Nam", "Nữ");
+    ObservableList<Integer> listSoPhong = FXCollections.observableArrayList();
+    @FXML
+	private ComboBox<Integer> SoPhong;
+
+
+
+	public void initialize(URL url, ResourceBundle resourceBundle) {
+		// set cac gia tri cho gioi tinh va so phong
+		GioiTinh.setItems(listGioiTinh);
+		try {
+			listSoPhong = PhongService.getListSoPhong("Duoc su dung");
+		} catch (ClassNotFoundException e) {
+			throw new RuntimeException(e);
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
 		}
-		// kiem tra ID them moi co bi trung voi nhung ID da ton tai hay khong
-		List<NhanKhauModel> listNhanKhauModels = new NhanKhauService().getListNhanKhau();
-		listNhanKhauModels.stream().forEach(nhankhau -> {
-			if (nhankhau.getId() == Integer.parseInt(tfMaChuHo.getText())) {
-				Alert alert = new Alert(AlertType.WARNING, "ID bị trùng với một người khác!", ButtonType.OK);
-				alert.setHeaderText(null);
-				alert.showAndWait();
-				return;
+		SoPhong.setItems(listSoPhong);
+
+		//set gia tri mac dinh cho ma ho khau va ma chu ho
+		try {
+			tfMaHoKhau.setText(String.valueOf(HoKhauService.getNewIDHoKhau()));
+		} catch (ClassNotFoundException e) {
+			throw new RuntimeException(e);
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+		try {
+			tfMaChuHo.setText(String.valueOf(NhanKhauService.getNewIDNhanKhau()));
+		} catch (ClassNotFoundException e) {
+			throw new RuntimeException(e);
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+		// set xu li loi
+		checkError();
+	}
+
+	public void checkError() {
+		// ngay den
+		NgayDen.valueProperty().addListener((observableValue, oldValue, newValue) -> {
+			if (newValue == null) {
+				XuLyLoiService.xuLyLoi(xuliloi1, NgayDen, "Vui lòng chọn ngày chuyển đến", 0, 40);
+			} else if (newValue != null && NgayDen.getValue().isAfter(java.time.LocalDate.now())) {
+				XuLyLoiService.xuLyLoi(xuliloi1, NgayDen, "Ngày chuyển đến không được lớn hơn ngày hiện tại", 0, 40);
+			} else {
+				XuLyLoiService.xoaLoi(xuliloi1, NgayDen);
 			}
 		});
 
-		// kiem tra ten nhap vao
-		// ten nhap vao la chuoi tu 1 toi 50 ki tu
-		if (tfTenChuHo.getText().length() >= 50 || tfTenChuHo.getText().length() <= 1) {
-			Alert alert = new Alert(AlertType.WARNING, "Hãy nhập vào 1 tên hợp lệ!", ButtonType.OK);
-			alert.setHeaderText(null);
-			alert.showAndWait();
-			return;
-		}
+		//sdt
+		tfSdt.textProperty().addListener((observableValue, oldValue, newValue) -> {
+			Pattern pattern = Pattern.compile("\\d{1,15}");
+			if (!pattern.matcher(newValue).matches()) {
+				XuLyLoiService.xuLyLoi(xuliloi1, tfSdt, "Hãy nhập vào SĐT hợp lệ!", 0, 40);
 
-		// kiem tra tuoi nhap vao
-		// tuoi nhap vao nhieu nhat la 1 so co 3 chu so
-		pattern = Pattern.compile("\\d{1,3}");
-		if (!pattern.matcher(tfTuoi.getText()).matches()) {
-			Alert alert = new Alert(AlertType.WARNING, "Hãy nhập vào tuổi hợp lệ!", ButtonType.OK);
-			alert.setHeaderText(null);
-			alert.showAndWait();
-			return;
-		}
+			} else {
+				XuLyLoiService.xoaLoi(xuliloi1, tfSdt);
+			}
+		});
 
-		// kiem tra cmnd nhap vao
-		// cmnd nhap vao phai la mot day so tu 1 toi 20 so
-		pattern = Pattern.compile("\\d{1,20}");
-		if (!pattern.matcher(tfCMND.getText()).matches()) {
-			Alert alert = new Alert(AlertType.WARNING, "Hãy nhập vào CMND hợp lệ!", ButtonType.OK);
-			alert.setHeaderText(null);
-			alert.showAndWait();
-			return;
-		}
+		// ten chu ho
+		tfTenChuHo.textProperty().addListener((observableValue, oldValue, newValue) -> {
+			// it not null and dont have number
+			Pattern pattern = Pattern.compile("^[a-zA-Z\\s]+");
+			if (!pattern.matcher(newValue).matches()) {
+				XuLyLoiService.xuLyLoi(xuliloi2, tfTenChuHo, "Hãy nhập vào tên hợp lệ!", 0, 40);
+			} else {
+				XuLyLoiService.xoaLoi(xuliloi2, tfTenChuHo);
+			}
+		});
 
-		// kiem tra sdt nhap vao
-		// SDT nhap vao phai khong chua chu cai va nho hon 15 chu so
-		pattern = Pattern.compile("\\d{1,15}");
-		if (!pattern.matcher(tfSoDienThoai.getText()).matches()) {
-			Alert alert = new Alert(AlertType.WARNING, "Hãy nhập vào SĐT hợp lệ!", ButtonType.OK);
-			alert.setHeaderText(null);
-			alert.showAndWait();
-			return;
+		// cccd
+		tfCCCD.textProperty().addListener((observableValue, oldValue, newValue) -> {
+			Pattern pattern = Pattern.compile("\\d{1,20}");
+			if (!pattern.matcher(newValue).matches()) {
+				XuLyLoiService.xuLyLoi(xuliloi2, tfCCCD, "Hãy nhập vào CCCD hợp lệ!", 0, 40);
+			} else {
+				XuLyLoiService.xoaLoi(xuliloi2, tfCCCD);
+			}
+		});
+
+		// gioi tinh
+		GioiTinh.valueProperty().addListener((observableValue, oldValue, newValue) -> {
+			if (newValue == null) {
+				XuLyLoiService.xuLyLoi(xuliloi2, GioiTinh, "Hãy chọn giới tính!", 0, 40);
+			} else {
+				XuLyLoiService.xoaLoi(xuliloi2, GioiTinh);
+			}
+		});
+		// so phong
+		SoPhong.valueProperty().addListener((observableValue, oldValue, newValue) -> {
+			if (newValue == null) {
+				XuLyLoiService.xuLyLoi(xuliloi1, SoPhong, "Hãy chọn số phòng!", 0, 40);
+			} else {
+				XuLyLoiService.xoaLoi(xuliloi1, SoPhong);
+			}
+		});
+	}
+	@FXML
+	public void addHoKhau(ActionEvent event) throws ClassNotFoundException, SQLException {
+		// if xuliloi1 and xuliloi2 is visible => return
+		if(SoPhong.getValue() == null || GioiTinh.getValue() == null){
+			if(SoPhong.getValue() == null){
+				XuLyLoiService.xuLyLoi(xuliloi1, SoPhong, "Vui lòng chọn số phòng", 0, 40);
+			}
+			else if(GioiTinh.getValue() == null){
+				XuLyLoiService.xuLyLoi(xuliloi2, GioiTinh, "Vui lòng chọn giới tính", 0, 40);
+			}
+			else{
+				XuLyLoiService.xoaLoi(xuliloi1, SoPhong);
+				XuLyLoiService.xoaLoi(xuliloi2, GioiTinh);
+			}
 		}
-		
+		else if(NgayDen.getValue() == null || tfSdt.getText() == null || tfTenChuHo.getText() == null || tfCCCD.getText() == null || tfMaChuHo.getText() == null || tfMaHoKhau.getText() == null){
+			xuliloi3.setVisible(true);
+			xuliloi3.setText("Vui lòng điền đủ thông tin trước khi xác nhận");
+		}
+		else if (xuliloi1.isVisible() || xuliloi2.isVisible()) {
+			xuliloi3.setVisible(true);
+			xuliloi3.setText("Vui lòng sửa các lỗi trước khi xác nhận");
+		}
+		else{
+			int maHo = Integer.parseInt(tfMaHoKhau.getText());
+			int maChuHo = Integer.parseInt(tfMaChuHo.getText());
+			String tenChuHo = tfTenChuHo.getText();
+			String cccdChuHo = tfCCCD.getText();
+			String sdtChuHo = tfSdt.getText();
+			String ngayDen = NgayDen.getValue().toString();
+			String gioiTinh = GioiTinh.getValue();
+			int soPhong = SoPhong.getValue();
+
+			NhanKhauModel nhanKhauModel = new NhanKhauModel(maChuHo, maHo, "Chủ hộ", tenChuHo, cccdChuHo, gioiTinh);
+			HoKhauModel hoKhauModel = new HoKhauModel(maHo, soPhong, ngayDen, "0001/01/01", sdtChuHo);
+			new HoKhauService().add(hoKhauModel);
+			new NhanKhauService().add(nhanKhauModel);
+
+
+			Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+			stage.close();
+		}
 		// ghi nhan cac gia tri khi tat ca deu hop le
-		int maHo = Integer.parseInt(tfMaHoKhau.getText());
-		String diaChi = tfDiaChi.getText();
-		int maChuHo = Integer.parseInt(tfMaChuHo.getText());
-		String tenChuHo = tfTenChuHo.getText();
-		int tuoiChuHo = Integer.parseInt(tfTuoi.getText());
-		String cmndChuHo = tfCMND.getText();
-		String sdtChuHo = tfSoDienThoai.getText();
-		
-		HoKhauModel hoKhauModel = new HoKhauModel(maHo, 0, diaChi);
-		NhanKhauModel nhanKhauModel = new NhanKhauModel(maChuHo, cmndChuHo, tenChuHo, tuoiChuHo, sdtChuHo);
-		
-		new HoKhauService().add(hoKhauModel);
-		new NhanKhauService().add(nhanKhauModel);
-		new QuanHeService().add(new QuanHeModel(maHo,maChuHo,"Là chủ hộ"));
-		new ChuHoService().add(new ChuHoModel(maHo, maChuHo));
-		
-		Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
-        stage.close();
+
 	}
 
 }
