@@ -72,7 +72,7 @@
                                 <TableColumn fx:id="colNgayBatDauTT" prefWidth="87.3333740234375" text="Từ ngày"/>
                                 <TableColumn fx:id="colNgayKetThucTT" prefWidth="155.99993896484375"
                                              text="Đến ngày (dự kiến)"/>
-                                <TableColumn fx:id="colLyDoTT" prefWidth="367.999989827474" text="Lý do"/>
+                                <TableColumn fx:id="colLyDoTT" prefWidth="367.999989827474" text="Mục đích"/>
                             </columns>
                         </TableView>
                     </children>
