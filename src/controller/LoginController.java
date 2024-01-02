@@ -18,8 +18,6 @@ import services.UserService;
 
 import java.io.IOException;
 import java.net.URL;
-
-import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
@@ -34,16 +32,15 @@ public class LoginController implements Initializable {
     public void Login(ActionEvent event) throws IOException, SQLException, ClassNotFoundException {
         String username = tfUsername.getText();
         String password = tfPassword.getText();
+        user = UserService.checkUser(username, password);
 
-        // if (UserService.checkUser(username, password)) {
-            user.setUsername(username);
-            user.setPasswd(password);
+        if (user != null) {
             showMainMenu(event);
-        // } else {
-        //     Alert alert = new Alert(AlertType.WARNING, "Bạn nhập sai tài khoản hoặc mật khẩu rồi !", ButtonType.OK);
-        //     alert.setHeaderText(null);
-        //     alert.showAndWait();
-        // }
+        } else {
+            Alert alert = new Alert(AlertType.WARNING, "Bạn nhập sai tài khoản hoặc mật khẩu rồi !", ButtonType.OK);
+            alert.setHeaderText(null);
+            alert.showAndWait();
+        }
     }
 
     public void initialize(URL arg0, ResourceBundle arg1) {

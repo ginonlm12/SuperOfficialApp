@@ -8,31 +8,31 @@
 <?import javafx.scene.text.Text?>
 <?import java.net.URL?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="600.0" prefWidth="800.0" styleClass="background"
-            stylesheets="@../source/nhankhau_va_hokhau.css" xmlns="http://javafx.com/javafx/21"
+            stylesheets="@../css/nhankhau_va_hokhau.css" xmlns="http://javafx.com/javafx/21"
             fx:controller="controller.TamTruController">
     <children>
         <VBox prefHeight="610.0" prefWidth="810.0">
             <children>
-                <HBox alignment="CENTER" prefHeight="45.0" prefWidth="800.0">
+                <HBox alignment="CENTER" prefHeight="45.0" prefWidth="800.0" spacing="5.0">
                     <children>
+                        <Button focusTraversable="false" mnemonicParsing="false" onAction="#delTamtru" prefHeight="30.0"
+                                prefWidth="150.0" styleClass="buttonChucnang"
+                                stylesheets="@../css/nhankhau_va_hokhau.css" text="Xóa tạm trú" textFill="#2e088d"
+                                wrapText="true"/>
+                        <Button focusTraversable="false" mnemonicParsing="false" onAction="#addTamtru" prefHeight="30.0"
+                                prefWidth="150.0" styleClass="buttonChucnang"
+                                stylesheets="@../css/nhankhau_va_hokhau.css" text="Khai báo tạm trú" textFill="#2e088d"
+                                wrapText="true"/>
+                        <Button focusTraversable="false" mnemonicParsing="false" onAction="#showTamtru"
+                                prefHeight="30.0" prefWidth="150.0" styleClass="buttonChucnang"
+                                stylesheets="@../css/nhankhau_va_hokhau.css" text="Xem chi tiết" textFill="#2e088d"
+                                wrapText="true"/>
                         <ImageView fx:id="reloadimg" fitHeight="32.0" fitWidth="32.0" onMouseClicked="#Reload"
                                    pickOnBounds="true" preserveRatio="true">
                             <image>
                                 <Image url="@../source/icons8-reload-96.png"/>
                             </image>
                         </ImageView>
-                        <Button focusTraversable="false" mnemonicParsing="false" onAction="#delTamtru" prefHeight="30.0"
-                                prefWidth="150.0" styleClass="buttonChucnang"
-                                stylesheets="@../source/nhankhau_va_hokhau.css" text="Xóa tạm trú" textFill="#2e088d"
-                                wrapText="true"/>
-                        <Button focusTraversable="false" mnemonicParsing="false" onAction="#addTamtru" prefHeight="30.0"
-                                prefWidth="150.0" styleClass="buttonChucnang"
-                                stylesheets="@../source/nhankhau_va_hokhau.css" text="Thêm tạm trú" textFill="#2e088d"
-                                wrapText="true"/>
-                        <Button focusTraversable="false" mnemonicParsing="false" onAction="#showTamtru"
-                                prefHeight="30.0" prefWidth="150.0" styleClass="buttonChucnang"
-                                stylesheets="@../source/nhankhau_va_hokhau.css" text="Xem chi tiết" textFill="#2e088d"
-                                wrapText="true"/>
                     </children>
                 </HBox>
                 <HBox alignment="CENTER" prefHeight="52.0" prefWidth="800.0">
@@ -40,16 +40,16 @@
                         <HBox alignment="CENTER" prefHeight="52.0" prefWidth="473.0">
                             <children>
                                 <TextField fx:id="tfSearchTT" prefHeight="41.0" prefWidth="316.0" styleClass="search"
-                                           stylesheets="@../source/nhankhau_va_hokhau.css"/>
+                                           stylesheets="@../css/nhankhau_va_hokhau.css"/>
                                 <ComboBox id="choose" fx:id="cbChooseSearchTT" prefHeight="41.0" prefWidth="201.0"
-                                          styleClass="btntimkiem" stylesheets="@../source/nhankhau_va_hokhau.css"/>
+                                          styleClass="btntimkiem" stylesheets="@../css/nhankhau_va_hokhau.css"/>
                             </children>
                         </HBox>
                         <Button mnemonicParsing="false" onAction="#searchTamTru" prefHeight="41.0" prefWidth="250.0"
                                 styleClass="btntimkiem" text="Tìm kiếm">
                             <stylesheets>
-                                <URL value="@../source/nhankhau_va_hokhau.css"/>
-                                <URL value="@../source/nhankhau_va_hokhau.css"/>
+                                <URL value="@../css/nhankhau_va_hokhau.css"/>
+                                <URL value="@../css/nhankhau_va_hokhau.css"/>
                             </stylesheets>
                         </Button>
                     </children>
@@ -69,10 +69,10 @@
                         <TableView fx:id="tvTamTru" focusTraversable="false" prefHeight="446.0" prefWidth="767.0">
                             <columns>
                                 <TableColumn fx:id="colHoTenTT" prefWidth="153.3333387374878" text="Họ và tên"/>
-                                <TableColumn fx:id="colNgayBatDauTT" prefWidth="87.3333740234375" text="Ngày bắt đầu"/>
+                                <TableColumn fx:id="colNgayBatDauTT" prefWidth="87.3333740234375" text="Từ ngày"/>
                                 <TableColumn fx:id="colNgayKetThucTT" prefWidth="155.99993896484375"
-                                             text="Ngày kết thúc (dự kiến)"/>
-                                <TableColumn fx:id="colLyDoTT" prefWidth="367.999989827474" text="Lý do"/>
+                                             text="Đến ngày (dự kiến)"/>
+                                <TableColumn fx:id="colLyDoTT" prefWidth="367.999989827474" text="Mục đích"/>
                             </columns>
                         </TableView>
                     </children>

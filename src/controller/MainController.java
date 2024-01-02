@@ -7,6 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.PieChart;
 import javafx.scene.chart.XYChart;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import services.*;
 
@@ -37,11 +38,16 @@ public class MainController implements Initializable {
 	@FXML
 	private Label soTamVang;
 	private final LocalDate current = LocalDate.now();
+	ObservableList<Integer> Year = FXCollections.observableArrayList(current.getYear(), current.getYear() - 1);
+	@FXML
+	private ComboBox<Integer> CbYear;
 
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMMM, yyyy", new Locale("vi", "VN"));
 		String formattedDate = current.format(formatter);
 		currentDate.setText(formattedDate);
+		CbYear.setItems(Year);
+		CbYear.setValue(current.getYear());
 
 		try {
 			soNhanKhau.setText(NhanKhauService.countNhanKhau());
@@ -51,17 +57,30 @@ public class MainController implements Initializable {
 			soTamVang.setText(TamVangService.countTamVang());
 			iniGenderChart();
 			iniAgeChart();
-			iniPaymentChart();
+			iniPaymentChart(current.getYear());
 		} catch (ClassNotFoundException e) {
 			throw new RuntimeException(e);
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
 
+		CbYear.getSelectionModel().selectedItemProperty().addListener((observableee, oldValueee, newValueee) -> {
+			try {
+				Integer selectedYear = CbYear.getValue();
+
+				if (selectedYear != null) {
+					iniPaymentChart(selectedYear);
+				}
+			} catch (SQLException | ClassNotFoundException e) {
+				e.printStackTrace();
+			}
+		});
+
 	}
 
-	private void iniPaymentChart() throws SQLException, ClassNotFoundException {
-		XYChart.Series series = ThuPhiService.PaymentSatistic();
+	private void iniPaymentChart(Integer Year) throws SQLException, ClassNotFoundException {
+		barTienthuduoc.getData().clear();
+		XYChart.Series series = ThuPhiService.PaymentSatistic(Year);
 		barTienthuduoc.getData().add(series);
 		barTienthuduoc.lookup(".chart-plot-background").setStyle("-fx-background-color: transparent");
 	}

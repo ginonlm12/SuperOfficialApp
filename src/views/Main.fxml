@@ -8,11 +8,11 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.*?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="600.0" prefWidth="800.0" styleClass="main-bg"
-            stylesheets="@../source/Main.css" xmlns="http://javafx.com/javafx/21"
+            stylesheets="@../css/Main.css" xmlns="http://javafx.com/javafx/21"
             fx:controller="controller.MainController">
    <children>
        <VBox layoutX="16.0" layoutY="20.0" prefHeight="559.0" prefWidth="767.0" spacing="15.0" styleClass="background"
-             stylesheets="@../source/nhankhau_va_hokhau.css">
+             stylesheets="@../css/nhankhau_va_hokhau.css">
          <children>
              <VBox prefHeight="160.0" prefWidth="703.0" spacing="1.0"
                    style="-fx-background-color: linear-gradient(to bottom right, #B4D4FF, #EEF5FF); -fx-background-radius: 15; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 6,0,0,0);">
@@ -36,18 +36,20 @@
                         </Label>
                      </children>
                   </HBox>
-                   <HBox alignment="CENTER" prefHeight="151.0" prefWidth="767.0" spacing="2.0">
+                   <HBox alignment="CENTER" prefHeight="151.0" prefWidth="767.0" spacing="25.0">
                      <children>
                         <VBox alignment="CENTER" prefHeight="162.0" prefWidth="212.0">
                            <children>
-                               <ImageView fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                               <ImageView fitHeight="53.0" fitWidth="58.0" pickOnBounds="true" preserveRatio="true"
+                                          style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 1,0,0,0);">
                                  <image>
                                      <Image url="@../source/icons8-people-100.png"/>
                                  </image>
                               </ImageView>
                                <Label fx:id="soHoKhau" alignment="CENTER" contentDisplay="CENTER" maxHeight="20.0"
-                                      prefHeight="3.0" prefWidth="121.0" text="1" textAlignment="CENTER"
-                                      textOverrun="CLIP">
+                                      prefHeight="13.0" prefWidth="121.0"
+                                      style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 1,0,0,0);" text="1"
+                                      textAlignment="CENTER" textOverrun="CLIP">
                                  <font>
                                      <Font name="System Bold" size="30.0"/>
                                  </font>
@@ -60,18 +62,20 @@
                                startX="-103.9950942993164" startY="85.34564971923828"/>
                         <VBox alignment="CENTER" prefHeight="162.0" prefWidth="212.0">
                            <children>
-                               <ImageView fitHeight="45.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
+                               <ImageView fitHeight="45.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true"
+                                          style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 1,0,0,0);">
                                  <image>
                                      <Image url="@../source/icons8-person-90.png"/>
                                  </image>
                               </ImageView>
-                               <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="4.0">
+                               <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                                    <children>
                                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                                            <children>
                                                <Label fx:id="soNhanKhau" alignment="CENTER" contentDisplay="CENTER"
-                                                      maxHeight="20.0" prefHeight="45.0" prefWidth="121.0" text="1"
-                                                      textAlignment="CENTER" textOverrun="CLIP">
+                                                      maxHeight="20.0" prefHeight="45.0" prefWidth="121.0"
+                                                      style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 1,0,0,0);"
+                                                      text="1" textAlignment="CENTER" textOverrun="CLIP">
                                                    <font>
                                                        <Font name="System Bold" size="30.0"/>
                                                    </font>
@@ -85,8 +89,9 @@
                                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                                            <children>
                                                <Label fx:id="soTamVang" alignment="CENTER" contentDisplay="CENTER"
-                                                      maxHeight="20.0" prefHeight="45.0" prefWidth="121.0" text="1"
-                                                      textAlignment="CENTER" textOverrun="CLIP">
+                                                      maxHeight="20.0" prefHeight="45.0" prefWidth="121.0"
+                                                      style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 1,0,0,0);"
+                                                      text="1" textAlignment="CENTER" textOverrun="CLIP">
                                                    <font>
                                                        <Font name="System Bold" size="30.0"/>
                                                    </font>
@@ -101,8 +106,9 @@
                                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                                            <children>
                                                <Label fx:id="soTamTru" alignment="CENTER" contentDisplay="CENTER"
-                                                      maxHeight="20.0" prefHeight="10.0" prefWidth="70.0" text="1"
-                                                      textAlignment="CENTER" textOverrun="CLIP">
+                                                      maxHeight="20.0" prefHeight="10.0" prefWidth="70.0"
+                                                      style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 1,0,0,0);"
+                                                      text="1" textAlignment="CENTER" textOverrun="CLIP">
                                                    <font>
                                                        <Font name="System Bold" size="30.0"/>
                                                    </font>
@@ -120,14 +126,16 @@
                                startX="-103.9950942993164" startY="85.34564971923828"/>
                         <VBox alignment="CENTER" prefHeight="162.0" prefWidth="212.0">
                            <children>
-                              <ImageView fitHeight="53.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                               <ImageView fitHeight="53.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true"
+                                          style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 1,0,0,0);">
                                  <image>
                                      <Image url="@../source/icons8-room-100.png"/>
                                  </image>
                               </ImageView>
                                <Label fx:id="soPhong" alignment="CENTER" contentDisplay="CENTER" maxHeight="20.0"
-                                      prefHeight="59.0" prefWidth="139.0" text="1" textAlignment="CENTER"
-                                      textOverrun="CLIP">
+                                      prefHeight="59.0" prefWidth="139.0"
+                                      style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 1,0,0,0);" text="1"
+                                      textAlignment="CENTER" textOverrun="CLIP">
                                  <font>
                                      <Font name="System Bold" size="30.0"/>
                                  </font>
@@ -140,83 +148,86 @@
                   </HBox>
                </children>
             </VBox>
-            <HBox alignment="CENTER" prefHeight="147.0" prefWidth="767.0" spacing="20.0">
+             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                <children>
-                   <VBox prefHeight="191.0" prefWidth="375.0"
-                         style="-fx-background-color: linear-gradient(to bottom right, #B4D4FF, #EEF5FF); -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 6,0,0,0); -fx-background-radius: 15;">
+                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
                        <children>
-                           <Label contentDisplay="CENTER" prefHeight="33.0" prefWidth="237.0"
-                                  text="Nhân khẩu theo độ tuổi" textAlignment="CENTER" textOverrun="CLIP">
-                               <font>
-                                   <Font name="System Bold" size="14.0"/>
-                               </font>
-                               <VBox.margin>
-                                   <Insets left="10.0" top="10.0"/>
-                               </VBox.margin>
-                           </Label>
-                           <PieChart fx:id="pieDoTuoi" labelLineLength="5.0" legendSide="RIGHT" prefHeight="111.0"
-                                     prefWidth="243.0"/>
+                           <VBox alignment="CENTER" prefHeight="366.0" prefWidth="259.0" spacing="15.0">
+                               <children>
+                                   <VBox prefHeight="175.0" prefWidth="218.0"
+                                         style="-fx-background-color: linear-gradient(to bottom right, #B4D4FF, #EEF5FF); -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 6,0,0,0); -fx-background-radius: 15;">
+                                       <children>
+                                           <Label contentDisplay="CENTER" prefHeight="33.0" prefWidth="237.0"
+                                                  text="Nhân khẩu theo độ tuổi" textAlignment="CENTER"
+                                                  textOverrun="CLIP">
+                                               <font>
+                                                   <Font name="System Bold" size="10.0"/>
+                                               </font>
+                                               <VBox.margin>
+                                                   <Insets left="10.0" top="10.0"/>
+                                               </VBox.margin>
+                                           </Label>
+                                           <PieChart fx:id="pieDoTuoi" labelLineLength="5.0" legendSide="RIGHT"
+                                                     prefHeight="150.0" prefWidth="237.0"/>
+                                       </children>
+                                   </VBox>
+                                   <VBox prefHeight="160.0" prefWidth="368.0"
+                                         style="-fx-background-color: linear-gradient(to bottom right, #B4D4FF, #EEF5FF); -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 6,0,0,0); -fx-background-radius: 15;">
+                                       <children>
+                                           <Label contentDisplay="CENTER" prefHeight="33.0" prefWidth="251.0"
+                                                  text="Nhân khẩu theo giới tính" textAlignment="CENTER"
+                                                  textOverrun="CLIP">
+                                               <font>
+                                                   <Font name="System Bold" size="10.0"/>
+                                               </font>
+                                               <VBox.margin>
+                                                   <Insets left="10.0" top="10.0"/>
+                                               </VBox.margin>
+                                           </Label>
+                                           <PieChart fx:id="pieGioiTinh" labelLineLength="5.0" legendSide="RIGHT"
+                                                     prefHeight="79.0" prefWidth="368.0"/>
+                                       </children>
+                                   </VBox>
+                               </children>
+                           </VBox>
+                           <VBox prefHeight="366.0" prefWidth="492.0"
+                                 style="-fx-background-color: linear-gradient(to bottom right, #B4D4FF, #EEF5FF); -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 6,0,0,0); -fx-background-radius: 15;">
+                               <children>
+                                   <HBox prefHeight="100.0" prefWidth="200.0">
+                                       <children>
+                                           <Label contentDisplay="CENTER" prefHeight="20.0" prefWidth="377.0"
+                                                  text="Tiền thu được trong năm" textAlignment="CENTER"
+                                                  textOverrun="CLIP">
+                                               <font>
+                                                   <Font name="System Bold" size="14.0"/>
+                                               </font>
+                                               <HBox.margin>
+                                                   <Insets left="10.0" top="10.0"/>
+                                               </HBox.margin>
+                                           </Label>
+                                           <ComboBox fx:id="CbYear" prefHeight="25.0" prefWidth="82.0"
+                                                     style="-fx-background-color: linear-gradient(to bottom right, #B4D4FF, #94D4FF);">
+                                               <HBox.margin>
+                                                   <Insets left="10.0" top="10.0"/>
+                                               </HBox.margin>
+                                           </ComboBox>
+                                       </children>
+                                   </HBox>
+                                   <BarChart fx:id="barTienthuduoc" barGap="1.0" categoryGap="1.0" legendSide="RIGHT"
+                                             legendVisible="false">
+                                       <xAxis>
+                                           <CategoryAxis side="BOTTOM"/>
+                                       </xAxis>
+                                       <yAxis>
+                                           <NumberAxis side="LEFT"/>
+                                       </yAxis>
+                                   </BarChart>
+                               </children>
+                           </VBox>
                        </children>
-                   </VBox>
-                   <VBox prefHeight="160.0" prefWidth="368.0"
-                         style="-fx-background-color: linear-gradient(to bottom right, #B4D4FF, #EEF5FF); -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 6,0,0,0); -fx-background-radius: 15;">
-                       <children>
-                           <Label contentDisplay="CENTER" prefHeight="33.0" prefWidth="251.0"
-                                  text="Nhân khẩu theo giới tính" textAlignment="CENTER" textOverrun="CLIP">
-                               <font>
-                                   <Font name="System Bold" size="14.0"/>
-                               </font>
-                               <VBox.margin>
-                                   <Insets left="10.0" top="10.0"/>
-                               </VBox.margin>
-                           </Label>
-                           <PieChart fx:id="pieGioiTinh" labelLineLength="5.0" legendSide="RIGHT" prefHeight="121.0"
-                                     prefWidth="368.0"/>
-                       </children>
-                   </VBox>
+                   </HBox>
                </children>
-            </HBox>
-             <HBox alignment="CENTER" prefHeight="147.0" prefWidth="767.0" spacing="20.0">
-                 <children>
-                     <VBox prefHeight="191.0" prefWidth="375.0"
-                           style="-fx-background-color: linear-gradient(to bottom right, #B4D4FF, #EEF5FF); -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 6,0,0,0); -fx-background-radius: 15;">
-                     <children>
-                         <Label contentDisplay="CENTER" prefHeight="33.0" prefWidth="237.0"
-                                text="Tiền thu được trong năm" textAlignment="CENTER" textOverrun="CLIP">
-                           <font>
-                               <Font name="System Bold" size="14.0"/>
-                           </font>
-                           <VBox.margin>
-                               <Insets left="10.0" top="10.0"/>
-                           </VBox.margin>
-                        </Label>
-                         <BarChart fx:id="barTienthuduoc" legendSide="RIGHT" legendVisible="false"
-                                   style="-fx-background-color: transparent;">
-                             <xAxis>
-                                 <CategoryAxis side="BOTTOM"/>
-                             </xAxis>
-                             <yAxis>
-                                 <NumberAxis side="LEFT"/>
-                             </yAxis>
-                         </BarChart>
-                     </children>
-                  </VBox>
-                     <VBox prefHeight="160.0" prefWidth="368.0"
-                           style="-fx-background-color: linear-gradient(to bottom right, #B4D4FF, #EEF5FF); -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 6,0,0,0); -fx-background-radius: 15;">
-                     <children>
-                         <Label contentDisplay="CENTER" prefHeight="33.0" prefWidth="251.0" textAlignment="CENTER"
-                                textOverrun="CLIP">
-                           <font>
-                               <Font name="System Bold" size="14.0"/>
-                           </font>
-                           <VBox.margin>
-                               <Insets left="10.0" top="10.0"/>
-                           </VBox.margin>
-                        </Label>
-                     </children>
-                  </VBox>
-               </children>
-            </HBox>
+             </VBox>
          </children>
       </VBox>
     </children>

@@ -7,7 +7,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
-<AnchorPane fx:id="allElements" prefHeight="650.0" prefWidth="800.0" stylesheets="@../source/Home.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HomeController">
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:id="allElements" prefHeight="650.0" prefWidth="800.0"
+            stylesheets="@../css/Home.css" xmlns="http://javafx.com/javafx/21"
+            fx:controller="controller.HomeController">
     <children>
         <VBox fx:id="phanconlai" prefHeight="650.0" prefWidth="800.0">
             <children>
@@ -25,8 +27,11 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                         </Button>
-                        <MenuButton id="menubutton" focusTraversable="false" layoutX="93.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="115.0" text="Cài đặt" AnchorPane.rightAnchor="1.0">
+                        <MenuButton id="menubutton" focusTraversable="false" layoutX="93.0" mnemonicParsing="false"
+                                    prefHeight="50.0" prefWidth="111.0" text="Cài đặt" AnchorPane.rightAnchor="9.0">
                             <items>
+                                <MenuItem fx:id="tfTen" mnemonicParsing="false" text="Tên người dùng"/>
+                                <SeparatorMenuItem mnemonicParsing="false"/>
                                 <MenuItem mnemonicParsing="false" onAction="#changepassClicked" text="Thay đổi mật khẩu" />
                                 <MenuItem mnemonicParsing="false" onAction="#logoutClicked" text="Đăng xuất" />
                                 <SeparatorMenuItem mnemonicParsing="false" />
@@ -46,23 +51,27 @@
                         </MenuButton>
                     </children>
                 </AnchorPane>
-                <Pane id="mainPane" fx:id="mainPane" prefHeight="600.0" prefWidth="800.0" styleClass="white-bg" stylesheets="@../source/nhankhau_va_hokhau.css" />
+                <Pane id="mainPane" fx:id="mainPane" prefHeight="600.0" prefWidth="800.0" styleClass="white-bg"
+                      stylesheets="@../css/nhankhau_va_hokhau.css"/>
             </children>
         </VBox>
         <Pane fx:id="middlePane" disable="true" onMouseClicked="#middlePaneClicked" prefHeight="650.0" prefWidth="800.0" />
         <VBox fx:id="menuNhanKhau" layoutX="-265.0" layoutY="140.0" prefHeight="123.0" prefWidth="100.0">
             <children>
-                <Button mnemonicParsing="false" onAction="#setCuTru" prefHeight="39.0" prefWidth="101.0" styleClass="buttoninsubmenu" stylesheets="@../source/Home.css" text="Hiện trú">
+                <Button mnemonicParsing="false" onAction="#setCuTru" prefHeight="39.0" prefWidth="101.0"
+                        styleClass="buttoninsubmenu" stylesheets="@../css/Home.css" text="Hiện trú">
                     <cursor>
                         <Cursor fx:constant="HAND" />
                     </cursor>
                 </Button>
-                <Button mnemonicParsing="false" onAction="#setTamVang" prefHeight="39.0" prefWidth="104.0" styleClass="buttoninsubmenu" stylesheets="@../source/Home.css" text="Tạm vắng">
+                <Button mnemonicParsing="false" onAction="#setTamVang" prefHeight="39.0" prefWidth="104.0"
+                        styleClass="buttoninsubmenu" stylesheets="@../css/Home.css" text="Tạm vắng">
                     <cursor>
                         <Cursor fx:constant="HAND" />
                     </cursor>
                 </Button>
-                <Button mnemonicParsing="false" onAction="#setTamTru" prefHeight="39.0" prefWidth="105.0" styleClass="buttoninsubmenu" stylesheets="@../source/Home.css" text="Tạm trú">
+                <Button mnemonicParsing="false" onAction="#setTamTru" prefHeight="39.0" prefWidth="105.0"
+                        styleClass="buttoninsubmenu" stylesheets="@../css/Home.css" text="Tạm trú">
                     <opaqueInsets>
                         <Insets />
                     </opaqueInsets>
@@ -72,9 +81,12 @@
                 </Button>
             </children>
         </VBox>
-        <VBox id="menubar" fx:id="menu" layoutX="-165.0" prefHeight="650.0" prefWidth="165.0" styleClass="buttoninmenu" stylesheets="@../source/Home.css">
+        <VBox id="menubar" fx:id="menu" layoutX="-165.0" prefHeight="650.0" prefWidth="165.0" styleClass="buttoninmenu"
+              stylesheets="@../css/Home.css">
             <children>
-                <Button id="logobtn" focusTraversable="false" mnemonicParsing="false" onMouseClicked="#logobtnClicked" prefHeight="80.0" prefWidth="165.0" styleClass="buttoninmenu" stylesheets="@../source/Home.css" text="SPM">
+                <Button id="logobtn" focusTraversable="false" mnemonicParsing="false" onMouseClicked="#logobtnClicked"
+                        prefHeight="80.0" prefWidth="165.0" styleClass="buttoninmenu" stylesheets="@../css/Home.css"
+                        text="SPM">
                     <font>
                         <Font name="Britannic Bold" size="20.0" />
                     </font>
@@ -132,7 +144,8 @@
                         </LinearGradient>
                     </textFill>
                 </Button>
-                <Button mnemonicParsing="false" onAction="#setTrangChu" prefHeight="60.0" prefWidth="165.0" styleClass="buttoninmenu" stylesheets="@../source/Home.css" text="Trang chủ" textFill="WHITE">
+                <Button mnemonicParsing="false" onAction="#setTrangChu" prefHeight="60.0" prefWidth="165.0"
+                        styleClass="buttoninmenu" stylesheets="@../css/Home.css" text="Trang chủ" textFill="WHITE">
                     <font>
                         <Font name="Calibri Bold" size="18.0" />
                     </font>
@@ -147,7 +160,9 @@
                         <Cursor fx:constant="HAND" />
                     </cursor>
                 </Button>
-                <Button fx:id="btnNhanKhau" mnemonicParsing="false" onMouseClicked="#setNhanKhau" prefHeight="60.0" prefWidth="218.0" styleClass="buttoninmenu" stylesheets="@../source/Home.css" text="Nhân khẩu" textFill="WHITE">
+                <Button fx:id="btnNhanKhau" mnemonicParsing="false" onMouseClicked="#setNhanKhau" prefHeight="60.0"
+                        prefWidth="218.0" styleClass="buttoninmenu" stylesheets="@../css/Home.css" text="Nhân khẩu"
+                        textFill="WHITE">
                     <font>
                         <Font name="Arial Bold" size="20.0" />
                     </font>
@@ -162,7 +177,9 @@
                         <Cursor fx:constant="HAND" />
                     </cursor>
                 </Button>
-                <Button fx:id="btnHoKhau" mnemonicParsing="false" onAction="#setHoKhau" prefHeight="60.0" prefWidth="222.0" styleClass="buttoninmenu" stylesheets="@../source/Home.css" text="Hộ khẩu   " textFill="WHITE">
+                <Button fx:id="btnHoKhau" mnemonicParsing="false" onAction="#setHoKhau" prefHeight="60.0"
+                        prefWidth="222.0" styleClass="buttoninmenu" stylesheets="@../css/Home.css" text="Hộ khẩu   "
+                        textFill="WHITE">
                     <font>
                         <Font name="Arial Bold" size="20.0" />
                     </font>
@@ -177,7 +194,9 @@
                         <Cursor fx:constant="HAND" />
                     </cursor>
                 </Button>
-                <Button fx:id="btnKhoanPhi" mnemonicParsing="false" onAction="#setKhoanPhi" prefHeight="60.0" prefWidth="217.0" styleClass="buttoninmenu" stylesheets="@../source/Home.css" text="Khoản phí" textFill="WHITE" wrapText="true">
+                <Button fx:id="btnKhoanPhi" mnemonicParsing="false" onAction="#setKhoanPhi" prefHeight="60.0"
+                        prefWidth="217.0" styleClass="buttoninmenu" stylesheets="@../css/Home.css" text="Khoản phí"
+                        textFill="WHITE" wrapText="true">
                     <font>
                         <Font name="Arial" size="20.0" />
                     </font>
@@ -192,7 +211,9 @@
                         </ImageView>
                     </graphic>
                 </Button>
-                <Button fx:id="btnDongPhi" mnemonicParsing="false" onAction="#setDongPhi" prefHeight="60.0" prefWidth="216.0" styleClass="buttoninmenu" stylesheets="@../source/Home.css" text="Đóng phí " textFill="WHITE">
+                <Button fx:id="btnDongPhi" mnemonicParsing="false" onAction="#setDongPhi" prefHeight="60.0"
+                        prefWidth="216.0" styleClass="buttoninmenu" stylesheets="@../css/Home.css" text="Đóng phí "
+                        textFill="WHITE">
                     <font>
                         <Font name="Arial Bold" size="20.0" />
                     </font>
@@ -207,7 +228,9 @@
                         </ImageView>
                     </graphic>
                 </Button>
-                <Button fx:id="btnThongKe" mnemonicParsing="false" onAction="#setThongKe" prefHeight="60.0" prefWidth="214.0" styleClass="buttoninmenu" stylesheets="@../source/Home.css" text="Thống kê" textFill="WHITE">
+                <Button fx:id="btnThongKe" mnemonicParsing="false" onAction="#setThongKe" prefHeight="60.0"
+                        prefWidth="214.0" styleClass="buttoninmenu" stylesheets="@../css/Home.css" text="Thống kê"
+                        textFill="WHITE">
                     <font>
                         <Font name="System Bold" size="20.0" />
                     </font>
@@ -222,7 +245,9 @@
                         </ImageView>
                     </graphic>
                 </Button>
-                <Button fx:id="btnGuiXe" mnemonicParsing="false" onAction="#setGuiXe" prefHeight="60.0" prefWidth="214.0" styleClass="buttoninmenu" stylesheets="@../source/Home.css" text="Quản lý xe" textFill="WHITE">
+                <Button fx:id="btnGuiXe" mnemonicParsing="false" onAction="#setGuiXe" prefHeight="60.0"
+                        prefWidth="214.0" styleClass="buttoninmenu" stylesheets="@../css/Home.css" text="Quản lý xe"
+                        textFill="WHITE">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
@@ -237,7 +262,9 @@
                         </ImageView>
                     </graphic>
             </Button>
-                <Button fx:id="btnPhong" mnemonicParsing="false" onAction="#setPhong" prefHeight="60.0" prefWidth="214.0" styleClass="buttoninmenu" stylesheets="@../source/Home.css" text="Phòng" textFill="WHITE">
+                <Button fx:id="btnPhong" mnemonicParsing="false" onAction="#setPhong" prefHeight="60.0"
+                        prefWidth="214.0" styleClass="buttoninmenu" stylesheets="@../css/Home.css" text="Phòng"
+                        textFill="WHITE">
                     <font>
                         <Font name="System Bold" size="20.0" />
                     </font>

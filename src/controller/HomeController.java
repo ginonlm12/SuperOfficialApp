@@ -1,5 +1,6 @@
 package controller;
 
+import application.Main;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
@@ -43,6 +44,8 @@ public class HomeController implements Initializable {
     public Pane mainPane;
     @FXML
     private Button btnPhong;
+    @FXML
+    private MenuItem tfTen;
 
 
     void createNewStage(String fxmlFilePath, int width, int height) throws IOException {
@@ -195,6 +198,8 @@ public class HomeController implements Initializable {
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
+        Main m = new Main();
+        tfTen.setText(Main.user.getName());
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/Main.fxml"));
             Pane newContentPane = loader.load();
@@ -210,10 +215,9 @@ public class HomeController implements Initializable {
     void logobtnClicked(MouseEvent event) throws URISyntaxException {
         Desktop desktop = java.awt.Desktop.getDesktop();
 
-        //specify the protocol along with the URL
         URI oURL = null;
 
-        oURL = new URI("https://www.youtube.com/watch?v=dQw4w9WgXcQ&pp=ygUHcmlja3JsbA%3D%3D");
+        oURL = new URI("https://husteduvn-my.sharepoint.com/:w:/r/personal/quang_nm215461_sis_hust_edu_vn/_layouts/15/Doc.aspx?sourcedoc=%7B3BD014E7-7289-4956-9252-F0F9651D0715%7D&file=SuperApp_QLTT.docx&action=default&mobileredirect=true");
         try {
             desktop.browse(oURL);
         } catch (IOException e) {

@@ -3,11 +3,11 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="600.0" prefWidth="800.0" styleClass="background"
-            stylesheets="@../source/nhankhau_va_hokhau.css" xmlns="http://javafx.com/javafx/21"
+            stylesheets="@../css/nhankhau_va_hokhau.css" xmlns="http://javafx.com/javafx/21"
             fx:controller="controller.HoKhauController">
    <children>
        <TableView id="table-view" fx:id="tvHoKhau" layoutX="11.2" layoutY="128.8" prefHeight="461.0" prefWidth="603.0"
-                  stylesheets="@../source/nhankhau_va_hokhau.css" AnchorPane.bottomAnchor="10.0"
+                  stylesheets="@../css/nhankhau_va_hokhau.css" AnchorPane.bottomAnchor="10.0"
                   AnchorPane.leftAnchor="11.0" AnchorPane.rightAnchor="11.0" AnchorPane.topAnchor="129.0">
         <columns>
             <TableColumn fx:id="colMaHoKhau" prefWidth="66.66667211055756" text="ID"/>
@@ -18,27 +18,27 @@
         </columns>
       </TableView>
        <TextField fx:id="tfSearch" layoutX="14.0" layoutY="55.0" prefHeight="39.0" prefWidth="335.0" styleClass="search"
-                  stylesheets="@../source/nhankhau_va_hokhau.css" AnchorPane.bottomAnchor="511.0"
+                  stylesheets="@../css/nhankhau_va_hokhau.css" AnchorPane.bottomAnchor="511.0"
                   AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="455.0" AnchorPane.topAnchor="50.0"/>
        <ComboBox fx:id="cbChooseSearch" layoutX="328.0" layoutY="50.0" prefHeight="38.0" prefWidth="211.0"
-                 styleClass="btntimkiem" stylesheets="@../source/nhankhau_va_hokhau.css" AnchorPane.bottomAnchor="512.0"
+                 styleClass="btntimkiem" stylesheets="@../css/nhankhau_va_hokhau.css" AnchorPane.bottomAnchor="512.0"
                  AnchorPane.leftAnchor="328.0" AnchorPane.rightAnchor="261.0"/>
        <Button layoutX="547.0" layoutY="56.0" mnemonicParsing="false" onAction="#searchHoKhau" prefHeight="38.0"
-               prefWidth="270.0" styleClass="btntimkiem" stylesheets="@../source/nhankhau_va_hokhau.css" text="Tìm kiếm"
+               prefWidth="270.0" styleClass="btntimkiem" stylesheets="@../css/nhankhau_va_hokhau.css" text="Tìm kiếm"
                textFill="#2c0372" AnchorPane.bottomAnchor="512.0" AnchorPane.rightAnchor="11.0"/>
        <Button layoutX="100.0" layoutY="9.0" mnemonicParsing="false" onAction="#addHoKhau" prefHeight="40.0"
-               prefWidth="139.0" styleClass="buttonChucnang" stylesheets="@../source/nhankhau_va_hokhau.css"
+               prefWidth="139.0" styleClass="buttonChucnang" stylesheets="@../css/nhankhau_va_hokhau.css"
                text="Thêm hộ" textFill="#3400b9"/>
        <Button layoutX="250.0" layoutY="9.0" mnemonicParsing="false" onAction="#updateHoKhau" prefHeight="40.0"
-               prefWidth="139.0" styleClass="buttonChucnang" stylesheets="@../source/nhankhau_va_hokhau.css"
+               prefWidth="139.0" styleClass="buttonChucnang" stylesheets="@../css/nhankhau_va_hokhau.css"
                text="Sửa hộ" textFill="#3400b9"/>
        <Button layoutX="400.0" layoutY="9.0" mnemonicParsing="false" onAction="#delHoKhau" prefHeight="40.0"
-               prefWidth="156.0" styleClass="buttonChucnang" stylesheets="@../source/nhankhau_va_hokhau.css"
+               prefWidth="156.0" styleClass="buttonChucnang" stylesheets="@../css/nhankhau_va_hokhau.css"
                text="Xóa hộ" textFill="#3400b9"/>
        <Button layoutX="550.0" layoutY="9.0" mnemonicParsing="false" onAction="#detailHoKhau" prefHeight="40.0"
-               prefWidth="139.0" styleClass="buttonChucnang" stylesheets="@../source/nhankhau_va_hokhau.css"
+               prefWidth="139.0" styleClass="buttonChucnang" stylesheets="@../css/nhankhau_va_hokhau.css"
                text="Xem chi tiết" textFill="#3400b9"/>
        <ComboBox fx:id="cbTrangThai" layoutX="636.0" layoutY="96.0" onAction="#ShowHoKhauTable" prefHeight="26.0"
-                 prefWidth="139.0" styleClass="btntimkiem" stylesheets="@../source/nhankhau_va_hokhau.css"/>
+                 prefWidth="139.0" styleClass="btntimkiem" stylesheets="@../css/nhankhau_va_hokhau.css"/>
    </children>
 </AnchorPane>

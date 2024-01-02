@@ -17,34 +17,24 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 
 public class ShowTamTru {
-
     @FXML
     private TextField tfCCCD;
-
     @FXML
     private TextField tfChuHo;
-
     @FXML
     private ComboBox<String> tfGioiTinh;
-
     @FXML
     private TextField tfHoTen;
-
     @FXML
     private ComboBox<String> tfIDHoKhau;
-
     @FXML
     private TextArea tfLyDo;
-
     @FXML
     private DatePicker tfNgayBatDau;
-
     @FXML
     private DatePicker tfNgayKetThuc;
-
     @FXML
     private DatePicker tfNgaySinh;
-
     @FXML
     private TextField tfQueQuan;
 
@@ -61,6 +51,7 @@ public class ShowTamTru {
         tfChuHo.setText(NhanKhauService.getChuHo(tamTruModel.getIDHoKhau()));
         tfNgayBatDau.setValue(tamTruModel.getNgayBatDau());
         tfNgayKetThuc.setValue(tamTruModel.getNgayKetThuc());
+        System.out.println(tamTruModel.getLyDo());
         tfLyDo.setText(tamTruModel.getLyDo());
         tfQueQuan.setText(tamTruModel.getThuongTru());
     }

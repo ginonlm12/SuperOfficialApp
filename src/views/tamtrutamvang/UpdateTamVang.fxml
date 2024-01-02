@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.*?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="300.0" prefWidth="415.0" styleClass="background"
-            stylesheets="@../../source/usecase.css" xmlns="http://javafx.com/javafx/21"
+            stylesheets="@../../css/usecase.css" xmlns="http://javafx.com/javafx/21"
             fx:controller="controller.tamtrutamvang.UpdateTamVang">
     <children>
         <Label fx:id="textKhaibao" layoutX="21.0" layoutY="8.0" text="KHAI BÁO TẠM VẮNG">
@@ -28,12 +28,12 @@
                    styleClass="text-field-rounded"/>
         <DatePicker fx:id="tfNgayketthuc" layoutX="21.0" layoutY="176.0" prefHeight="28.0" prefWidth="374.0"
                     styleClass="text-field-rounded"/>
-        <Text layoutX="21.0" layoutY="108.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ngày bắt đầu">
+        <Text layoutX="21.0" layoutY="113.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Từ ngày">
             <font>
                 <Font size="14.0"/>
             </font>
         </Text>
-        <Text layoutX="21.0" layoutY="165.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ngày dự kiến kết thúc">
+        <Text layoutX="21.0" layoutY="172.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Đến ngày (dự kiến)">
             <font>
                 <Font size="14.0"/>
             </font>

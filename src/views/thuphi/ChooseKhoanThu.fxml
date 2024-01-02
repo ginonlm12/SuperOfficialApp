@@ -4,16 +4,16 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="600.0" prefWidth="800.0" styleClass="background"
-            stylesheets="@../../source/usecase.css" xmlns="http://javafx.com/javafx/21"
+            stylesheets="@../../css/usecase.css" xmlns="http://javafx.com/javafx/21"
             fx:controller="controller.thuphi.ChooseKhoanThu">
    <children>
        <TextField fx:id="tfSearch" layoutX="25.0" layoutY="52.0" prefHeight="39.0" prefWidth="476.0"/>
        <ComboBox fx:id="cbChooseSearch" layoutX="450.0" layoutY="52.0" prefHeight="39.0" prefWidth="181.0"
-                 styleClass="btntimkiem" stylesheets="@../../source/nhankhau_va_hokhau.css"/>
+                 styleClass="btntimkiem" stylesheets="@../../css/nhankhau_va_hokhau.css"/>
        <Button layoutX="606.0" layoutY="52.0" mnemonicParsing="false" onAction="#searchKhoanThu" prefHeight="39.0"
                prefWidth="181.0" text="Tìm kiếm"/>
        <TableView fx:id="tvKhoanThu" layoutX="25.0" layoutY="103.0" prefHeight="432.0" prefWidth="765.0"
-                  stylesheets="@../../source/nhankhau_va_hokhau.css">
+                  stylesheets="@../../css/nhankhau_va_hokhau.css">
          <columns>
             <TableColumn fx:id="colIDKhoanThu" prefWidth="93.60003662109375" text="ID khoản thu" />
             <TableColumn fx:id="colTenKhoanThu" prefWidth="273.5999755859375" text="Tên khoản thu" />
