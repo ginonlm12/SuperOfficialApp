@@ -210,10 +210,9 @@ public class HomeController implements Initializable {
     void logobtnClicked(MouseEvent event) throws URISyntaxException {
         Desktop desktop = java.awt.Desktop.getDesktop();
 
-        //specify the protocol along with the URL
         URI oURL = null;
 
-        oURL = new URI("https://www.youtube.com/watch?v=dQw4w9WgXcQ&pp=ygUHcmlja3JsbA%3D%3D");
+        oURL = new URI("https://husteduvn-my.sharepoint.com/:w:/r/personal/quang_nm215461_sis_hust_edu_vn/_layouts/15/Doc.aspx?sourcedoc=%7B3BD014E7-7289-4956-9252-F0F9651D0715%7D&file=SuperApp_QLTT.docx&action=default&mobileredirect=true");
         try {
             desktop.browse(oURL);
         } catch (IOException e) {

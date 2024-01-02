@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="600" prefWidth="800" styleClass="background"
-            stylesheets="@../source/nhankhau_va_hokhau.css" xmlns="http://javafx.com/javafx/21"
+            stylesheets="@../css/nhankhau_va_hokhau.css" xmlns="http://javafx.com/javafx/21"
             fx:controller="controller.GuiXeController">
    <children>
 
@@ -20,11 +20,11 @@
       </TableView>
        <TextField fx:id="tfSearch" layoutX="59.0" layoutY="43.0" prefHeight="39.0" prefWidth="261.0"/>
        <Button layoutX="293.0" layoutY="43.0" mnemonicParsing="false" onAction="#searchHoKhau" prefHeight="38.0"
-               prefWidth="261.0" styleClass="btntimkiem" stylesheets="@../source/nhankhau_va_hokhau.css"
+               prefWidth="261.0" styleClass="btntimkiem" stylesheets="@../css/nhankhau_va_hokhau.css"
                text="Tìm kiếm theo Mã hộ" textFill="#2c0372"/>
        <Button layoutX="590.0" layoutY="44.0" maxHeight="39.0" maxWidth="261.0" minWidth="149.0" mnemonicParsing="false"
                onAction="#CapNhatSoXe" prefHeight="39.0" prefWidth="149.0" styleClass="buttonChucnang"
-               stylesheets="@../source/nhankhau_va_hokhau.css" text="Cập nhật" textFill="#2c0372"/>
+               stylesheets="@../css/nhankhau_va_hokhau.css" text="Cập nhật" textFill="#2c0372"/>
       <Label fx:id="noti" layoutX="94.0" layoutY="94.0" prefHeight="18.0" prefWidth="179.0" textFill="#ec0606">
          <font>
             <Font name="System Italic" size="14.0" />
@@ -32,7 +32,7 @@
       </Label>
       <VBox layoutX="623.0" layoutY="131.0" prefHeight="438.0" prefWidth="128.0" spacing="10.0">
          <children>
-            <Pane prefHeight="136.0" prefWidth="168.0" styleClass="box-dashboard" stylesheets="@../source/Home.css">
+             <Pane prefHeight="136.0" prefWidth="168.0" styleClass="box-dashboard" stylesheets="@../css/Home.css">
                <children>
                   <ImageView fitHeight="70.0" fitWidth="77.0" layoutX="29.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -51,7 +51,7 @@
                   </Label>
                </children>
             </Pane>
-            <Pane prefHeight="136.0" prefWidth="168.0" styleClass="box-dashboard" stylesheets="@../source/Home.css">
+             <Pane prefHeight="136.0" prefWidth="168.0" styleClass="box-dashboard" stylesheets="@../css/Home.css">
                <children>
                   <ImageView fitHeight="70.0" fitWidth="93.0" layoutX="29.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -70,7 +70,7 @@
                   </Label>
                </children>
             </Pane>
-            <Pane prefHeight="136.0" prefWidth="168.0" styleClass="box-dashboard" stylesheets="@../source/Home.css">
+             <Pane prefHeight="136.0" prefWidth="168.0" styleClass="box-dashboard" stylesheets="@../css/Home.css">
                <children>
                   <ImageView fitHeight="70.0" fitWidth="93.0" layoutX="29.0" pickOnBounds="true" preserveRatio="true">
                      <image>

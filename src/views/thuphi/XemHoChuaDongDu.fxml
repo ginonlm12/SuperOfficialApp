@@ -4,17 +4,17 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="600.0" prefWidth="800.0" styleClass="background"
-            stylesheets="@../../source/usecase.css" xmlns="http://javafx.com/javafx/21"
+            stylesheets="@../../css/usecase.css" xmlns="http://javafx.com/javafx/21"
             fx:controller="controller.thuphi.XemHoChuaDongDu">
    <children>
        <Button layoutX="658.0" layoutY="59.0" mnemonicParsing="false" onAction="#searchNhanKhau" prefHeight="39.0"
-               prefWidth="124.0" styleClass="btntimkiem" stylesheets="@../../source/nhankhau_va_hokhau.css"
+               prefWidth="124.0" styleClass="btntimkiem" stylesheets="@../../css/nhankhau_va_hokhau.css"
                text="Tìm kiếm"/>
       <TextField fx:id="tfSearch" layoutX="17.0" layoutY="59.0" prefHeight="39.0" prefWidth="476.0" />
        <ComboBox fx:id="cbChooseSearch" layoutX="473.0" layoutY="59.0" prefHeight="39.0" prefWidth="201.0"
-                 styleClass="btntimkiem" stylesheets="@../../source/nhankhau_va_hokhau.css"/>
+                 styleClass="btntimkiem" stylesheets="@../../css/nhankhau_va_hokhau.css"/>
        <TableView fx:id="tvNhanKhau" layoutX="17.0" layoutY="104.0" prefHeight="474.0" prefWidth="765.0"
-                  stylesheets="@../../source/nhankhau_va_hokhau.css">
+                  stylesheets="@../../css/nhankhau_va_hokhau.css">
          <columns>
             <TableColumn fx:id="colIDHoKhau" prefWidth="103.19998168945312" text="ID hộ khẩu" />
              <TableColumn fx:id="colTen" prefWidth="198.40005493164062" text="Tên Chủ hộ"/>
