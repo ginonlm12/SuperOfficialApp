@@ -1,8 +1,20 @@
 package models;
 
 public class UserModel {
-	String username;
-	String passwd;
+    private String username;
+    private String passwd;
+
+    private String name;
+
+    public UserModel(String username, String passwd, String name) {
+        this.username = username;
+        this.passwd = passwd;
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
 
     public UserModel() {
     }
@@ -11,6 +23,10 @@ public class UserModel {
 		this.username = username;
 		this.passwd = passwd;
 	}
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public String getUsername() {
 		return username;
