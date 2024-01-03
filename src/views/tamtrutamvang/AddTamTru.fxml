@@ -28,16 +28,16 @@
         <Label layoutX="16.0" layoutY="155.0" text="Hộ Khẩu"/>
 
         <TextField fx:id="tfQueQuan" layoutX="204.0" layoutY="373.0" prefHeight="39.0" prefWidth="431.0"
-                   styleClass="text-field-rounded"/>
+                   styleClass="text-field-rounded" visible="false"/>
         <Label layoutX="20.0" layoutY="354.0" text="Nơi thường trú"/>
         <Text fill="RED" layoutX="414.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="(*)"/>
         <Text fill="RED" layoutX="607.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="(*)"/>
         <Text fill="RED" layoutX="607.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" text="(*)"/>
         <Text fill="RED" layoutX="368.0" layoutY="168.0" strokeType="OUTSIDE" strokeWidth="0.0" text="(*)"/>
         <Text fill="RED" layoutX="184.0" layoutY="398.0" strokeType="OUTSIDE" strokeWidth="0.0" text="(*)"/>
-        <Label fx:id="tfTinh" layoutX="23.0" layoutY="430.0" text="Tỉnh"/>
-        <Label fx:id="tfHuyen" layoutX="23.0" layoutY="462.0" text="Huyện"/>
-        <Label fx:id="tfXa" layoutX="23.0" layoutY="495.0" text="Xã"/>
+        <Label fx:id="tfTinh" layoutX="23.0" layoutY="430.0" text="Tỉnh" visible="false"/>
+        <Label fx:id="tfHuyen" layoutX="23.0" layoutY="462.0" text="Huyện" visible="false"/>
+        <Label fx:id="tfXa" layoutX="23.0" layoutY="495.0" text="Xã" visible="false"/>
         <ComboBox fx:id="tfGioiTinh" layoutX="515.0" layoutY="47.0" prefHeight="39.0" prefWidth="89.0"
                   styleClass="text-field-rounded"/>
         <ComboBox fx:id="tfIDHoKhau" layoutX="76.0" layoutY="144.0" prefHeight="39.0" prefWidth="285.0"
@@ -45,11 +45,11 @@
         <ComboBox fx:id="tfCountry" layoutX="19.0" layoutY="374.0" prefHeight="39.0" prefWidth="160.0"
                   styleClass="text-field-rounded"/>
         <ComboBox fx:id="tfProvince" layoutX="70.0" layoutY="423.0" prefHeight="28.0" prefWidth="565.0"
-                  styleClass="text-field-rounded"/>
+                  styleClass="text-field-rounded" visible="false"/>
         <ComboBox fx:id="tfDistrict" layoutX="70.0" layoutY="458.0" prefHeight="28.0" prefWidth="565.0"
-                  styleClass="text-field-rounded"/>
+                  styleClass="text-field-rounded" visible="false"/>
         <ComboBox fx:id="tfWard" layoutX="70.0" layoutY="491.0" prefHeight="28.0" prefWidth="565.0"
-                  styleClass="text-field-rounded"/>
+                  styleClass="text-field-rounded" visible="false"/>
         <TextField fx:id="tfChuHo" editable="false" layoutX="430.0" layoutY="143.0" prefHeight="39.0" prefWidth="206.0">
             <styleClass>
                 <String fx:value="text-field-transparent"/>

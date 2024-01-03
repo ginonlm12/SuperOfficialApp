@@ -136,7 +136,7 @@ public class TamVangController implements Initializable {
         loader.setLocation(getClass().getResource("/views/tamtrutamvang/UpdateTamVang.fxml"));
         Parent home = loader.load();
         Stage stage = new Stage();
-        stage.setScene(new Scene(home, 400, 300));
+        stage.setScene(new Scene(home, 430, 300));
         UpdateTamVang updateTamVang = loader.getController();
 
         // bat loi truong hop khong hop le
