@@ -29,6 +29,5 @@
              <Font name="System Bold" size="20.0" />
          </font>
       </Label>
-      <Button layoutX="472.0" layoutY="547.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="144.0" text="Kết thúc" />
    </children>
 </AnchorPane>

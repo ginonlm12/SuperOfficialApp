@@ -111,6 +111,7 @@ public class ChooseKhoanThu implements Initializable {
 			Alert alert = new Alert(AlertType.WARNING, "Hãy nhập vào thông tin cần tìm kiếm!", ButtonType.OK);
 			alert.setHeaderText(null);
 			alert.showAndWait();
+			return;
 		}
 
 		// tim kiem thong tin theo lua chon da lay ra
