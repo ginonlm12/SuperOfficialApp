@@ -68,6 +68,13 @@ public class AddPhong implements Initializable {
             return;
         }
 
+        if (tfLoaiPhong.getValue() == null) {
+            Alert alert = new Alert(Alert.AlertType.WARNING, "Hãy chọn loại phòng!", ButtonType.OK);
+            alert.setHeaderText(null);
+            alert.showAndWait();
+            return;
+        }
+
         // ghi nhan gia tri ghi tat ca deu da hop le
         int SoPhong = Integer.parseInt(tfSoPhong.getText());
         Double DienTich = Double.valueOf(tfDienTich.getText());
