@@ -17,6 +17,7 @@ import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.SelectionMode;
 import javafx.scene.control.SingleSelectionModel;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -57,6 +58,7 @@ public class ChooseKhoanThu implements Initializable {
 		ObservableList<String> listComboBox = FXCollections.observableArrayList("Tên khoản thu", "ID khoản thu");
 		cbChooseSearch.setValue("Tên khoản thu");
 		cbChooseSearch.setItems(listComboBox);
+		tvKhoanThu.getSelectionModel().setSelectionMode( SelectionMode.MULTIPLE);
 	}
 
 	public void setNhanKhauModel(NhanKhauModel nhanKhauModel) throws ClassNotFoundException, SQLException {

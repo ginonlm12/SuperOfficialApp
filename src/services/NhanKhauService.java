@@ -3,6 +3,7 @@ package services;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.chart.PieChart;
+import models.HoKhauBean;
 import models.NhanKhauModel;
 
 import java.sql.*;
@@ -419,5 +420,17 @@ public class NhanKhauService {
         preparedStatement.close();
         connection.close();
         return list;
+    }
+
+    public static int getIDHoKhau(int IDNhanKhau) throws ClassNotFoundException, SQLException {
+        Connection connection = MysqlConnection.getMysqlConnection();
+        String query = "SELECT IDHoKhau FROM nhankhau WHERE IDNhanKhau = ?";
+        PreparedStatement preparedStatement = connection.prepareStatement(query);
+        preparedStatement.setInt(1, IDNhanKhau);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        while (resultSet.next()) {
+            return resultSet.getInt("IDHoKhau");
+        }
+        return -1;
     }
 }
