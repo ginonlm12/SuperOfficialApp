@@ -96,9 +96,7 @@ public class AddHoKhau implements Initializable {
 		NgayDen.valueProperty().addListener((observableValue, oldValue, newValue) -> {
 			if (newValue == null) {
 				XuLyLoiService.xuLyLoi(xuliloi1, NgayDen, "Vui lòng chọn ngày chuyển đến", 0, 40);
-			} else if (newValue != null && NgayDen.getValue().isAfter(java.time.LocalDate.now())) {
-				XuLyLoiService.xuLyLoi(xuliloi1, NgayDen, "Ngày chuyển đến không được lớn hơn ngày hiện tại", 0, 40);
-			} else {
+			}  else {
 				XuLyLoiService.xoaLoi(xuliloi1, NgayDen);
 			}
 		});
@@ -117,8 +115,8 @@ public class AddHoKhau implements Initializable {
 		// ten chu ho
 		tfTenChuHo.textProperty().addListener((observableValue, oldValue, newValue) -> {
 			// it not null and dont have number
-			Pattern pattern = Pattern.compile("^[a-zA-Z\\s]+");
-			if (!pattern.matcher(newValue).matches()) {
+			Pattern pattern = Pattern.compile(".*\\d.*");
+			if (pattern.matcher(newValue).matches()) {
 				XuLyLoiService.xuLyLoi(xuliloi2, tfTenChuHo, "Hãy nhập vào tên hợp lệ!", 0, 40);
 			} else {
 				XuLyLoiService.xoaLoi(xuliloi2, tfTenChuHo);
