@@ -23,6 +23,7 @@ import java.util.ResourceBundle;
 import java.util.Scanner;
 import java.util.Vector;
 import java.util.regex.Pattern;
+import java.io.FileInputStream;
 
 public class AddNhanKhau implements Initializable {
 	ObservableList<String> ethnicityList = FXCollections.observableArrayList("Không");
@@ -115,13 +116,15 @@ public class AddNhanKhau implements Initializable {
 		tfQHvsChuHo.setItems(relationshipList);
 		tfCountry.setItems(QueQuanList);
 
-		try (Scanner scanner = new Scanner(new File("database/DanToc.txt"))) {
+		try (Scanner scanner = new Scanner(new FileInputStream(new File("database/DanToc.txt")), "UTF-8")) {
 			while (scanner.hasNextLine()) {
 				ethnicityList.add(scanner.nextLine());
+
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
 		tfDanToc.setItems(ethnicityList);
 
 		tfIDHoKhau.getSelectionModel().selectedItemProperty().addListener((observableee, oldValueee, newValueee) -> {
