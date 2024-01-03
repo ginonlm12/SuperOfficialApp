@@ -12,6 +12,7 @@ import models.NhanKhauModel;
 import services.HoKhauService;
 import services.KhoanThuService;
 import services.NhanKhauService;
+import javafx.stage.Stage;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -52,12 +53,13 @@ public class XemHoChuaDongDu {
 
 	public void showNhanKhau() throws ClassNotFoundException, SQLException {
 		listNhanKhau = NhanKhauService.getListChuHoChuaDongDu(IDKhoanThu);
+		listValueTableView = FXCollections.observableArrayList(listNhanKhau);
 		KhoanThuModel khoanThuModel = KhoanThuService.getKhoanThu(IDKhoanThu);
 
 		for (NhanKhauModel nhankhau : listNhanKhau) {
 			nhankhau.setSoPhong(NhanKhauService.getSoPhong(nhankhau.getIDHoKhau()));
 			if (AddThuPhi.tinhSoTienPhaiDong(khoanThuModel, nhankhau).equals(0.0)) {
-				listNhanKhau.remove(nhankhau);
+				listValueTableView.remove(nhankhau);
 			}
 		}
 
@@ -65,10 +67,11 @@ public class XemHoChuaDongDu {
             Alert alert = new Alert(AlertType.INFORMATION, "Tất cả các hộ đều đã đóng", ButtonType.OK);
             alert.setHeaderText(null);
             alert.showAndWait();
+			// dong cua so hien tai
+			Stage stage = (Stage) tvNhanKhau.getScene().getWindow();
+			stage.close();
             return;
         }
-
-		listValueTableView = FXCollections.observableArrayList(listNhanKhau);
 
 		// thiet lap cac cot cho tableviews
 		colIDHoKhau.setCellValueFactory(new PropertyValueFactory<NhanKhauModel, String>("IDHoKhau"));

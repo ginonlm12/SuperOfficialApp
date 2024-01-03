@@ -1,6 +1,6 @@
 # Project exclude paths
-/bin/
-/.vscode/
+bin
+.vscode
 # file *.drawio
 *.drawio
 /src/services/MysqlConnection.java
