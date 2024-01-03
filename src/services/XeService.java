@@ -29,6 +29,7 @@ public class XeService {
                 list.add(xe);
             }
         }
+        conn.close();
         return list;
     }
 
@@ -41,6 +42,7 @@ public class XeService {
         preparedStatement.setInt(3, xe.getOTo());
         preparedStatement.setInt(4, xe.getIDHoKhau());
         preparedStatement.execute();
+        conn.close();
     }
     // get XeModel by IDHoKhau
     public static XeModel getXeModel(int IDHoKhau) throws ClassNotFoundException, SQLException {
@@ -57,6 +59,7 @@ public class XeService {
             xeModel.setXeMay(rs.getInt("XeMay"));
             xeModel.setOTo(rs.getInt("Oto"));
         }
+        connection.close();
         return xeModel;
     }
 }

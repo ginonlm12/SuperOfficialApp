@@ -25,7 +25,7 @@ public class TamVangService {
             tamvangModel.setNgayKetThuc(resultSet.getDate("NgayKetThuc").toLocalDate());
             tamvangModel.setLyDo(resultSet.getString("LyDo"));
         }
-
+        connection.close();
         return tamvangModel;
     }
 
@@ -39,7 +39,7 @@ public class TamVangService {
         preparedStatement.setString(4, tamVangModel.getLyDo());
 
         int affectedRows = preparedStatement.executeUpdate();
-
+        connection.close();
         return affectedRows > 0;
     }
 
@@ -61,7 +61,7 @@ public class TamVangService {
             tamVangModel.setLyDo(resultSet.getString("LyDo"));
             tamVangList.add(tamVangModel);
         }
-
+        connection.close();
         return tamVangList;
     }
 
@@ -71,6 +71,7 @@ public class TamVangService {
         PreparedStatement preparedStatement = connection.prepareStatement(query);
         preparedStatement.setInt(1, idTamVang);
         preparedStatement.executeUpdate();
+        connection.close();
     }
 
     public static void delbyIDNhanKhau(int idnhankhau) throws SQLException, ClassNotFoundException {
@@ -79,6 +80,7 @@ public class TamVangService {
         PreparedStatement preparedStatement = connection.prepareStatement(query);
         preparedStatement.setInt(1, idnhankhau);
         preparedStatement.executeUpdate();
+        connection.close();
     }
 
     public static boolean updateTamVang(TamVangModel tamVangModel) throws SQLException, ClassNotFoundException {
@@ -91,6 +93,7 @@ public class TamVangService {
         preparedStatement.setInt(4, tamVangModel.getIDTamVang());
 
         int rowsAffected = preparedStatement.executeUpdate();
+        connection.close();
         return rowsAffected > 0;
     }
 
@@ -107,6 +110,7 @@ public class TamVangService {
             int count = rs.getInt(1);
             return String.valueOf(count);
         }
+        connection.close();
         return "0";
     }
 }

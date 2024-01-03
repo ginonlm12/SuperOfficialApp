@@ -1,14 +1,10 @@
 package services;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import models.NopTienModel;
+
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-
-import models.NopTienModel;
 
 public class NopTienService {
 
@@ -33,6 +29,7 @@ public class NopTienService {
 		Connection connection = MysqlConnection.getMysqlConnection();
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
         preparedStatement.executeUpdate();
+		connection.close();
         return true;
 	}
 	
@@ -41,7 +38,7 @@ public class NopTienService {
 		List<NopTienModel> list = new ArrayList<>();
 		Connection connection = MysqlConnection.getMysqlConnection();
     	String query = "SELECT * FROM nop_tien";
-        PreparedStatement preparedStatement = (PreparedStatement)connection.prepareStatement(query);
+		PreparedStatement preparedStatement = connection.prepareStatement(query);
         ResultSet rs = preparedStatement.executeQuery();
         while (rs.next()){
         	NopTienModel nopTienModel = new NopTienModel();

@@ -54,6 +54,7 @@ public class KhoanThuService {
 		preparedStatement.setInt(8, khoanThuModel.getIDKhoanThu());
 		preparedStatement.setInt(9, IDKhoanThu_old);
 		preparedStatement.executeUpdate();
+		connection.close();
 		return true;
 	}
 
