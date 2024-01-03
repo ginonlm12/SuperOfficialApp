@@ -53,6 +53,7 @@ public class ThuPhiController implements Initializable {
 			ObservableList<String> listComboBox = FXCollections.observableArrayList("Tên khoản thu", "Tên chủ hộ");
 			cbChooseSearch.setValue("Tên khoản thu");
 			cbChooseSearch.setItems(listComboBox);
+			tvThuPhi.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		}
@@ -192,14 +193,14 @@ public class ThuPhiController implements Initializable {
 	}
 
 	public void delThuPhi() throws ClassNotFoundException, SQLException {
-		ThuPhiBean ThuPhiBean = tvThuPhi.getSelectionModel().getSelectedItem();
+		List<ThuPhiBean> listThuPhiBean = tvThuPhi.getSelectionModel().getSelectedItems();
 
-		if (ThuPhiBean == null) {
+		if (listThuPhiBean.size() == 0) {
 			Alert alert = new Alert(AlertType.WARNING, "Chọn mục thu phí bạn muốn xóa!", ButtonType.OK);
 			alert.setHeaderText(null);
 			alert.showAndWait();
 		} else {
-			Alert alert = new Alert(AlertType.WARNING, "Bạn có chắc chắn muốn xóa mục thu phí này!", ButtonType.YES,
+			Alert alert = new Alert(AlertType.WARNING, "Bạn có chắc chắn muốn xóa các mục thu phí này!", ButtonType.YES,
 					ButtonType.NO);
 			alert.setHeaderText(null);
 			Optional<ButtonType> result = alert.showAndWait();
@@ -207,22 +208,24 @@ public class ThuPhiController implements Initializable {
 			if (result.get() == ButtonType.NO) {
 				return;
 			} else {
-				new ThuPhiService().del(ThuPhiBean.getThuPhiModel());
+				for (ThuPhiBean thuPhiBean : listThuPhiBean) {
+					ThuPhiService.del(thuPhiBean.getThuPhiModel());
+				}
 			}
 		}
 		hienThuPhi();
 	}
 
 	public void updateThuPhi() throws ClassNotFoundException, SQLException, IOException {
-		// lay ra thi phi can update
-		ThuPhiBean thuPhiBean = tvThuPhi.getSelectionModel().getSelectedItem();
-		
-		if (thuPhiBean == null) {
-			Alert alert = new Alert(AlertType.WARNING, "Chọn mục thu phí bạn muốn cập nhật!", ButtonType.OK);
+		if (tvThuPhi.getSelectionModel().getSelectedItems().size() != 1) {
+			Alert alert = new Alert(AlertType.WARNING, "Chọn 1 mục thu phí bạn muốn cập nhật!", ButtonType.OK);
 			alert.setHeaderText(null);
 			alert.showAndWait();
 			return;
 		}
+
+		// lay ra thi phi can update
+		ThuPhiBean thuPhiBean = tvThuPhi.getSelectionModel().getSelectedItem();
 		
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(getClass().getResource("/views/thuphi/UpdateThuPhi.fxml"));
