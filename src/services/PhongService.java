@@ -95,12 +95,12 @@ public class PhongService {
         PreparedStatement preparedStatement = connection.prepareStatement(query);
         preparedStatement.setInt(1, soPhong);
         ResultSet rs = preparedStatement.executeQuery();
-        while (rs.next()) {
-            phongModel.setSoPhong(rs.getInt("SoPhong"));
-            phongModel.setDienTich(rs.getDouble("DienTich"));
-            phongModel.setLoaiPhong(rs.getString("LoaiPhong"));
-            phongModel.setTrangThai(HoKhauService.checkSuDung(phongModel.getSoPhong()));
-        }
+        rs.next();
+        phongModel.setSoPhong(rs.getInt("SoPhong"));
+        phongModel.setDienTich(rs.getDouble("DienTich"));
+        phongModel.setLoaiPhong(rs.getString("LoaiPhong"));
+        phongModel.setTrangThai(HoKhauService.checkSuDung(phongModel.getSoPhong()));
+        
         preparedStatement.close();
         connection.close();
         return phongModel;

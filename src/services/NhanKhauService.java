@@ -196,9 +196,8 @@ public class NhanKhauService {
         PreparedStatement preparedStatement = connection.prepareStatement(query);
         preparedStatement.setInt(1, IDHoKhau);
         ResultSet resultSet = preparedStatement.executeQuery();
-        while (resultSet.next()) {
-            SoPhong = resultSet.getInt("SoPhong");
-        }
+        resultSet.next();
+        SoPhong = resultSet.getInt("SoPhong");
         return SoPhong;
     }
 

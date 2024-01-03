@@ -7,8 +7,10 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
+import models.KhoanThuModel;
 import models.NhanKhauModel;
 import services.HoKhauService;
+import services.KhoanThuService;
 import services.NhanKhauService;
 
 import java.sql.SQLException;
@@ -50,9 +52,13 @@ public class XemHoChuaDongDu {
 
 	public void showNhanKhau() throws ClassNotFoundException, SQLException {
 		listNhanKhau = NhanKhauService.getListChuHoChuaDongDu(IDKhoanThu);
-		listValueTableView = FXCollections.observableArrayList(listNhanKhau);
+		KhoanThuModel khoanThuModel = KhoanThuService.getKhoanThu(IDKhoanThu);
+
 		for (NhanKhauModel nhankhau : listNhanKhau) {
 			nhankhau.setSoPhong(NhanKhauService.getSoPhong(nhankhau.getIDHoKhau()));
+			if (AddThuPhi.tinhSoTienPhaiDong(khoanThuModel, nhankhau).equals(0.0)) {
+				listNhanKhau.remove(nhankhau);
+			}
 		}
 
         if (listNhanKhau.size() == 0) {
@@ -62,13 +68,26 @@ public class XemHoChuaDongDu {
             return;
         }
 
+		listValueTableView = FXCollections.observableArrayList(listNhanKhau);
+
 		// thiet lap cac cot cho tableviews
 		colIDHoKhau.setCellValueFactory(new PropertyValueFactory<NhanKhauModel, String>("IDHoKhau"));
 		colTen.setCellValueFactory(new PropertyValueFactory<NhanKhauModel, String>("HoTen"));
 		colPhong.setCellValueFactory(new PropertyValueFactory<NhanKhauModel, String>("SoPhong"));
-		colCCCD.setCellValueFactory(new PropertyValueFactory<NhanKhauModel, String>("CCCD"));
+		colCCCD.setCellValueFactory(
+				(TableColumn.CellDataFeatures<NhanKhauModel, String> p) ->
+				{
+					try {
+						return new ReadOnlyStringWrapper(String.valueOf(AddThuPhi.tinhSoTienPhaiDong(khoanThuModel, p.getValue())));
+					} catch (ClassNotFoundException e) {
+						throw new RuntimeException(e);
+					} catch (SQLException e) {
+						throw new RuntimeException(e);
+					}
+				}
+		);
 		colSDT.setCellValueFactory(
-				(TableColumn.CellDataFeatures< NhanKhauModel, String> p) ->
+				(TableColumn.CellDataFeatures<NhanKhauModel, String> p) ->
 				{
 					try {
 						return new ReadOnlyStringWrapper(HoKhauService.getHoKhau(NhanKhauService.getIDHoKhau(p.getValue().getIDNhanKhau())).getSDT());

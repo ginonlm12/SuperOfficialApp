@@ -6,7 +6,6 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.ResourceBundle;
 
-import controller.thuphi.ChooseChuHo;
 import controller.thuphi.XemHoChuaDongDu;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

@@ -157,9 +157,10 @@ public class AddThuPhi implements Initializable {
 
 	public static Double tinhSoTienPhaiDong(KhoanThuModel khoanThuModel, NhanKhauModel nhanKhauModel) throws ClassNotFoundException, SQLException {
 		String loai = khoanThuModel.getLoaiKhoanThu();
-		double tien = 0;
+		double tien = 0.0;
 		if (loai.equals("Tiền quản lý")) {
 			PhongModel phongModel = PhongService.getPhongModel(nhanKhauModel.getSoPhong());
+			
 			if (phongModel.getLoaiPhong().equals("Cao cấp")) {
 				tien = khoanThuModel.getTrongSoDienTich() * phongModel.getDienTich()			
 				+ khoanThuModel.getHangSo();
@@ -174,6 +175,9 @@ public class AddThuPhi implements Initializable {
 			tien = khoanThuModel.getTrongSoDienTich() * xeModel.getOTo()
 			+ khoanThuModel.getTrongSoSTV() * xeModel.getXeMay()
 			+ khoanThuModel.getHangSo() * xeModel.getXeDap();
+		}
+		else if (loai.equals("Tiền khác")) {
+			tien = khoanThuModel.getHangSo();
 		}
 
 		return tien;
