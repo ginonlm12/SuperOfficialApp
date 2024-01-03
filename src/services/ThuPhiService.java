@@ -54,6 +54,7 @@ public class ThuPhiService {
 		preparedStatement.setInt(5, ThuPhiModel.getIDHoKhau());
 
 		preparedStatement.executeUpdate();
+		connection.close();
 		return true;
 	}
 
@@ -132,7 +133,7 @@ public class ThuPhiService {
 
 			series.getData().add(new XYChart.Data<>(Smonth, totalIncome));
 		}
-
+		connection.close();
 		return series;
 	}
 

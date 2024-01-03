@@ -3,7 +3,6 @@ package services;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.chart.PieChart;
-import models.HoKhauBean;
 import models.NhanKhauModel;
 
 import java.sql.*;
@@ -14,6 +13,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class NhanKhauService {
+
     public static NhanKhauModel loadDatafromID(int idNhanKhau) throws ClassNotFoundException, SQLException {
         NhanKhauModel nhanKhauModel = new NhanKhauModel();
         Connection connection = MysqlConnection.getMysqlConnection();
@@ -41,6 +41,9 @@ public class NhanKhauService {
             nhanKhauModel = new NhanKhauModel(idNhanKhau, IDHoKhau, QHvsChuHo, HoTen, NgaySinh, MaCCCD, NgheNghiep, GioiTinh, DanToc, QueQuan);
             return nhanKhauModel;
         }
+
+        connection.close();
+
         return null;
     }
 
@@ -104,6 +107,7 @@ public class NhanKhauService {
         if (resultSet.next()) {
             maxID = resultSet.getInt(1);
         }
+        connection.close();
         return maxID + 1;
     }
 
@@ -120,7 +124,7 @@ public class NhanKhauService {
             String provinceName = resultSet.getString("name");
             Tinh_List.add(provinceName);
         }
-
+        connection.close();
         return Tinh_List;
     }
 
@@ -138,7 +142,7 @@ public class NhanKhauService {
             String districtName = resultSet.getString("name");
             Huyen_List.add(districtName);
         }
-
+        connection.close();
         return Huyen_List;
     }
 
@@ -158,7 +162,7 @@ public class NhanKhauService {
             String wardName = resultSet.getString("name");
             Xa_List.add(wardName);
         }
-
+        connection.close();
         return Xa_List;
     }
 
@@ -173,6 +177,7 @@ public class NhanKhauService {
         while (resultSet.next()) {
             ChuHo = resultSet.getString("HoTen");
         }
+        connection.close();
         return ChuHo;
     }
 
@@ -186,6 +191,7 @@ public class NhanKhauService {
         while (resultSet.next()) {
             HoTen = resultSet.getString("HoTen");
         }
+        connection.close();
         return HoTen;
     }
 
@@ -198,6 +204,7 @@ public class NhanKhauService {
         ResultSet resultSet = preparedStatement.executeQuery();
         resultSet.next();
         SoPhong = resultSet.getInt("SoPhong");
+        connection.close();
         return SoPhong;
     }
 
@@ -211,6 +218,7 @@ public class NhanKhauService {
             int count = rs.getInt(1);
             return String.valueOf(count);
         }
+        connection.close();
         return "0";
     }
 
@@ -219,7 +227,7 @@ public class NhanKhauService {
         Connection connection = MysqlConnection.getMysqlConnection();
         Statement statement = connection.createStatement();
 
-        String query = "SELECT GioiTinh, COUNT(*) as Count FROM nhankhau GROUP BY GioiTinh";
+        String query = "SELECT GioiTinh, COUNT(*) as Count FROM nhankhau WHERE IDHoKhau IN (SELECT IDHoKhau FROM hokhau WHERE NgayDi = '0001-01-01') GROUP BY GioiTinh";
         ResultSet resultSet = statement.executeQuery(query);
 
         while (resultSet.next()) {
@@ -229,6 +237,7 @@ public class NhanKhauService {
                 GenderD.add(new PieChart.Data("Chưa điền", count));
             else GenderD.add(new PieChart.Data(gender, count));
         }
+        connection.close();
         return GenderD;
     }
 
@@ -238,7 +247,7 @@ public class NhanKhauService {
         Connection connection = MysqlConnection.getMysqlConnection();
         Statement statement = connection.createStatement();
 
-        String query = "SELECT NgaySinh FROM nhankhau";
+        String query = "SELECT NgaySinh FROM nhankhau WHERE IDHoKhau IN (SELECT IDHoKhau FROM hokhau WHERE NgayDi = '0001-01-01')";
         ResultSet resultSet = statement.executeQuery(query);
 
         while (resultSet.next()) {
@@ -264,7 +273,7 @@ public class NhanKhauService {
         AgeD.add(new PieChart.Data("19-44", mapAge[2]));
         AgeD.add(new PieChart.Data("45-64", mapAge[3]));
         AgeD.add(new PieChart.Data("65+", mapAge[4]));
-
+        connection.close();
         return AgeD;
     }
 
@@ -430,6 +439,7 @@ public class NhanKhauService {
         while (resultSet.next()) {
             return resultSet.getInt("IDHoKhau");
         }
+        connection.close();
         return -1;
     }
 }

@@ -205,6 +205,7 @@ public class HoKhauService {
             HoKhauModel hoKhauModel = getHoKhau(Integer.parseInt(idhk));
             HoKhauBean hoKhauBean = new HoKhauBean(hoKhauModel, sotv);
         }
+        connection.close();
         return null;
     }
 
@@ -244,7 +245,8 @@ public class HoKhauService {
         if (rs.next()) {
             return "Đang được sử dụng";
         }
-        return "Chưa đuợc sử dụng";
+        connection.close();
+        return "Chưa được sử dụng";
     }
 
     public static String countHoKhau() throws ClassNotFoundException, SQLException {
@@ -257,6 +259,7 @@ public class HoKhauService {
             int count = rs.getInt(1);
             return String.valueOf(count);
         }
+        connection.close();
         return "0";
     }
 

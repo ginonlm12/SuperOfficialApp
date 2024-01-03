@@ -21,6 +21,7 @@ public class PhongService {
         preparedStatement.setString(3, phongModel.getLoaiPhong());
 
         int rowsAffected = preparedStatement.executeUpdate();
+        connection.close();
         return rowsAffected > 0;
     }
 
@@ -50,6 +51,7 @@ public class PhongService {
             int sophong = rs.getInt("SoPhong");
             list.add(sophong);
         }
+        connection.close();
         return list;
     }
 
@@ -84,6 +86,7 @@ public class PhongService {
         if (rs.next()) {
             used = rs.getInt(1);
         }
+        connection.close();
         return used + "/" + total;
     }
 

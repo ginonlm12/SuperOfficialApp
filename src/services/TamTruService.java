@@ -30,7 +30,7 @@ public class TamTruService {
 
             tamTruList.add(tamTruModel);
         }
-
+        connection.close();
         return tamTruList;
     }
 
@@ -40,6 +40,7 @@ public class TamTruService {
         PreparedStatement preparedStatement = connection.prepareStatement(query);
         preparedStatement.setInt(1, idTamTru);
         preparedStatement.executeUpdate();
+        connection.close();
     }
 
     public static boolean add(TamTruModel tamTruModel) throws SQLException, ClassNotFoundException {
@@ -58,7 +59,7 @@ public class TamTruService {
         preparedStatement.setString(9, tamTruModel.getGioiTinh());
 
         int affectedRows = preparedStatement.executeUpdate();
-
+        connection.close();
         return affectedRows > 0;
     }
 
@@ -70,7 +71,7 @@ public class TamTruService {
         preparedStatement.setInt(2, IDTamTru);
 
         int affectedRows = preparedStatement.executeUpdate();
-
+        connection.close();
         return affectedRows > 0;
     }
 
@@ -87,6 +88,7 @@ public class TamTruService {
             int count = rs.getInt(1);
             return String.valueOf(count);
         }
+        connection.close();
         return "0";
     }
 
