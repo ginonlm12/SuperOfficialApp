@@ -9,6 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
@@ -33,33 +34,74 @@ public class AddThuPhi implements Initializable {
 	private TextField tfSoTienDong;
 	@FXML
 	private DatePicker dpNgayDong;
+	@FXML
+	Button btChiTiet;
 
-	private KhoanThuModel khoanThuModel;
 	private NhanKhauModel nhanKhauModel;
+	FXMLLoader loaderChooseKhoanThu;
+	Scene sceneChooseKhoanThu;
+	private List<KhoanThuModel> listKhoanThuChoose; 
+	private Double tien = 0.0;
 
 	@Override
 	public void initialize(java.net.URL arg0, java.util.ResourceBundle arg1) {
 		// set dpNgayDong la ngay hien tai
 		dpNgayDong.setValue(java.time.LocalDate.now());
+		btChiTiet.setVisible(false);
+	}
+
+	public NhanKhauModel getNhanKhauModel() {
+		return nhanKhauModel;
+	}
+
+	public void setTfSearch(String tfSearch) {
+		this.tfTenKhoanThu.appendText(tfSearch + ", ");
 	}
 
 	public void chooseKhoanThu() throws IOException, ClassNotFoundException, SQLException {
-		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(getClass().getResource("/views/ThuPhi/ChooseKhoanThu.fxml"));
-		Parent home = loader.load();
+		if (nhanKhauModel == null) {
+			Alert alert = new Alert(AlertType.WARNING, "Hãy chọn chủ hộ trước!", ButtonType.OK);
+			alert.setHeaderText(null);
+			alert.showAndWait();
+			return;
+		}
+		
+		if (loaderChooseKhoanThu == null) {
+			loaderChooseKhoanThu = new FXMLLoader();
+			loaderChooseKhoanThu.setLocation(getClass().getResource("/views/ThuPhi/ChooseKhoanThu.fxml"));
+			sceneChooseKhoanThu = new Scene(loaderChooseKhoanThu.load(), 800, 600);
+		}
+		
+		ChooseKhoanThu chooseKhoanThu = loaderChooseKhoanThu.getController();
+		chooseKhoanThu.setNhanKhauModel(nhanKhauModel);
 		Stage stage = new Stage();
-		stage.setScene(new Scene(home, 800, 600));
+		stage.setScene(sceneChooseKhoanThu);
 		stage.setResizable(false);
 		stage.showAndWait();
 
-		ChooseKhoanThu chooseKhoanNop = loader.getController();
-		khoanThuModel = chooseKhoanNop.getKhoanThuChoose();
-		if (khoanThuModel == null)
+		listKhoanThuChoose = chooseKhoanThu.getListKhoanThuChoose();
+		if (listKhoanThuChoose == null)
 			return;
-		tfTenKhoanThu.setText(khoanThuModel.getTenKT());
 
-		if (nhanKhauModel != null)
-			tinhSoTienPhaiDong();
+		String dsTen = new String("");
+		for (KhoanThuModel khoanThuModel : listKhoanThuChoose) {
+			dsTen = dsTen + khoanThuModel.getTenKT() + ", ";
+		}
+		if (dsTen.length() > 0)
+			dsTen = dsTen.substring(0, dsTen.length() - 2);
+		tfTenKhoanThu.setText(dsTen);
+		tien = 0.0;
+		tinhSoTienPhaiDong();
+		if (listKhoanThuChoose.size() > 1) {
+			tfSoTienPhaiDong.editableProperty().setValue(false);
+			tfSoTienDong.editableProperty().setValue(false);
+			btChiTiet.setVisible(true);
+		}
+		else {
+			tfSoTienPhaiDong.editableProperty().setValue(true);
+			tfSoTienDong.editableProperty().setValue(true);
+			btChiTiet.setVisible(false);
+		}
 	}
 
 	public void chooseChuHo() throws IOException, ClassNotFoundException, SQLException {
@@ -77,12 +119,43 @@ public class AddThuPhi implements Initializable {
 		if (nhanKhauModel == null)
 			return;
 		tfTenChuHo.setText(nhanKhauModel.getHoTen());
-
-		if (khoanThuModel != null)
-			tinhSoTienPhaiDong();
+		sceneChooseKhoanThu = null;
+		loaderChooseKhoanThu = null;
+		listKhoanThuChoose = null;
+		tfTenKhoanThu.setText("");
+		tfSoTienPhaiDong.setText("");
+		tfSoTienDong.setText("");
+		tien = 0.0;
 	}
 
-	private void tinhSoTienPhaiDong() throws ClassNotFoundException, SQLException {
+	public void tinhSoTienPhaiDong() throws ClassNotFoundException, SQLException {
+		for(KhoanThuModel khoanThuModel : listKhoanThuChoose) {
+			String loai = khoanThuModel.getLoaiKhoanThu();
+	
+			if (loai.equals("Tiền quản lý")) {
+				PhongModel phongModel = PhongService.getPhongModel(nhanKhauModel.getSoPhong());
+				if (phongModel.getLoaiPhong().equals("Cao cấp")) {
+					tien += khoanThuModel.getTrongSoDienTich() * phongModel.getDienTich()			
+					+ khoanThuModel.getHangSo();
+				}
+				else {
+					tien += khoanThuModel.getTrongSoSTV() * phongModel.getDienTich() 
+					+ khoanThuModel.getHangSo();
+				}
+			}
+			else if (loai.equals("Tiền giữ xe")) {
+				XeModel xeModel = XeService.getXeModel(nhanKhauModel.getIDHoKhau());
+				tien += khoanThuModel.getTrongSoDienTich() * xeModel.getOTo()
+				+ khoanThuModel.getTrongSoSTV() * xeModel.getXeMay()
+				+ khoanThuModel.getHangSo() * xeModel.getXeDap();
+			}
+		}
+
+		tfSoTienPhaiDong.setText(String.valueOf(tien));
+		tfSoTienDong.setText(String.valueOf(tien));
+	}
+
+	public static Double tinhSoTienPhaiDong(KhoanThuModel khoanThuModel, NhanKhauModel nhanKhauModel) throws ClassNotFoundException, SQLException {
 		String loai = khoanThuModel.getLoaiKhoanThu();
 		double tien = 0;
 		if (loai.equals("Tiền quản lý")) {
@@ -103,7 +176,7 @@ public class AddThuPhi implements Initializable {
 			+ khoanThuModel.getHangSo() * xeModel.getXeDap();
 		}
 
-		tfSoTienPhaiDong.setText(String.valueOf(tien));
+		return tien;
 	}
 
 	public void addThuPhi(ActionEvent event) throws ClassNotFoundException, SQLException {
@@ -113,30 +186,7 @@ public class AddThuPhi implements Initializable {
 			alert.showAndWait();
 			return;
 		} 
-		List<ThuPhiBean> listThuPhi = new ThuPhiService().getListThuPhi();
-		for (ThuPhiBean thuPhiBean : listThuPhi) {
-			if (thuPhiBean.getThuPhiModel().getIDHoKhau() == nhanKhauModel.getIDHoKhau()
-					&& thuPhiBean.getThuPhiModel().getIDKhoanThu() == khoanThuModel.getIDKhoanThu()) {
-				Alert alert = new Alert(AlertType.WARNING, "Người này đã từng nộp khoản phí này!", ButtonType.OK);
-				alert.setHeaderText(null);
-				alert.showAndWait();
-				return;
-			}
-		}
-		// kiem tra xem so tien dong co la mot so thuc khong
-		if (!tfSoTienDong.getText().matches("\\d*\\.?\\d+")) {
-			Alert alert = new Alert(AlertType.WARNING, "Hãy nhập vào số tiền đóng hợp lệ!", ButtonType.OK);
-			alert.setHeaderText(null);
-			alert.showAndWait();
-			return;
-		}
-		// kiem tra so tien phai dong co la mot so thuc khong
-		if (!tfSoTienPhaiDong.getText().matches("\\d*\\.?\\d+")) {
-			Alert alert = new Alert(AlertType.WARNING, "Hãy nhập vào số tiền phải đóng hợp lệ!", ButtonType.OK);
-			alert.setHeaderText(null);
-			alert.showAndWait();
-			return;
-		}
+		
 		// kiem tra ngay dong co de trong hay khong
 		if (dpNgayDong.getValue() == null) {
 			Alert alert = new Alert(AlertType.WARNING, "Hãy chọn ngày đóng!", ButtonType.OK);
@@ -154,18 +204,44 @@ public class AddThuPhi implements Initializable {
 			alert.showAndWait();
 			if (alert.getResult() == ButtonType.NO) return;
 		}
-
-		ThuPhiModel thuPhiModel = new ThuPhiModel();
-		thuPhiModel.setIDHoKhau(nhanKhauModel.getIDHoKhau());
-		thuPhiModel.setIDKhoanThu(khoanThuModel.getIDKhoanThu());
-		thuPhiModel.setSoTienPhaiDong(Double.parseDouble(tfSoTienPhaiDong.getText()));
-		thuPhiModel.setSoTien(Double.parseDouble(tfSoTienDong.getText()));
-		thuPhiModel.setNgayDong(dpNgayDong.getValue().toString());
-
-		ThuPhiService.add(thuPhiModel);
+		if (listKhoanThuChoose.size() == 1) {
+			KhoanThuModel khoanThuModel = listKhoanThuChoose.get(0);
+			ThuPhiModel thuPhiModel = new ThuPhiModel();
+			thuPhiModel.setIDHoKhau(nhanKhauModel.getIDHoKhau());
+			thuPhiModel.setIDKhoanThu(khoanThuModel.getIDKhoanThu());
+			thuPhiModel.setSoTienPhaiDong(Double.parseDouble(tfSoTienPhaiDong.getText()));
+			thuPhiModel.setSoTien(Double.parseDouble(tfSoTienDong.getText()));
+			thuPhiModel.setNgayDong(dpNgayDong.getValue().toString());
+	
+			ThuPhiService.add(thuPhiModel);
+		}
+		else {
+			for(KhoanThuModel khoanThuModel : listKhoanThuChoose) {
+				ThuPhiModel thuPhiModel = new ThuPhiModel();
+				thuPhiModel.setIDHoKhau(nhanKhauModel.getIDHoKhau());
+				thuPhiModel.setIDKhoanThu(khoanThuModel.getIDKhoanThu());
+				thuPhiModel.setSoTienPhaiDong(tinhSoTienPhaiDong(khoanThuModel, nhanKhauModel));
+				thuPhiModel.setSoTien(tinhSoTienPhaiDong(khoanThuModel, nhanKhauModel));
+				thuPhiModel.setNgayDong(dpNgayDong.getValue().toString());
+		
+				ThuPhiService.add(thuPhiModel);
+			}
+		}
+		
 		Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-		stage.setTitle("Thêm thu phí");
-		stage.setResizable(false);
 		stage.close();
+
+		Alert alert = new Alert(AlertType.INFORMATION, "Thêm thu phí thành công!", ButtonType.OK);
+	}
+
+	public void chiTiet() throws ClassNotFoundException, SQLException {
+		// hien thi ra thong tin ve ten khoan thu trong listKhoanThuChoose va so tien phai dong
+		String chiTiet = new String("");
+		for (KhoanThuModel khoanThuModel : listKhoanThuChoose) {
+			chiTiet = chiTiet + khoanThuModel.getTenKT() + ": " + tinhSoTienPhaiDong(khoanThuModel, nhanKhauModel) + "\n";
+		}
+		Alert alert = new Alert(AlertType.INFORMATION, chiTiet, ButtonType.OK);
+		alert.setHeaderText("Chi tiết thu phí");
+		alert.showAndWait();
 	}
 }

@@ -114,13 +114,15 @@ public class UpdateKhoanThu {
 			tfThanhPhan2.setText("Tiền một xe máy");
 			tfThanhPhan3.setText("Tiền một xe đạp");
 		} else { // khong lam gi ca
-			tfThanhPhan1.setVisible(false);
+			tfThanhPhan1.setVisible(true);
 			tfThanhPhan2.setVisible(false);
 			tfThanhPhan3.setVisible(false);
 
-			tfTrongSoDienTich.setVisible(false);
+			tfTrongSoDienTich.setVisible(true);
 			tfTrongSoSTV.setVisible(false);
 			tfHangSo.setVisible(false);
+
+			tfThanhPhan1.setText("Số tiền phải thu");
 		}
 	}
 

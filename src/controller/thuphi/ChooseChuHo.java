@@ -11,7 +11,6 @@ import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-import models.HoKhauBean;
 import models.NhanKhauModel;
 import services.HoKhauService;
 import services.NhanKhauService;
@@ -22,6 +21,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.regex.Pattern;
+
+import javax.security.auth.kerberos.KerberosPrincipal;
 
 public class ChooseChuHo implements Initializable {
 	@FXML
@@ -79,16 +80,16 @@ public class ChooseChuHo implements Initializable {
 		colPhong.setCellValueFactory(new PropertyValueFactory<NhanKhauModel, String>("SoPhong"));
 		colCCCD.setCellValueFactory(new PropertyValueFactory<NhanKhauModel, String>("CCCD"));
 		colSDT.setCellValueFactory(
-				(TableColumn.CellDataFeatures< NhanKhauModel, String> p) ->
-		{
-			try {
-				return new ReadOnlyStringWrapper(HoKhauService.getHoKhau(NhanKhauService.getIDHoKhau(p.getValue().getIDNhanKhau())).getSDT());
-			} catch (ClassNotFoundException e) {
-				throw new RuntimeException(e);
-			} catch (SQLException e) {
-				throw new RuntimeException(e);
-			}
+			(TableColumn.CellDataFeatures< NhanKhauModel, String> p) ->
+	{
+		try {
+			return new ReadOnlyStringWrapper(HoKhauService.getHoKhau(p.getValue().getIDHoKhau()).getSDT());
+		} catch (ClassNotFoundException e) {
+			throw new RuntimeException(e);
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
 		}
+	}
 		);
 
 		tvNhanKhau.setItems(listValueTableView);
