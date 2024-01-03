@@ -12,9 +12,17 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
+import models.HoKhauModel;
+import models.KhoanThuModel;
+import models.PhongModel;
 import models.ThuPhiBean;
 import models.ThuPhiModel;
+import models.XeModel;
+import services.HoKhauService;
+import services.KhoanThuService;
+import services.PhongService;
 import services.ThuPhiService;
+import services.XeService;
 
 public class UpdateThuPhi {
 	@FXML
@@ -69,9 +77,8 @@ public class UpdateThuPhi {
 		thuPhiModel.setSoTien(Double.parseDouble(tfSoTienDong.getText()));
 		thuPhiModel.setSoTienPhaiDong(Double.parseDouble(tfSoTienPhaiDong.getText()));
 		thuPhiModel.setNgayDong(dpNgayDong.getValue().format(DateTimeFormatter.ISO_DATE));
-
-		ThuPhiService thuPhiService = new ThuPhiService();
-		thuPhiService.update(thuPhiModel);
+		// cap nhat vao database
+		ThuPhiService.update(thuPhiModel);
 		
 		Alert alert = new Alert(AlertType.INFORMATION, "Cập nhật thành công!", ButtonType.OK);
 		alert.setHeaderText(null);
@@ -79,7 +86,32 @@ public class UpdateThuPhi {
 		Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		stage.setTitle("Cập nhật thu phí");
 		stage.setResizable(false);
-		stage.close();
-		
+		stage.close();	
+	}
+
+	public void tinhSoTienPhaiDong() throws ClassNotFoundException, SQLException {
+		KhoanThuModel khoanThuModel = KhoanThuService.getKhoanThu(thuPhiBean.getThuPhiModel().getIDKhoanThu());
+		HoKhauModel hoKhauModel = HoKhauService.getHoKhau(thuPhiBean.getThuPhiModel().getIDHoKhau());
+		String loai = khoanThuModel.getLoaiKhoanThu();
+		double tien = 0;
+		if (loai.equals("Tiền quản lý")) {
+			PhongModel phongModel = PhongService.getPhongModel(hoKhauModel.getSoPhong());
+			if (phongModel.getLoaiPhong().equals("Cao cấp")) {
+				tien = khoanThuModel.getTrongSoDienTich() * phongModel.getDienTich()			
+				+ khoanThuModel.getHangSo();
+			}
+			else {
+				tien = khoanThuModel.getTrongSoSTV() * phongModel.getDienTich() 
+				+ khoanThuModel.getHangSo();
+			}
+		}
+		else if (loai.equals("Tiền giữ xe")) {
+			XeModel xeModel = XeService.getXeModel(hoKhauModel.getIDHoKhau());
+			tien = khoanThuModel.getTrongSoDienTich() * xeModel.getOTo()
+			+ khoanThuModel.getTrongSoSTV() * xeModel.getXeMay()
+			+ khoanThuModel.getHangSo() * xeModel.getXeDap();
+		}
+
+		tfSoTienPhaiDong.setText(String.valueOf(tien));
 	}
 }

@@ -136,4 +136,27 @@ public class ThuPhiService {
 		return series;
 	}
 
+	public static ThuPhiModel getThuPhiModel(int IDKhoanThu, int IDHoKhau) throws ClassNotFoundException, SQLException {
+		Connection connection = MysqlConnection.getMysqlConnection();
+		String query = "SELECT * FROM thuphi WHERE IDKhoanThu = ? AND IDHoKhau = ?";
+		PreparedStatement preparedStatement = connection.prepareStatement(query);
+		preparedStatement.setInt(1, IDKhoanThu);
+		preparedStatement.setInt(2, IDHoKhau);
+		ResultSet rs = preparedStatement.executeQuery();
+		// kiem tra xem co ban ghi nao khong
+		if (!rs.next()) {
+			return null;
+		}
+
+		ThuPhiModel thuPhiModel = new ThuPhiModel(
+				rs.getInt("IDKhoanThu"),
+				rs.getInt("IDHoKhau"),
+				rs.getDouble("SoTienPhaiDong"),
+				rs.getDouble("TienDaDong"),
+				rs.getString("NgayDong"));
+		preparedStatement.close();
+		connection.close();
+
+		return thuPhiModel;
+	}
 }

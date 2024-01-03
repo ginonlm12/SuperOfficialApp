@@ -103,4 +103,30 @@ public class KhoanThuService {
 		connection.close();
 		return khoanThuModel;
 	}
+
+    public static List<KhoanThuModel> getListKhoanThuChuHo(int idHoKhau) throws ClassNotFoundException, SQLException {
+        List<KhoanThuModel> list = new ArrayList<>();
+
+		Connection connection = MysqlConnection.getMysqlConnection();
+		String query = "SELECT * FROM khoanthu WHERE IDKhoanThu NOT IN (SELECT IDKhoanThu FROM thuphi WHERE IDHoKhau = ? AND TienDaDong >= SoTienPhaiDong)";
+		PreparedStatement preparedStatement = connection.prepareStatement(query);
+		preparedStatement.setInt(1, idHoKhau);
+		ResultSet rs = preparedStatement.executeQuery();
+		while (rs.next()) {
+			KhoanThuModel khoanThuModel = new KhoanThuModel(
+					rs.getInt("IDKhoanThu"),
+					rs.getString("TenKT"),
+					rs.getString("NgayBatDau"),
+					rs.getString("NgayKetThuc"),
+					rs.getDouble("TrongSoDienTich"),
+					rs.getDouble("TrongSoSTV"),
+					rs.getDouble("HangSo"),
+					rs.getString("LoaiKhoanThu"));
+
+			list.add(khoanThuModel);
+		}
+		preparedStatement.close();
+		connection.close();
+		return list;
+    }
 }

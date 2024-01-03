@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.regex.Pattern;
 
+import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -24,6 +25,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import models.KhoanThuModel;
+import models.NhanKhauModel;
 import services.KhoanThuService;
 
 public class ChooseKhoanThu implements Initializable {
@@ -38,43 +40,55 @@ public class ChooseKhoanThu implements Initializable {
 	@FXML
 	private TableColumn<KhoanThuModel, String> colNgayKetThuc;
 	@FXML
+	private TableColumn<KhoanThuModel, String> colSoTienPhaiDong;
+	@FXML
 	private TextField tfSearch;
 	@FXML
 	private ComboBox<String> cbChooseSearch;
 
-	private KhoanThuModel khoanthuChoose;
 	private List<KhoanThuModel> listKhoanThu;
 	private ObservableList<KhoanThuModel> listValueTableView;
-
+	private List<KhoanThuModel> listKhoanThuChoose = new ArrayList<>();
+	private NhanKhauModel nhanKhauModel;
+	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		try {
-			hienKhoanThu();
 			// thiet lap gia tri cho combobox
-			ObservableList<String> listComboBox = FXCollections.observableArrayList("Tên khoản thu", "ID khoản thu");
-			cbChooseSearch.setValue("Tên khoản thu");
-			cbChooseSearch.setItems(listComboBox);
-		} catch (ClassNotFoundException | SQLException e) {
-			e.printStackTrace();
-		}
+		ObservableList<String> listComboBox = FXCollections.observableArrayList("Tên khoản thu", "ID khoản thu");
+		cbChooseSearch.setValue("Tên khoản thu");
+		cbChooseSearch.setItems(listComboBox);
 	}
 
-	public KhoanThuModel getKhoanThuChoose() {
-		return khoanthuChoose;
+	public void setNhanKhauModel(NhanKhauModel nhanKhauModel) throws ClassNotFoundException, SQLException {
+		this.nhanKhauModel = nhanKhauModel;
+		if (tfSearch.getText().length() == 0)
+			hienKhoanThu();
 	}
 
-	public void setKhoanthuChoose(KhoanThuModel khoanthuChoose) {
-		this.khoanthuChoose = khoanthuChoose;
+	public List<KhoanThuModel> getListKhoanThuChoose() {
+		return listKhoanThuChoose;
 	}
 
 	public void hienKhoanThu() throws ClassNotFoundException, SQLException {
-		listKhoanThu = KhoanThuService.getListKhoanThu();
+		listKhoanThu = KhoanThuService.getListKhoanThuChuHo(nhanKhauModel.getIDHoKhau());
 		listValueTableView = FXCollections.observableArrayList(listKhoanThu);
 
 		colIDKhoanThu.setCellValueFactory(new PropertyValueFactory<KhoanThuModel, Integer>("IDKhoanThu"));
 		colTenKhoanThu.setCellValueFactory(new PropertyValueFactory<KhoanThuModel, String>("TenKT"));
 		colNgayBatDau.setCellValueFactory(new PropertyValueFactory<KhoanThuModel, String>("NgayBatDau"));
 		colNgayKetThuc.setCellValueFactory(new PropertyValueFactory<KhoanThuModel, String>("NgayKetThuc"));
+		colSoTienPhaiDong.setCellValueFactory(
+				(TableColumn.CellDataFeatures<KhoanThuModel, String> p) ->
+		{
+			try {
+				return new ReadOnlyStringWrapper(String.valueOf(AddThuPhi.tinhSoTienPhaiDong(p.getValue(), nhanKhauModel)));
+			} catch (ClassNotFoundException e) {
+				throw new RuntimeException(e);
+			} catch (SQLException e) {
+				throw new RuntimeException(e);
+			}
+		}
+		);
 
 		tvKhoanThu.setItems(listValueTableView);
 	}
@@ -139,23 +153,28 @@ public class ChooseKhoanThu implements Initializable {
 
 		listValueTableView_tmp = FXCollections.observableArrayList(listKhoanThuModelsSearch);
 		tvKhoanThu.setItems(listValueTableView_tmp);
-
 	}
 
 	public void xacnhan(ActionEvent event) {
-		khoanthuChoose = tvKhoanThu.getSelectionModel().getSelectedItem();
+		listKhoanThuChoose = tvKhoanThu.getSelectionModel().getSelectedItems();
 
 		// kiem tra xe nguoi dung da chon khoan thu chua
-		if (khoanthuChoose == null) {
+		if (listKhoanThuChoose.size() == 0) {
 			Alert alert = new Alert(AlertType.WARNING, "Bạn chưa chọn khoản thu!", ButtonType.OK);
 			alert.setHeaderText(null);
 			alert.showAndWait();
 			return;
 		}
-
-		setKhoanthuChoose(khoanthuChoose);
-
-		Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+		
+		Stage stage = (Stage) ((Node) (tfSearch)).getScene().getWindow();
 		stage.close();
 	}
+
+	// catch even ctrl + click on the table
+	// public void clickOnTable() {
+	// 	KhoanThuModel khoanThuModel = tvKhoanThu.getSelectionModel().getSelectedItem();
+	// 	if (khoanThuModel != null) {
+	// 		tfSearch.setText(khoanThuModel.getTenKT());
+	// 	}
+	// }
 }
