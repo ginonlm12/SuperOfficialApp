@@ -7,12 +7,12 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 import models.KhoanThuModel;
 import models.NhanKhauModel;
 import services.HoKhauService;
 import services.KhoanThuService;
 import services.NhanKhauService;
-import javafx.stage.Stage;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -63,7 +63,7 @@ public class XemHoChuaDongDu {
 			}
 		}
 
-        if (listNhanKhau.size() == 0) {
+		if (listValueTableView.size() == 0) {
             Alert alert = new Alert(AlertType.INFORMATION, "Tất cả các hộ đều đã đóng", ButtonType.OK);
             alert.setHeaderText(null);
             alert.showAndWait();
