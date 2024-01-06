@@ -164,7 +164,8 @@ public class KhoanThuController implements Initializable {
 			alert.setHeaderText(null);
 			alert.showAndWait();
 		} else {
-			Alert alert = new Alert(AlertType.WARNING, "Bạn có chắc chắn muốn xóa khoản thu này!", ButtonType.YES,
+            Alert alert = new Alert(AlertType.WARNING, "Bạn có chắc chắn muốn xóa khoản thu này,\n" +
+                    "Các mục thu phí tương ưng với khoản thu này sẽ bị xóa theo!", ButtonType.YES,
 					ButtonType.NO);
 			alert.setHeaderText(null);
 			Optional<ButtonType> result = alert.showAndWait();
