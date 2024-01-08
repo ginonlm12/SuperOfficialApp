@@ -6,4 +6,4 @@
 3. [Nguyen Trong Tuan](https://github.com/Trgtuan10)
 4. [Dao Quoc Tuan](https://github.com/MrTuanDao)
 ## License
-Licensed under the [MIT](https://github.com/ginonlm12/SuperOfficialApp/blob/master/LICENSE.md) license.
+Licensed under the [MIT](LICENSE.md) license.
