@@ -5,3 +5,5 @@
 2. [Nguyen Minh Quang](https://github.com/nmquang003)
 3. [Nguyen Trong Tuan](https://github.com/Trgtuan10)
 4. [Dao Quoc Tuan](https://github.com/MrTuanDao)
+## License
+Licensed under the [MIT](https://github.com/ginonlm12/SuperOfficialApp/blob/master/LICENSE.md) license.
